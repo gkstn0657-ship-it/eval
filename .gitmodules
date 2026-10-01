@@ -1,0 +1,9 @@
+[submodule "pipelines/chat_rag"]
+	path = pipelines/chat_rag
+	url = https://github.com/gkstn0657-ship-it/chat_rag.git
+[submodule "pipelines/hybrid-search-eval"]
+	path = pipelines/hybrid-search-eval
+	url = https://github.com/gkstn0657-ship-it/hybrid-search-eval.git
+[submodule "pipelines/multimodal-rag"]
+	path = pipelines/multimodal-rag
+	url = https://github.com/gkstn0657-ship-it/multimodal-rag.git
