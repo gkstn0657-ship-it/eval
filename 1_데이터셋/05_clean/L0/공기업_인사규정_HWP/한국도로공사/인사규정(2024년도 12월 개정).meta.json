@@ -1,0 +1,15 @@
+{
+  "org": "한국도로공사",
+  "org_type": "시장형 공기업",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.01.23",
+  "format": "hwp",
+  "sha256": "6376972303769466afd2ebeafc75ad922ac5a6cb937b4329e33783f2f341f7a8",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=210456",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0183&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=9542&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-01",
+  "source_file": "공기업_인사규정_HWP/한국도로공사/인사규정(2024년도 12월 개정).hwp",
+  "revision_date": "2024-12",
+  "is_latest": false,
+  "level": "L0"
+}

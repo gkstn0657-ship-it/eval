@@ -1,0 +1,17 @@
+{
+  "org": "주택도시보증공사",
+  "org_type": "준시장형 공기업",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.11.21",
+  "format": "hwp",
+  "sha256": "1b01b41ffaef30308e7ce6e64c74dc64721d60913645e1d17955f4093d943897",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=224246",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0061&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=36508&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-01",
+  "source_file": "공기업_인사규정_HWP/주택도시보증공사/인사규정(2024년도 11월 22일 개정).hwp",
+  "revision_date": "2024-11-22",
+  "is_latest": false,
+  "level": "L1",
+  "toc": "",
+  "page_breaks": null
+}

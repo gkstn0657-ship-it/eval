@@ -1,0 +1,15 @@
+{
+  "org": "인천국제공항공사",
+  "org_type": "시장형 공기업",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.06.26",
+  "format": "hwpx",
+  "sha256": "ad65285dfe3c23c4ebe03b1511d56ffaf4ff8bbbfdf0dffe1e2310bdbc5a0554",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=166414",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0105&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=21892&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-01",
+  "source_file": "공기업_인사규정_HWP/인천국제공항공사/인사규정(2023년 1월 개정).hwpx",
+  "revision_date": "2023-01",
+  "is_latest": false,
+  "level": "L0"
+}

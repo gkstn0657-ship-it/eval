@@ -1,0 +1,17 @@
+{
+  "org": "한국석유공사",
+  "org_type": "시장형 공기업",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.08.20",
+  "format": "hwp",
+  "sha256": "a4dc8f4015a8b83b7c6d83768e3b2928669f9a1ed98d7f030fe564112d84d57c",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=148264",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0214&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=16055&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-01",
+  "source_file": "공기업_인사규정_HWP/한국석유공사/인사규정(2022년도 3월 개정).hwp",
+  "revision_date": "2022-03",
+  "is_latest": true,
+  "level": "L1",
+  "toc": "",
+  "page_breaks": null
+}

@@ -1,0 +1,15 @@
+{
+  "org": "한국공항공사",
+  "org_type": "시장형 공기업",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.06.29",
+  "format": "hwp",
+  "sha256": "c9c972d0fef9525c6ddef0ea63fbc636ca6c997fc1d9b2b3e022fa09e0aa6b52",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=237890",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0157&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=10199&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-01",
+  "source_file": "공기업_인사규정_HWP/한국공항공사/인사규정(2026년도 06월 29일 개정).hwp",
+  "revision_date": "2026-06-29",
+  "is_latest": true,
+  "level": "L0"
+}

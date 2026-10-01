@@ -1,0 +1,15 @@
+{
+  "org": "(주)강원랜드",
+  "org_type": "시장형 공기업",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.06.25",
+  "format": "hwp",
+  "sha256": "9f36b8812d6be46965c25440352add28ca21f8cda073e0a13c32f074a63a71b0",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=184401",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0005&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=18084&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-01",
+  "source_file": "공기업_인사규정_HWP/강원랜드/인사규정(2023년도 12월 개정).hwp",
+  "revision_date": "2023-12",
+  "is_latest": true,
+  "level": "L0"
+}

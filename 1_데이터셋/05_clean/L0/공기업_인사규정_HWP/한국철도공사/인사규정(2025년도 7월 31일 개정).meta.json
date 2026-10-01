@@ -1,0 +1,15 @@
+{
+  "org": "한국철도공사",
+  "org_type": "준시장형 공기업",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.01.30",
+  "format": "hwp",
+  "sha256": "3e6786c32c78148322abe40f0ca705d0cc79cf21db25e7d7ca8bc23d5c6d8be1",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=219671",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0268&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=15659&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-01",
+  "source_file": "공기업_인사규정_HWP/한국철도공사/인사규정(2025년도 7월 31일 개정).hwp",
+  "revision_date": "2025-07-31",
+  "is_latest": true,
+  "level": "L0"
+}
