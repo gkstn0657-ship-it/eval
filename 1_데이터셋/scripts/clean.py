@@ -44,6 +44,14 @@ def hwp_tables(p):
         tables.append(serialize_table(rows))
     return tables
 
+def hwp_image_count(p):
+    """BinData 에 실제 이미지가 있는지. 선 도형만 있는 <그림> 자리표시자(주택도시보증공사)와 구분한다 (R-02)."""
+    try:
+        import olefile
+        return sum(1 for e in olefile.OleFileIO(str(p)).listdir() if e[0] == "BinData")
+    except Exception:
+        return -1
+
 def extract_hwp(p):
     text = subprocess.run(["hwp5txt", str(p)], capture_output=True).stdout.decode("utf-8", "ignore")
     tables = hwp_tables(p)
@@ -53,7 +61,7 @@ def extract_hwp(p):
         text = text + "\n" + "\n\n".join(tables)
     else:
         text = parts[0] + "".join(("\n" + tables[i] + "\n") + parts[i + 1] for i in range(len(tables)))
-    return [text], {"tables": len(tables)}
+    return [text], {"tables": len(tables), "bindata_images": hwp_image_count(p), "picture_placeholders": text.count("<그림>")}
 
 def extract_hwpx(p):
     z = zipfile.ZipFile(p)
@@ -238,6 +246,8 @@ def date_key(fn):
     y = int(m.group(1)); y = y + 2000 if y < 100 else y
     return (y, int(m.group(2)), int(m.group(3) or 0))
 
+TRANSCRIPTIONS = [json.loads(l) for l in (ROOT / "04_정제규칙" / "manual_transcriptions.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+
 manifests = []
 for mf in sorted(RAW.glob("*/manifest.jsonl")):
     for line in mf.read_text(encoding="utf-8").splitlines():
@@ -298,11 +308,21 @@ for m in manifests:
         t, pb = l0, None
     t, toc = split_toc(t); stats["toc_lines"] = len(toc.splitlines()) if toc else 0
     t = mark_deleted(t)
-    t = t.replace("<그림>", "[그림: 이미지, 내용 미추출]")  # R-02
+    # R-02: 실제 이미지가 있고 사람 전사본이 있으면 치환, 이미지가 없는 도형 자리표시자는 제거, 그 외는 자리표시자 유지
+    trans = [tr for tr in TRANSCRIPTIONS if tr["org"] == org]
+    used = []
+    if trans and stats.get("bindata_images", 0) > 0:
+        for tr in sorted(trans, key=lambda x: x["placeholder_index"]):
+            if "<그림>" in t:
+                t = t.replace("<그림>", f"{tr['text']}\n(출처: 이미지 전사, {tr['source_image'].split('/')[-1]})", 1); used.append(tr)
+    elif stats.get("bindata_images", 0) == 0:
+        t = t.replace("<그림>", "")
+    t = t.replace("<그림>", "[그림: 이미지, 내용 미추출]")
+    stats["image_transcriptions"] = len(used)
     t = normalize_numbering(t)
     t = normalize_chars(t)
     l1_units, _ = articles(t, strict=True)
-    dump("L1", t, l1_units, {**base_meta, "level": "L1"}, {"toc": toc, "page_breaks": pb})
+    dump("L1", t, l1_units, {**base_meta, "level": "L1"}, {"toc": toc, "page_breaks": pb, "image_transcriptions": used})
     stats["L1_chars"] = len(t); stats["L1_articles"] = len(l1_units)
 
     # ---- L2
