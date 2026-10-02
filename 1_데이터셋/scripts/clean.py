@@ -327,11 +327,12 @@ for m in manifests:
 
     # ---- L2
     body, appendix, preamble = split_appendix(t)
-    body, marks = strip_marks(body)
-    body = normalize_chars(body)
+    # 조 단위로 먼저 나눈 뒤 조별로 개정 표기를 분리해야 revision_marks 가 조문에 붙는다 (R-04)
     l2_units, _ = articles(body, strict=True)
     for u in l2_units:
         u["text"], um = strip_marks(u["text"]); u["revision_marks"] = um
+    body, marks = strip_marks(body)
+    body = normalize_chars(body)
     gl = glossary(body); gloss_all += [{"org": org, "revision_date": base_meta["revision_date"], **g} for g in gl]
     extra = {"preamble": preamble, "appendix_blocks": appendix, "effective_dates": [a["effective_date"] for a in appendix if a["effective_date"]],
              "other_rule_amendment_blocks": sum(a["other_rule_amendment"] for a in appendix),

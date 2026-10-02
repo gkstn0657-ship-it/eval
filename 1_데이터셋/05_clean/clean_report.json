@@ -16,7 +16,7 @@
   "appendix_blocks": 4,
   "effective_dates": 1,
   "other_rule_blocks": 0,
-  "revision_marks": 23,
+  "revision_marks": 46,
   "delegated_to": 4,
   "glossary_terms": 11
  },
@@ -37,7 +37,7 @@
   "appendix_blocks": 5,
   "effective_dates": 2,
   "other_rule_blocks": 0,
-  "revision_marks": 24,
+  "revision_marks": 48,
   "delegated_to": 4,
   "glossary_terms": 11
  },
@@ -58,7 +58,7 @@
   "appendix_blocks": 6,
   "effective_dates": 3,
   "other_rule_blocks": 0,
-  "revision_marks": 26,
+  "revision_marks": 52,
   "delegated_to": 4,
   "glossary_terms": 11
  },
@@ -79,7 +79,7 @@
   "appendix_blocks": 32,
   "effective_dates": 31,
   "other_rule_blocks": 2,
-  "revision_marks": 163,
+  "revision_marks": 326,
   "delegated_to": 9,
   "glossary_terms": 0
  },
@@ -100,7 +100,7 @@
   "appendix_blocks": 33,
   "effective_dates": 32,
   "other_rule_blocks": 2,
-  "revision_marks": 169,
+  "revision_marks": 338,
   "delegated_to": 9,
   "glossary_terms": 0
  },
@@ -121,7 +121,7 @@
   "appendix_blocks": 26,
   "effective_dates": 26,
   "other_rule_blocks": 0,
-  "revision_marks": 73,
+  "revision_marks": 146,
   "delegated_to": 31,
   "glossary_terms": 10
  },
@@ -142,7 +142,7 @@
   "appendix_blocks": 27,
   "effective_dates": 27,
   "other_rule_blocks": 0,
-  "revision_marks": 74,
+  "revision_marks": 148,
   "delegated_to": 28,
   "glossary_terms": 10
  },
@@ -163,7 +163,7 @@
   "appendix_blocks": 28,
   "effective_dates": 28,
   "other_rule_blocks": 0,
-  "revision_marks": 76,
+  "revision_marks": 152,
   "delegated_to": 29,
   "glossary_terms": 10
  },
@@ -184,7 +184,7 @@
   "appendix_blocks": 21,
   "effective_dates": 21,
   "other_rule_blocks": 0,
-  "revision_marks": 80,
+  "revision_marks": 160,
   "delegated_to": 21,
   "glossary_terms": 12
  },
@@ -226,7 +226,7 @@
   "appendix_blocks": 2,
   "effective_dates": 2,
   "other_rule_blocks": 0,
-  "revision_marks": 6,
+  "revision_marks": 12,
   "delegated_to": 22,
   "glossary_terms": 12
  },
@@ -247,7 +247,7 @@
   "appendix_blocks": 38,
   "effective_dates": 38,
   "other_rule_blocks": 0,
-  "revision_marks": 68,
+  "revision_marks": 136,
   "delegated_to": 5,
   "glossary_terms": 7
  },
@@ -268,7 +268,7 @@
   "appendix_blocks": 39,
   "effective_dates": 39,
   "other_rule_blocks": 0,
-  "revision_marks": 73,
+  "revision_marks": 146,
   "delegated_to": 6,
   "glossary_terms": 7
  },
@@ -310,7 +310,7 @@
   "appendix_blocks": 21,
   "effective_dates": 21,
   "other_rule_blocks": 0,
-  "revision_marks": 94,
+  "revision_marks": 188,
   "delegated_to": 25,
   "glossary_terms": 12
  },
@@ -331,7 +331,7 @@
   "appendix_blocks": 22,
   "effective_dates": 22,
   "other_rule_blocks": 0,
-  "revision_marks": 102,
+  "revision_marks": 204,
   "delegated_to": 25,
   "glossary_terms": 12
  },
@@ -352,7 +352,7 @@
   "appendix_blocks": 23,
   "effective_dates": 23,
   "other_rule_blocks": 0,
-  "revision_marks": 113,
+  "revision_marks": 226,
   "delegated_to": 25,
   "glossary_terms": 12
  },
@@ -373,7 +373,7 @@
   "appendix_blocks": 36,
   "effective_dates": 29,
   "other_rule_blocks": 0,
-  "revision_marks": 7,
+  "revision_marks": 14,
   "delegated_to": 8,
   "glossary_terms": 12
  },
@@ -394,7 +394,7 @@
   "appendix_blocks": 37,
   "effective_dates": 30,
   "other_rule_blocks": 0,
-  "revision_marks": 7,
+  "revision_marks": 14,
   "delegated_to": 8,
   "glossary_terms": 12
  },
@@ -415,7 +415,7 @@
   "appendix_blocks": 38,
   "effective_dates": 31,
   "other_rule_blocks": 0,
-  "revision_marks": 8,
+  "revision_marks": 16,
   "delegated_to": 9,
   "glossary_terms": 12
  },
@@ -436,7 +436,7 @@
   "appendix_blocks": 1,
   "effective_dates": 0,
   "other_rule_blocks": 0,
-  "revision_marks": 85,
+  "revision_marks": 170,
   "delegated_to": 2,
   "glossary_terms": 11
  },
@@ -457,7 +457,7 @@
   "appendix_blocks": 1,
   "effective_dates": 0,
   "other_rule_blocks": 0,
-  "revision_marks": 84,
+  "revision_marks": 168,
   "delegated_to": 2,
   "glossary_terms": 11
  },
@@ -478,7 +478,7 @@
   "appendix_blocks": 1,
   "effective_dates": 0,
   "other_rule_blocks": 0,
-  "revision_marks": 84,
+  "revision_marks": 168,
   "delegated_to": 2,
   "glossary_terms": 11
  },
@@ -499,7 +499,7 @@
   "appendix_blocks": 46,
   "effective_dates": 46,
   "other_rule_blocks": 0,
-  "revision_marks": 200,
+  "revision_marks": 400,
   "delegated_to": 9,
   "glossary_terms": 11
  },
@@ -520,7 +520,7 @@
   "appendix_blocks": 47,
   "effective_dates": 47,
   "other_rule_blocks": 0,
-  "revision_marks": 205,
+  "revision_marks": 410,
   "delegated_to": 9,
   "glossary_terms": 11
  },
@@ -541,7 +541,7 @@
   "appendix_blocks": 48,
   "effective_dates": 48,
   "other_rule_blocks": 0,
-  "revision_marks": 205,
+  "revision_marks": 410,
   "delegated_to": 9,
   "glossary_terms": 11
  },
@@ -562,7 +562,7 @@
   "appendix_blocks": 17,
   "effective_dates": 17,
   "other_rule_blocks": 0,
-  "revision_marks": 102,
+  "revision_marks": 204,
   "delegated_to": 9,
   "glossary_terms": 9
  },
@@ -581,7 +581,7 @@
   "appendix_blocks": 18,
   "effective_dates": 18,
   "other_rule_blocks": 0,
-  "revision_marks": 119,
+  "revision_marks": 238,
   "delegated_to": 9,
   "glossary_terms": 9
  },
@@ -602,7 +602,7 @@
   "appendix_blocks": 19,
   "effective_dates": 19,
   "other_rule_blocks": 0,
-  "revision_marks": 129,
+  "revision_marks": 258,
   "delegated_to": 9,
   "glossary_terms": 9
  },
@@ -623,7 +623,7 @@
   "appendix_blocks": 39,
   "effective_dates": 39,
   "other_rule_blocks": 0,
-  "revision_marks": 109,
+  "revision_marks": 218,
   "delegated_to": 12,
   "glossary_terms": 0
  },
@@ -644,7 +644,7 @@
   "appendix_blocks": 40,
   "effective_dates": 40,
   "other_rule_blocks": 0,
-  "revision_marks": 114,
+  "revision_marks": 228,
   "delegated_to": 13,
   "glossary_terms": 0
  },
@@ -665,7 +665,7 @@
   "appendix_blocks": 55,
   "effective_dates": 41,
   "other_rule_blocks": 0,
-  "revision_marks": 17,
+  "revision_marks": 34,
   "delegated_to": 13,
   "glossary_terms": 6
  },
@@ -686,7 +686,7 @@
   "appendix_blocks": 56,
   "effective_dates": 42,
   "other_rule_blocks": 0,
-  "revision_marks": 19,
+  "revision_marks": 38,
   "delegated_to": 12,
   "glossary_terms": 6
  },
@@ -740,7 +740,7 @@
   "appendix_blocks": 75,
   "effective_dates": 74,
   "other_rule_blocks": 4,
-  "revision_marks": 116,
+  "revision_marks": 232,
   "delegated_to": 11,
   "glossary_terms": 4
  },
@@ -792,11 +792,11 @@
   "L1_chars": 29358,
   "L1_articles": 102,
   "L2_chars": 14085,
-  "L2_articles": 55,
+  "L2_articles": 57,
   "appendix_blocks": 66,
   "effective_dates": 64,
   "other_rule_blocks": 0,
-  "revision_marks": 164,
+  "revision_marks": 328,
   "delegated_to": 11,
   "glossary_terms": 5
  },
@@ -885,11 +885,11 @@
   "L1_chars": 39580,
   "L1_articles": 123,
   "L2_chars": 24957,
-  "L2_articles": 65,
+  "L2_articles": 69,
   "appendix_blocks": 40,
   "effective_dates": 20,
   "other_rule_blocks": 1,
-  "revision_marks": 201,
+  "revision_marks": 398,
   "delegated_to": 6,
   "glossary_terms": 0
  },
@@ -931,7 +931,7 @@
   "appendix_blocks": 31,
   "effective_dates": 31,
   "other_rule_blocks": 0,
-  "revision_marks": 44,
+  "revision_marks": 87,
   "delegated_to": 4,
   "glossary_terms": 4
  },
@@ -967,7 +967,7 @@
   "appendix_blocks": 23,
   "effective_dates": 15,
   "other_rule_blocks": 0,
-  "revision_marks": 136,
+  "revision_marks": 272,
   "delegated_to": 8,
   "glossary_terms": 0
  },
