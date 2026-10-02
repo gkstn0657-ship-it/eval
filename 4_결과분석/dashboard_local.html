@@ -28,6 +28,7 @@ footer{color:var(--muted);font-size:.8rem}
 <select id="sp" aria-label="파이프라인 선택"><option value="hybrid">하이브리드 + CE (hybrid-search-eval)</option><option value="vanilla">Vanilla RAG (chat_rag)</option><option value="vanilla_bge">Vanilla RAG, 임베딩만 bge-m3 (참고)</option></select>
 <button type="submit" id="sb">검색</button></form>
 <p class="note" id="sinfo">질의를 입력하고 검색을 누르면 결과가 아래에 나타납니다.</p>
+<div id="sans" class="ans" hidden><div class="alabel">답변 <span id="amodel"></span></div><div id="atext"></div></div>
 <div id="sres" class="cols"></div>
 </div></section>
 <style>
@@ -37,16 +38,19 @@ footer{color:var(--muted);font-size:.8rem}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px} .col h3{font-size:.95rem;margin:0 0 6px} .col .meta{font-size:.78rem;color:var(--muted);margin-bottom:6px}
 .hit{border-top:1px solid var(--grid);padding:8px 0} .hit .h{font-size:.85rem;font-weight:600} .hit .h .org{color:var(--fg2);font-weight:400} .hit .t{font-size:.82rem;color:var(--fg2);margin-top:2px;max-height:5.2em;overflow:hidden}
 .hit.abst{opacity:.6}
+.ans{margin-top:12px;padding:12px 14px;border:1px solid var(--s1);border-radius:8px;background:var(--bg)} .ans .alabel{font-size:.8rem;letter-spacing:.04em;color:var(--s1);font-weight:600;margin-bottom:6px} .ans .alabel span{color:var(--muted);font-weight:400} #atext{white-space:pre-wrap;font-size:.92rem}
 </style>
 <script>
 (function(){
- const f=document.getElementById('sf'),q=document.getElementById('sq'),sp=document.getElementById('sp'),info=document.getElementById('sinfo'),res=document.getElementById('sres'),b=document.getElementById('sb');
+ const f=document.getElementById('sf'),q=document.getElementById('sq'),sp=document.getElementById('sp'),ans=document.getElementById('sans'),atext=document.getElementById('atext'),amodel=document.getElementById('amodel'),info=document.getElementById('sinfo'),res=document.getElementById('sres'),b=document.getElementById('sb');
  const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
- f.addEventListener('submit',async e=>{e.preventDefault();b.disabled=true;info.textContent='검색 중…';res.innerHTML='';
+ f.addEventListener('submit',async e=>{e.preventDefault();b.disabled=true;info.textContent='검색 중…';res.innerHTML='';ans.hidden=true;atext.textContent='';
   try{const r=await fetch('/search?q='+encodeURIComponent(q.value)+'&corpus=L2_A&k=5&pipelines='+sp.value);if(!r.ok)throw new Error(r.status);const d=await r.json();
    const total=Object.values(d.pipelines).reduce((a,p)=>a+p.hits.length,0);info.textContent='기관 필터: '+(d.org_detected||'없음 (질의에 기관명 없음)')+' · 문서: 부칙·개정표기 분리본, 최신판만 · 결과 '+total+'건';
    res.innerHTML=Object.values(d.pipelines).map(p=>{const i=p.info;const meta=('abstain' in i)?('1위 점수 '+(i.top1_score??i.top1_ce)+(i.abstain?' · 임계값 미달, 거절':'')):('1위 CE 점수 '+i.top1_ce+(i.abstain?' · 거절':''));
     return '<div class="col"><h3>'+esc(p.label)+'</h3><div class="meta">'+esc(p.desc||'')+'</div><div class="meta">'+esc(meta)+'</div>'+(p.hits.length?'':'<div class="hit">검색 결과 없음</div>')+p.hits.map(h=>'<div class="hit'+(i.abstain?' abst':'')+'"><div class="h">'+h.rank+'. '+esc(h.article_no)+(h.title?'('+esc(h.title)+')':'')+' <span class="org">'+esc(h.org)+' · '+esc(h.revision_date)+'</span></div><div class="t">'+esc(h.text)+'</div></div>').join('')+'</div>';}).join('');
+   ans.hidden=false;amodel.textContent='생성 중… (로컬 qwen2.5:7b-instruct, 15~30초)';
+   try{const a=await fetch('/answer?q='+encodeURIComponent(q.value)+'&pipeline='+sp.value+'&corpus=L2_A&k=5');const ad=await a.json();if(ad.error){atext.textContent=ad.error;}else{amodel.textContent=ad.model+(ad.abstain?' · 검색 임계값 미달이라 참고 문서 없이 답함':'');atext.textContent=ad.answer;}}catch(e2){atext.textContent='답변 생성 실패: '+e2;}
   }catch(err){info.textContent='검색 서버에 연결할 수 없습니다. 로컬에서 python 4_결과분석/serve.py 를 실행한 뒤 http://127.0.0.1:8765 로 여세요.';}
   finally{b.disabled=false;}});
 })();
