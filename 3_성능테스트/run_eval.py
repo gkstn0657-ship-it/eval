@@ -110,6 +110,12 @@ def run_vanilla(c: Corpus, q):
     s = c.sbert @ qv; idx = np.argsort(-s)[:TOP_K * 3]
     return list(idx), {"top1_score": float(s[idx[0]]), "abstain": bool(s[idx[0]] < SIM_THRESHOLD)}
 
+def run_vanilla_bge(c: Corpus, q):
+    """Vanilla 와 같은 경로(단일 벡터, 정규화 내적, 임계값 0.5). 임베딩 모델만 bge-m3 로 교체. 사전등록 후 추가된 조건(v2)."""
+    qv = st_model("BAAI/bge-m3").encode([q], normalize_embeddings=True, convert_to_numpy=True)[0]
+    s = c.bge @ qv; idx = np.argsort(-s)[:TOP_K * 3]
+    return list(idx), {"top1_score": float(s[idx[0]]), "abstain": bool(s[idx[0]] < SIM_THRESHOLD)}
+
 def run_dense(c: Corpus, q):
     qv = st_model("BAAI/bge-m3").encode([q], normalize_embeddings=True, convert_to_numpy=True)[0]
     s = c.bge @ qv; idx = np.argsort(-s)[:TOP_K * 3]
@@ -144,7 +150,7 @@ def run_hybrid(c: Corpus, q):
 def run_random(c: Corpus, q):
     idx = list(np.random.permutation(len(c.rows))[:TOP_K * 3]); return idx, {}
 
-PIPELINES = {"vanilla": run_vanilla, "hybrid": run_hybrid, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
+PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "hybrid": run_hybrid, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
 
 # ---------------------------------------------------------------- 실행
 gold = [json.loads(l) for l in GOLD.read_text(encoding="utf-8").splitlines() if l.strip()]
@@ -183,6 +189,10 @@ for cname in CORPORA:
 def series(cname, pname, key="ndcg5"):
     return [r[key] for r in sorted(per_query, key=lambda r: r["qid"]) if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
 pairs = [("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
+         ("vanilla_bge vs vanilla (L2_A)", ("L2_A", "vanilla_bge"), ("L2_A", "vanilla")),
+         ("vanilla_bge vs vanilla (L0_A)", ("L0_A", "vanilla_bge"), ("L0_A", "vanilla")),
+         ("hybrid vs vanilla_bge (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla_bge")),
+         ("L2 vs L0, vanilla_bge (A)", ("L2_A", "vanilla_bge"), ("L0_A", "vanilla_bge")),
          ("hybrid vs vanilla (L0_A)", ("L0_A", "hybrid"), ("L0_A", "vanilla")),
          ("L2 vs L0, vanilla (A)", ("L2_A", "vanilla"), ("L0_A", "vanilla")),
          ("L2 vs L0, hybrid (A)", ("L2_A", "hybrid"), ("L0_A", "hybrid")),

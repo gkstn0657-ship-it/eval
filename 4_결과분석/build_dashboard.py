@@ -9,7 +9,7 @@ summary = json.load(open(R / "summary.json", encoding="utf-8"))
 per_query = json.load(open(R / "per_query.json", encoding="utf-8"))
 corpora = json.load(open(ROOT / "3_성능테스트" / "corpora" / "corpora_stats.json", encoding="utf-8"))
 narr = json.load(open(HERE / "narrative.json", encoding="utf-8"))
-PIPE_NAME = {"vanilla": "Vanilla RAG", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
+PIPE_NAME = {"vanilla": "Vanilla RAG", "vanilla_bge": "Vanilla (임베딩 bge-m3)", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
 LEVEL_NAME = {"L0": "L0 파싱만", "L1": "L1 노이즈 제거", "L2": "L2 구조 분리"}
 TYPE_NAME = {"Q1": "조항 조회", "Q2": "요건 판단", "Q3": "수치 확인", "Q4": "절차·기한", "Q5": "용어 정의", "Q6": "기관 비교", "Q7": "개정 이력", "Q8": "별표", "Q10": "삭제 조항", "Q11": "일상어"}
 cond = {(c["corpus"], c["pipeline"]): c for c in summary["conditions"]}
@@ -39,9 +39,9 @@ def bar_group_svg(groups, series, getv, w=640, h=260):
     out.append("</svg>")
     return "".join(out)
 
-SERIES = [("hybrid", "하이브리드 + CE", "--s1"), ("vanilla", "Vanilla RAG", "--s2"), ("baseline_dense", "dense 단독", "--s3")]
+SERIES = [("hybrid", "하이브리드 + CE", "--s1"), ("vanilla", "Vanilla RAG", "--s2")]
 chart_levels = bar_group_svg([(f"{l}_A", LEVEL_NAME[l]) for l in ("L0", "L1", "L2")], SERIES, lambda g, s: cond[(g, s)]["ndcg5"])
-chart_policy = bar_group_svg([("L2_A", "A 최신판만"), ("L2_B", "B 전체 개정판")], SERIES[:2], lambda g, s: cond[(g, s)]["ndcg5"])
+chart_policy = bar_group_svg([("L2_A", "A 최신판만"), ("L2_B", "B 전체 개정판")], SERIES, lambda g, s: cond[(g, s)]["ndcg5"])
 
 # ---- 유형별 히트맵 표 (L2_A, Recall@5)
 types = [t for t in TYPE_NAME if any(k[2] == t for k in bytype)]
@@ -50,7 +50,7 @@ def heat(v):
     step = min(6, int(v * 6.99)); return f"background:var(--seq{step});color:{'var(--fg-on-dark)' if step>=4 else 'var(--fg)'}"
 rows_type = []
 for t in types:
-    cells = "".join(f'<td style="{heat(bytype.get(("L2_A",p,t),{}).get("recall5"))}">{pct(bytype.get(("L2_A",p,t),{}).get("recall5"))}</td>' for p in ("hybrid", "vanilla", "baseline_dense", "baseline_bm25"))
+    cells = "".join(f'<td style="{heat(bytype.get(("L2_A",p,t),{}).get("recall5"))}">{pct(bytype.get(("L2_A",p,t),{}).get("recall5"))}</td>' for p in ("hybrid", "vanilla", "baseline_bm25"))
     n = bytype.get(("L2_A", "hybrid", t), {}).get("n", "")
     rows_type.append(f"<tr><th scope='row'>{t} {TYPE_NAME[t]}<span class='n'>n={n}</span></th>{cells}</tr>")
 
@@ -70,7 +70,7 @@ for c in summary["comparisons"]:
     rows_cmp.append(f"<tr><td>{html.escape(c['label'])}</td><td class='num'>{c['delta_ndcg5']:+.3f}</td><td class='num'>[{c['ci95'][0]:+.3f}, {c['ci95'][1]:+.3f}]</td><td>{sig}</td></tr>")
 
 # ---- Q9 거절
-rows_q9 = "".join(f"<tr><td>{c['corpus']}</td><td>{PIPE_NAME[c['pipeline']]}</td><td class='num'>{pct(c['abstain_rate'])}%</td></tr>" for c in summary["q9"] if c["corpus"] in ("L0_A", "L2_A"))
+rows_q9 = "".join(f"<tr><td>{c['corpus']}</td><td>{PIPE_NAME[c['pipeline']]}</td><td class='num'>{pct(c['abstain_rate'])}%</td></tr>" for c in summary["q9"] if c["corpus"] in ("L0_A", "L2_A") and c["pipeline"] != "baseline_dense")
 
 # ---- 실패 사례 (L2_A hybrid, 정답 못 찾은 질의)
 gold = {q["qid"]: q for q in (json.loads(l) for l in (ROOT / "1_데이터셋/06_eval/goldenset_dev.jsonl").read_text(encoding="utf-8").splitlines() if l.strip())}
@@ -106,13 +106,14 @@ footer{{color:var(--muted);font-size:.8rem}}
 <div class="tiles">
 {''.join(f'<div class="tile"><div class="k">{html.escape(k["k"])}</div><div class="v">{html.escape(k["v"])}</div><div class="d">{html.escape(k["d"])}</div></div>' for k in kpi)}
 </div>
-{section("정제 강도별 검색 성능 (최신판만, nDCG@5)", narr["levels"], '<div class="card"><div class="legend"><span><i style="background:var(--s1)"></i>하이브리드 + CE</span><span><i style="background:var(--s2)"></i>Vanilla RAG</span><span><i style="background:var(--s3)"></i>dense 단독</span></div>' + chart_levels + f'<p class="note">{html.escape(narr["levels_note"])}</p></div>')}
+{section("정제 강도별 검색 성능 (최신판만, nDCG@5)", narr["levels"], '<div class="card"><div class="legend"><span><i style="background:var(--s1)"></i>하이브리드 + CE</span><span><i style="background:var(--s2)"></i>Vanilla RAG</span></div>' + chart_levels + f'<p class="note">{html.escape(narr["levels_note"])}</p></div>')}
 {section("개정판 정책 비교 (L2, nDCG@5)", narr["policy"], '<div class="card"><div class="legend"><span><i style="background:var(--s1)"></i>하이브리드 + CE</span><span><i style="background:var(--s2)"></i>Vanilla RAG</span></div>' + chart_policy + f'<p class="note">{html.escape(narr["policy_note"])}</p></div>')}
-{section("질의 유형별 Recall@5 (L2 최신판)", narr["types"], '<div class="card tw"><table><thead><tr><th>유형</th><th>하이브리드 + CE</th><th>Vanilla</th><th>dense 단독</th><th>BM25 단독</th></tr></thead><tbody>' + ''.join(rows_type) + '</tbody></table>' + f'<p class="note">{html.escape(narr["types_note"])}</p></div>')}
+{section("질의 유형별 Recall@5 (L2 최신판)", narr["types"], '<div class="card tw"><table><thead><tr><th>유형</th><th>하이브리드 + CE</th><th>Vanilla RAG</th><th>BM25 단독</th></tr></thead><tbody>' + ''.join(rows_type) + '</tbody></table>' + f'<p class="note">{html.escape(narr["types_note"])}</p></div>')}
 {section("통계 비교 (쌍대 부트스트랩 95% CI, nDCG@5)", narr["stats"], '<div class="card tw"><table><thead><tr><th>비교</th><th class="num">Δ</th><th class="num">95% CI</th><th>판정</th></tr></thead><tbody>' + ''.join(rows_cmp) + '</tbody></table></div>')}
 {section("범위 외 질의 거절률 (Q9, n=4)", narr["q9"], '<div class="card tw"><table><thead><tr><th>코퍼스</th><th>파이프라인</th><th class="num">거절률</th></tr></thead><tbody>' + rows_q9 + '</tbody></table></div>')}
 {section("하이브리드 + CE 가 상위 5개 안에 정답을 못 넣은 질의 (L2 최신판)", narr["fails"], '<div class="card tw"><table><thead><tr><th>qid</th><th>질의</th><th>정답</th><th>1위로 찾은 것</th><th>정답 순위</th></tr></thead><tbody>' + (rows_fail or '<tr><td colspan="5">없음</td></tr>') + '</tbody></table></div>')}
-{section("전체 조건 (30개 중 random 제외)", narr["all"], '<div class="card tw"><table><thead><tr><th>정제</th><th>개정판</th><th>파이프라인</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(rows_cond) + '</tbody></table>' + f'<p class="note">random 베이스라인 nDCG@5 최대 {rand_max:.3f}. 측정 질의 {summary["n_scored"]}개(범위 외 4개 제외), dev 세트. holdout 44개는 봉인 상태.</p></div>')}
+{section("전체 조건 (36개 중 random 제외)", narr["all"], '<div class="card tw"><table><thead><tr><th>정제</th><th>개정판</th><th>파이프라인</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(rows_cond) + '</tbody></table>' + f'<p class="note">random 베이스라인 nDCG@5 최대 {rand_max:.3f}. 측정 질의 {summary["n_scored"]}개(범위 외 4개 제외), dev 세트. holdout 44개는 봉인 상태.</p></div>')}
+{section("부가: Vanilla 의 임베딩만 하이브리드와 같은 bge-m3 로 바꾸면", narr["embed"], '<div class="card tw"><table><thead><tr><th>Vanilla 임베딩 (L2 최신판)</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(f"<tr><td>{PIPE_NAME[p]}</td><td class='num'>{pct(cond[('L2_A',p)]['recall5'])}%</td><td class='num'>{f3(cond[('L2_A',p)]['mrr'])}</td><td class='num'><b>{f3(cond[('L2_A',p)]['ndcg5'])}</b></td></tr>" for p in ("vanilla","vanilla_bge")) + f"<tr><td>하이브리드 + CE (참고)</td><td class='num'>{pct(cond[('L2_A','hybrid')]['recall5'])}%</td><td class='num'>{f3(cond[('L2_A','hybrid')]['mrr'])}</td><td class='num'><b>{f3(cond[('L2_A','hybrid')]['ndcg5'])}</b></td></tr>" + '</tbody></table>' + f'<p class="note">{html.escape(narr["embed_note"])}</p></div>')}
 <section><h2>한계</h2><ul>{''.join(f'<li>{html.escape(x)}</li>' for x in narr['limits'])}</ul></section>
 <footer>데이터: 공기업 인사규정 41건(ALIO). 코퍼스 {', '.join(c['corpus']+' '+str(c['chunks'])+'청크' for c in corpora)}. 사전등록 2026-10-01.</footer>
 </main>"""
