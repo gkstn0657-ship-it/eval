@@ -17,11 +17,11 @@ import numpy as np
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent
 GOLD = ROOT / "1_데이터셋" / "06_eval" / ("goldenset_holdout_sealed.jsonl" if "--holdout" in sys.argv else "goldenset_dev.jsonl")
+OUT_SUFFIX = ("_" + sys.argv[sys.argv.index("--tag") + 1]) if "--tag" in sys.argv else ""
 OUT = HERE / (("results_holdout" if "--holdout" in sys.argv else "results") + OUT_SUFFIX); OUT.mkdir(exist_ok=True)
 CACHE = HERE / "cache"; CACHE.mkdir(exist_ok=True)
 CORPORA = ["L0_A", "L0_B", "L1_A", "L1_B", "L2_A", "L2_B"]
 if "--corpora" in sys.argv: CORPORA = sys.argv[sys.argv.index("--corpora") + 1].split(",")
-OUT_SUFFIX = ("_" + sys.argv[sys.argv.index("--tag") + 1]) if "--tag" in sys.argv else ""
 TOP_K, RRF_K, CANDIDATE_K, RERANK_TOP_N, MIN_RESULTS, SIM_THRESHOLD, CE_MAX_LEN = 10, 60, 30, 30, 5, 0.5, 384
 TOKEN_RE = re.compile(r"[0-9A-Za-z가-힣]+")
 random.seed(42); np.random.seed(42)

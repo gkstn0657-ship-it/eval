@@ -1,0 +1,232 @@
+{
+ "n": 44,
+ "model": "qwen2.5:7b-instruct",
+ "corpus": "L2P_A",
+ "pipelines": {
+  "vanilla": {
+   "total_mean": 51.875,
+   "total_std": 19.19269066598011,
+   "accuracy": 18.125,
+   "completeness": 17.375,
+   "citation": 5.875,
+   "concise": 10.5,
+   "hallucination_rate": 0.8,
+   "citation_match_rate": 0.375,
+   "hint_numbers_covered": 0.47807017543859653,
+   "pass80_rate": 0.125,
+   "q9_refusal_rate": 0.5,
+   "q9_guides_rule_rate": 0.5,
+   "q9_hallucination_rate": 0.25,
+   "answer_when_retrieval_missed": {
+    "n": 24,
+    "hallucination_rate": 0.9166666666666666
+   }
+  },
+  "hybrid": {
+   "total_mean": 69.625,
+   "total_std": 20.808276598507625,
+   "accuracy": 29.625,
+   "completeness": 19.625,
+   "citation": 8.875,
+   "concise": 11.5,
+   "hallucination_rate": 0.525,
+   "citation_match_rate": 0.875,
+   "hint_numbers_covered": 0.8596491228070174,
+   "pass80_rate": 0.425,
+   "q9_refusal_rate": 0.5,
+   "q9_guides_rule_rate": 0.75,
+   "q9_hallucination_rate": 0.0,
+   "answer_when_retrieval_missed": {
+    "n": 3,
+    "hallucination_rate": 1.0
+   }
+  }
+ },
+ "by_type": [
+  {
+   "pipeline": "vanilla",
+   "type": "Q1",
+   "n": 4,
+   "total_mean": 37.5,
+   "hallucination_rate": 1.0,
+   "citation_match_rate": 0.0
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q2",
+   "n": 4,
+   "total_mean": 60.0,
+   "hallucination_rate": 0.75,
+   "citation_match_rate": 0.25
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q3",
+   "n": 4,
+   "total_mean": 63.75,
+   "hallucination_rate": 0.5,
+   "citation_match_rate": 0.5
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q4",
+   "n": 4,
+   "total_mean": 57.5,
+   "hallucination_rate": 0.75,
+   "citation_match_rate": 0.25
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q5",
+   "n": 4,
+   "total_mean": 58.75,
+   "hallucination_rate": 0.75,
+   "citation_match_rate": 0.5
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q6",
+   "n": 4,
+   "total_mean": 47.5,
+   "hallucination_rate": 1.0,
+   "citation_match_rate": 0.5
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q7",
+   "n": 4,
+   "total_mean": 45.0,
+   "hallucination_rate": 1.0,
+   "citation_match_rate": 0.5
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q8",
+   "n": 4,
+   "total_mean": 50.0,
+   "hallucination_rate": 1.0,
+   "citation_match_rate": 0.25
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q9",
+   "n": 4,
+   "total_mean": 72.5,
+   "hallucination_rate": 0.25,
+   "citation_match_rate": null
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q10",
+   "n": 4,
+   "total_mean": 46.25,
+   "hallucination_rate": 0.5,
+   "citation_match_rate": 0.75
+  },
+  {
+   "pipeline": "vanilla",
+   "type": "Q11",
+   "n": 4,
+   "total_mean": 52.5,
+   "hallucination_rate": 0.75,
+   "citation_match_rate": 0.25
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q1",
+   "n": 4,
+   "total_mean": 86.25,
+   "hallucination_rate": 0.0,
+   "citation_match_rate": 1.0
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q2",
+   "n": 4,
+   "total_mean": 77.5,
+   "hallucination_rate": 0.5,
+   "citation_match_rate": 1.0
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q3",
+   "n": 4,
+   "total_mean": 80.0,
+   "hallucination_rate": 0.25,
+   "citation_match_rate": 0.75
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q4",
+   "n": 4,
+   "total_mean": 76.25,
+   "hallucination_rate": 0.75,
+   "citation_match_rate": 1.0
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q5",
+   "n": 4,
+   "total_mean": 65.0,
+   "hallucination_rate": 0.75,
+   "citation_match_rate": 0.75
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q6",
+   "n": 4,
+   "total_mean": 50.0,
+   "hallucination_rate": 1.0,
+   "citation_match_rate": 0.75
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q7",
+   "n": 4,
+   "total_mean": 48.75,
+   "hallucination_rate": 1.0,
+   "citation_match_rate": 0.75
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q8",
+   "n": 4,
+   "total_mean": 52.5,
+   "hallucination_rate": 0.75,
+   "citation_match_rate": 0.75
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q9",
+   "n": 4,
+   "total_mean": 73.75,
+   "hallucination_rate": 0.0,
+   "citation_match_rate": null
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q10",
+   "n": 4,
+   "total_mean": 86.25,
+   "hallucination_rate": 0.25,
+   "citation_match_rate": 1.0
+  },
+  {
+   "pipeline": "hybrid",
+   "type": "Q11",
+   "n": 4,
+   "total_mean": 73.75,
+   "hallucination_rate": 0.0,
+   "citation_match_rate": 1.0
+  }
+ ],
+ "comparison": {
+  "label": "hybrid vs vanilla, 총점",
+  "delta": 17.75,
+  "ci95": [
+   9.5,
+   25.0
+  ],
+  "n": 40
+ }
+}

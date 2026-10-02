@@ -131,6 +131,27 @@ if ("L2_A", "hybrid_nobm25") in cond:
         '<div class="card"><div class="legend">' + "".join(f'<span><i style="background:var({v})"></i>{html.escape(l)}</span>' for _, l, v in ABL) + '</div>' + chart_abl + f'<p class="note">{html.escape(narr.get("ablation_note", ""))}</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>유형 (Recall@5)</th>' + "".join(f"<th>{html.escape(l)}</th>" for _, l, _ in ABL) + '</tr></thead><tbody>' + abl_rows + '</tbody></table></div>')
 
+# ---- 개선안 적용 결과 (results_improved 가 있을 때만)
+gpath = R / "gen_summary.json"
+IMP_HTML = ""
+RI = ROOT / "3_성능테스트" / "results_improved"
+if (RI / "summary.json").exists():
+    S2 = json.load(open(RI / "summary.json", encoding="utf-8")); c2 = {(c["corpus"], c["pipeline"]): c for c in S2["conditions"]}; b2 = {(c["corpus"], c["pipeline"], c["type"]): c for c in S2["by_type"]}
+    pr = [("hybrid", "하이브리드 + CE"), ("vanilla_bge_filter", "Vanilla(bge-m3) + 기관 필터"), ("vanilla", "Vanilla RAG")]
+    trs = "".join(f"<tr><td>{l}</td><td class='num'>{f3(c2[('L2_A',k)]['ndcg5'])}</td><td class='num'><b>{f3(c2[('L2P_A',k)]['ndcg5'])}</b></td><td class='num'>{c2[('L2P_A',k)]['ndcg5']-c2[('L2_A',k)]['ndcg5']:+.3f}</td></tr>" for k, l in pr)
+    cmps = {c["label"]: c for c in S2["comparisons"]}
+    tt = "".join(f"<tr><th scope='row'>{t} {TYPE_NAME[t]}</th>" + "".join(f"<td class='num'>{pct(b2.get(('L2_A',k,t),{}).get('recall5'))} → <b>{pct(b2.get(('L2P_A',k,t),{}).get('recall5'))}</b></td>" for k, _ in pr) + "</tr>" for t in types)
+    gen_imp = ""
+    if (RI / "gen_summary.json").exists() and gpath.exists():
+        G1 = json.load(open(RI / "gen_summary.json", encoding="utf-8"))["pipelines"]; G0 = json.load(open(gpath, encoding="utf-8"))["pipelines"]
+        rows_g = [("총점 (100점)", "total_mean", "{:.1f}"), ("출처 조문 일치율", "citation_match_rate", None), ("범위 외 질의 거절률 (n=4)", "q9_refusal_rate", None), ("범위 외 질의에 소관 규정 안내 (n=4)", "q9_guides_rule_rate", None), ("범위 외 질의 환각률 (n=4)", "q9_hallucination_rate", None)]
+        def fm(v, f): return "–" if v is None else (f.format(v) if f else pct(v) + "%")
+        gen_imp = '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>답변 생성 (하이브리드)</th><th class="num">개선 전</th><th class="num">개선 후</th><th>답변 생성 (Vanilla)</th><th class="num">개선 전</th><th class="num">개선 후</th></tr></thead><tbody>' + "".join(f"<tr><td>{lab}</td><td class='num'>{fm(G0['hybrid'].get(k),f)}</td><td class='num'><b>{fm(G1['hybrid'].get(k),f)}</b></td><td>{lab}</td><td class='num'>{fm(G0['vanilla'].get(k),f)}</td><td class='num'><b>{fm(G1['vanilla'].get(k),f)}</b></td></tr>" for lab, k, f in rows_g) + '</tbody></table>' + f'<p class="note">{html.escape(narr.get("improve_gen_note",""))}</p></div>'
+    IMP_HTML = section("개선안 3건 적용 결과 (L2 → L2P, 최신판만)", narr.get("improve", ""),
+        '<div class="card tw"><table><thead><tr><th>파이프라인</th><th class="num">개선 전 nDCG@5</th><th class="num">개선 후</th><th class="num">Δ</th></tr></thead><tbody>' + trs + '</tbody></table>'
+        + f'<p class="note">{html.escape(narr.get("improve_note",""))}</p></div>'
+        + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>유형 (Recall@5, 전 → 후)</th>' + "".join(f"<th>{l}</th>" for _, l in pr) + '</tr></thead><tbody>' + tt + '</tbody></table></div>' + gen_imp)
+
 # ---- 답변 생성 품질 (results/gen_summary.json 이 있을 때만)
 GEN_HTML = ""
 gpath = R / "gen_summary.json"
@@ -185,6 +206,7 @@ footer{{color:var(--muted);font-size:.8rem}}
 {section("질의 유형별 Recall@5 (L2 최신판)", narr["types"], '<div class="card tw"><table><thead><tr><th>유형</th><th>하이브리드 + CE</th><th>Vanilla RAG</th><th>BM25 단독</th></tr></thead><tbody>' + ''.join(rows_type) + '</tbody></table>' + f'<p class="note">{html.escape(narr["types_note"])}</p></div>')}
 {section("통계 비교 (쌍대 부트스트랩 95% CI, nDCG@5)", narr["stats"], '<div class="card tw"><table><thead><tr><th>비교</th><th class="num">Δ</th><th class="num">95% CI</th><th>판정</th></tr></thead><tbody>' + ''.join(rows_cmp) + '</tbody></table></div>')}
 {ABL_HTML}
+{IMP_HTML}
 {GEN_HTML}
 {section("범위 외 질의 거절률 (Q9, n=4)", narr["q9"], '<div class="card tw"><table><thead><tr><th>코퍼스</th><th>파이프라인</th><th class="num">거절률</th></tr></thead><tbody>' + rows_q9 + '</tbody></table></div>')}
 {section("하이브리드 + CE 가 상위 5개 안에 정답을 못 넣은 질의 (L2 최신판)", narr["fails"], '<div class="card tw"><table><thead><tr><th>qid</th><th>질의</th><th>정답</th><th>1위로 찾은 것</th><th>정답 순위</th></tr></thead><tbody>' + (rows_fail or '<tr><td colspan="5">없음</td></tr>') + '</tbody></table></div>')}
