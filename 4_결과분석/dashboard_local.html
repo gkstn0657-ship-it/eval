@@ -22,6 +22,36 @@ footer{color:var(--muted);font-size:.8rem}
 <main>
 <header><h1>인사규정 RAG 검색 성능 비교</h1><p class="sub">공기업 인사규정 41건, 골든셋 dev 44문항. Vanilla RAG 와 하이브리드+CE 를 정제 강도 3단계 × 개정판 정책 2종에서 측정.</p></header>
 
+<section id="search"><h2>직접 검색해 보기</h2><p class="lead">파이프라인을 고르고 질의를 던져 상위 5개 조문을 본다. 측정에 쓴 코드와 같은 구현이다.</p>
+<div class="card">
+<form id="sf" class="sform"><input id="sq" type="text" placeholder="예: 가스공사는 몇 살까지 다닐 수 있어?" autocomplete="off" required>
+<select id="sp" aria-label="파이프라인 선택"><option value="hybrid">하이브리드 + CE (hybrid-search-eval)</option><option value="vanilla">Vanilla RAG (chat_rag)</option><option value="vanilla_bge">Vanilla RAG, 임베딩만 bge-m3 (참고)</option></select>
+<button type="submit" id="sb">검색</button></form>
+<p class="note" id="sinfo">질의를 입력하고 검색을 누르면 결과가 아래에 나타납니다.</p>
+<div id="sres" class="cols"></div>
+</div></section>
+<style>
+.sform{display:flex;gap:8px;flex-wrap:wrap} .sform input{flex:1 1 320px;min-width:0;padding:8px 10px;border:1px solid var(--axis);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit}
+.sform select,.sform button{padding:8px 10px;border:1px solid var(--axis);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit} .sform button{background:var(--s1);color:#fff;border-color:var(--s1);cursor:pointer}
+.pipes{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:10px;font-size:.9rem} .pipes .plabel{color:var(--muted);font-size:.8rem;letter-spacing:.04em} .pipes label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px} .col h3{font-size:.95rem;margin:0 0 6px} .col .meta{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.hit{border-top:1px solid var(--grid);padding:8px 0} .hit .h{font-size:.85rem;font-weight:600} .hit .h .org{color:var(--fg2);font-weight:400} .hit .t{font-size:.82rem;color:var(--fg2);margin-top:2px;max-height:5.2em;overflow:hidden}
+.hit.abst{opacity:.6}
+</style>
+<script>
+(function(){
+ const f=document.getElementById('sf'),q=document.getElementById('sq'),sp=document.getElementById('sp'),info=document.getElementById('sinfo'),res=document.getElementById('sres'),b=document.getElementById('sb');
+ const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+ f.addEventListener('submit',async e=>{e.preventDefault();b.disabled=true;info.textContent='검색 중…';res.innerHTML='';
+  try{const r=await fetch('/search?q='+encodeURIComponent(q.value)+'&corpus=L2_A&k=5&pipelines='+sp.value);if(!r.ok)throw new Error(r.status);const d=await r.json();
+   const total=Object.values(d.pipelines).reduce((a,p)=>a+p.hits.length,0);info.textContent='기관 필터: '+(d.org_detected||'없음 (질의에 기관명 없음)')+' · 문서: 부칙·개정표기 분리본, 최신판만 · 결과 '+total+'건';
+   res.innerHTML=Object.values(d.pipelines).map(p=>{const i=p.info;const meta=('abstain' in i)?('1위 점수 '+(i.top1_score??i.top1_ce)+(i.abstain?' · 임계값 미달, 거절':'')):('1위 CE 점수 '+i.top1_ce+(i.abstain?' · 거절':''));
+    return '<div class="col"><h3>'+esc(p.label)+'</h3><div class="meta">'+esc(p.desc||'')+'</div><div class="meta">'+esc(meta)+'</div>'+(p.hits.length?'':'<div class="hit">검색 결과 없음</div>')+p.hits.map(h=>'<div class="hit'+(i.abstain?' abst':'')+'"><div class="h">'+h.rank+'. '+esc(h.article_no)+(h.title?'('+esc(h.title)+')':'')+' <span class="org">'+esc(h.org)+' · '+esc(h.revision_date)+'</span></div><div class="t">'+esc(h.text)+'</div></div>').join('')+'</div>';}).join('');
+  }catch(err){info.textContent='검색 서버에 연결할 수 없습니다. 로컬에서 python 4_결과분석/serve.py 를 실행한 뒤 http://127.0.0.1:8765 로 여세요.';}
+  finally{b.disabled=false;}});
+})();
+</script>
+
 <div class="tiles">
 <div class="tile"><div class="k">하이브리드 + CE</div><div class="v">nDCG@5 0.77</div><div class="d">최신판 코퍼스(L2_A). Recall@5 90%.</div></div><div class="tile"><div class="k">Vanilla RAG</div><div class="v">nDCG@5 0.17</div><div class="d">같은 조건. Recall@5 30%. 차이 +0.59, 95% CI [+0.44, +0.72].</div></div><div class="tile"><div class="k">정제 강도 효과</div><div class="v">유의하지 않음</div><div class="d">L0→L2 하이브리드 +0.035, CI 가 0을 포함. 검색 구조가 정제 강도보다 결과를 좌우.</div></div><div class="tile"><div class="k">개정판 전체 적재</div><div class="v">−0.10</div><div class="d">하이브리드 B vs A, CI [−0.20, −0.02]. 구판 혼입이 상위 5개를 밀어냄.</div></div>
 </div>

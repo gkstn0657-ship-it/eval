@@ -153,62 +153,67 @@ def run_random(c: Corpus, q):
 PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "hybrid": run_hybrid, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
 
 # ---------------------------------------------------------------- 실행
-gold = [json.loads(l) for l in GOLD.read_text(encoding="utf-8").splitlines() if l.strip()]
-per_query, t0 = [], time.time()
-for cname in CORPORA:
-    c = Corpus(cname); policy = cname[-1]
-    for pname, fn in PIPELINES.items():
-        for q in gold:
-            idx, info = fn(c, q["query"])
-            arts = to_articles(idx, c.rows)
-            g = q["gold_ids_any_revision"] if policy == "B" else q["gold_ids"]
-            m = metrics(arts, g) if q["type"] != "Q9" else {}
-            per_query.append({"corpus": cname, "pipeline": pname, "qid": q["qid"], "type": q["type"], "gold": g,
-                              "top5": arts[:5], **m, **info})
-        print(f"{cname} {pname} done ({time.time()-t0:.0f}s)")
-json.dump(per_query, open(OUT / "per_query.json", "w", encoding="utf-8"), ensure_ascii=False)
+def main():
+    gold = [json.loads(l) for l in GOLD.read_text(encoding="utf-8").splitlines() if l.strip()]
+    per_query, t0 = [], time.time()
+    for cname in CORPORA:
+        c = Corpus(cname); policy = cname[-1]
+        for pname, fn in PIPELINES.items():
+            for q in gold:
+                idx, info = fn(c, q["query"])
+                arts = to_articles(idx, c.rows)
+                g = q["gold_ids_any_revision"] if policy == "B" else q["gold_ids"]
+                m = metrics(arts, g) if q["type"] != "Q9" else {}
+                per_query.append({"corpus": cname, "pipeline": pname, "qid": q["qid"], "type": q["type"], "gold": g,
+                                  "top5": arts[:5], **m, **info})
+            print(f"{cname} {pname} done ({time.time()-t0:.0f}s)")
+    json.dump(per_query, open(OUT / "per_query.json", "w", encoding="utf-8"), ensure_ascii=False)
 
-# 집계 + 쌍대 부트스트랩
-def agg(rows, key):
-    v = [r[key] for r in rows if key in r and r[key] is not None]; return sum(v) / len(v) if v else None
-def boot_ci(a, b, n=2000):
-    a, b = np.array(a), np.array(b); diffs = []
-    for _ in range(n):
-        s = np.random.randint(0, len(a), len(a)); diffs.append((a[s] - b[s]).mean())
-    return float(np.percentile(diffs, 2.5)), float(np.percentile(diffs, 97.5))
-summary = {"n_queries": len(gold), "n_scored": sum(1 for q in gold if q["type"] != "Q9"), "conditions": [], "by_type": [], "q9": [], "comparisons": []}
-for cname in CORPORA:
-    for pname in PIPELINES:
-        rows = [r for r in per_query if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
-        summary["conditions"].append({"corpus": cname, "pipeline": pname, "recall5": agg(rows, "recall5"), "recall10": agg(rows, "recall10"), "mrr": agg(rows, "mrr"), "ndcg5": agg(rows, "ndcg5")})
-        for t in sorted({r["type"] for r in rows}, key=lambda x: int(x[1:])):
-            tr = [r for r in rows if r["type"] == t]
-            summary["by_type"].append({"corpus": cname, "pipeline": pname, "type": t, "n": len(tr), "recall5": agg(tr, "recall5"), "mrr": agg(tr, "mrr"), "ndcg5": agg(tr, "ndcg5")})
-        q9 = [r for r in per_query if r["corpus"] == cname and r["pipeline"] == pname and r["type"] == "Q9" and "abstain" in r]
-        if q9: summary["q9"].append({"corpus": cname, "pipeline": pname, "n": len(q9), "abstain_rate": sum(r["abstain"] for r in q9) / len(q9)})
-def series(cname, pname, key="ndcg5"):
-    return [r[key] for r in sorted(per_query, key=lambda r: r["qid"]) if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
-pairs = [("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
-         ("vanilla_bge vs vanilla (L2_A)", ("L2_A", "vanilla_bge"), ("L2_A", "vanilla")),
-         ("vanilla_bge vs vanilla (L0_A)", ("L0_A", "vanilla_bge"), ("L0_A", "vanilla")),
-         ("hybrid vs vanilla_bge (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla_bge")),
-         ("L2 vs L0, vanilla_bge (A)", ("L2_A", "vanilla_bge"), ("L0_A", "vanilla_bge")),
-         ("hybrid vs vanilla (L0_A)", ("L0_A", "hybrid"), ("L0_A", "vanilla")),
-         ("L2 vs L0, vanilla (A)", ("L2_A", "vanilla"), ("L0_A", "vanilla")),
-         ("L2 vs L0, hybrid (A)", ("L2_A", "hybrid"), ("L0_A", "hybrid")),
-         ("L1 vs L0, hybrid (A)", ("L1_A", "hybrid"), ("L0_A", "hybrid")),
-         ("B vs A, hybrid (L2)", ("L2_B", "hybrid"), ("L2_A", "hybrid")),
-         ("B vs A, vanilla (L2)", ("L2_B", "vanilla"), ("L2_A", "vanilla")),
-         ("hybrid vs dense-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_dense")),
-         ("hybrid vs bm25-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_bm25"))]
-for label, a, b in pairs:
-    sa, sb = series(*a), series(*b)
-    lo, hi = boot_ci(sa, sb)
-    summary["comparisons"].append({"label": label, "a": a, "b": b, "delta_ndcg5": sum(sa) / len(sa) - sum(sb) / len(sb), "ci95": [lo, hi], "significant": lo > 0 or hi < 0})
-json.dump(summary, open(OUT / "summary.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print("\n=== 조건별 (Q9 제외, n=%d) ===" % summary["n_scored"])
-for c in summary["conditions"]: print(f"{c['corpus']} {c['pipeline']:16} R@5 {c['recall5']:.3f}  MRR {c['mrr']:.3f}  nDCG@5 {c['ndcg5']:.3f}")
-print("\n=== 쌍대 비교 (nDCG@5, 95% CI) ===")
-for c in summary["comparisons"]: print(f"{c['label']:32} Δ {c['delta_ndcg5']:+.3f}  CI [{c['ci95'][0]:+.3f}, {c['ci95'][1]:+.3f}] {'유의' if c['significant'] else ''}")
-print("\n=== Q9 거절률 ===")
-for c in summary["q9"]: print(f"{c['corpus']} {c['pipeline']:16} {c['abstain_rate']:.2f}")
+    # 집계 + 쌍대 부트스트랩
+    def agg(rows, key):
+        v = [r[key] for r in rows if key in r and r[key] is not None]; return sum(v) / len(v) if v else None
+    def boot_ci(a, b, n=2000):
+        a, b = np.array(a), np.array(b); diffs = []
+        for _ in range(n):
+            s = np.random.randint(0, len(a), len(a)); diffs.append((a[s] - b[s]).mean())
+        return float(np.percentile(diffs, 2.5)), float(np.percentile(diffs, 97.5))
+    summary = {"n_queries": len(gold), "n_scored": sum(1 for q in gold if q["type"] != "Q9"), "conditions": [], "by_type": [], "q9": [], "comparisons": []}
+    for cname in CORPORA:
+        for pname in PIPELINES:
+            rows = [r for r in per_query if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
+            summary["conditions"].append({"corpus": cname, "pipeline": pname, "recall5": agg(rows, "recall5"), "recall10": agg(rows, "recall10"), "mrr": agg(rows, "mrr"), "ndcg5": agg(rows, "ndcg5")})
+            for t in sorted({r["type"] for r in rows}, key=lambda x: int(x[1:])):
+                tr = [r for r in rows if r["type"] == t]
+                summary["by_type"].append({"corpus": cname, "pipeline": pname, "type": t, "n": len(tr), "recall5": agg(tr, "recall5"), "mrr": agg(tr, "mrr"), "ndcg5": agg(tr, "ndcg5")})
+            q9 = [r for r in per_query if r["corpus"] == cname and r["pipeline"] == pname and r["type"] == "Q9" and "abstain" in r]
+            if q9: summary["q9"].append({"corpus": cname, "pipeline": pname, "n": len(q9), "abstain_rate": sum(r["abstain"] for r in q9) / len(q9)})
+    def series(cname, pname, key="ndcg5"):
+        return [r[key] for r in sorted(per_query, key=lambda r: r["qid"]) if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
+    pairs = [("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
+             ("vanilla_bge vs vanilla (L2_A)", ("L2_A", "vanilla_bge"), ("L2_A", "vanilla")),
+             ("vanilla_bge vs vanilla (L0_A)", ("L0_A", "vanilla_bge"), ("L0_A", "vanilla")),
+             ("hybrid vs vanilla_bge (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla_bge")),
+             ("L2 vs L0, vanilla_bge (A)", ("L2_A", "vanilla_bge"), ("L0_A", "vanilla_bge")),
+             ("hybrid vs vanilla (L0_A)", ("L0_A", "hybrid"), ("L0_A", "vanilla")),
+             ("L2 vs L0, vanilla (A)", ("L2_A", "vanilla"), ("L0_A", "vanilla")),
+             ("L2 vs L0, hybrid (A)", ("L2_A", "hybrid"), ("L0_A", "hybrid")),
+             ("L1 vs L0, hybrid (A)", ("L1_A", "hybrid"), ("L0_A", "hybrid")),
+             ("B vs A, hybrid (L2)", ("L2_B", "hybrid"), ("L2_A", "hybrid")),
+             ("B vs A, vanilla (L2)", ("L2_B", "vanilla"), ("L2_A", "vanilla")),
+             ("hybrid vs dense-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_dense")),
+             ("hybrid vs bm25-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_bm25"))]
+    for label, a, b in pairs:
+        sa, sb = series(*a), series(*b)
+        lo, hi = boot_ci(sa, sb)
+        summary["comparisons"].append({"label": label, "a": a, "b": b, "delta_ndcg5": sum(sa) / len(sa) - sum(sb) / len(sb), "ci95": [lo, hi], "significant": lo > 0 or hi < 0})
+    json.dump(summary, open(OUT / "summary.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("\n=== 조건별 (Q9 제외, n=%d) ===" % summary["n_scored"])
+    for c in summary["conditions"]: print(f"{c['corpus']} {c['pipeline']:16} R@5 {c['recall5']:.3f}  MRR {c['mrr']:.3f}  nDCG@5 {c['ndcg5']:.3f}")
+    print("\n=== 쌍대 비교 (nDCG@5, 95% CI) ===")
+    for c in summary["comparisons"]: print(f"{c['label']:32} Δ {c['delta_ndcg5']:+.3f}  CI [{c['ci95'][0]:+.3f}, {c['ci95'][1]:+.3f}] {'유의' if c['significant'] else ''}")
+    print("\n=== Q9 거절률 ===")
+    for c in summary["q9"]: print(f"{c['corpus']} {c['pipeline']:16} {c['abstain_rate']:.2f}")
+
+
+if __name__ == "__main__":
+    main()

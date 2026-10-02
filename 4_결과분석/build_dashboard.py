@@ -9,6 +9,7 @@ summary = json.load(open(R / "summary.json", encoding="utf-8"))
 per_query = json.load(open(R / "per_query.json", encoding="utf-8"))
 corpora = json.load(open(ROOT / "3_성능테스트" / "corpora" / "corpora_stats.json", encoding="utf-8"))
 narr = json.load(open(HERE / "narrative.json", encoding="utf-8"))
+LOCAL = "--local" in sys.argv
 PIPE_NAME = {"vanilla": "Vanilla RAG", "vanilla_bge": "Vanilla (임베딩 bge-m3)", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
 LEVEL_NAME = {"L0": "L0 파싱만", "L1": "L1 노이즈 제거", "L2": "L2 구조 분리"}
 TYPE_NAME = {"Q1": "조항 조회", "Q2": "요건 판단", "Q3": "수치 확인", "Q4": "절차·기한", "Q5": "용어 정의", "Q6": "기관 비교", "Q7": "개정 이력", "Q8": "별표", "Q10": "삭제 조항", "Q11": "일상어"}
@@ -77,6 +78,39 @@ gold = {q["qid"]: q for q in (json.loads(l) for l in (ROOT / "1_데이터셋/06_
 fails = [r for r in per_query if r["corpus"] == "L2_A" and r["pipeline"] == "hybrid" and r.get("recall5") == 0.0]
 rows_fail = "".join(f"<tr><td>{r['qid']}</td><td>{html.escape(gold[r['qid']]['query'])}</td><td>{html.escape(r['gold'][0].split('|')[0])} {html.escape(r['gold'][0].split('|')[2])}</td><td>{html.escape(r['top5'][0].split('|')[0] + ' ' + r['top5'][0].split('|')[2]) if r['top5'] else ''}</td><td>{r.get('first_rank') or '>10'}</td></tr>" for r in fails)
 
+
+SEARCH_PANEL = """
+<section id="search"><h2>직접 검색해 보기</h2><p class="lead">파이프라인을 고르고 질의를 던져 상위 5개 조문을 본다. 측정에 쓴 코드와 같은 구현이다.</p>
+<div class="card">
+<form id="sf" class="sform"><input id="sq" type="text" placeholder="예: 가스공사는 몇 살까지 다닐 수 있어?" autocomplete="off" required>
+<select id="sp" aria-label="파이프라인 선택"><option value="hybrid">하이브리드 + CE (hybrid-search-eval)</option><option value="vanilla">Vanilla RAG (chat_rag)</option><option value="vanilla_bge">Vanilla RAG, 임베딩만 bge-m3 (참고)</option></select>
+<button type="submit" id="sb">검색</button></form>
+<p class="note" id="sinfo">질의를 입력하고 검색을 누르면 결과가 아래에 나타납니다.</p>
+<div id="sres" class="cols"></div>
+</div></section>
+<style>
+.sform{display:flex;gap:8px;flex-wrap:wrap} .sform input{flex:1 1 320px;min-width:0;padding:8px 10px;border:1px solid var(--axis);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit}
+.sform select,.sform button{padding:8px 10px;border:1px solid var(--axis);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit} .sform button{background:var(--s1);color:#fff;border-color:var(--s1);cursor:pointer}
+.pipes{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:10px;font-size:.9rem} .pipes .plabel{color:var(--muted);font-size:.8rem;letter-spacing:.04em} .pipes label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px} .col h3{font-size:.95rem;margin:0 0 6px} .col .meta{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.hit{border-top:1px solid var(--grid);padding:8px 0} .hit .h{font-size:.85rem;font-weight:600} .hit .h .org{color:var(--fg2);font-weight:400} .hit .t{font-size:.82rem;color:var(--fg2);margin-top:2px;max-height:5.2em;overflow:hidden}
+.hit.abst{opacity:.6}
+</style>
+<script>
+(function(){
+ const f=document.getElementById('sf'),q=document.getElementById('sq'),sp=document.getElementById('sp'),info=document.getElementById('sinfo'),res=document.getElementById('sres'),b=document.getElementById('sb');
+ const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+ f.addEventListener('submit',async e=>{e.preventDefault();b.disabled=true;info.textContent='검색 중…';res.innerHTML='';
+  try{const r=await fetch('/search?q='+encodeURIComponent(q.value)+'&corpus=L2_A&k=5&pipelines='+sp.value);if(!r.ok)throw new Error(r.status);const d=await r.json();
+   const total=Object.values(d.pipelines).reduce((a,p)=>a+p.hits.length,0);info.textContent='기관 필터: '+(d.org_detected||'없음 (질의에 기관명 없음)')+' · 문서: 부칙·개정표기 분리본, 최신판만 · 결과 '+total+'건';
+   res.innerHTML=Object.values(d.pipelines).map(p=>{const i=p.info;const meta=('abstain' in i)?('1위 점수 '+(i.top1_score??i.top1_ce)+(i.abstain?' · 임계값 미달, 거절':'')):('1위 CE 점수 '+i.top1_ce+(i.abstain?' · 거절':''));
+    return '<div class="col"><h3>'+esc(p.label)+'</h3><div class="meta">'+esc(p.desc||'')+'</div><div class="meta">'+esc(meta)+'</div>'+(p.hits.length?'':'<div class="hit">검색 결과 없음</div>')+p.hits.map(h=>'<div class="hit'+(i.abstain?' abst':'')+'"><div class="h">'+h.rank+'. '+esc(h.article_no)+(h.title?'('+esc(h.title)+')':'')+' <span class="org">'+esc(h.org)+' · '+esc(h.revision_date)+'</span></div><div class="t">'+esc(h.text)+'</div></div>').join('')+'</div>';}).join('');
+  }catch(err){info.textContent='검색 서버에 연결할 수 없습니다. 로컬에서 python 4_결과분석/serve.py 를 실행한 뒤 http://127.0.0.1:8765 로 여세요.';}
+  finally{b.disabled=false;}});
+})();
+</script>
+"""
+
 kpi = narr["kpi"]
 def section(title, lead, body): return f"<section><h2>{html.escape(title)}</h2><p class='lead'>{html.escape(lead)}</p>{body}</section>"
 
@@ -103,6 +137,7 @@ footer{{color:var(--muted);font-size:.8rem}}
 </style>
 <main>
 <header><h1>{html.escape(narr['title'])}</h1><p class="sub">{html.escape(narr['subtitle'])}</p></header>
+{SEARCH_PANEL if LOCAL else ""}
 <div class="tiles">
 {''.join(f'<div class="tile"><div class="k">{html.escape(k["k"])}</div><div class="v">{html.escape(k["v"])}</div><div class="d">{html.escape(k["d"])}</div></div>' for k in kpi)}
 </div>
@@ -117,4 +152,4 @@ footer{{color:var(--muted);font-size:.8rem}}
 <section><h2>한계</h2><ul>{''.join(f'<li>{html.escape(x)}</li>' for x in narr['limits'])}</ul></section>
 <footer>데이터: 공기업 인사규정 41건(ALIO). 코퍼스 {', '.join(c['corpus']+' '+str(c['chunks'])+'청크' for c in corpora)}. 사전등록 2026-10-01.</footer>
 </main>"""
-(HERE / "dashboard.html").write_text(page, encoding="utf-8"); print("dashboard.html", len(page), "chars")
+out = HERE / ("dashboard_local.html" if LOCAL else "dashboard.html"); out.write_text(page, encoding="utf-8"); print(out.name, len(page), "chars")
