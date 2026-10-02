@@ -162,10 +162,23 @@ def run_hybrid_nobm25(c: Corpus, q):
     top = pool + rest
     return top, {"org_filter": org, "top1_ce": ce_map[top[0]] if top else None, "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
 
+def _vanilla_filter(c: Corpus, q, model_name, emb):
+    """Vanilla 단일 벡터 검색 + 하이브리드와 같은 기관 필터(상위 30 후보를 정확 매치 우선, 5개 미만이면 완화). 재랭킹 없음. v5."""
+    qv = st_model(model_name).encode([q], normalize_embeddings=True, convert_to_numpy=True)[0]
+    s = emb @ qv
+    cand = [int(i) for i in np.argsort(-s)[:CANDIDATE_K]]
+    org = detect_org(q)
+    exact = [i for i in cand if org is None or c.orgs[i] == org]; relaxed = [i for i in cand if i not in exact]
+    top = exact + relaxed
+    return top, {"org_filter": org, "top1_score": float(s[top[0]]), "abstain": bool(s[top[0]] < SIM_THRESHOLD)}
+
+def run_vanilla_filter(c: Corpus, q): return _vanilla_filter(c, q, "jhgan/ko-sbert-nli", c.sbert)
+def run_vanilla_bge_filter(c: Corpus, q): return _vanilla_filter(c, q, "BAAI/bge-m3", c.bge)
+
 def run_random(c: Corpus, q):
     idx = list(np.random.permutation(len(c.rows))[:TOP_K * 3]); return idx, {}
 
-PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "hybrid": run_hybrid, "hybrid_nobm25": run_hybrid_nobm25, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
+PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "vanilla_filter": run_vanilla_filter, "vanilla_bge_filter": run_vanilla_bge_filter, "hybrid": run_hybrid, "hybrid_nobm25": run_hybrid_nobm25, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
 
 # ---------------------------------------------------------------- 실행
 def main():
@@ -206,6 +219,10 @@ def main():
         return [r[key] for r in sorted(per_query, key=lambda r: r["qid"]) if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
     pairs = [("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
              ("vanilla_bge vs vanilla (L2_A)", ("L2_A", "vanilla_bge"), ("L2_A", "vanilla")),
+         ("vanilla_filter vs vanilla (L2_A)", ("L2_A", "vanilla_filter"), ("L2_A", "vanilla")),
+         ("vanilla_bge_filter vs vanilla_bge (L2_A)", ("L2_A", "vanilla_bge_filter"), ("L2_A", "vanilla_bge")),
+         ("hybrid_nobm25 vs vanilla_bge_filter (L2_A)", ("L2_A", "hybrid_nobm25"), ("L2_A", "vanilla_bge_filter")),
+         ("hybrid vs vanilla_filter (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla_filter")),
          ("hybrid vs hybrid_nobm25 (L2_A)", ("L2_A", "hybrid"), ("L2_A", "hybrid_nobm25")),
          ("hybrid vs hybrid_nobm25 (L0_A)", ("L0_A", "hybrid"), ("L0_A", "hybrid_nobm25")),
          ("hybrid_nobm25 vs vanilla_bge (L2_A)", ("L2_A", "hybrid_nobm25"), ("L2_A", "vanilla_bge")),
