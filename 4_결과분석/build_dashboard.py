@@ -11,7 +11,7 @@ corpora = json.load(open(ROOT / "3_성능테스트" / "corpora" / "corpora_stats
 narr = json.load(open(HERE / "narrative.json", encoding="utf-8"))
 LOCAL = "--local" in sys.argv
 def section(title, lead, body): return f"<section><h2>{html.escape(title)}</h2><p class='lead'>{html.escape(lead)}</p>{body}</section>"
-PIPE_NAME = {"vanilla": "Vanilla RAG", "vanilla_bge": "Vanilla (임베딩 bge-m3)", "hybrid_nobm25": "하이브리드 − BM25", "vanilla_filter": "Vanilla + 기관 필터", "vanilla_bge_filter": "Vanilla (bge-m3) + 기관 필터", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
+PIPE_NAME = {"vanilla": "Vanilla RAG", "vanilla_bge": "Vanilla (임베딩 bge-m3)", "hybrid_nobm25": "하이브리드 − BM25", "hybrid_nofilter": "하이브리드 − 기관 필터", "vanilla_filter": "Vanilla + 기관 필터", "vanilla_bge_filter": "Vanilla (bge-m3) + 기관 필터", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
 LEVEL_NAME = {"L0": "L0 파싱만", "L1": "L1 노이즈 제거", "L2": "L2 구조 분리"}
 TYPE_NAME = {"Q1": "조항 조회", "Q2": "요건 판단", "Q3": "수치 확인", "Q4": "절차·기한", "Q5": "용어 정의", "Q6": "기관 비교", "Q7": "개정 이력", "Q8": "별표", "Q10": "삭제 조항", "Q11": "일상어"}
 cond = {(c["corpus"], c["pipeline"]): c for c in summary["conditions"]}
@@ -120,6 +120,7 @@ SEARCH_PANEL = """
 ABL_HTML = ""
 if ("L2_A", "hybrid_nobm25") in cond:
     ABL = [("hybrid", "하이브리드 + CE", "--s1"), ("hybrid_nobm25", "하이브리드 − BM25", "--s4")]
+    if ("L2_A", "hybrid_nofilter") in cond: ABL += [("hybrid_nofilter", "하이브리드 − 기관 필터", "--s7")]
     if ("L2_A", "vanilla_bge_filter") in cond: ABL += [("vanilla_bge_filter", "Vanilla(bge-m3) + 기관 필터", "--s5")]
     ABL += [("vanilla_bge", "Vanilla (bge-m3)", "--s3")]
     if ("L2_A", "vanilla_filter") in cond: ABL += [("vanilla_filter", "Vanilla + 기관 필터", "--s6")]
@@ -156,10 +157,10 @@ page = f"""<title>{html.escape(narr['title'])}</title>
 <style>
 /* 레이아웃: 상단 결론 4타일 → 정제 강도 차트 → 개정판 정책 차트 → 유형별 히트맵 → 조건 전체표 → 통계 비교 → 실패 사례. 단일 컬럼, 최대 960px. */
 :root{{--bg:#f7f7f4;--card:#fcfcfb;--fg:#0b0b0b;--fg2:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--line:rgba(11,11,11,.10);
---s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#4a3aa7;--s5:#e87ba4;--s6:#eda100;--ok:#0ca30c;--fg-on-dark:#fff;
+--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#4a3aa7;--s5:#e87ba4;--s6:#eda100;--s7:#e34948;--ok:#0ca30c;--fg-on-dark:#fff;
 --seq0:#f0efec;--seq1:#cde2fb;--seq2:#9ec5f4;--seq3:#6da7ec;--seq4:#3987e5;--seq5:#256abf;--seq6:#184f95}}
-@media (prefers-color-scheme: dark){{:root:not([data-theme="light"]){{--bg:#0d0d0d;--card:#1a1a19;--fg:#fff;--fg2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--line:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#9085e9;--s5:#d55181;--s6:#c98500;--seq0:#383835;--seq1:#184f95;--seq2:#1c5cab;--seq3:#256abf;--seq4:#2a78d6;--seq5:#3987e5;--seq6:#6da7ec;color-scheme:dark}}}}
-:root[data-theme="dark"]{{--bg:#0d0d0d;--card:#1a1a19;--fg:#fff;--fg2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--line:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#9085e9;--s5:#d55181;--s6:#c98500;--seq0:#383835;--seq1:#184f95;--seq2:#1c5cab;--seq3:#256abf;--seq4:#2a78d6;--seq5:#3987e5;--seq6:#6da7ec;color-scheme:dark}}
+@media (prefers-color-scheme: dark){{:root:not([data-theme="light"]){{--bg:#0d0d0d;--card:#1a1a19;--fg:#fff;--fg2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--line:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#9085e9;--s5:#d55181;--s6:#c98500;--s7:#e66767;--seq0:#383835;--seq1:#184f95;--seq2:#1c5cab;--seq3:#256abf;--seq4:#2a78d6;--seq5:#3987e5;--seq6:#6da7ec;color-scheme:dark}}}}
+:root[data-theme="dark"]{{--bg:#0d0d0d;--card:#1a1a19;--fg:#fff;--fg2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--line:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#9085e9;--s5:#d55181;--s6:#c98500;--s7:#e66767;--seq0:#383835;--seq1:#184f95;--seq2:#1c5cab;--seq3:#256abf;--seq4:#2a78d6;--seq5:#3987e5;--seq6:#6da7ec;color-scheme:dark}}
 body{{background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif;line-height:1.55;padding-block:24px;padding-inline:16px}}
 main{{max-width:960px;margin:0 auto;display:grid;gap:28px}}
 h1{{font-size:1.6rem;margin:0 0 4px;text-wrap:balance}} h2{{font-size:1.15rem;margin:0 0 6px}} .sub{{color:var(--fg2);margin:0}}
