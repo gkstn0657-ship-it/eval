@@ -11,7 +11,7 @@ corpora = json.load(open(ROOT / "3_성능테스트" / "corpora" / "corpora_stats
 narr = json.load(open(HERE / "narrative.json", encoding="utf-8"))
 LOCAL = "--local" in sys.argv
 def section(title, lead, body): return f"<section><h2>{html.escape(title)}</h2><p class='lead'>{html.escape(lead)}</p>{body}</section>"
-PIPE_NAME = {"vanilla": "Vanilla RAG", "vanilla_bge": "Vanilla (임베딩 bge-m3)", "hybrid_nobm25": "하이브리드 − BM25", "hybrid_nofilter": "하이브리드 − 기관 필터", "vanilla_filter": "Vanilla + 기관 필터", "vanilla_bge_filter": "Vanilla (bge-m3) + 기관 필터", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
+PIPE_NAME = {"vanilla": "Vanilla RAG", "vanilla_bge": "Vanilla (임베딩 bge-m3)", "hybrid_nobm25": "하이브리드+CE − BM25", "hybrid_nofilter": "하이브리드+CE − 기관 필터", "vanilla_filter": "Vanilla + 기관 필터", "vanilla_bge_filter": "Vanilla (bge-m3) + 기관 필터", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
 LEVEL_NAME = {"L0": "L0 파싱만", "L1": "L1 노이즈 제거", "L2": "L2 구조 분리"}
 TYPE_NAME = {"Q1": "조항 조회", "Q2": "요건 판단", "Q3": "수치 확인", "Q4": "절차·기한", "Q5": "용어 정의", "Q6": "기관 비교", "Q7": "개정 이력", "Q8": "별표", "Q10": "삭제 조항", "Q11": "일상어"}
 cond = {(c["corpus"], c["pipeline"]): c for c in summary["conditions"]}
@@ -119,8 +119,8 @@ SEARCH_PANEL = """
 # ---- 구성요소 분해 비교 (추가 조건이 측정돼 있을 때만)
 ABL_HTML = ""
 if ("L2_A", "hybrid_nobm25") in cond:
-    ABL = [("hybrid", "하이브리드 + CE", "--s1"), ("hybrid_nobm25", "하이브리드 − BM25", "--s4")]
-    if ("L2_A", "hybrid_nofilter") in cond: ABL += [("hybrid_nofilter", "하이브리드 − 기관 필터", "--s7")]
+    ABL = [("hybrid", "하이브리드 + CE", "--s1"), ("hybrid_nobm25", "하이브리드+CE − BM25", "--s4")]
+    if ("L2_A", "hybrid_nofilter") in cond: ABL += [("hybrid_nofilter", "하이브리드+CE − 기관 필터", "--s7")]
     if ("L2_A", "vanilla_bge_filter") in cond: ABL += [("vanilla_bge_filter", "Vanilla(bge-m3) + 기관 필터", "--s5")]
     ABL += [("vanilla_bge", "Vanilla (bge-m3)", "--s3")]
     if ("L2_A", "vanilla_filter") in cond: ABL += [("vanilla_filter", "Vanilla + 기관 필터", "--s6")]
@@ -151,6 +151,25 @@ if (RI / "summary.json").exists():
         '<div class="card tw"><table><thead><tr><th>파이프라인</th><th class="num">개선 전 nDCG@5</th><th class="num">개선 후</th><th class="num">Δ</th></tr></thead><tbody>' + trs + '</tbody></table>'
         + f'<p class="note">{html.escape(narr.get("improve_note",""))}</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>유형 (Recall@5, 전 → 후)</th>' + "".join(f"<th>{l}</th>" for _, l in pr) + '</tr></thead><tbody>' + tt + '</tbody></table></div>' + gen_imp)
+
+# ---- holdout 개봉 결과 (results_holdout 가 있을 때만)
+HO_HTML = ""
+RH = ROOT / "3_성능테스트" / "results_holdout"
+if (RH / "summary.json").exists():
+    SH = json.load(open(RH / "summary.json", encoding="utf-8")); ch = {(c["corpus"], c["pipeline"]): c for c in SH["conditions"]}
+    # dev 쪽: L2P_A 는 results_improved 에, 나머지는 results 에
+    cdev = dict(cond)
+    if (RI / "summary.json").exists():
+        for c in json.load(open(RI / "summary.json", encoding="utf-8"))["conditions"]: cdev[(c["corpus"], c["pipeline"])] = c
+    rows_ho = [("L2_A", "hybrid"), ("L2_A", "hybrid_nofilter"), ("L2_A", "vanilla_bge_filter"), ("L2_A", "vanilla_bge"), ("L2_A", "vanilla"), ("L2P_A", "hybrid"), ("L0_A", "hybrid"), ("L2_B", "hybrid")]
+    trs = "".join(f"<tr><td>{LEVEL_NAME.get(c.split('_')[0], 'L2 + 개선안')} · {'최신판만' if c.endswith('A') else '전체 개정판'}</td><td>{PIPE_NAME[p]}</td><td class='num'>{f3(cdev.get((c,p),{}).get('ndcg5'))}</td><td class='num'><b>{f3(ch.get((c,p),{}).get('ndcg5'))}</b></td><td class='num'>{(ch[(c,p)]['ndcg5']-cdev[(c,p)]['ndcg5']):+.3f}</td><td class='num'>{pct(ch.get((c,p),{}).get('recall5'))}%</td></tr>" for c, p in rows_ho if (c, p) in ch and (c, p) in cdev)
+    cmph = {c["label"]: c for c in SH["comparisons"]}; cmpd = {c["label"]: c for c in summary["comparisons"]}
+    keys = ["hybrid vs vanilla (L2_A)", "hybrid vs hybrid_nofilter (L2_A)", "vanilla_bge_filter vs vanilla_bge (L2_A)", "hybrid vs hybrid_nobm25 (L2_A)", "L2 vs L0, hybrid (A)", "B vs A, hybrid (L2)", "vanilla_bge vs vanilla (L2_A)"]
+    def cell(c): return "–" if not c else f"{c['delta_ndcg5']:+.3f} [{c['ci95'][0]:+.2f}, {c['ci95'][1]:+.2f}] " + ('<span class="pill ok">유의</span>' if c["significant"] else '<span class="pill">비유의</span>')
+    trc = "".join(f"<tr><td>{html.escape(k)}</td><td>{cell(cmpd.get(k))}</td><td>{cell(cmph.get(k))}</td></tr>" for k in keys if k in cmph or k in cmpd)
+    HO_HTML = section("홀드아웃 개봉 (봉인했던 44문항, 1회 측정)", narr.get("holdout", ""),
+        '<div class="card tw"><table><thead><tr><th>문서</th><th>파이프라인</th><th class="num">dev nDCG@5</th><th class="num">holdout</th><th class="num">Δ</th><th class="num">holdout Recall@5</th></tr></thead><tbody>' + trs + '</tbody></table>' + f'<p class="note">{html.escape(narr.get("holdout_note",""))}</p></div>'
+        + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>비교 (Δ nDCG@5, 95% CI)</th><th>dev</th><th>holdout</th></tr></thead><tbody>' + trc + '</tbody></table></div>')
 
 # ---- 답변 생성 품질 (results/gen_summary.json 이 있을 때만)
 GEN_HTML = ""
@@ -207,10 +226,11 @@ footer{{color:var(--muted);font-size:.8rem}}
 {section("통계 비교 (쌍대 부트스트랩 95% CI, nDCG@5)", narr["stats"], '<div class="card tw"><table><thead><tr><th>비교</th><th class="num">Δ</th><th class="num">95% CI</th><th>판정</th></tr></thead><tbody>' + ''.join(rows_cmp) + '</tbody></table></div>')}
 {ABL_HTML}
 {IMP_HTML}
+{HO_HTML}
 {GEN_HTML}
 {section("범위 외 질의 거절률 (Q9, n=4)", narr["q9"], '<div class="card tw"><table><thead><tr><th>코퍼스</th><th>파이프라인</th><th class="num">거절률</th></tr></thead><tbody>' + rows_q9 + '</tbody></table></div>')}
 {section("하이브리드 + CE 가 상위 5개 안에 정답을 못 넣은 질의 (L2 최신판)", narr["fails"], '<div class="card tw"><table><thead><tr><th>qid</th><th>질의</th><th>정답</th><th>1위로 찾은 것</th><th>정답 순위</th></tr></thead><tbody>' + (rows_fail or '<tr><td colspan="5">없음</td></tr>') + '</tbody></table></div>')}
-{section("전체 조건 (36개 중 random 제외)", narr["all"], '<div class="card tw"><table><thead><tr><th>정제</th><th>개정판</th><th>파이프라인</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(rows_cond) + '</tbody></table>' + f'<p class="note">random 베이스라인 nDCG@5 최대 {rand_max:.3f}. 측정 질의 {summary["n_scored"]}개(범위 외 4개 제외), dev 세트. holdout 44개는 봉인 상태.</p></div>')}
+{section("전체 조건 (36개 중 random 제외)", narr["all"], '<div class="card tw"><table><thead><tr><th>정제</th><th>개정판</th><th>파이프라인</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(rows_cond) + '</tbody></table>' + f'<p class="note">random 베이스라인 nDCG@5 최대 {rand_max:.3f}. 측정 질의 {summary["n_scored"]}개(범위 외 4개 제외), dev 세트. holdout 44개 결과는 위 홀드아웃 절.</p></div>')}
 {section("부가: Vanilla 의 임베딩만 하이브리드와 같은 bge-m3 로 바꾸면", narr["embed"], '<div class="card tw"><table><thead><tr><th>Vanilla 임베딩 (L2 최신판)</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(f"<tr><td>{PIPE_NAME[p]}</td><td class='num'>{pct(cond[('L2_A',p)]['recall5'])}%</td><td class='num'>{f3(cond[('L2_A',p)]['mrr'])}</td><td class='num'><b>{f3(cond[('L2_A',p)]['ndcg5'])}</b></td></tr>" for p in ("vanilla","vanilla_bge")) + f"<tr><td>하이브리드 + CE (참고)</td><td class='num'>{pct(cond[('L2_A','hybrid')]['recall5'])}%</td><td class='num'>{f3(cond[('L2_A','hybrid')]['mrr'])}</td><td class='num'><b>{f3(cond[('L2_A','hybrid')]['ndcg5'])}</b></td></tr>" + '</tbody></table>' + f'<p class="note">{html.escape(narr["embed_note"])}</p></div>')}
 <section><h2>한계</h2><ul>{''.join(f'<li>{html.escape(x)}</li>' for x in narr['limits'])}</ul></section>
 <footer>데이터: 공기업 인사규정 41건(ALIO). 코퍼스 {', '.join(c['corpus']+' '+str(c['chunks'])+'청크' for c in corpora)}. 사전등록 2026-10-01.</footer>
