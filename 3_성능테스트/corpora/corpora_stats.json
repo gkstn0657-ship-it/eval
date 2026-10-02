@@ -1,0 +1,62 @@
+[
+ {
+  "corpus": "L0_A",
+  "articles": 1499,
+  "chunks": 1584,
+  "split_articles": 36,
+  "dup_article_ids": 307,
+  "chars": 462546,
+  "max_chunk": 1225,
+  "orgs": 20
+ },
+ {
+  "corpus": "L0_B",
+  "articles": 3083,
+  "chunks": 3228,
+  "split_articles": 67,
+  "dup_article_ids": 547,
+  "chars": 929805,
+  "max_chunk": 1227,
+  "orgs": 20
+ },
+ {
+  "corpus": "L1_A",
+  "articles": 1493,
+  "chunks": 1578,
+  "split_articles": 35,
+  "dup_article_ids": 307,
+  "chars": 457822,
+  "max_chunk": 1225,
+  "orgs": 20
+ },
+ {
+  "corpus": "L1_B",
+  "articles": 3077,
+  "chunks": 3222,
+  "split_articles": 65,
+  "dup_article_ids": 547,
+  "chars": 918137,
+  "max_chunk": 1227,
+  "orgs": 20
+ },
+ {
+  "corpus": "L2_A",
+  "articles": 1220,
+  "chunks": 1233,
+  "split_articles": 13,
+  "dup_article_ids": 37,
+  "chars": 301313,
+  "max_chunk": 1211,
+  "orgs": 20
+ },
+ {
+  "corpus": "L2_B",
+  "articles": 2600,
+  "chunks": 2624,
+  "split_articles": 23,
+  "dup_article_ids": 73,
+  "chars": 634791,
+  "max_chunk": 1211,
+  "orgs": 20
+ }
+]
