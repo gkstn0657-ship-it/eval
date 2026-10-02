@@ -1,0 +1,31 @@
+{"qid": "Q4-04", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "정확. 판정은 환각 true 로 과잉 판정", "judge_total": 70, "judge_hallucination": true}
+{"qid": "Q4-04", "pipeline": "vanilla", "human_verdict": "wrong", "human_hallucination": true, "note": "KDN 규정을 강원랜드에 적용", "judge_total": 55, "judge_hallucination": true}
+{"qid": "Q11-03", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "정확하나 답변 중간에 중국어로 전환(모델 결함). 판정이 감점하지 않음", "judge_total": 85, "judge_hallucination": false}
+{"qid": "Q11-03", "pipeline": "vanilla", "human_verdict": "correct", "human_hallucination": false, "note": "", "judge_total": 95, "judge_hallucination": false}
+{"qid": "Q5-04", "pipeline": "hybrid", "human_verdict": "wrong", "human_hallucination": true, "note": "GKL 제2조가 검색됐는데도 '구분하지 않는다'고 답하고 타 기관 출처 제시", "judge_total": 40, "judge_hallucination": true}
+{"qid": "Q5-04", "pipeline": "vanilla", "human_verdict": "wrong", "human_hallucination": true, "note": "타 기관 출처 나열", "judge_total": 35, "judge_hallucination": true}
+{"qid": "Q1-08", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "", "judge_total": 100, "judge_hallucination": false}
+{"qid": "Q1-08", "pipeline": "vanilla", "human_verdict": "refusal_wrong", "human_hallucination": false, "note": "정답이 있는데 '조항 없음'. 날조는 아님", "judge_total": 45, "judge_hallucination": false}
+{"qid": "Q10-01", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "", "judge_total": 90, "judge_hallucination": false}
+{"qid": "Q10-01", "pipeline": "vanilla", "human_verdict": "refusal_wrong", "human_hallucination": false, "note": "검색 결과 없음을 그대로 안내", "judge_total": 60, "judge_hallucination": false}
+{"qid": "Q7-06", "pipeline": "hybrid", "human_verdict": "wrong", "human_hallucination": true, "note": "중국어 답변, 다른 조문(제47조) 근거로 '없다' 판단", "judge_total": 30, "judge_hallucination": true}
+{"qid": "Q7-06", "pipeline": "vanilla", "human_verdict": "refusal_wrong", "human_hallucination": false, "note": "타 기관 출처 나열", "judge_total": 35, "judge_hallucination": true}
+{"qid": "Q10-06", "pipeline": "hybrid", "human_verdict": "wrong", "human_hallucination": true, "note": "삭제된 조항 내용을 '임용권자' 로 지어냄", "judge_total": 5, "judge_hallucination": true}
+{"qid": "Q10-06", "pipeline": "vanilla", "human_verdict": "refusal_wrong", "human_hallucination": false, "note": "내용 없음 안내. 삭제 사실은 못 밝힘", "judge_total": 20, "judge_hallucination": true}
+{"qid": "Q4-07", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "", "judge_total": 85, "judge_hallucination": false}
+{"qid": "Q4-07", "pipeline": "vanilla", "human_verdict": "refusal_wrong", "human_hallucination": false, "note": "타 기관 조문만 나열", "judge_total": 55, "judge_hallucination": true}
+{"qid": "Q9-01", "pipeline": "hybrid", "human_verdict": "refusal", "human_hallucination": false, "note": "올바른 거절. 다만 소관 규정(보수규정) 안내 없음", "judge_total": 60, "judge_hallucination": false}
+{"qid": "Q9-01", "pipeline": "vanilla", "human_verdict": "wrong", "human_hallucination": true, "note": "운영규정 소관이라고 근거 없이 단정", "judge_total": 55, "judge_hallucination": true}
+{"qid": "Q7-02", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "", "judge_total": 75, "judge_hallucination": false}
+{"qid": "Q7-02", "pipeline": "vanilla", "human_verdict": "refusal_wrong", "human_hallucination": false, "note": "", "judge_total": 40, "judge_hallucination": false}
+{"qid": "Q2-03", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "정확. 과잉 판정", "judge_total": 50, "judge_hallucination": true}
+{"qid": "Q2-04", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "정확. 과잉 판정", "judge_total": 80, "judge_hallucination": true}
+{"qid": "Q2-05", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "정확. 과잉 판정", "judge_total": 80, "judge_hallucination": true}
+{"qid": "Q3-04", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "정확. 과잉 판정", "judge_total": 75, "judge_hallucination": true}
+{"qid": "Q11-06", "pipeline": "hybrid", "human_verdict": "correct", "human_hallucination": false, "note": "정확. 과잉 판정", "judge_total": 75, "judge_hallucination": true}
+{"qid": "Q6-04", "pipeline": "hybrid", "human_verdict": "wrong", "human_hallucination": true, "note": "석유공사 감봉 상한을 6개월로 단정(실제 1~3개월). 철도공사 3개월은 검색 문서 근거", "judge_total": 45, "judge_hallucination": true}
+{"qid": "Q6-02", "pipeline": "hybrid", "human_verdict": "partial", "human_hallucination": false, "note": "KDN 예외 조항은 검색 문서에 있는 내용. 마사회 2개월은 놓침", "judge_total": 30, "judge_hallucination": true}
+{"qid": "Q6-01", "pipeline": "hybrid", "human_verdict": "partial", "human_hallucination": false, "note": "제주 61세 맞음, 인천공항 61세 놓침. 석유공사 60세는 검색 문서 근거", "judge_total": 55, "judge_hallucination": true}
+{"qid": "Q6-05", "pipeline": "hybrid", "human_verdict": "partial", "human_hallucination": false, "note": "광해 14일 등 맞음. 해양환경·도로공사 추가는 검색 문서 근거", "judge_total": 55, "judge_hallucination": true}
+{"qid": "Q7-07", "pipeline": "hybrid", "human_verdict": "wrong", "human_hallucination": false, "note": "2024.7.23 개정이 있는데 없다고 답함. 개정 표기가 본문에서 분리된 L2 의 영향. 날조는 아님", "judge_total": 55, "judge_hallucination": true}
+{"qid": "Q8-08", "pipeline": "hybrid", "human_verdict": "refusal_wrong", "human_hallucination": false, "note": "부칙 안의 전사 표가 L2 본문에서 분리돼 검색되지 않음", "judge_total": 50, "judge_hallucination": true}

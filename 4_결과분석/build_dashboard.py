@@ -10,6 +10,7 @@ per_query = json.load(open(R / "per_query.json", encoding="utf-8"))
 corpora = json.load(open(ROOT / "3_성능테스트" / "corpora" / "corpora_stats.json", encoding="utf-8"))
 narr = json.load(open(HERE / "narrative.json", encoding="utf-8"))
 LOCAL = "--local" in sys.argv
+def section(title, lead, body): return f"<section><h2>{html.escape(title)}</h2><p class='lead'>{html.escape(lead)}</p>{body}</section>"
 PIPE_NAME = {"vanilla": "Vanilla RAG", "vanilla_bge": "Vanilla (임베딩 bge-m3)", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
 LEVEL_NAME = {"L0": "L0 파싱만", "L1": "L1 노이즈 제거", "L2": "L2 구조 분리"}
 TYPE_NAME = {"Q1": "조항 조회", "Q2": "요건 판단", "Q3": "수치 확인", "Q4": "절차·기한", "Q5": "용어 정의", "Q6": "기관 비교", "Q7": "개정 이력", "Q8": "별표", "Q10": "삭제 조항", "Q11": "일상어"}
@@ -115,8 +116,27 @@ SEARCH_PANEL = """
 </script>
 """
 
+# ---- 답변 생성 품질 (results/gen_summary.json 이 있을 때만)
+GEN_HTML = ""
+gpath = R / "gen_summary.json"
+if gpath.exists():
+    G = json.load(open(gpath, encoding="utf-8")); gp = G["pipelines"]
+    def gm(p, k, f="{:.0f}"): v = gp[p].get(k); return "–" if v is None else f.format(v)
+    rows = [("총점 (100점, 범위 외 제외)", "total_mean", "{:.1f}"), ("정확성 /40", "accuracy", "{:.1f}"), ("완전성 /25", "completeness", "{:.1f}"), ("출처정확도 /20", "citation", "{:.1f}"), ("간결성 /15", "concise", "{:.1f}"),
+            ("80점 이상 비율", "pass80_rate", None), ("환각 비율 (판정)", "hallucination_rate", None), ("출처 조문 일치율 (자동)", "citation_match_rate", None), ("기대 답 숫자 포함률 (자동)", "hint_numbers_covered", None),
+            ("범위 외 질의 거절률 (n=4)", "q9_refusal_rate", None), ("범위 외 질의 환각률 (n=4)", "q9_hallucination_rate", None)]
+    trs = "".join(f"<tr><td>{lab}</td><td class='num'>{gm('hybrid',k,f) if f else pct(gp['hybrid'].get(k))+'%'}</td><td class='num'>{gm('vanilla',k,f) if f else pct(gp['vanilla'].get(k))+'%'}</td></tr>" for lab, k, f in rows)
+    miss = "".join(f"<tr><td>{PIPE_NAME[p]}</td><td class='num'>{gp[p]['answer_when_retrieval_missed']['n']}</td><td class='num'>{pct(gp[p]['answer_when_retrieval_missed']['hallucination_rate'])}%</td></tr>" for p in ("hybrid", "vanilla"))
+    bt = {(x["pipeline"], x["type"]): x for x in G["by_type"]}
+    tt = "".join(f"<tr><th scope='row'>{t} {TYPE_NAME.get(t, t)}</th>" + "".join(f"<td class='num'>{'–' if bt.get((p,t),{}).get('total_mean') is None else f'{bt[(p,t)][chr(116)+chr(111)+chr(116)+chr(97)+chr(108)+chr(95)+chr(109)+chr(101)+chr(97)+chr(110)]:.0f}'}</td><td class='num'>{pct(bt.get((p,t),{}).get('hallucination_rate'))}%</td>" for p in ("hybrid", "vanilla")) + "</tr>" for t in list(TYPE_NAME) + ["Q9"] if any(k[1] == t for k in bt))
+    cmp_ = G["comparison"]
+    GEN_HTML = section("답변 생성 품질 (로컬 qwen2.5:7b-instruct, dev 44문항)", narr.get("gen", ""),
+        '<div class="card tw"><table><thead><tr><th>지표</th><th class="num">하이브리드 + CE</th><th class="num">Vanilla RAG</th></tr></thead><tbody>' + trs + '</tbody></table>'
+        + f"<p class='note'>총점 차이 {cmp_['delta']:+.1f}점, 95% CI [{cmp_['ci95'][0]:+.1f}, {cmp_['ci95'][1]:+.1f}] (n={cmp_['n']}). {html.escape(narr.get('gen_note',''))}</p></div>"
+        + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>검색이 정답을 못 찾은 질의에서</th><th class="num">건수</th><th class="num">환각률</th></tr></thead><tbody>' + miss + '</tbody></table></div>'
+        + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>유형</th><th class="num">하이브리드 총점</th><th class="num">환각</th><th class="num">Vanilla 총점</th><th class="num">환각</th></tr></thead><tbody>' + tt + '</tbody></table></div>')
+
 kpi = narr["kpi"]
-def section(title, lead, body): return f"<section><h2>{html.escape(title)}</h2><p class='lead'>{html.escape(lead)}</p>{body}</section>"
 
 page = f"""<title>{html.escape(narr['title'])}</title>
 <style>
@@ -149,6 +169,7 @@ footer{{color:var(--muted);font-size:.8rem}}
 {section("개정판 정책 비교 (L2, nDCG@5)", narr["policy"], '<div class="card"><div class="legend"><span><i style="background:var(--s1)"></i>하이브리드 + CE</span><span><i style="background:var(--s2)"></i>Vanilla RAG</span></div>' + chart_policy + f'<p class="note">{html.escape(narr["policy_note"])}</p></div>')}
 {section("질의 유형별 Recall@5 (L2 최신판)", narr["types"], '<div class="card tw"><table><thead><tr><th>유형</th><th>하이브리드 + CE</th><th>Vanilla RAG</th><th>BM25 단독</th></tr></thead><tbody>' + ''.join(rows_type) + '</tbody></table>' + f'<p class="note">{html.escape(narr["types_note"])}</p></div>')}
 {section("통계 비교 (쌍대 부트스트랩 95% CI, nDCG@5)", narr["stats"], '<div class="card tw"><table><thead><tr><th>비교</th><th class="num">Δ</th><th class="num">95% CI</th><th>판정</th></tr></thead><tbody>' + ''.join(rows_cmp) + '</tbody></table></div>')}
+{GEN_HTML}
 {section("범위 외 질의 거절률 (Q9, n=4)", narr["q9"], '<div class="card tw"><table><thead><tr><th>코퍼스</th><th>파이프라인</th><th class="num">거절률</th></tr></thead><tbody>' + rows_q9 + '</tbody></table></div>')}
 {section("하이브리드 + CE 가 상위 5개 안에 정답을 못 넣은 질의 (L2 최신판)", narr["fails"], '<div class="card tw"><table><thead><tr><th>qid</th><th>질의</th><th>정답</th><th>1위로 찾은 것</th><th>정답 순위</th></tr></thead><tbody>' + (rows_fail or '<tr><td colspan="5">없음</td></tr>') + '</tbody></table></div>')}
 {section("전체 조건 (36개 중 random 제외)", narr["all"], '<div class="card tw"><table><thead><tr><th>정제</th><th>개정판</th><th>파이프라인</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(rows_cond) + '</tbody></table>' + f'<p class="note">random 베이스라인 nDCG@5 최대 {rand_max:.3f}. 측정 질의 {summary["n_scored"]}개(범위 외 4개 제외), dev 세트. holdout 44개는 봉인 상태.</p></div>')}
