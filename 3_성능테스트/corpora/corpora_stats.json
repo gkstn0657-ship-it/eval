@@ -58,5 +58,25 @@
   "chars": 634791,
   "max_chunk": 1211,
   "orgs": 20
+ },
+ {
+  "corpus": "L2P_A",
+  "articles": 1220,
+  "chunks": 1416,
+  "split_articles": 38,
+  "dup_article_ids": 37,
+  "chars": 335775,
+  "max_chunk": 1210,
+  "orgs": 20
+ },
+ {
+  "corpus": "L2P_B",
+  "articles": 2600,
+  "chunks": 3011,
+  "split_articles": 73,
+  "dup_article_ids": 73,
+  "chars": 704989,
+  "max_chunk": 1210,
+  "orgs": 20
  }
 ]

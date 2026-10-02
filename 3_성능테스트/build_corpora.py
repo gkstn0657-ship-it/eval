@@ -34,10 +34,39 @@ def split_article(u):
     if cur: chunks.append(cur)
     return [f"{title} {c}" if not c.startswith(title) else c for c in chunks]
 
+DEF_TITLE = re.compile(r"정의|용어")
+def split_definition(u):
+    """개선 2: 정의 조항을 호(1. 2. …) 단위로 나눈다. 각 조각 앞에 '제N조(제목)' 접두어."""
+    text = u["text"]
+    head = re.match(r"제\d+조(?:의\d+)?\s*(?:[\(（][^)）]*[\)）])?", text)
+    title = head.group(0) if head else u["article_no"]
+    body = text[len(title):] if head else text
+    parts = [p.strip() for p in re.split(r"(?=(?:^|\s)\d{1,2}(?:의\d+)?\.\s)", body) if p.strip()]
+    if len(parts) <= 2: return [text]
+    lead = parts[0] if not re.match(r"\d{1,2}(?:의\d+)?\.\s", parts[0]) else ""
+    items = parts[1:] if lead else parts
+    return [f"{title} {lead} {it}".strip() for it in items]
+
+def improve_text(u):
+    """개선 1: L2 에서 분리한 개정 표기를 조문 앞에 접두어로 되돌린다. 날짜를 모아 정렬하고 최근 8개만, 신설·삭제는 종류를 붙인다."""
+    marks = u.get("revision_marks") or []
+    if not marks: return u["text"]
+    dated = {}
+    for m in marks:
+        for d in m.get("dates", []):
+            dated.setdefault(d, set()).add(m["type"])
+    if not dated: return u["text"]
+    def key(d):
+        n = re.findall(r"\d+", d); return tuple(int(x) for x in n[:3]) + (0,) * (3 - len(n[:3]))
+    items = sorted(dated, key=key)[-8:]
+    tags = [d + ("" if dated[d] == {"개정"} else " " + "/".join(sorted(t for t in dated[d] if t != "개정"))) for d in items]
+    return f"[개정이력 {', '.join(tags)}] " + u["text"]
+
 stats = []
-for level in ("L0", "L1", "L2"):
+for level in ("L0", "L1", "L2", "L2P"):
     units = []
-    for f in sorted((CLEAN / level).rglob("*.articles.jsonl")):
+    src_level = "L2" if level == "L2P" else level
+    for f in sorted((CLEAN / src_level).rglob("*.articles.jsonl")):
         for l in f.read_text(encoding="utf-8").splitlines():
             if l.strip(): units.append(json.loads(l))
     for policy in ("A", "B"):
@@ -51,7 +80,11 @@ for level in ("L0", "L1", "L2"):
         sel = deduped
         rows, nsplit, ndup = [], 0, sum(v - 1 for v in seen.values())
         for u in sel:
-            pieces = split_article(u)
+            if level == "L2P":
+                u = {**u, "text": improve_text(u)}
+                pieces = split_definition(u) if u.get("article_title") and DEF_TITLE.search(u["article_title"]) else split_article(u)
+            else:
+                pieces = split_article(u)
             if len(pieces) > 1: nsplit += 1
             for k, t in enumerate(pieces):
                 rows.append({"chunk_id": u["id"] + (f"#{k}" if len(pieces) > 1 else ""), "article_id": u["id"],

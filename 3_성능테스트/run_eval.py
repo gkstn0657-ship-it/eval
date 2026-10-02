@@ -17,9 +17,11 @@ import numpy as np
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent
 GOLD = ROOT / "1_데이터셋" / "06_eval" / ("goldenset_holdout_sealed.jsonl" if "--holdout" in sys.argv else "goldenset_dev.jsonl")
-OUT = HERE / ("results_holdout" if "--holdout" in sys.argv else "results"); OUT.mkdir(exist_ok=True)
+OUT = HERE / (("results_holdout" if "--holdout" in sys.argv else "results") + OUT_SUFFIX); OUT.mkdir(exist_ok=True)
 CACHE = HERE / "cache"; CACHE.mkdir(exist_ok=True)
 CORPORA = ["L0_A", "L0_B", "L1_A", "L1_B", "L2_A", "L2_B"]
+if "--corpora" in sys.argv: CORPORA = sys.argv[sys.argv.index("--corpora") + 1].split(",")
+OUT_SUFFIX = ("_" + sys.argv[sys.argv.index("--tag") + 1]) if "--tag" in sys.argv else ""
 TOP_K, RRF_K, CANDIDATE_K, RERANK_TOP_N, MIN_RESULTS, SIM_THRESHOLD, CE_MAX_LEN = 10, 60, 30, 30, 5, 0.5, 384
 TOKEN_RE = re.compile(r"[0-9A-Za-z가-힣]+")
 random.seed(42); np.random.seed(42)
@@ -175,10 +177,27 @@ def _vanilla_filter(c: Corpus, q, model_name, emb):
 def run_vanilla_filter(c: Corpus, q): return _vanilla_filter(c, q, "jhgan/ko-sbert-nli", c.sbert)
 def run_vanilla_bge_filter(c: Corpus, q): return _vanilla_filter(c, q, "BAAI/bge-m3", c.bge)
 
+def run_hybrid_nofilter(c: Corpus, q):
+    """하이브리드에서 기관 필터만 제거. dense + BM25 → RRF → CE 재랭킹(RRF 상위 30). v6."""
+    qv = st_model("BAAI/bge-m3").encode([q], normalize_embeddings=True, convert_to_numpy=True)[0]
+    d = c.bge @ qv; b = c.bm25.get_scores(TOKEN_RE.findall(q.lower()))
+    d_rank = {int(i): r for r, i in enumerate(np.argsort(-d)[:CANDIDATE_K])}
+    b_rank = {int(i): r for r, i in enumerate(np.argsort(-b)[:CANDIDATE_K])}
+    rrf = defaultdict(float)
+    for i, r in d_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    for i, r in b_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    cand = sorted(rrf, key=lambda i: (-rrf[i], i))
+    pool, rest = cand[:RERANK_TOP_N], cand[RERANK_TOP_N:]
+    ce = ce_model().predict([(q, c.texts[i]) for i in pool], batch_size=16, show_progress_bar=False) if pool else []
+    ce_map = {i: float(s) for i, s in zip(pool, ce)}
+    pool.sort(key=lambda i: (-ce_map[i], -rrf[i], i))
+    top = pool + rest
+    return top, {"org_filter": None, "top1_ce": ce_map[top[0]] if top else None, "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
+
 def run_random(c: Corpus, q):
     idx = list(np.random.permutation(len(c.rows))[:TOP_K * 3]); return idx, {}
 
-PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "vanilla_filter": run_vanilla_filter, "vanilla_bge_filter": run_vanilla_bge_filter, "hybrid": run_hybrid, "hybrid_nobm25": run_hybrid_nobm25, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
+PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "vanilla_filter": run_vanilla_filter, "vanilla_bge_filter": run_vanilla_bge_filter, "hybrid": run_hybrid, "hybrid_nobm25": run_hybrid_nobm25, "hybrid_nofilter": run_hybrid_nofilter, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
 
 # ---------------------------------------------------------------- 실행
 def main():
@@ -218,11 +237,17 @@ def main():
     def series(cname, pname, key="ndcg5"):
         return [r[key] for r in sorted(per_query, key=lambda r: r["qid"]) if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
     pairs = [("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
+         ("L2P vs L2, hybrid (A)", ("L2P_A", "hybrid"), ("L2_A", "hybrid")),
+         ("L2P vs L2, vanilla (A)", ("L2P_A", "vanilla"), ("L2_A", "vanilla")),
+         ("L2P vs L2, vanilla_bge_filter (A)", ("L2P_A", "vanilla_bge_filter"), ("L2_A", "vanilla_bge_filter")),
              ("vanilla_bge vs vanilla (L2_A)", ("L2_A", "vanilla_bge"), ("L2_A", "vanilla")),
          ("vanilla_filter vs vanilla (L2_A)", ("L2_A", "vanilla_filter"), ("L2_A", "vanilla")),
          ("vanilla_bge_filter vs vanilla_bge (L2_A)", ("L2_A", "vanilla_bge_filter"), ("L2_A", "vanilla_bge")),
          ("hybrid_nobm25 vs vanilla_bge_filter (L2_A)", ("L2_A", "hybrid_nobm25"), ("L2_A", "vanilla_bge_filter")),
          ("hybrid vs vanilla_filter (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla_filter")),
+         ("hybrid vs hybrid_nofilter (L2_A)", ("L2_A", "hybrid"), ("L2_A", "hybrid_nofilter")),
+         ("hybrid vs hybrid_nofilter (L0_A)", ("L0_A", "hybrid"), ("L0_A", "hybrid_nofilter")),
+         ("hybrid_nofilter vs vanilla_bge (L2_A)", ("L2_A", "hybrid_nofilter"), ("L2_A", "vanilla_bge")),
          ("hybrid vs hybrid_nobm25 (L2_A)", ("L2_A", "hybrid"), ("L2_A", "hybrid_nobm25")),
          ("hybrid vs hybrid_nobm25 (L0_A)", ("L0_A", "hybrid"), ("L0_A", "hybrid_nobm25")),
          ("hybrid_nobm25 vs vanilla_bge (L2_A)", ("L2_A", "hybrid_nobm25"), ("L2_A", "vanilla_bge")),
@@ -238,6 +263,7 @@ def main():
              ("hybrid vs dense-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_dense")),
              ("hybrid vs bm25-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_bm25"))]
     for label, a, b in pairs:
+        if a[0] not in CORPORA or b[0] not in CORPORA: continue
         sa, sb = series(*a), series(*b)
         lo, hi = boot_ci(sa, sb)
         summary["comparisons"].append({"label": label, "a": a, "b": b, "delta_ndcg5": sum(sa) / len(sa) - sum(sb) / len(sb), "ci95": [lo, hi], "significant": lo > 0 or hi < 0})

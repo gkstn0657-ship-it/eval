@@ -13,7 +13,16 @@ import numpy as np
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent
 sys.path.insert(0, str(HERE)); import run_eval as E  # noqa: E402
-OUT = HERE / "results"; CORPUS = "L2_A"; PIPES = ["vanilla", "hybrid"]
+CORPUS = sys.argv[sys.argv.index("--corpora") + 1] if "--corpora" in sys.argv else "L2_A"
+OUT = HERE / ("results" + (("_" + sys.argv[sys.argv.index("--tag") + 1]) if "--tag" in sys.argv else "")); OUT.mkdir(exist_ok=True)
+PIPES = ["vanilla", "hybrid"]
+DELEGATION = "--delegation" in sys.argv  # 개선 3: 기관의 위임 규정 목록을 프롬프트에 넣어 범위 외 질의에 소관 규정을 안내하게 함
+import glob as _glob
+_DELEG = {}
+if DELEGATION:
+    for f in _glob.glob(str(ROOT / "1_데이터셋/05_clean/L2/*/*/*.meta.json")):
+        m = json.load(open(f, encoding="utf-8"))
+        if m.get("is_latest"): _DELEG[m["org"]] = [d for d in m.get("delegated_to", []) if "이 규정" not in d][:12]
 OLLAMA, MODEL = "http://127.0.0.1:11434", "qwen2.5:7b-instruct"
 GOLD = [json.loads(l) for l in (ROOT / "1_데이터셋/06_eval/goldenset_dev.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
 
@@ -27,8 +36,12 @@ SYSTEM_PROMPT = """너는 회사 내부 규정안내를 도와주는 사내 문�
 예시: " 한국가스공사 인사규정 제31조(정년) "
 
 너가 생성한 답변이 문서 내용과 위배되거나 없는 내용을 임의로 지어내었는지 반복적으로 재검증하고 틀린 부분을 수정해서 최종 답변해줘.
-[참고문서]
+{delegation}[참고문서]
 {context}"""
+DELEG_TMPL = """[이 기관 인사규정이 다른 규정에 위임한 사항]
+{items}
+질문이 위 항목처럼 인사규정 밖의 사항(보수·복지·여비·교육·징계 세부 기준 등)이면, 인사규정에는 없다고 답하고 어느 규정 소관인지 위 목록에서 찾아 안내해.
+"""
 
 JUDGE_PROMPT = """너는 사내 규정 챗봇의 답변을 채점하는 심사자다. 아래 정보를 보고 100점 만점으로 채점한다. 반드시 JSON 만 출력한다.
 
@@ -76,10 +89,14 @@ def gen():
                 if len(hits) >= 5: break
             abstain = bool(info.get("abstain")) and p == "vanilla"
             ctx = build_context(c, hits, abstain)
-            t1 = time.time(); ans = ollama(SYSTEM_PROMPT.format(context=ctx), q["query"])
+            deleg = ""
+            if DELEGATION:
+                org = E.detect_org(q["query"]); items = _DELEG.get(org, [])
+                if items: deleg = DELEG_TMPL.format(items="\n".join("- " + x for x in items))
+            t1 = time.time(); ans = ollama(SYSTEM_PROMPT.format(context=ctx, delegation=deleg), q["query"])
             rec = {"qid": q["qid"], "type": q["type"], "pipeline": p, "query": q["query"], "gold_ids": q["gold_ids"], "hint": q["answer_hint"],
                    "retrieved": [c.rows[i]["article_id"] for i in hits], "retrieval_hit5": bool(set(arts[:5]) & set(q["gold_ids"])), "abstain_retrieval": abstain,
-                   "answer": ans, "gen_seconds": round(time.time() - t1, 1)}
+                   "answer": ans, "gen_seconds": round(time.time() - t1, 1), "delegation_used": bool(deleg)}
             f.write(json.dumps(rec, ensure_ascii=False) + "\n"); f.flush()
             print(f"{q['qid']} {p:8} {rec['gen_seconds']:5.1f}s  hit5={rec['retrieval_hit5']}  ({time.time()-t0:.0f}s)")
     f.close()
@@ -91,9 +108,10 @@ def auto_checks(rec, gold_text):
     gold_nos = {g.split("|")[2] for g in rec["gold_ids"]}; gold_orgs = {g.split("|")[0] for g in rec["gold_ids"]}
     cite_ok = bool(cited & gold_nos) and any(o.replace("(주)", "").replace("주식회사 ", "")[:4] in ans for o in gold_orgs) if rec["gold_ids"] else None
     refuse = bool(re.search(r"없습니다|없다|확인할 수 없|규정에 (명시|나와|포함)되어 있지|해당 (내용|규정)이 없|찾을 수 없|알 수 없", ans))
+    guides = bool(re.search(r"(보수|복지|여비|교육훈련|상벌|징계|취업|복무|유연근무|퇴직급여|직제)[가-힣 ]*(규정|규칙|세칙|지침)[^\n]{0,12}(소관|따릅니다|정합니다|정하고|참고|확인)", ans))
     hint_nums = set(NUM.findall(rec["hint"])) - {"1", "2", "3"} if rec["type"] in ("Q3", "Q2", "Q6", "Q7", "Q10") else set()
     num_ok = (len(hint_nums & set(NUM.findall(ans))) / len(hint_nums)) if hint_nums else None
-    return {"cited_articles": sorted(cited), "citation_match": cite_ok, "refusal": refuse, "hint_numbers_covered": num_ok}
+    return {"cited_articles": sorted(cited), "citation_match": cite_ok, "refusal": refuse, "guides_to_rule": guides, "hint_numbers_covered": num_ok}
 
 def judge():
     idx = {json.loads(l)["id"]: json.loads(l) for l in (ROOT / "1_데이터셋/05_clean/L2/index_B_all_revisions.jsonl").read_text(encoding="utf-8").splitlines()}
@@ -125,7 +143,7 @@ def summary():
             "citation_match_rate": mean([1.0 if j["citation_match"] else 0.0 for j in scored if j["citation_match"] is not None]),
             "hint_numbers_covered": mean([j["hint_numbers_covered"] for j in scored]),
             "pass80_rate": mean([1.0 if (j["total"] or 0) >= 80 else 0.0 for j in scored]),
-            "q9_refusal_rate": mean([1.0 if j["refusal"] else 0.0 for j in q9]), "q9_hallucination_rate": mean([1.0 if j["judge"].get("hallucination") else 0.0 for j in q9]),
+            "q9_refusal_rate": mean([1.0 if j["refusal"] else 0.0 for j in q9]), "q9_guides_rule_rate": mean([1.0 if j.get("guides_to_rule") else 0.0 for j in q9]), "q9_hallucination_rate": mean([1.0 if j["judge"].get("hallucination") else 0.0 for j in q9]),
             "answer_when_retrieval_missed": {"n": sum(1 for j in scored if not j["retrieval_hit5"]), "hallucination_rate": mean([1.0 if j["judge"].get("hallucination") else 0.0 for j in scored if not j["retrieval_hit5"]])}}
         for t in sorted({j["type"] for j in R}, key=lambda x: int(x[1:])):
             T = [j for j in R if j["type"] == t]
