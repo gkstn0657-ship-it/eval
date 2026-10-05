@@ -17,6 +17,7 @@ import numpy as np
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent
 GOLD = ROOT / "1_데이터셋" / "06_eval" / ("goldenset_holdout_sealed.jsonl" if "--holdout" in sys.argv else "goldenset_dev.jsonl")
+if "--gold" in sys.argv: GOLD = Path(sys.argv[sys.argv.index("--gold") + 1])  # v8: 외부 골든셋(새 문항) 지정
 OUT_SUFFIX = ("_" + sys.argv[sys.argv.index("--tag") + 1]) if "--tag" in sys.argv else ""
 OUT = HERE / (("results_holdout" if "--holdout" in sys.argv else "results") + OUT_SUFFIX); OUT.mkdir(exist_ok=True)
 CACHE = HERE / "cache"; CACHE.mkdir(exist_ok=True)
@@ -24,6 +25,8 @@ CORPORA = ["L0_A", "L0_B", "L1_A", "L1_B", "L2_A", "L2_B"]
 if "--corpora" in sys.argv: CORPORA = sys.argv[sys.argv.index("--corpora") + 1].split(",")
 TOP_K, RRF_K, CANDIDATE_K, RERANK_TOP_N, MIN_RESULTS, SIM_THRESHOLD, CE_MAX_LEN = 10, 60, 30, 30, 5, 0.5, 384
 TOKEN_RE = re.compile(r"[0-9A-Za-z가-힣]+")
+def _device():
+    import torch; return "cuda" if torch.cuda.is_available() else "cpu"
 random.seed(42); np.random.seed(42)
 
 ORG_ALIAS = {  # 질의 속 기관 표현 → 코퍼스 org. 긴 표현부터 매칭
@@ -38,8 +41,16 @@ ORG_ALIAS = {  # 질의 속 기관 표현 → 코퍼스 org. 긴 표현부터 �
     "한국마사회": "한국마사회", "마사회": "한국마사회", "한국부동산원": "한국부동산원", "부동산원": "한국부동산원",
     "해양환경공단": "해양환경공단", "강원랜드": "(주)강원랜드", "그랜드코리아레저": "그랜드코리아레저(주)", "GKL": "그랜드코리아레저(주)",
     "에스알": "주식회사 에스알", "SR": "주식회사 에스알",
+    "한국지역난방공사": "한국지역난방공사", "지역난방공사": "한국지역난방공사", "지역난방": "한국지역난방공사", "난방공사": "한국지역난방공사",  # 외부 검증 기관(2026-10-04)
 }
+def strip_org(q):
+    """질의에서 기관 표현을 제거(v8). 기관은 필터가 맡으므로 점수 계산에는 넣지 않는다."""
+    for k in sorted(ORG_ALIAS, key=len, reverse=True):
+        if k in q: return re.sub(r"\s+", " ", q.replace(k, " ")).strip()
+    return q
+_CTX = {"org": None}  # 사내 챗봇 상황: 질의 레코드에 context_org 가 있으면 질의 문자열 대신 이 값을 기관으로 쓴다 (employee 세트)
 def detect_org(q):
+    if _CTX["org"] is not None: return _CTX["org"]
     for k in sorted(ORG_ALIAS, key=len, reverse=True):
         if k in q: return ORG_ALIAS[k]
     return None
@@ -49,12 +60,13 @@ _models = {}
 def st_model(name):
     if name not in _models:
         from sentence_transformers import SentenceTransformer
-        _models[name] = SentenceTransformer(name, device="cuda")
+        _models[name] = SentenceTransformer(name, device="cpu")  # VRAM 3GB: 임베딩은 CPU(코퍼스는 캐시), CE 만 GPU
     return _models[name]
 def ce_model():
     if "ce" not in _models:
         from sentence_transformers import CrossEncoder
-        _models["ce"] = CrossEncoder("BAAI/bge-reranker-v2-m3", device="cuda", max_length=CE_MAX_LEN)
+        _models["ce"] = CrossEncoder("BAAI/bge-reranker-v2-m3", device=_device(), max_length=CE_MAX_LEN)
+        if _device() == "cuda": _models["ce"].model.half()
     return _models["ce"]
 
 def embed_cached(model_name, texts, tag):
@@ -194,24 +206,113 @@ def run_hybrid_nofilter(c: Corpus, q):
     top = pool + rest
     return top, {"org_filter": None, "top1_ce": ce_map[top[0]] if top else None, "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
 
+def _hybrid_core(c: Corpus, q_score, org, diverse=False):
+    qv = st_model("BAAI/bge-m3").encode([q_score], normalize_embeddings=True, convert_to_numpy=True)[0]
+    d = c.bge @ qv; b = c.bm25.get_scores(TOKEN_RE.findall(q_score.lower()))
+    d_rank = {int(i): r for r, i in enumerate(np.argsort(-d)[:CANDIDATE_K])}
+    b_rank = {int(i): r for r, i in enumerate(np.argsort(-b)[:CANDIDATE_K])}
+    rrf = defaultdict(float)
+    for i, r in d_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    for i, r in b_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    cand = sorted(rrf, key=lambda i: (-rrf[i], i))
+    exact = [i for i in cand if org is None or c.orgs[i] == org]; relaxed = [i for i in cand if i not in exact]
+    pool, rest = (exact + relaxed)[:RERANK_TOP_N], (exact + relaxed)[RERANK_TOP_N:]
+    ce = ce_model().predict([(q_score, c.texts[i]) for i in pool], batch_size=16, show_progress_bar=False) if pool else []
+    ce_map = {i: float(s) for i, s in zip(pool, ce)}
+    pool.sort(key=lambda i: (not (org is None or c.orgs[i] == org), -ce_map[i], -rrf[i], i))
+    if diverse and org is None:  # 기관 비교 질의: 기관당 1개를 먼저 배치
+        seen, first, later = set(), [], []
+        for i in pool:
+            (later if c.orgs[i] in seen else first).append(i); seen.add(c.orgs[i])
+        pool = first + later
+    top = pool + rest
+    return top, {"org_filter": org, "exact_in_pool": sum(1 for i in pool if org is None or c.orgs[i] == org),
+                 "top1_ce": ce_map[top[0]] if top else None, "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
+def run_hybrid_qstrip(c: Corpus, q):
+    """v8 수정 1: 기관명을 질의에서 떼고 dense·BM25·CE 점수를 계산. 필터는 그대로."""
+    org = detect_org(q); return _hybrid_core(c, strip_org(q) if org else q, org)
+def run_hybrid_qstrip_diverse(c: Corpus, q):
+    """v8 수정 1+2: 기관명 제거 + 기관 미지정 질의는 기관당 1개 우선 배치."""
+    org = detect_org(q); return _hybrid_core(c, strip_org(q) if org else q, org, diverse=True)
+def run_hybrid_prefilter(c: Corpus, q):
+    """v9: 기관 필터를 후보 생성 앞으로. 기관이 감지되면 그 기관 청크만 대상으로 dense·BM25 → RRF → CE. 질의 기관명 제거(v8) 포함.
+    기관 미감지 질의는 hybrid_qstrip 과 동일 경로."""
+    org = detect_org(q)
+    if org is None: return _hybrid_core(c, q, None)
+    q_score = strip_org(q)
+    mask = c.orgs == org
+    qv = st_model("BAAI/bge-m3").encode([q_score], normalize_embeddings=True, convert_to_numpy=True)[0]
+    d = np.where(mask, c.bge @ qv, -np.inf); b = np.where(mask, c.bm25.get_scores(TOKEN_RE.findall(q_score.lower())), -np.inf)
+    d_rank = {int(i): r for r, i in enumerate(np.argsort(-d)[:CANDIDATE_K]) if mask[i]}
+    b_rank = {int(i): r for r, i in enumerate(np.argsort(-b)[:CANDIDATE_K]) if mask[i]}
+    rrf = defaultdict(float)
+    for i, r in d_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    for i, r in b_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    cand = sorted(rrf, key=lambda i: (-rrf[i], i))
+    pool, rest = cand[:RERANK_TOP_N], cand[RERANK_TOP_N:]
+    ce = ce_model().predict([(q_score, c.texts[i]) for i in pool], batch_size=16, show_progress_bar=False) if pool else []
+    ce_map = {i: float(s) for i, s in zip(pool, ce)}
+    pool.sort(key=lambda i: (-ce_map[i], -rrf[i], i))
+    top = pool + rest
+    return top, {"org_filter": org, "exact_in_pool": len(pool), "top1_ce": ce_map[top[0]] if top else None, "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
+_SYN = None
+def expand_query(q):
+    """v10: synonyms_seed(사람 작성, R-14)의 일상어 표현이 질의에 있으면 규정어를 덧붙인다. 토큰(2자 그대로, 3자+는 끝 글자 제거)이 모두 포함될 때 매칭."""
+    global _SYN
+    if _SYN is None:
+        _SYN = [json.loads(l) for l in (ROOT / "1_데이터셋" / "05_clean" / "L2" / "synonyms_seed.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+    add = []
+    for e in _SYN:
+        for phrase in e["everyday"]:
+            toks = [t if len(t) == 2 else t[:-1] for t in re.findall(r"[가-힣]{2,}", phrase)]
+            if toks and all(t in q for t in toks):
+                add += [t for t in e["terms"] if t not in add]; break
+    return (q + " " + " ".join(add)).strip() if add else q
+def _prefilter_core(c: Corpus, q_dense, q_bm25, q_ce, org):
+    mask = c.orgs == org
+    qv = st_model("BAAI/bge-m3").encode([q_dense], normalize_embeddings=True, convert_to_numpy=True)[0]
+    d = np.where(mask, c.bge @ qv, -np.inf); b = np.where(mask, c.bm25.get_scores(TOKEN_RE.findall(q_bm25.lower())), -np.inf)
+    d_rank = {int(i): r for r, i in enumerate(np.argsort(-d)[:CANDIDATE_K]) if mask[i]}
+    b_rank = {int(i): r for r, i in enumerate(np.argsort(-b)[:CANDIDATE_K]) if mask[i]}
+    rrf = defaultdict(float)
+    for i, r in d_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    for i, r in b_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    cand = sorted(rrf, key=lambda i: (-rrf[i], i)); pool, rest = cand[:RERANK_TOP_N], cand[RERANK_TOP_N:]
+    ce = ce_model().predict([(q_ce, c.texts[i]) for i in pool], batch_size=16, show_progress_bar=False) if pool else []
+    ce_map = {i: float(s) for i, s in zip(pool, ce)}
+    pool.sort(key=lambda i: (-ce_map[i], -rrf[i], i)); top = pool + rest
+    return top, {"org_filter": org, "exact_in_pool": len(pool), "top1_ce": ce_map[top[0]] if top else None, "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
+def run_hybrid_prefilter_qexp(c: Corpus, q):
+    """v10: pre-filter + 질의 확장(dense·BM25·CE 모두)."""
+    org = detect_org(q)
+    if org is None: return _hybrid_core(c, expand_query(q), None)
+    qe = expand_query(strip_org(q)); return _prefilter_core(c, qe, qe, qe, org)
+def run_hybrid_prefilter_qexp_bm25ce(c: Corpus, q):
+    """v10: pre-filter + 질의 확장(BM25·CE 만, dense 는 원 질의)."""
+    org = detect_org(q)
+    if org is None: return _hybrid_core(c, q, None)
+    q0 = strip_org(q); qe = expand_query(q0); return _prefilter_core(c, q0, qe, qe, org)
 def run_random(c: Corpus, q):
     idx = list(np.random.permutation(len(c.rows))[:TOP_K * 3]); return idx, {}
 
-PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "vanilla_filter": run_vanilla_filter, "vanilla_bge_filter": run_vanilla_bge_filter, "hybrid": run_hybrid, "hybrid_nobm25": run_hybrid_nobm25, "hybrid_nofilter": run_hybrid_nofilter, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
+PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "vanilla_filter": run_vanilla_filter, "vanilla_bge_filter": run_vanilla_bge_filter, "hybrid": run_hybrid, "hybrid_nobm25": run_hybrid_nobm25, "hybrid_nofilter": run_hybrid_nofilter, "hybrid_qstrip": run_hybrid_qstrip, "hybrid_qstrip_diverse": run_hybrid_qstrip_diverse, "hybrid_prefilter": run_hybrid_prefilter, "hybrid_prefilter_qexp": run_hybrid_prefilter_qexp, "hybrid_prefilter_qexp_bm25ce": run_hybrid_prefilter_qexp_bm25ce, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
 
 # ---------------------------------------------------------------- 실행
 def main():
+    if "--pipelines" in sys.argv:
+        keep = sys.argv[sys.argv.index("--pipelines") + 1].split(","); [PIPELINES.pop(k) for k in list(PIPELINES) if k not in keep]
     gold = [json.loads(l) for l in GOLD.read_text(encoding="utf-8").splitlines() if l.strip()]
     per_query, t0 = [], time.time()
     for cname in CORPORA:
         c = Corpus(cname); policy = cname[-1]
         for pname, fn in PIPELINES.items():
             for q in gold:
+                _CTX["org"] = q.get("context_org")
                 idx, info = fn(c, q["query"])
                 arts = to_articles(idx, c.rows)
                 g = q["gold_ids_any_revision"] if policy == "B" else q["gold_ids"]
                 m = metrics(arts, g) if q["type"] != "Q9" else {}
-                per_query.append({"corpus": cname, "pipeline": pname, "qid": q["qid"], "type": q["type"], "gold": g,
+                per_query.append({"corpus": cname, "pipeline": pname, "qid": q["qid"], "type": q["type"], "rank": q.get("rank"), "gold": g,
                                   "top5": arts[:5], **m, **info})
             print(f"{cname} {pname} done ({time.time()-t0:.0f}s)")
     json.dump(per_query, open(OUT / "per_query.json", "w", encoding="utf-8"), ensure_ascii=False)
@@ -237,6 +338,13 @@ def main():
     def series(cname, pname, key="ndcg5"):
         return [r[key] for r in sorted(per_query, key=lambda r: r["qid"]) if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
     pairs = [("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
+         ("v8 qstrip vs hybrid (L2P_A)", ("L2P_A", "hybrid_qstrip"), ("L2P_A", "hybrid")),
+         ("v8 qstrip+diverse vs hybrid (L2P_A)", ("L2P_A", "hybrid_qstrip_diverse"), ("L2P_A", "hybrid")),
+         ("v8 qstrip+diverse vs qstrip (L2P_A)", ("L2P_A", "hybrid_qstrip_diverse"), ("L2P_A", "hybrid_qstrip")),
+         ("v9 prefilter vs qstrip (L2P_A)", ("L2P_A", "hybrid_prefilter"), ("L2P_A", "hybrid_qstrip")),
+         ("v9 prefilter vs hybrid (L2P_A)", ("L2P_A", "hybrid_prefilter"), ("L2P_A", "hybrid")),
+         ("v10 qexp vs prefilter (L2P_A)", ("L2P_A", "hybrid_prefilter_qexp"), ("L2P_A", "hybrid_prefilter")),
+         ("v10 qexp_bm25ce vs prefilter (L2P_A)", ("L2P_A", "hybrid_prefilter_qexp_bm25ce"), ("L2P_A", "hybrid_prefilter")),
          ("L2P vs L2, hybrid (A)", ("L2P_A", "hybrid"), ("L2_A", "hybrid")),
          ("L2P vs L2, vanilla (A)", ("L2P_A", "vanilla"), ("L2_A", "vanilla")),
          ("L2P vs L2, vanilla_bge_filter (A)", ("L2P_A", "vanilla_bge_filter"), ("L2_A", "vanilla_bge_filter")),
@@ -263,7 +371,7 @@ def main():
              ("hybrid vs dense-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_dense")),
              ("hybrid vs bm25-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_bm25"))]
     for label, a, b in pairs:
-        if a[0] not in CORPORA or b[0] not in CORPORA: continue
+        if a[0] not in CORPORA or b[0] not in CORPORA or a[1] not in PIPELINES or b[1] not in PIPELINES: continue
         sa, sb = series(*a), series(*b)
         lo, hi = boot_ci(sa, sb)
         summary["comparisons"].append({"label": label, "a": a, "b": b, "delta_ndcg5": sum(sa) / len(sa) - sum(sb) / len(sb), "ci95": [lo, hi], "significant": lo > 0 or hi < 0})
