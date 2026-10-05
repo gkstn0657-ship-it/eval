@@ -1,0 +1,321 @@
+{
+ "n_queries": 44,
+ "n_scored": 40,
+ "conditions": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "recall5": 0.9,
+   "recall10": 0.9,
+   "mrr": 0.85,
+   "ndcg5": 0.862665277406063
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "recall5": 0.9,
+   "recall10": 0.9,
+   "mrr": 0.85,
+   "ndcg5": 0.862665277406063
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.95,
+   "recall10": 0.975,
+   "mrr": 0.8952380952380953,
+   "ndcg5": 0.9061187897274902
+  }
+ ],
+ "by_type": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q1",
+   "n": 7,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q2",
+   "n": 9,
+   "recall5": 0.8888888888888888,
+   "mrr": 0.7222222222222222,
+   "ndcg5": 0.7658654734127082
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q3",
+   "n": 10,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q4",
+   "n": 6,
+   "recall5": 0.6666666666666666,
+   "mrr": 0.6666666666666666,
+   "ndcg5": 0.6666666666666666
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q6",
+   "n": 2,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 0.9914460409783439
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q7",
+   "n": 2,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q10",
+   "n": 1,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q11",
+   "n": 3,
+   "recall5": 0.6666666666666666,
+   "mrr": 0.5,
+   "ndcg5": 0.5436432511904858
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "type": "Q1",
+   "n": 7,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "type": "Q2",
+   "n": 9,
+   "recall5": 0.8888888888888888,
+   "mrr": 0.7222222222222222,
+   "ndcg5": 0.7658654734127082
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "type": "Q3",
+   "n": 10,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "type": "Q4",
+   "n": 6,
+   "recall5": 0.6666666666666666,
+   "mrr": 0.6666666666666666,
+   "ndcg5": 0.6666666666666666
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "type": "Q6",
+   "n": 2,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 0.9914460409783439
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "type": "Q7",
+   "n": 2,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "type": "Q10",
+   "n": 1,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "type": "Q11",
+   "n": 3,
+   "recall5": 0.6666666666666666,
+   "mrr": 0.5,
+   "ndcg5": 0.5436432511904858
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 7,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 9,
+   "recall5": 1.0,
+   "mrr": 0.7962962962962963,
+   "ndcg5": 0.847881083730162
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 10,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 6,
+   "recall5": 0.8333333333333334,
+   "mrr": 0.8333333333333334,
+   "ndcg5": 0.8333333333333334
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q6",
+   "n": 2,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 0.9914460409783439
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 2,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q10",
+   "n": 1,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 3,
+   "recall5": 0.6666666666666666,
+   "mrr": 0.5476190476190476,
+   "ndcg5": 0.5436432511904858
+  }
+ ],
+ "q9": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "n": 4,
+   "abstain_rate": 0.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_qstrip",
+   "n": 4,
+   "abstain_rate": 0.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 4,
+   "abstain_rate": 0.0
+  }
+ ],
+ "comparisons": [
+  {
+   "label": "v8 qstrip vs hybrid (L2P_A)",
+   "a": [
+    "L2P_A",
+    "hybrid_qstrip"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid"
+   ],
+   "delta_ndcg5": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "significant": false
+  },
+  {
+   "label": "v9 prefilter vs qstrip (L2P_A)",
+   "a": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid_qstrip"
+   ],
+   "delta_ndcg5": 0.043453512321427135,
+   "ci95": [
+    -0.009819731517859314,
+    0.12172675616071356
+   ],
+   "significant": false
+  },
+  {
+   "label": "v9 prefilter vs hybrid (L2P_A)",
+   "a": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid"
+   ],
+   "delta_ndcg5": 0.043453512321427135,
+   "ci95": [
+    -0.009819731517859314,
+    0.12172675616071356
+   ],
+   "significant": false
+  }
+ ]
+}
