@@ -84,11 +84,12 @@ def embed_cached(model_name, texts, tag):
     return np.stack([cache[k] for k in keys])
 
 # ---------------------------------------------------------------- 지표
+EXPAND = "--expand" in sys.argv  # 1006 실험 민감도 분석: 조 경계를 넘는 청크가 포함한 조문 전체(article_ids)를 펼쳐 채점
 def to_articles(ranked_chunk_idx, rows):
     seen, out = set(), []
     for i in ranked_chunk_idx:
-        a = rows[i]["article_id"]
-        if a not in seen: seen.add(a); out.append(a)
+        for a in (rows[i].get("article_ids") or [rows[i]["article_id"]]) if EXPAND else [rows[i]["article_id"]]:
+            if a not in seen: seen.add(a); out.append(a)
     return out
 def metrics(ranked_articles, gold):
     gold = set(gold); hits = [1 if a in gold else 0 for a in ranked_articles[:TOP_K]]
@@ -345,7 +346,10 @@ def main():
             if q9: summary["q9"].append({"corpus": cname, "pipeline": pname, "n": len(q9), "abstain_rate": sum(r["abstain"] for r in q9) / len(q9)})
     def series(cname, pname, key="ndcg5"):
         return [r[key] for r in sorted(per_query, key=lambda r: r["qid"]) if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
-    pairs = [("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
+    pairs = [("1006 CH_FIX vs L2P (prefilter)", ("CH_FIX_A", "hybrid_prefilter"), ("L2P_A", "hybrid_prefilter")),
+         ("1006 CH_SEM vs L2P (prefilter)", ("CH_SEM_A", "hybrid_prefilter"), ("L2P_A", "hybrid_prefilter")),
+         ("1006 CH_PARA vs L2P (prefilter)", ("CH_PARA_A", "hybrid_prefilter"), ("L2P_A", "hybrid_prefilter")),
+         ("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
          ("v8 qstrip vs hybrid (L2P_A)", ("L2P_A", "hybrid_qstrip"), ("L2P_A", "hybrid")),
          ("v8 qstrip+diverse vs hybrid (L2P_A)", ("L2P_A", "hybrid_qstrip_diverse"), ("L2P_A", "hybrid")),
          ("v8 qstrip+diverse vs qstrip (L2P_A)", ("L2P_A", "hybrid_qstrip_diverse"), ("L2P_A", "hybrid_qstrip")),
