@@ -12,6 +12,7 @@
   --ok:#067647;--ok-soft:#ecfdf3;--warn:#b54708;--warn-soft:#fffaeb;--bad:#b42318;--bad-soft:#fef3f2;
   --shadow:0 1px 2px rgba(16,24,40,.05),0 4px 16px rgba(16,24,40,.04);
   --r:14px;--r-sm:10px;--focus:0 0 0 3px rgba(47,91,234,.25);
+  --series-1:#2a78d6;--series-2:#eb6834;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0c0e12;--surface:#14171d;--surface-2:#1b1f27;--line:#252a33;--line-strong:#333a46;
@@ -19,6 +20,7 @@
   --brand:#6d8dff;--brand-ink:#0c0e12;--brand-soft:#1a2240;
   --ok:#47cd89;--ok-soft:#0f2a1d;--warn:#fdb022;--warn-soft:#2b2110;--bad:#f97066;--bad-soft:#2d1514;
   --shadow:0 1px 2px rgba(0,0,0,.3);--focus:0 0 0 3px rgba(109,141,255,.35);
+  --series-1:#3987e5;--series-2:#d95926;
 }}
 :root[data-theme="dark"]{
   --bg:#0c0e12;--surface:#14171d;--surface-2:#1b1f27;--line:#252a33;--line-strong:#333a46;
@@ -26,6 +28,7 @@
   --brand:#6d8dff;--brand-ink:#0c0e12;--brand-soft:#1a2240;
   --ok:#47cd89;--ok-soft:#0f2a1d;--warn:#fdb022;--warn-soft:#2b2110;--bad:#f97066;--bad-soft:#2d1514;
   --shadow:0 1px 2px rgba(0,0,0,.3);--focus:0 0 0 3px rgba(109,141,255,.35);
+  --series-1:#3987e5;--series-2:#d95926;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -132,6 +135,58 @@ button{cursor:pointer}
 .steps li::before{content:counter(s);display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:11.5px;margin-right:6px}
 .steps b{color:var(--ink)}
 .foot{font-size:12.5px;color:var(--ink-3);padding:18px 0 40px;line-height:1.7}
+
+/* 소개 섹션 */
+.sec{margin-top:40px;scroll-margin-top:16px}
+.sec-h{font-size:20px;letter-spacing:-.02em;margin:0 0 4px}
+.sec-sub{color:var(--ink-2);margin:0 0 14px;font-size:14px}
+.sub-h{font-size:15px;margin:22px 0 10px}
+.card-h{font-size:14px;margin:0 0 10px}
+.note{font-size:13.5px;color:var(--ink-2);margin:12px 0 0}
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.gcard{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;box-shadow:var(--shadow);transition:border-color .15s,transform .15s}
+.gcard:hover{border-color:var(--brand);transform:translateY(-1px)}
+.gcard .tag{align-self:flex-start;font-size:11.5px;font-weight:700;color:var(--brand);background:var(--brand-soft);border-radius:6px;padding:2px 8px}
+.gcard .gq{font-weight:700;color:var(--ink);line-height:1.45}
+.gcard .go-org{font-size:12.5px;color:var(--ink-3)}
+.gcard .look{font-size:13px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:8px;margin-top:2px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;box-shadow:var(--shadow)}
+.tile b{display:block;font-size:24px;letter-spacing:-.02em;line-height:1.2}
+.tile span{font-size:12.5px;color:var(--ink-3)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.fig{margin:0}
+.fig figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:12px}
+.fig figcaption b{font-size:14px}.fig figcaption span{font-size:12px;color:var(--ink-3)}
+.hbars .row{display:grid;grid-template-columns:132px 1fr;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.hbars .lab{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{position:relative;height:14px;display:block}
+.bar{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;background:var(--series-1);min-width:2px}
+.val{position:absolute;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink-2);padding-left:6px;white-space:nowrap}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0;font-size:13.5px}
+.facts dt{color:var(--ink-3)}.facts dd{margin:0;color:var(--ink)}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.flow li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;font-size:13px;color:var(--ink-2)}
+.flow li b{display:block;color:var(--ink);font-size:14px;margin-bottom:4px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink-2);margin-bottom:10px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.s1,.b1{background:var(--series-1)}.s2,.b2{background:var(--series-2)}
+.pbars .grp{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.pbars .grp:first-child{border-top:0}
+.pbars .lab{font-size:13px;color:var(--ink)}.pbars .lab small{display:block;color:var(--ink-3);font-size:11.5px}
+.pbars .pair{display:grid;gap:2px}
+.pbars .track{height:13px}
+.tbl{margin-top:10px;font-size:12.5px;color:var(--ink-2)}
+.tbl summary{cursor:pointer;color:var(--ink-3)}
+.tbl table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13px}
+.tbl th,.tbl td{text-align:left;padding:6px 8px;border-top:1px solid var(--line)}
+.limits{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.limits li{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:var(--r-sm);padding:11px 14px;font-size:13.5px;color:var(--ink-2)}
+.limits b{color:var(--ink)}
+@media (max-width:640px){
+  .tiles{grid-template-columns:1fr 1fr}.grid2,.flow{grid-template-columns:1fr}
+  .hbars .row{grid-template-columns:104px 1fr}.pbars .grp{grid-template-columns:1fr}
+}
 @media (max-width:560px){
   .hero{padding:24px 0 14px}
   .q{flex-direction:column}.q input{flex:none;width:100%}.go{justify-content:center}
@@ -156,7 +211,7 @@ button{cursor:pointer}
   <section class="hero">
     <h1>인사규정 질문에<br>근거 조문까지 함께 답합니다</h1>
     <p>공공기관 인사규정 원문에서 관련 조문을 찾아, 출처를 붙여 답변합니다.</p>
-    <div class="stats"><span><b>292</b>개 기관</span><span><b>22,336</b>개 조문</span><span>답변마다 <b>근거 조문</b> 표시</span></div>
+    <div class="stats"><span><b>292</b>개 기관</span><span><b>19,298</b>개 조문</span><span>답변마다 <b>근거 조문</b> 표시</span></div>
   </section>
 
   <form class="ask" id="form" autocomplete="off">
@@ -179,15 +234,79 @@ button{cursor:pointer}
 
   <section id="out" aria-live="polite"></section>
 
-  <details class="how">
-    <summary>어떻게 동작하나요</summary>
+  <section class="sec" id="guide">
+    <h2 class="sec-h">시연 가이드</h2>
+    <p class="sec-sub">카드를 누르면 질문이 바로 실행됩니다. 각 카드의 확인 포인트를 보세요.</p>
+    <div class="guide" id="guideList"></div>
+  </section>
+
+  <section class="sec" id="corpus">
+    <h2 class="sec-h">코퍼스</h2>
+    <p class="sec-sub">ALIO 공공기관 경영정보 공개시스템에 공시된 공공기관 인사규정 최신판입니다. 2026년 10월에 수집했습니다.</p>
+    <div class="tiles">
+      <div class="tile"><b>292</b><span>공공기관</span></div>
+      <div class="tile"><b>19,298</b><span>조문</span></div>
+      <div class="tile"><b>22,336</b><span>검색 청크</span></div>
+      <div class="tile"><b>244자</b><span>청크 평균 길이</span></div>
+    </div>
+    <div class="grid2">
+      <figure class="card fig">
+        <figcaption><b>기관 유형</b><span>292곳</span></figcaption>
+        <div class="hbars" id="orgTypes" role="img" aria-label="기관 유형별 기관 수"></div>
+        <details class="tbl"><summary>표로 보기</summary><table id="orgTypesTbl"></table></details>
+      </figure>
+      <div class="card">
+        <h3 class="card-h">원본과 범위</h3>
+        <dl class="facts">
+          <dt>원본 형식</dt><dd>HWP 200 · PDF 74 · HWPX 20건 (최신판 문서 기준)</dd>
+          <dt>개정 시점</dt><dd>2017년 3월 ~ 2026년 10월</dd>
+          <dt>기관당 조문</dt><dd>중앙값 63개 · 최소 3개 · 최대 195개</dd>
+          <dt>포함 범위</dt><dd>인사규정만 포함합니다. 보수·복무·복리후생 규정은 없습니다.</dd>
+        </dl>
+      </div>
+    </div>
+    <h3 class="sub-h">정제 단계</h3>
+    <ol class="flow">
+      <li><b>파싱</b><span>HWP·PDF에서 본문과 표를 텍스트로 추출하고, 실명은 마스킹합니다.</span></li>
+      <li><b>노이즈 제거</b><span>머리글, 쪽번호, 목차를 지우고 번호·문자를 정규화합니다. 이미지 표는 사람이 전사했습니다.</span></li>
+      <li><b>구조 분리</b><span>부칙과 개정 표기를 본문에서 떼어 메타데이터로 옮기고, 조문 단위로 나눕니다.</span></li>
+    </ol>
+    <p class="note">청킹은 조문 1개를 청크 1개로 삼고, 긴 조문 536개만 나눴습니다. 각 청크 앞에 개정 이력을 붙여 "언제 바뀌었나" 질문도 찾을 수 있게 했습니다. 정제 규칙은 R-01부터 R-14까지 14개이며, 규칙마다 "이 규칙이 없으면 실패하는 질문"을 근거로 적었습니다.</p>
+  </section>
+
+  <section class="sec" id="pipeline">
+    <h2 class="sec-h">파이프라인</h2>
     <ol class="steps">
-      <li><b>기관 필터</b><br>질문이나 선택에서 기관을 인식해 그 기관 조문만 남깁니다.</li>
+      <li><b>기관 필터</b><br>질문이나 선택에서 기관을 인식해 그 기관 조문만 남깁니다. 검색보다 먼저 거릅니다.</li>
       <li><b>하이브리드 검색</b><br>bge-m3 의미 검색과 BM25 키워드 검색을 RRF로 합칩니다.</li>
       <li><b>재랭킹</b><br>bge-reranker-v2-m3가 질문과 조문의 관련도를 다시 매깁니다.</li>
       <li><b>답변 생성</b><br>Qwen2.5-72B가 상위 조문만 근거로 답하고, 근거 조문을 함께 보여줍니다.</li>
     </ol>
-  </details>
+  </section>
+
+  <section class="sec" id="perf">
+    <h2 class="sec-h">성능</h2>
+    <p class="sec-sub">코퍼스를 22곳에서 292곳으로 14배 늘려 같은 질문으로 다시 쟀습니다. 기존 방식은 검색 뒤에 기관을 거르고, 현재 방식은 검색 전에 거릅니다.</p>
+    <figure class="card fig">
+      <figcaption><b>292개 기관 전체에서의 검색 정확도</b><span>nDCG@5</span></figcaption>
+      <div class="legend"><span><i class="sw s1"></i>현재 방식 (기관 필터 먼저)</span><span><i class="sw s2"></i>기존 방식 (검색 뒤 필터)</span></div>
+      <div class="pbars" id="perfBars" role="img" aria-label="평가 세트별 현재 방식과 기존 방식의 nDCG@5"></div>
+      <details class="tbl"><summary>표로 보기</summary><table id="perfTbl"></table></details>
+    </figure>
+    <div class="card" style="margin-top:12px">
+        <h3 class="card-h">왜 기관 필터를 먼저 하나</h3>
+        <p class="note" style="margin:0">292곳의 규정은 문장이 비슷해서, 전체에서 먼저 찾으면 다른 기관의 비슷한 조문이 상위 후보를 다 차지합니다. 기관을 먼저 거르면 기관 수가 늘어도 정확도가 유지됩니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="limits">
+    <h2 class="sec-h">보완점</h2>
+    <ul class="limits">
+      <li><b>기관 비교 질문에 약합니다.</b> "A와 B 중 어디가 더 길어?" 같은 멀티홉 질의에 약합니다. Recall@5 0.20</li>
+      <li><b>하드웨어 제약으로 Retriever는 성공했으나 Generation 단계에서 답변 생성 품질 문제가 있습니다.</b> (Qwen2.5 7B)</li>
+      <li><b>일상어와 규정어 사이의 간극이 남아 있습니다.</b> "부업"처럼 규정에 없는 말은 "겸직"으로 바꿔 물으면 더 잘 찾습니다. → 사전 확장으로 보완 가능</li>
+    </ul>
+  </section>
   <p class="foot">답변은 검색된 인사규정 조문을 바탕으로 자동 생성한 참고 정보이며, 틀릴 수 있으니 근거 조문을 함께 확인하세요. 최종 적용 여부는 소속 기관 인사부서에 확인하세요. 답변 생성은 월 사용 한도가 있어, 한도를 넘으면 근거 조문만 표시됩니다.</p>
 </main>
 
@@ -361,5 +480,30 @@ function applyUrl() {
   if (o && ORGSET.has(o)) { orgIn.value = o; syncClear(); }
   if (q) { $("#q").value = q; ask(); }
 }
+
+/* ── 소개 섹션: 시연 가이드 · 차트 ── */
+const GUIDE = [
+  {tag: "기관 지정", org: "한국가스공사", q: "정년이 몇 살이야?", look: "답변 속 제31조를 누르면 근거 조문으로 이동합니다."},
+  {tag: "일상어 질문", org: "한국철도공사", q: "아기 낳으면 얼마나 쉴 수 있어?", look: "규정어(육아휴직, 출산휴가)가 없어도 관련 조문을 찾는지 보세요."},
+  {tag: "질문 속 기관 인식", org: "(주)강원랜드", q: "한국철도공사의 징계 종류를 알려줘", look: "선택한 기관과 질문 속 기관이 다르면 질문을 따르고 안내합니다."},
+  {tag: "수치 질문", org: "한국광해광업공단", q: "정직은 최대 몇 개월이야?", look: "답의 숫자가 근거 조문 원문에 그대로 있는지 확인하세요."},
+  {tag: "한계 확인", org: "", q: "오늘 점심 뭐 먹지?", look: "거절 장치가 꺼져 있어 무관한 조문이 나옵니다. 답변이 이를 어떻게 처리하는지 보세요."},
+];
+$("#guideList").innerHTML = GUIDE.map((g, i) => `<button type="button" class="gcard" data-g="${i}"><span class="tag">${esc(g.tag)}</span><span class="gq">${esc(g.q)}</span><span class="go-org">${esc(g.org || "전체 기관")}</span><span class="look">${esc(g.look)}</span></button>`).join("");
+$("#guideList").addEventListener("click", e => {
+  const b = e.target.closest(".gcard"); if (!b) return;
+  const g = GUIDE[b.dataset.g]; orgIn.value = g.org; syncClear(); $("#q").value = g.q;
+  $("#form").scrollIntoView({behavior: "smooth", block: "start"}); ask();
+});
+
+const ORG_TYPES = [["기타공공기관", 223], ["위탁집행형 준정부기관", 39], ["준시장형 공기업", 15], ["기금관리형 준정부기관", 8], ["시장형 공기업", 7]];
+const tmax = Math.max(...ORG_TYPES.map(x => x[1]));
+$("#orgTypes").innerHTML = ORG_TYPES.map(([k, v]) => `<div class="row" title="${esc(k)}: ${v}곳"><span class="lab">${esc(k)}</span><span class="track"><span class="bar" style="width:${v / tmax * 82}%"></span><span class="val" style="left:${v / tmax * 82}%">${v}곳</span></span></div>`).join("");
+$("#orgTypesTbl").innerHTML = "<tr><th>유형</th><th>기관 수</th></tr>" + ORG_TYPES.map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join("");
+
+const PERF = [["사내 직원 질문 40개", "직급별 일상 질문", 0.890, 0.258], ["한전KPS 20개", "외부 기관 추가 검증", 0.945, 0.812], ["국토교통과학기술진흥원", "신규 기관", 1.000, 0.550], ["국립공원공단", "신규 기관", 0.925, 0.100]];
+const pb = (cls, v, who) => `<span class="track" title="${who}: ${v.toFixed(3)}"><span class="bar ${cls}" style="width:${v * 84}%"></span><span class="val" style="left:${v * 84}%">${v.toFixed(3)}</span></span>`;
+$("#perfBars").innerHTML = PERF.map(([k, sub, cur, old]) => `<div class="grp"><span class="lab">${esc(k)}<small>${esc(sub)}</small></span><span class="pair">${pb("b1", cur, "현재 방식")}${pb("b2", old, "기존 방식")}</span></div>`).join("");
+$("#perfTbl").innerHTML = "<tr><th>평가 세트</th><th>현재 방식</th><th>기존 방식</th></tr>" + PERF.map(([k, , c, o]) => `<tr><td>${esc(k)}</td><td>${c.toFixed(3)}</td><td>${o.toFixed(3)}</td></tr>`).join("");
 loadOrgs();
 </script></body></html>
