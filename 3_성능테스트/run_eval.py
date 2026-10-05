@@ -15,6 +15,7 @@ from pathlib import Path
 from collections import defaultdict
 import numpy as np
 sys.stdout.reconfigure(encoding="utf-8")
+import os; os.environ.setdefault("HF_HOME", r"E:\hf_cache"); os.environ.setdefault("HF_HUB_OFFLINE", "1")  # 환경변수 없는 셸에서 C드라이브로 재다운로드되는 것 방지
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent
 GOLD = ROOT / "1_데이터셋" / "06_eval" / ("goldenset_holdout_sealed.jsonl" if "--holdout" in sys.argv else "goldenset_dev.jsonl")
 if "--gold" in sys.argv: GOLD = Path(sys.argv[sys.argv.index("--gold") + 1])  # v8: 외부 골든셋(새 문항) 지정
