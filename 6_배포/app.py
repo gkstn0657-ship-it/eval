@@ -43,7 +43,7 @@ def public_index():
 
 with gr.Blocks() as demo:
     gr.Markdown("# 공공기관 인사규정 RAG (hybrid_prefilter)")
-    gr.HTML('<p style="font-size:1.1em">데모 화면: <a href="demo/" target="_blank" rel="noopener"><b>새 창에서 열기</b></a> &nbsp;·&nbsp; 직접 주소 <code>https://wqeqwsad-public-agency-ragchat.hf.space/demo/</code></p>')
+    gr.HTML('<p style="font-size:1.1em">데모 화면: <a href="demo/" target="_blank" rel="noopener"><b>새 창에서 열기</b></a> &nbsp;·&nbsp; 직접 주소 <code>https://runningturtle123-public-agency-ragchat.hf.space/demo/</code></p>')
     # Space 페이지가 여는 루트(/)에서 데모 화면으로 바로 이동
     demo.load(None, js="() => { window.location.replace('demo/'); }")
 
