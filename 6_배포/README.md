@@ -17,6 +17,6 @@ pinned: false
 
 - 검색: 기관 사전 필터 → BAAI/bge-m3 dense + BM25 → RRF → bge-reranker-v2-m3 재랭킹
 - 가드레일: 범위 밖·복수 기관 질의 거절, 생성 답변의 조문 인용 검증
-- 답변 생성: Claude Haiku 4.5 (`ANTHROPIC_API_KEY` 시크릿 필요. 없으면 검색 근거만 표시)
+- 답변 생성: Qwen2.5-72B-Instruct, HF Inference API (`HF_TOKEN` 시크릿 필요. 없으면 검색 근거만 표시). 답변 평가에 쓴 로컬 qwen2.5:7b-instruct 는 라우터에 없어 같은 계열 72B 를 쓴다. `HF_MODEL` 변수로 교체 가능
 
 평가 코드와 결과: https://github.com/gkstn0657-ship-it (포폴정리 저장소 `3_성능테스트/`, `5_가드레일/`)

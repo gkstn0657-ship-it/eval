@@ -20,6 +20,14 @@ OLLAMA = "http://127.0.0.1:11434"; LLM_MODEL = "qwen2.5:7b-instruct"
 HAIKU = "claude-haiku-4-5"  # 파이프라인 답변 생성 모델. ANTHROPIC_API_KEY 환경변수 또는 ROOT/.anthropic_key 파일(한 줄)에서 키를 읽는다.
 _key_file = ROOT / ".anthropic_key"
 if not os.environ.get("ANTHROPIC_API_KEY") and _key_file.exists(): os.environ["ANTHROPIC_API_KEY"] = _key_file.read_text(encoding="utf-8").strip()
+HF_MODEL = os.environ.get("HF_MODEL", "Qwen/Qwen2.5-72B-Instruct")  # HF Inference API 모델. 답변평가에 쓴 qwen2.5:7b-instruct 는 라우터에 없어(2026-10-05) 같은 계열 72B 가 기본. HF_TOKEN 필요.
+def hf_ok(): return bool(os.environ.get("HF_TOKEN"))
+def hf_chat(system, user):
+    body = json.dumps({"model": HF_MODEL, "temperature": 0, "max_tokens": 600,
+                       "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}).encode("utf-8")
+    req = urllib.request.Request("https://router.huggingface.co/v1/chat/completions", data=body,
+                                 headers={"Content-Type": "application/json", "Authorization": "Bearer " + os.environ["HF_TOKEN"]})
+    with urllib.request.urlopen(req, timeout=300) as r: return json.loads(r.read().decode("utf-8"))["choices"][0]["message"]["content"]
 _anthropic = {}
 def haiku_ok(): return bool(os.environ.get("ANTHROPIC_API_KEY"))
 def haiku_chat(system, user):
@@ -72,7 +80,10 @@ def ask(q: str = Query(..., min_length=1), org: str = Query(""), k: int = Query(
     if gd["action"] in ("refuse_scope", "refuse_multi"): hits = []; out["hits"] = []
     if hits and gd["action"] == "answer":
         ctx = "\n\n".join(f"[출처: {h['org']} 인사규정 {h['article_no']}({h['title']}) | 개정 {h['revision_date']}]\n{h['text'][:1500]}" for h in hits)
-        if haiku_ok():
+        if hf_ok():
+            try: out["answer"] = hf_chat(SYSTEM_PROMPT.format(context=ctx), q); out["model"] = HF_MODEL
+            except Exception as e: out["answer"] = f"(HF API 호출 실패: {type(e).__name__}: {e})"
+        elif haiku_ok():
             try: out["answer"] = haiku_chat(SYSTEM_PROMPT.format(context=ctx), q); out["model"] = HAIKU
             except Exception as e: out["answer"] = f"(Haiku 호출 실패: {type(e).__name__}: {e})"
         elif ollama_ok():
