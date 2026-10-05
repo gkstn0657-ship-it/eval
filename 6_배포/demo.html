@@ -93,6 +93,7 @@ button{cursor:pointer}
 .banner b{display:block;margin-bottom:1px}
 .b-ok{background:var(--ok-soft);border-color:color-mix(in srgb,var(--ok) 30%,transparent)}.b-ok .ic{background:var(--ok)}
 .b-warn{background:var(--warn-soft);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}.b-warn .ic{background:var(--warn)}
+.b-info{background:var(--brand-soft);border-color:color-mix(in srgb,var(--brand) 30%,transparent)}.b-info .ic{background:var(--brand)}
 .b-bad{background:var(--bad-soft);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}.b-bad .ic{background:var(--bad)}
 .tips{margin:6px 0 0;padding-left:18px;color:var(--ink-2)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}
@@ -285,7 +286,7 @@ function renderError(msg) { $("#out").innerHTML = `<div class="banner b-bad"><sp
 
 /* ── 결과 ── */
 function banner(kind, title, body, extra = "") {
-  const ic = {ok: "✓", warn: "!", bad: "×"}[kind];
+  const ic = {ok: "✓", warn: "!", bad: "×", info: "i"}[kind];
   return `<div class="banner b-${kind}"><span class="ic" aria-hidden="true">${ic}</span><div><b>${esc(title)}</b>${body ? esc(body) : ""}${extra}</div></div>`;
 }
 function md(text, hits) {  // 최소 마크다운 + 조문 인용 링크
@@ -305,12 +306,13 @@ function md(text, hits) {  // 최소 마크다운 + 조문 인용 링크
 }
 function render(d, chosenOrg) {
   const g = d.gate || {}, hits = d.hits || [], a = g.action;
-  const orgNote = d.org ? (chosenOrg ? d.org : `${d.org} · 질문에서 인식`) : "전체 기관";
+  const orgNote = d.org ? (chosenOrg === d.org ? d.org : `${d.org} · 질문에서 인식`) : "전체 기관";
   let html = `<div class="qline"><span class="qt">${esc(d.q)}</span><span class="qm">${esc(orgNote)} · ${d.sec}초</span></div>`;
   const generated = d.answer && d.model;
   const genFailed = d.answer && !d.model;
   const verifyFailed = a === "answer" && !d.answer && g.verify && !g.verify.ok;
 
+  if (d.org_note) html += banner("info", "기관을 바꿔서 찾았습니다", d.org_note);
   if (a === "refuse_scope") html += banner("warn", "인사규정 밖의 질문입니다", g.message);
   else if (a === "refuse_multi") html += banner("warn", "한 번에 한 기관씩 물어봐 주세요", g.message);
   else if (a === "refuse") html += banner("bad", "질문에 맞는 조항을 찾지 못했습니다", "",

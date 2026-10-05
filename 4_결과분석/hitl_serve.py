@@ -4,7 +4,7 @@
 
 실행: E:\\conda_envs\\rag_gpu\\python.exe 4_결과분석/hitl_serve.py  →  http://127.0.0.1:8766
 """
-import sys, json, time, os, urllib.request
+import sys, json, time, os, re, urllib.request
 from pathlib import Path
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent
 sys.path.insert(0, str(ROOT / "3_성능테스트"))
@@ -61,10 +61,40 @@ def index(): return HTMLResponse((HERE / "hitl.html").read_text(encoding="utf-8"
 def orgs():
     c = corpus(); return sorted(set(c.orgs.tolist()))
 
+_LEGAL = re.compile(r"\((주|재|사)\)|주식회사|재단법인|사단법인|학교법인|의료법인|\s+")
+def _org_key(o): return _LEGAL.sub("", o)
+
+def mentioned_orgs(q, org_names):
+    """질문에 이름이 나온 기관. 별칭(ORG_ALIAS, 약 25곳)과 292개 전체 기관명을 함께 본다.
+    법인 표기((주), 재단법인 등)는 떼고 비교하고, 다른 기관명을 포함하는 긴 이름이 있으면 긴 쪽만 남긴다."""
+    qk = _org_key(q)
+    found = {o for o in org_names if len(_org_key(o)) >= 4 and _org_key(o) in qk}
+    found |= {o for k, o in E.ORG_ALIAS.items() if k in q and o in org_names}
+    return {o for o in found if not any(o != p and _org_key(o) in _org_key(p) for p in found)}
+
+def strip_org_names(q, orgs):
+    """키워드 가드레일이 기관명 속 단어(예: 국민'연금'공단)에 걸리지 않도록 질문에서 기관명을 뗀다."""
+    for o in sorted(orgs, key=len, reverse=True):
+        for name in {o, GR._ORG_PREFIX.sub("", o), _org_key(o)}:
+            q = q.replace(name, " ")
+    for k, o in E.ORG_ALIAS.items():
+        if o in orgs: q = q.replace(k, " ")
+    return re.sub(r"\s+", " ", q).strip()
+
+def resolve_org(q, selected, org_names):
+    """선택한 기관과 질문 속 기관이 다르면 질문 쪽을 따른다(더 구체적인 의도). (적용 기관, 안내 문구)"""
+    ment = mentioned_orgs(q, set(org_names))
+    if len(ment) == 1:
+        target = next(iter(ment))
+        note = f"질문에 나온 {target} 기준으로 찾았습니다. 선택한 {selected}은(는) 적용하지 않았습니다." if selected and selected != target else None
+        return target, note
+    return (selected or None), None  # 0곳: 선택값, 2곳 이상: 가드레일이 비교 질문으로 거절
+
 @app.get("/ask")
 def ask(q: str = Query(..., min_length=1), org: str = Query(""), k: int = Query(5, ge=1, le=10)):
     c = corpus(); t0 = time.time()
-    E._CTX["org"] = org or None
+    target, org_note = resolve_org(q, org, c.org_names)
+    E._CTX["org"] = target
     idx, info = E.run_hybrid_prefilter(c, q)
     E._CTX["org"] = None
     arts, hits = [], []
@@ -74,8 +104,11 @@ def ask(q: str = Query(..., min_length=1), org: str = Query(""), k: int = Query(
         arts.append(r["article_id"])
         hits.append({"rank": len(arts), "org": r["org"], "article_no": r["article_no"], "title": r.get("article_title", ""), "revision_date": r["revision_date"], "text": r["text"]})
         if len(hits) >= k: break
-    out = {"q": q, "org": org or E.detect_org(q), "hits": hits, "info": {kk: (round(v, 3) if isinstance(v, float) else v) for kk, v in info.items()}, "sec": round(time.time() - t0, 2), "answer": None, "model": None}
-    gd = GR.decide(q, info.get("top1_ce"), c.org_names)
+    out = {"q": q, "org": target, "org_note": org_note, "hits": hits, "info": {kk: (round(v, 3) if isinstance(v, float) else v) for kk, v in info.items()}, "sec": round(time.time() - t0, 2), "answer": None, "model": None}
+    ment = mentioned_orgs(q, set(c.org_names))
+    gd = GR.decide(strip_org_names(q, ment), info.get("top1_ce"), c.org_names)
+    if len(ment) >= 2:  # 기관명을 뗀 질문으로는 비교 질문을 못 잡으므로 여기서 판정
+        gd = {"action": "refuse_multi", "input": {"label": "multi_org", "matched": sorted(ment)}, "gate": None, "message": GR.MSG["multi_org"]}
     out["gate"] = {"action": gd["action"], "gate": gd["gate"], "input": gd["input"]["label"], "message": gd["message"], "disclaimer": GR.MSG["disclaimer"]}
     if gd["action"] in ("refuse_scope", "refuse_multi"): hits = []; out["hits"] = []
     if hits and gd["action"] == "answer":
