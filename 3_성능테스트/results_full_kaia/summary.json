@@ -1,0 +1,183 @@
+{
+ "n_queries": 22,
+ "n_scored": 20,
+ "conditions": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "recall5": 0.55,
+   "recall10": 0.55,
+   "mrr": 0.55,
+   "ndcg5": 0.55
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 1.0,
+   "recall10": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  }
+ ],
+ "by_type": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q1",
+   "n": 2,
+   "recall5": 0.0,
+   "mrr": 0.0,
+   "ndcg5": 0.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q2",
+   "n": 5,
+   "recall5": 0.4,
+   "mrr": 0.4,
+   "ndcg5": 0.4
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q3",
+   "n": 5,
+   "recall5": 0.8,
+   "mrr": 0.8,
+   "ndcg5": 0.8
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.75,
+   "ndcg5": 0.75
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q7",
+   "n": 1,
+   "recall5": 0.0,
+   "mrr": 0.0,
+   "ndcg5": 0.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q8",
+   "n": 1,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q11",
+   "n": 2,
+   "recall5": 0.5,
+   "mrr": 0.5,
+   "ndcg5": 0.5
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 2,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 5,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 5,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 1,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q8",
+   "n": 1,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 2,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  }
+ ],
+ "q9": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "n": 2,
+   "abstain_rate": 0.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 2,
+   "abstain_rate": 0.0
+  }
+ ],
+ "comparisons": [
+  {
+   "label": "v9 prefilter vs hybrid (L2P_A)",
+   "a": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid"
+   ],
+   "delta_ndcg5": 0.44999999999999996,
+   "ci95": [
+    0.25,
+    0.65
+   ],
+   "significant": true
+  }
+ ]
+}

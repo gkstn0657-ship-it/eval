@@ -240,9 +240,10 @@ def run_hybrid_prefilter(c: Corpus, q):
     org = detect_org(q)
     if org is None: return _hybrid_core(c, q, None)
     q_score = strip_org(q)
-    mask = c.orgs == org
+    mask = c.orgs == org; idx = np.flatnonzero(mask)
     qv = st_model("BAAI/bge-m3").encode([q_score], normalize_embeddings=True, convert_to_numpy=True)[0]
-    d = np.where(mask, c.bge @ qv, -np.inf); b = np.where(mask, c.bm25.get_scores(TOKEN_RE.findall(q_score.lower())), -np.inf)
+    d = np.where(mask, c.bge @ qv, -np.inf)
+    b = np.full(len(c.rows), -np.inf); b[idx] = c.bm25.get_batch_scores(TOKEN_RE.findall(q_score.lower()), idx.tolist())  # 해당 기관 문서만 BM25 계산
     d_rank = {int(i): r for r, i in enumerate(np.argsort(-d)[:CANDIDATE_K]) if mask[i]}
     b_rank = {int(i): r for r, i in enumerate(np.argsort(-b)[:CANDIDATE_K]) if mask[i]}
     rrf = defaultdict(float)
@@ -271,7 +272,9 @@ def expand_query(q):
 def _prefilter_core(c: Corpus, q_dense, q_bm25, q_ce, org):
     mask = c.orgs == org
     qv = st_model("BAAI/bge-m3").encode([q_dense], normalize_embeddings=True, convert_to_numpy=True)[0]
-    d = np.where(mask, c.bge @ qv, -np.inf); b = np.where(mask, c.bm25.get_scores(TOKEN_RE.findall(q_bm25.lower())), -np.inf)
+    idx = np.flatnonzero(mask)
+    d = np.where(mask, c.bge @ qv, -np.inf)
+    b = np.full(len(c.rows), -np.inf); b[idx] = c.bm25.get_batch_scores(TOKEN_RE.findall(q_bm25.lower()), idx.tolist())  # 해당 기관 문서만 BM25 계산 (22k → 수십 개, 속도 최적화)
     d_rank = {int(i): r for r, i in enumerate(np.argsort(-d)[:CANDIDATE_K]) if mask[i]}
     b_rank = {int(i): r for r, i in enumerate(np.argsort(-b)[:CANDIDATE_K]) if mask[i]}
     rrf = defaultdict(float)
