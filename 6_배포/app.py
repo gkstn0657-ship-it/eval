@@ -33,9 +33,18 @@ _probe = ce.predict([("정년이 몇 살이야?", "제31조(정년) 직원의 �
 print(f"진단: cuda.is_available={torch.cuda.is_available()} ce.device={ce.model.device} ce.dtype={next(ce.model.parameters()).dtype} probe={[round(float(x), 4) for x in _probe]}", flush=True)
 print("모델·코퍼스 준비 완료", flush=True)
 
+# 공개용 화면(demo.html)으로 교체. 로컬 HITL 비교 화면(hitl.html)의 "/" 라우트를 뺀다.
+from fastapi.responses import HTMLResponse  # noqa: E402
+hitl_serve.app.router.routes = [r for r in hitl_serve.app.router.routes if getattr(r, "path", None) != "/"]
+@hitl_serve.app.get("/", response_class=HTMLResponse)
+def public_index():
+    return HTMLResponse((ROOT / "demo.html").read_text(encoding="utf-8"), headers={"Cache-Control": "no-store"})
+
 with gr.Blocks() as demo:
     gr.Markdown("# 공공기관 인사규정 RAG (hybrid_prefilter)")
     gr.HTML('<p style="font-size:1.1em">데모 화면: <a href="demo/" target="_blank" rel="noopener"><b>새 창에서 열기</b></a> &nbsp;·&nbsp; 직접 주소 <code>https://wqeqwsad-public-agency-ragchat.hf.space/demo/</code></p>')
+    # Space 페이지가 여는 루트(/)에서 데모 화면으로 바로 이동
+    demo.load(None, js="() => { window.location.replace('demo/'); }")
 
 # ZeroGPU 검사는 Gradio 의 launch() 를 거쳐야 통과한다 (uvicorn 직접 실행 시 RUNTIME_ERROR).
 # launch() 가 만든 FastAPI 앱에 데모 서버(hitl_serve)를 /demo 로 붙인다.
