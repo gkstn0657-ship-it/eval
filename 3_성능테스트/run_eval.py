@@ -48,6 +48,7 @@ def strip_org(q):
     for k in sorted(ORG_ALIAS, key=len, reverse=True):
         if k in q: return re.sub(r"\s+", " ", q.replace(k, " ")).strip()
     return q
+sys.path.insert(0, str(ROOT / "5_가드레일")); import guardrails as GR  # 거절 게이트·입력 분류 (2026-10-05)
 _CTX = {"org": None}  # 사내 챗봇 상황: 질의 레코드에 context_org 가 있으면 질의 문자열 대신 이 값을 기관으로 쓴다 (employee 세트)
 def detect_org(q):
     if _CTX["org"] is not None: return _CTX["org"]
@@ -103,6 +104,7 @@ class Corpus:
         self.rows = [json.loads(l) for l in (HERE / "corpora" / f"{name}.jsonl").read_text(encoding="utf-8").splitlines()]
         self.texts = [r["text"] for r in self.rows]
         self.orgs = np.array([r["org"] for r in self.rows])
+        self.org_names = sorted(set(self.orgs.tolist()))
         self._bm25 = None; self._sbert = None; self._bge = None
     @property
     def sbert(self):
@@ -313,6 +315,8 @@ def main():
                 _CTX["org"] = q.get("context_org")
                 idx, info = fn(c, q["query"])
                 arts = to_articles(idx, c.rows)
+                gd = GR.decide(q["query"], info.get("top1_ce"), c.org_names)
+                info["abstain"] = gd["action"] in ("refuse", "refuse_scope", "refuse_multi"); info["gate"] = gd["gate"]; info["gate_action"] = gd["action"]; info["input_label"] = gd["input"]["label"]
                 g = q["gold_ids_any_revision"] if policy == "B" else q["gold_ids"]
                 m = metrics(arts, g) if q["type"] != "Q9" else {}
                 per_query.append({"corpus": cname, "pipeline": pname, "qid": q["qid"], "type": q["type"], "rank": q.get("rank"), "gold": g,
@@ -376,6 +380,7 @@ def main():
     for label, a, b in pairs:
         if a[0] not in CORPORA or b[0] not in CORPORA or a[1] not in PIPELINES or b[1] not in PIPELINES: continue
         sa, sb = series(*a), series(*b)
+        if not sa or not sb: continue
         lo, hi = boot_ci(sa, sb)
         summary["comparisons"].append({"label": label, "a": a, "b": b, "delta_ndcg5": sum(sa) / len(sa) - sum(sb) / len(sb), "ci95": [lo, hi], "significant": lo > 0 or hi < 0})
     json.dump(summary, open(OUT / "summary.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)

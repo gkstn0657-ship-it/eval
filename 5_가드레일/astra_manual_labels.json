@@ -1,0 +1,802 @@
+{
+ "X001": {
+  "label": "R",
+  "note": ""
+ },
+ "X002": {
+  "label": "W",
+  "note": "제44조 휴직사유"
+ },
+ "X003": {
+  "label": "R",
+  "note": ""
+ },
+ "X004": {
+  "label": "W",
+  "note": "제61조 징계사유"
+ },
+ "X005": {
+  "label": "W",
+  "note": "제25조 전보"
+ },
+ "X006": {
+  "label": "W",
+  "note": "제56조8호"
+ },
+ "X007": {
+  "label": "NA",
+  "note": ""
+ },
+ "X008": {
+  "label": "NA",
+  "note": ""
+ },
+ "X009": {
+  "label": "W",
+  "note": "제51조"
+ },
+ "X010": {
+  "label": "W",
+  "note": "제8조·제10조"
+ },
+ "X011": {
+  "label": "R",
+  "note": ""
+ },
+ "X012": {
+  "label": "R",
+  "note": ""
+ },
+ "X013": {
+  "label": "R",
+  "note": ""
+ },
+ "X014": {
+  "label": "R",
+  "note": ""
+ },
+ "X015": {
+  "label": "R",
+  "note": ""
+ },
+ "X016": {
+  "label": "R",
+  "note": ""
+ },
+ "X017": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X018": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X019": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X020": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X021": {
+  "label": "R",
+  "note": ""
+ },
+ "X022": {
+  "label": "R",
+  "note": ""
+ },
+ "X023": {
+  "label": "R",
+  "note": ""
+ },
+ "X024": {
+  "label": "NA",
+  "note": ""
+ },
+ "X025": {
+  "label": "R",
+  "note": ""
+ },
+ "X026": {
+  "label": "NA",
+  "note": ""
+ },
+ "X027": {
+  "label": "R",
+  "note": ""
+ },
+ "X028": {
+  "label": "NA",
+  "note": ""
+ },
+ "X029": {
+  "label": "R",
+  "note": ""
+ },
+ "X030": {
+  "label": "R",
+  "note": ""
+ },
+ "X031": {
+  "label": "W",
+  "note": "제56조8호"
+ },
+ "X032": {
+  "label": "R",
+  "note": ""
+ },
+ "X033": {
+  "label": "R",
+  "note": ""
+ },
+ "X034": {
+  "label": "NA",
+  "note": ""
+ },
+ "X035": {
+  "label": "NA",
+  "note": ""
+ },
+ "X036": {
+  "label": "R",
+  "note": ""
+ },
+ "X037": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X038": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X039": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X040": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X041": {
+  "label": "R",
+  "note": ""
+ },
+ "X042": {
+  "label": "NA",
+  "note": ""
+ },
+ "X043": {
+  "label": "R",
+  "note": ""
+ },
+ "X044": {
+  "label": "W",
+  "note": "제51조 의원면직"
+ },
+ "X045": {
+  "label": "W",
+  "note": "제6조 구성"
+ },
+ "X046": {
+  "label": "R",
+  "note": ""
+ },
+ "X047": {
+  "label": "R",
+  "note": ""
+ },
+ "X048": {
+  "label": "W",
+  "note": "제48조"
+ },
+ "X049": {
+  "label": "R",
+  "note": ""
+ },
+ "X050": {
+  "label": "R",
+  "note": ""
+ },
+ "X051": {
+  "label": "NA",
+  "note": ""
+ },
+ "X052": {
+  "label": "R",
+  "note": ""
+ },
+ "X053": {
+  "label": "NA",
+  "note": ""
+ },
+ "X054": {
+  "label": "NA",
+  "note": ""
+ },
+ "X055": {
+  "label": "W",
+  "note": "제25조"
+ },
+ "X056": {
+  "label": "R",
+  "note": ""
+ },
+ "X057": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X058": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X059": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X060": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X061": {
+  "label": "R",
+  "note": ""
+ },
+ "X062": {
+  "label": "NA",
+  "note": ""
+ },
+ "X063": {
+  "label": "R",
+  "note": ""
+ },
+ "X064": {
+  "label": "R",
+  "note": ""
+ },
+ "X065": {
+  "label": "R",
+  "note": ""
+ },
+ "X066": {
+  "label": "R",
+  "note": ""
+ },
+ "X067": {
+  "label": "R",
+  "note": ""
+ },
+ "X068": {
+  "label": "W",
+  "note": "제50조7호 결근 면직"
+ },
+ "X069": {
+  "label": "NA",
+  "note": ""
+ },
+ "X070": {
+  "label": "NA",
+  "note": ""
+ },
+ "X071": {
+  "label": "R",
+  "note": ""
+ },
+ "X072": {
+  "label": "NA",
+  "note": ""
+ },
+ "X073": {
+  "label": "R",
+  "note": ""
+ },
+ "X074": {
+  "label": "R",
+  "note": ""
+ },
+ "X075": {
+  "label": "NA",
+  "note": ""
+ },
+ "X076": {
+  "label": "NA",
+  "note": ""
+ },
+ "X077": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X078": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X079": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X080": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X081": {
+  "label": "NA",
+  "note": ""
+ },
+ "X082": {
+  "label": "NA",
+  "note": ""
+ },
+ "X083": {
+  "label": "R",
+  "note": ""
+ },
+ "X084": {
+  "label": "R",
+  "note": ""
+ },
+ "X085": {
+  "label": "NA",
+  "note": ""
+ },
+ "X086": {
+  "label": "R",
+  "note": ""
+ },
+ "X087": {
+  "label": "NA",
+  "note": ""
+ },
+ "X088": {
+  "label": "NA",
+  "note": ""
+ },
+ "X089": {
+  "label": "R",
+  "note": ""
+ },
+ "X090": {
+  "label": "NA",
+  "note": ""
+ },
+ "X091": {
+  "label": "R",
+  "note": ""
+ },
+ "X092": {
+  "label": "W",
+  "note": "제12조·제3조"
+ },
+ "X093": {
+  "label": "NA",
+  "note": ""
+ },
+ "X094": {
+  "label": "NA",
+  "note": ""
+ },
+ "X095": {
+  "label": "NA",
+  "note": ""
+ },
+ "X096": {
+  "label": "W",
+  "note": "제56조8호"
+ },
+ "X097": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X098": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X099": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X100": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X101": {
+  "label": "R",
+  "note": ""
+ },
+ "X102": {
+  "label": "R",
+  "note": ""
+ },
+ "X103": {
+  "label": "R",
+  "note": ""
+ },
+ "X104": {
+  "label": "NA",
+  "note": ""
+ },
+ "X105": {
+  "label": "R",
+  "note": ""
+ },
+ "X106": {
+  "label": "R",
+  "note": ""
+ },
+ "X107": {
+  "label": "NA",
+  "note": ""
+ },
+ "X108": {
+  "label": "R",
+  "note": ""
+ },
+ "X109": {
+  "label": "R",
+  "note": ""
+ },
+ "X110": {
+  "label": "NA",
+  "note": ""
+ },
+ "X111": {
+  "label": "R",
+  "note": ""
+ },
+ "X112": {
+  "label": "R",
+  "note": ""
+ },
+ "X113": {
+  "label": "W",
+  "note": "제3조·제71조"
+ },
+ "X114": {
+  "label": "NA",
+  "note": ""
+ },
+ "X115": {
+  "label": "R",
+  "note": ""
+ },
+ "X116": {
+  "label": "NA",
+  "note": ""
+ },
+ "X117": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X118": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X119": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X120": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X121": {
+  "label": "NA",
+  "note": ""
+ },
+ "X122": {
+  "label": "NA",
+  "note": ""
+ },
+ "X123": {
+  "label": "NA",
+  "note": ""
+ },
+ "X124": {
+  "label": "R",
+  "note": ""
+ },
+ "X125": {
+  "label": "NA",
+  "note": ""
+ },
+ "X126": {
+  "label": "R",
+  "note": ""
+ },
+ "X127": {
+  "label": "NA",
+  "note": ""
+ },
+ "X128": {
+  "label": "R",
+  "note": ""
+ },
+ "X129": {
+  "label": "NA",
+  "note": ""
+ },
+ "X130": {
+  "label": "R",
+  "note": ""
+ },
+ "X131": {
+  "label": "NA",
+  "note": ""
+ },
+ "X132": {
+  "label": "R",
+  "note": ""
+ },
+ "X133": {
+  "label": "R",
+  "note": ""
+ },
+ "X134": {
+  "label": "R",
+  "note": ""
+ },
+ "X135": {
+  "label": "R",
+  "note": ""
+ },
+ "X136": {
+  "label": "NA",
+  "note": ""
+ },
+ "X137": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X138": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X139": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X140": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X141": {
+  "label": "NA",
+  "note": ""
+ },
+ "X142": {
+  "label": "W",
+  "note": "제13조 기밀"
+ },
+ "X143": {
+  "label": "R",
+  "note": ""
+ },
+ "X144": {
+  "label": "W",
+  "note": "제17조 초임호봉"
+ },
+ "X145": {
+  "label": "NA",
+  "note": ""
+ },
+ "X146": {
+  "label": "W",
+  "note": "제35조"
+ },
+ "X147": {
+  "label": "W",
+  "note": "제25조④ 정기전보"
+ },
+ "X148": {
+  "label": "R",
+  "note": ""
+ },
+ "X149": {
+  "label": "W",
+  "note": "제56조8호"
+ },
+ "X150": {
+  "label": "NA",
+  "note": ""
+ },
+ "X151": {
+  "label": "R",
+  "note": ""
+ },
+ "X152": {
+  "label": "R",
+  "note": ""
+ },
+ "X153": {
+  "label": "NA",
+  "note": ""
+ },
+ "X154": {
+  "label": "R",
+  "note": ""
+ },
+ "X155": {
+  "label": "W",
+  "note": "제56조8호"
+ },
+ "X156": {
+  "label": "R",
+  "note": ""
+ },
+ "X157": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X158": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X159": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X160": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X161": {
+  "label": "R",
+  "note": ""
+ },
+ "X162": {
+  "label": "W",
+  "note": "제12조 재심의"
+ },
+ "X163": {
+  "label": "W",
+  "note": "제51조"
+ },
+ "X164": {
+  "label": "NA",
+  "note": ""
+ },
+ "X165": {
+  "label": "NA",
+  "note": ""
+ },
+ "X166": {
+  "label": "R",
+  "note": ""
+ },
+ "X167": {
+  "label": "R",
+  "note": ""
+ },
+ "X168": {
+  "label": "R",
+  "note": ""
+ },
+ "X169": {
+  "label": "R",
+  "note": ""
+ },
+ "X170": {
+  "label": "R",
+  "note": ""
+ },
+ "X171": {
+  "label": "W",
+  "note": "제56조8호"
+ },
+ "X172": {
+  "label": "R",
+  "note": ""
+ },
+ "X173": {
+  "label": "R",
+  "note": ""
+ },
+ "X174": {
+  "label": "NA",
+  "note": ""
+ },
+ "X175": {
+  "label": "R",
+  "note": ""
+ },
+ "X176": {
+  "label": "R",
+  "note": ""
+ },
+ "X177": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X178": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X179": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X180": {
+  "label": "OUT",
+  "note": "무관"
+ },
+ "X181": {
+  "label": "W",
+  "note": "제48조① 조기복직"
+ },
+ "X182": {
+  "label": "R",
+  "note": ""
+ },
+ "X183": {
+  "label": "R",
+  "note": ""
+ },
+ "X184": {
+  "label": "NA",
+  "note": ""
+ },
+ "X185": {
+  "label": "W",
+  "note": "제56조8호 영리업무"
+ },
+ "X186": {
+  "label": "W",
+  "note": "제51조"
+ },
+ "X187": {
+  "label": "R",
+  "note": ""
+ },
+ "X188": {
+  "label": "R",
+  "note": ""
+ },
+ "X189": {
+  "label": "NA",
+  "note": ""
+ },
+ "X190": {
+  "label": "R",
+  "note": ""
+ },
+ "X191": {
+  "label": "NA",
+  "note": ""
+ },
+ "X192": {
+  "label": "R",
+  "note": ""
+ },
+ "X193": {
+  "label": "NA",
+  "note": ""
+ },
+ "X194": {
+  "label": "NA",
+  "note": ""
+ },
+ "X195": {
+  "label": "R",
+  "note": ""
+ },
+ "X196": {
+  "label": "R",
+  "note": ""
+ },
+ "X197": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X198": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X199": {
+  "label": "OUT",
+  "note": "보수복지"
+ },
+ "X200": {
+  "label": "OUT",
+  "note": "무관"
+ }
+}

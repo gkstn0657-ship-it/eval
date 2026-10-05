@@ -1,0 +1,115 @@
+{
+ "n_queries": 44,
+ "n_scored": 38,
+ "conditions": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.9473684210526315,
+   "recall10": 0.9473684210526315,
+   "mrr": 0.9131578947368422,
+   "ndcg5": 0.8909795826079573
+  }
+ ],
+ "by_type": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 5,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.8,
+   "ndcg5": 0.8467132018086354
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 0.9032867981913646
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q6",
+   "n": 3,
+   "recall5": 0.3333333333333333,
+   "mrr": 0.3333333333333333,
+   "ndcg5": 0.20438239758848611
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 3,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q8",
+   "n": 3,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q10",
+   "n": 3,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 5,
+   "recall5": 1.0,
+   "mrr": 0.9,
+   "ndcg5": 0.8488153892673832
+  }
+ ],
+ "q9": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 6,
+   "abstain_rate": 1.0
+  }
+ ],
+ "comparisons": []
+}
