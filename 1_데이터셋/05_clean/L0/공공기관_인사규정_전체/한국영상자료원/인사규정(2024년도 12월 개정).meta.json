@@ -1,0 +1,15 @@
+{
+  "org": "한국영상자료원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2024.12.26",
+  "format": "hwp",
+  "sha256": "ac4679e9e68cede952edaffc0c14cb1203ced9f44b69c52703d8db6e93667c73",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=208717",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0232&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=330&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국영상자료원/인사규정(2024년도 12월 개정).hwp",
+  "revision_date": "2024-12",
+  "is_latest": true,
+  "level": "L0"
+}

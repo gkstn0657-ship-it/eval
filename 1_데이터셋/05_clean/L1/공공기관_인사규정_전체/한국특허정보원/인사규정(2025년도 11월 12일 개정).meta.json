@@ -1,0 +1,18 @@
+{
+  "org": "한국특허정보원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.12.04",
+  "format": "hwp",
+  "sha256": "4e5075d8f7e82fa37280f7ca4efabae1fee07a02846b4c037776be47435f1102",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=223670",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0340&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=48364&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국특허정보원/인사규정(2025년도 11월 12일 개정).hwp",
+  "revision_date": "2025-11-12",
+  "is_latest": false,
+  "level": "L1",
+  "toc": "",
+  "page_breaks": null,
+  "image_transcriptions": []
+}

@@ -1,0 +1,143 @@
+{
+  "org": "한국건강증진개발원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.03.09",
+  "format": "hwpx",
+  "sha256": "48cde98b5596206a6ec76a3df9850ec56f679d0e53541e4340b5bf3a0623d4cb",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=221307",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0854&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=23254&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국건강증진개발원/인사규정(2025년 09월 11일 개정).hwpx",
+  "revision_date": "2025-09-11",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2014. 7. 29.>\n이 규정은 한국건강증진개발원 설립일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2019. 5. 16.>\n제1조(시행일) 이 규정은 보건복지부장관의 승인을 받은 날부터 시행한다.\n제2조(경과조치) 제7조에 따른 회계관계직원은 종전의 규정 제5조 및 제6조에 따라 임명한 것으로 본다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2020. 3. 3.>\n이 규정은 보건복지부장관의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2020. 6. 24.>\n이 규정은 보건복지부장관의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2022. 3. 2.>(직제규정)\n이 규정은 개정일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2024. 1. 4.>\n이 규정은 보건복지부장관의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2025. 4. 1.>(직제규정)\n이 규정은 개정일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2025. 9. 11.>\n이 규정은 보건복지부장관의 승인을 받은 날부터 시행한다."
+    }
+  ],
+  "effective_dates": [],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 374,
+  "delegated_to": [
+    "개발원 직원의 구분은 직제규정 제14조의 규정",
+    "경고 및 주의 등 처분 지침",
+    "계약에 정함이 없는 사항은 노동관계법 및 취업규칙",
+    "관계법령이 특별히 정한 경우를 제외하고는 이 규정",
+    "기타 관계 규정",
+    "방법 등에 관한 세부사항은 규칙",
+    "보수규정",
+    "신분은 보유하나 직무에 종사하지 못하며 보수규정",
+    "원장은 직제규정",
+    "직원은 형 또는 징계의 확정 또는 이 규정"
+  ],
+  "glossary": [
+    {
+      "term": "임용",
+      "definition": "채용, 승진, 승급, 전보, 전직, 파견, 겸임, 강임, 강등, 휴직, 정직, 직위해제, 복직, 면직, 해임 및 파면 등에 관한 발령을 말한다."
+    },
+    {
+      "term": "직위",
+      "definition": "1인의 직원에게 부여할 수 있는 직무와 책임을 말한다."
+    },
+    {
+      "term": "직급",
+      "definition": "직무의 종류, 곤란성과 책임도가 상당히 유사한 직위의 군(群)을 말한다."
+    },
+    {
+      "term": "직종",
+      "definition": "직제규정 제12조제1항의 규정에 의하여 일반직, 별정직으로 구분된 직원의 군(群)을 말한다."
+    },
+    {
+      "term": "보직",
+      "definition": "직원에게 일정한 직책을 부여함을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "현재 보직되어 있는 직급의 상위직급에 임명하는 것을 말한다."
+    },
+    {
+      "term": "강임",
+      "definition": "현재 보직되어 있는 직급보다 하위직급에 임명하는 것을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "동일한 직급 내에서의 보직변경을 말한다."
+    },
+    {
+      "term": "전직",
+      "definition": "직종을 달리하여 임용함을 말한다."
+    },
+    {
+      "term": "직위해제",
+      "definition": "일정기간 직위를 해제함을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직, 직위해제 또는 정직 중에 있는 직원에게 직위를 부여하는 것을 말한다."
+    },
+    {
+      "term": "면직",
+      "definition": "의원면직, 징계면직(파면 또는 해임) 및 직권면직 등 직원으로 하여금 그 직을 면하게 하여 근로관계를 소멸하는 것을 말한다."
+    },
+    {
+      "term": "중징계",
+      "definition": "파면, 강등, 해임 또는 정직을 말한다."
+    },
+    {
+      "term": "경징계",
+      "definition": "감봉 또는 견책을 말한다."
+    },
+    {
+      "term": "임금피크제",
+      "definition": "일정연령 도달 등을 고려하여 피크임금의 수준을 정하고 이를 기준으로 임금을 줄여가는 임금체계를 말한다."
+    },
+    {
+      "term": "개방형 직위",
+      "definition": "직제규정 제18조에 의한 직원으로 개발원 내부 또는 외부의 적격자를 선발, 임용하는 직위를 말한다."
+    },
+    {
+      "term": "강등",
+      "definition": "징계에 의하여 현재의 직급보다 하위 직급에 임명하는 것을 말한다."
+    }
+  ]
+}

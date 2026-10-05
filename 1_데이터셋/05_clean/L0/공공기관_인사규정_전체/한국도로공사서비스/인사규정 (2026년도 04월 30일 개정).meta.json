@@ -1,0 +1,15 @@
+{
+  "org": "한국도로공사서비스(주)",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.04.30",
+  "format": "pdf",
+  "sha256": "c682a8c88f367c80c174dae755e150aad77cd27a26024357432562b7f238ae8a",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=235697",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C1294&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=44395&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국도로공사서비스/인사규정 (2026년도 04월 30일 개정).pdf",
+  "revision_date": "2026-04-30",
+  "is_latest": true,
+  "level": "L0"
+}

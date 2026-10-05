@@ -1,0 +1,15 @@
+{
+  "org": "사단법인 한국기술자격검정원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2018.04.13",
+  "format": "hwp",
+  "sha256": "e74a97cc44c125ef92ed5051b1d4c3597d72a87cb72b06dc3a8695190ddefce9",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=55655",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0893&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=31603&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/사단법인 한국기술자격검정원/인사규정(2018년도 02월 개정).hwp",
+  "revision_date": "2018-02",
+  "is_latest": false,
+  "level": "L0"
+}

@@ -1,0 +1,62 @@
+{
+  "org": "한국표준과학연구원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2022.12.26",
+  "format": "hwp",
+  "sha256": "c9add508e8e374ad6b4f14a7b28a51194b2f266b49ce6e77ba946ac6eab96212",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=145506",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0286&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=15034&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국표준과학연구원/인사규정(2022년 1월 개정).hwp",
+  "revision_date": "2022-01",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": "2022년2월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2022.01.24>\n이 규정은 2022년 2월 1일부터 시행한다.\n별표 제1호 <개정 2011.11.8, 2012.12.27>\n\n직종 및 직급에 따른 직명표\n1. 연구직·기술직·행정직\n\n[표] 직종 직급 | 연 구 직 | 기 술 직 | 행 정 직\n직종 직급: 책 임 급 선 임 급 원 급 | 연 구 직: 책임연구원 선임연구원 연 구 원 | 기 술 직: 책임기술원 선임기술원 기 술 원 | 행 정 직: 책임행정원 선임행정원 행 정 원\n\n2. 연구기술직·사무직\n\n[표] 직종 직급 | 연구기술직 | 사무직\n직종 직급: 책임연구기술원(책임사무원)급 선임연구기술원(선임사무원)급 연구기술원(사무원)급 | 연구기술직: 책임연구기술원 선임연구기술원 연구기술원 | 사무직: 책임사무원 선임사무원 사무원\n\n※ 책임연구기술원(책임사무원)은 선임급에 선임연구기술원(선임사무원)은 원급에 준한 대우를 한다."
+    }
+  ],
+  "effective_dates": [
+    "2022년2월1"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 78,
+  "delegated_to": [
+    "직원은 이 규정",
+    "휴직기간 중 급여에 관하여는 급여규정"
+  ],
+  "glossary": [
+    {
+      "term": "직위",
+      "definition": "1인의 직원에게 부여할 수 있는 직무와 책임을 말한다."
+    },
+    {
+      "term": "직종",
+      "definition": "직무를 성질에 따라 구분한 종류를 말한다."
+    },
+    {
+      "term": "전직",
+      "definition": "직종을 변경하는 것을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "부서 간 이동을 말한다."
+    },
+    {
+      "term": "휴직",
+      "definition": "직원의 사정에 의하거나 또는 연구원의 업무집행 중 발생하는 사유로 인하여 일정기간 휴무함을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직 중에 있는 직원을 업무에 복귀시키는 것을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "하위직급에서 상위직급으로 승격되는 것을 말한다."
+    }
+  ]
+}

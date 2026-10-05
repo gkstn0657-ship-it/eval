@@ -1,0 +1,15 @@
+{
+  "org": "한국전기안전공사",
+  "org_type": "위탁집행형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.04.24",
+  "format": "hwpx",
+  "sha256": "5b7975174a0819e9f55e8e5e5f1bd2afd9f526ac7d08ac34936aa7bafdd71bed",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=235391",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0244&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=21237&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국전기안전공사/인사규정(2025년도 12월 31일 개정).hwpx",
+  "revision_date": "2025-12-31",
+  "is_latest": false,
+  "level": "L0"
+}

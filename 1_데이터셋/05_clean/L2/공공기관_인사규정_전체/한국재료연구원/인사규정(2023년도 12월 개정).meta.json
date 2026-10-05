@@ -1,0 +1,59 @@
+{
+  "org": "한국재료연구원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2023.12.26",
+  "format": "hwp",
+  "sha256": "1851295ef3f84177efd59fbbd9a6caddd646f7f4eebee7fad1a4858deb64f783",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=183955",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0381&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=44425&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국재료연구원/인사규정(2023년도 12월 개정).hwp",
+  "revision_date": "2023-12",
+  "is_latest": true,
+  "level": "L2",
+  "preamble": "05-02\n인사규정\n인사규정\n제정 : 2020.11.20.\n개정 : 2022.04.04.\n개정 : 2022.09.23.\n개정 : 2022.12.21.\n개정 : 2023.12.26.\n\n목차\n부칙 8\n\n인사규정\n",
+  "appendix_blocks": [
+    {
+      "effective_date": "2020년11월20",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n제1조 (시행일) 이 규정은 2020년 11월 20일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙<2022. 4. 4.>\n\n제1조 (시행일) 이 규정은 원장이 승인한 날(2022.4.4.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙<2022.9.23.>\n\n제1조 (시행일) 이 규정은 원장이 승인한 날(2022.9.23.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙<2022.12.21.>\n\n제1조 (시행일) 이 규정은 원장이 승인한 날(2022.12.21.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙<2023.12.26.>\n\n제1조 (시행일) 이 규정은 원장이 승인한 날(2023.12.26.)부터 시행한다.\n\n<별표 제1호> 직종,직급 및 직명표\n\n 직종,직급 및 직명표\n\n[표] 직 급 | 직 종 및 직 명 | | | | 비 고\n직 종 및 직 명: 연 구 직 | 열3: 기 술 직 | 열4: 행 정 직 | 열5: 기업지원연구직\n직 급: ◦ 책 임 급 ◦ 선 임 급 ◦ 원 급 | 직 종 및 직 명: 책임연구원 선임연구원 연 구 원 | 열3: 책임기술원 선임기술원 기 술 원 | 열4: 책임행정원 선임행정원 행 정 원 | 열5: 기업지원책임연구원 기업지원선임연구원 기 업 지 원 연구원\n\n[표] 직 종 | 직 급 및 직 명 | 비 고\n직 종: ◦ 기 술 기 능 직 | 직 급 및 직 명: ◦ 선임기원 ◦ 주임기원 ◦ 기 원\n직 종: ◦ 행 정 기 능 직 | 직 급 및 직 명: ◦ 선임기원 ◦ 주임기원 ◦ 기 원"
+    }
+  ],
+  "effective_dates": [
+    "2020년11월20"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 0,
+  "delegated_to": [
+    "이의 시행에 필요한 세부사항은 창업지원규정",
+    "이의 시행에 필요한 세부사항은 협동연구개발촉진규정",
+    "직원은 이 규정"
+  ],
+  "glossary": [
+    {
+      "term": "중징계",
+      "definition": "해임, 강등 또는 정직을 말한다."
+    }
+  ]
+}

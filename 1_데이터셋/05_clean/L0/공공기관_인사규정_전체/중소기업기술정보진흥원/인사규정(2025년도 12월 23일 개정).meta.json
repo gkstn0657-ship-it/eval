@@ -1,0 +1,15 @@
+{
+  "org": "중소기업기술정보진흥원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.08.28",
+  "format": "pdf",
+  "sha256": "1718e8091e80b85140be48ad82b884b30d1a6edf7b17b26573a6222a0175c132",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=226619",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0129&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=23777&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/중소기업기술정보진흥원/인사규정(2025년도 12월 23일 개정).pdf",
+  "revision_date": "2025-12-23",
+  "is_latest": false,
+  "level": "L0"
+}

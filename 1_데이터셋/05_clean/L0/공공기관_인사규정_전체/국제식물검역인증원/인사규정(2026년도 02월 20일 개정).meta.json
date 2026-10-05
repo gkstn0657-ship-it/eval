@@ -1,0 +1,15 @@
+{
+  "org": "국제식물검역인증원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.05.22",
+  "format": "hwp",
+  "sha256": "f96a3f389aa15163fdc1793615ea23c577539bc3aa42287d04a770fcd6932674",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=231893",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0866&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=29035&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/국제식물검역인증원/인사규정(2026년도 02월 20일 개정).hwp",
+  "revision_date": "2026-02-20",
+  "is_latest": false,
+  "level": "L0"
+}

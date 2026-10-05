@@ -272,10 +272,15 @@ report, gloss_all, synonyms_seed = [], [], [
     {"everyday": ["다른 회사 일", "투잡", "부업"], "terms": ["겸직", "영리업무", "겸직 금지"]},
 ]
 
-for m in manifests:
+import os
+_SHARD = os.environ.get("CLEAN_SHARD")  # "i/n": 파일을 n개로 나눠 i번째만 처리 (병렬 실행용, 2026-10-04)
+_INCR = os.environ.get("CLEAN_INCR")    # "1": L2 산출물이 이미 있으면 건너뜀 (증분 정제)
+for _idx, m in enumerate(manifests):
     p = m["path"]; ext = p.suffix.lower(); org = m["org"]
     rel = Path(m["set"]) / m["file"]
     stem = rel.with_suffix("")
+    if _SHARD and _idx % int(_SHARD.split("/")[1]) != int(_SHARD.split("/")[0]): continue
+    if _INCR and (OUT / "L2" / stem.parent / (stem.name + ".articles.jsonl")).exists(): continue
     base_meta = {k: m[k] for k in ("org", "org_type", "rule_title", "rule_latest_date", "format", "sha256", "download_url", "source_page", "collected")}
     base_meta["source_file"] = str(rel).replace("\\", "/")
     dk = date_key(m["file"]); base_meta["revision_date"] = f"{dk[0]:04d}-{dk[1]:02d}" + (f"-{dk[2]:02d}" if dk[2] else "") if dk[0] else None
@@ -283,9 +288,14 @@ for m in manifests:
     stats = {"file": str(rel)}
 
     # ---- L0
-    if ext == ".hwp": pages, x = extract_hwp(p)
-    elif ext == ".hwpx": pages, x = extract_hwpx(p)
-    else: pages, x = extract_pdf(p)
+    try:
+        if ext == ".hwp": pages, x = extract_hwp(p)
+        elif ext == ".hwpx": pages, x = extract_hwpx(p)
+        else: pages, x = extract_pdf(p)
+    except Exception as e:  # 손상 파일 등은 건너뛰고 계속 (2026-10-04 대량 수집 대응)
+        print(f"SKIP {rel}: {type(e).__name__} {e}", flush=True); continue
+    if not pages or sum(len(pg) for pg in pages) < 500:
+        print(f"SKIP {rel}: 추출 텍스트 부족", flush=True); continue
     stats.update(x)
     raw_text = "\n".join(pages)
     l0, nmask = mask_names(raw_text, org); stats["masked_names"] = nmask

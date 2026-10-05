@@ -1,0 +1,119 @@
+{
+  "org": "한국특허정보원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.12.04",
+  "format": "hwp",
+  "sha256": "4e5075d8f7e82fa37280f7ca4efabae1fee07a02846b4c037776be47435f1102",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=223670",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0340&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=48364&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국특허정보원/인사규정(2025년도 11월 12일 개정).hwp",
+  "revision_date": "2025-11-12",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": "2022년8월4",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2022년 8월 4일부터 시행한다. (제정 2022. 8. 4.)"
+    },
+    {
+      "effective_date": "2022년9월30",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2022년 9월 30일부터 시행한다. (개정 2022. 9. 30.)"
+    },
+    {
+      "effective_date": "2023년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2023년 1월 1일부터 시행한다. (개정 2022. 12. 29.)"
+    },
+    {
+      "effective_date": "2023년3월7",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2023년 3월 7일부터 시행한다. (개정 2023. 3. 7.)"
+    },
+    {
+      "effective_date": "2023년4월28",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2023년 4월 28일부터 시행한다. (개정 2023. 4. 28.)"
+    },
+    {
+      "effective_date": "2023년12월1",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2023년 12월 1일부터 시행한다. (개정 2023. 12. 1.)"
+    },
+    {
+      "effective_date": "2024년8월26",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2024년 8월 26일부터 시행한다. (개정 2024. 8. 23.)"
+    },
+    {
+      "effective_date": "2025년7월1",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2025년 7월 1일부터 시행한다. (개정 2025. 7. 1.)"
+    },
+    {
+      "effective_date": "2026년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙\n\n이 규정은 2026년 1월 1일부터 시행한다. (개정 2025. 11. 12.)\n\n[별지 제1호 서식] \n\n사직원\n\n소 속 : \n직 위 : \n성 명 : (인)\n\n상기 본인은 년 월 일부로 한국특허정보원을 사직하고자 하오니 허가하여 주시기 바랍니다.\n\n사직사유 : \n\n 신청일 : 년 월 일\n\n한국특허정보원장 귀하\n\n[별지 제2호 서식]\n \n\n명 예 퇴 직 신 청 서\n\n[표] 1. 인적사항 소 속 : 생년월일 : 직 위 : 입사일자 : 성 명 : 정년퇴직예정일자 : 2. 퇴직사유 3. 퇴직희망일 : 위 본인은 인사규정 제38조에 의거 명예퇴직을 신청합니다. 20 년 월 일 신청인 한국특허정보원장 귀하"
+    }
+  ],
+  "effective_dates": [
+    "2022년8월4",
+    "2022년9월30",
+    "2023년1월1",
+    "2023년3월7",
+    "2023년4월28",
+    "2023년12월1",
+    "2024년8월26",
+    "2025년7월1",
+    "2026년1월1"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 28,
+  "delegated_to": [
+    "명예퇴직자의 퇴직금은 보수규정",
+    "직원의 인사는 이 규정",
+    "하는 경우에는 보수규정"
+  ],
+  "glossary": [
+    {
+      "term": "직원",
+      "definition": "이 규정에 의하여 채용되어 정보원에 근무하는 자를 말한다."
+    },
+    {
+      "term": "직급",
+      "definition": "직무의 곤란성과 책임도가 상당히 유사한 군을 말한다."
+    },
+    {
+      "term": "직위",
+      "definition": "재직기간에 따라 1인의 직원에게 부여하는 직무와 책임을 말한다."
+    },
+    {
+      "term": "보직",
+      "definition": "직원에게 일정한 직무를 지정함을 말한다."
+    },
+    {
+      "term": "직책",
+      "definition": "직무상의 책임 및 권한이 부여되는 본부장, 센터장, 실장, 팀장 등을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "보직변경과 부서간의 이동을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "하위직급에서 상위직급으로 임용하는 것을 말한다."
+    },
+    {
+      "term": "대기발령",
+      "definition": "일정한 기간 직무와 책임을 해제함을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직 또는 정직 중에 있는 직원을 휴직 또는 정직 이전의 직무와 책임에 복직시키는 것을 말한다."
+    }
+  ]
+}

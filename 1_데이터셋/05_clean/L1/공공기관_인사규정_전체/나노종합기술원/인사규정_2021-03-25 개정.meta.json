@@ -1,0 +1,30 @@
+{
+  "org": "나노종합기술원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2021.12.20",
+  "format": "pdf",
+  "sha256": "3426a739291be4e22287abb01a92efa877c7fdce47a136e83c62a2c071c03a0d",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=124597",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0436&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=44250&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/나노종합기술원/인사규정_2021-03-25 개정.pdf",
+  "revision_date": null,
+  "is_latest": true,
+  "level": "L1",
+  "toc": "제45조(징계) 삭제<2016.09.23.>\n제46조(징계의 종류) 삭제<2016.09.23.>\n제47조(징계의 효력) 삭제<2016.09.23.>\n제48조(재심) 삭제<2016.09.23.>\n제49조(준용규정) 삭제<2016.09.23.>\n제9장 인사위원회",
+  "page_breaks": [
+    0,
+    1098,
+    2382,
+    3525,
+    4871,
+    6443,
+    8105,
+    9339,
+    10240,
+    10291,
+    10440
+  ],
+  "image_transcriptions": []
+}

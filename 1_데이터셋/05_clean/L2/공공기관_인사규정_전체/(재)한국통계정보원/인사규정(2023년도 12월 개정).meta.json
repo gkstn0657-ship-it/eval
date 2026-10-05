@@ -1,0 +1,140 @@
+{
+  "org": "(재)한국통계정보원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.02.25",
+  "format": "hwp",
+  "sha256": "08ca0347bd18c41fe215bd796855365fb65597728d3370d944ca3d413f75d7f6",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=197335",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C1060&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=52061&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/(재)한국통계정보원/인사규정(2023년도 12월 개정).hwp",
+  "revision_date": "2023-12",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": "2012년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙〈2011.12.16>\n제1조 (시행일) 이 규정은 2012년 1월 1일 부터 시행한다.\n제2조 (경과조치) 정보원이 설립된 날로부터 당해연도의 12월 31일까지 처리된 사항은 이 규정에 의한 것으로 본다. "
+    },
+    {
+      "effective_date": "2012년11월1",
+      "other_rule_amendment": false,
+      "text": "부칙〈2012.10.19>\n제1조 (시행일) 이 규정은 2012년 11월 1일 부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙〈2013. 2.25>\n제1조 (시행일) 이 규정은 이사회의 승인을 받은 날부터 시행한다.\n제2조 (정년 경과조치) 이 규정 시행당시 재직중인 직원의 정년에 대하여는 제51조 개정규정을 적용하지 아니한다. "
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙〈2016. 2.25>\n제1조 (시행일) 이 규정은 이사회의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙〈2017. 2.28>\n제1조 (시행일) 이 규정은 이사회의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙〈2019. 2. 25>\n제1조 (시행일) 이 규정은 이사회의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙〈2019. 8. 2>\n제1조 (시행일) 이 규정은 이사회의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙〈2020. 2. 26.>\n제1조 (시행일) 이 규정은 이사회의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙〈2021. 2. 24.>\n제1조 (시행일) 이 규정은 이사회의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙〈2023. 2. 24.>\n제1조 (시행일) 이 규정은 이사회의 승인을 받은 날부터 시행한다."
+    },
+    {
+      "effective_date": "2024년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙〈2023. 12. 08.>\n제1조 (시행일) 이 규정은 2024년 1월 1일부터 시행한다."
+    }
+  ],
+  "effective_dates": [
+    "2012년1월1",
+    "2012년11월1",
+    "2024년1월1"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 66,
+  "delegated_to": [
+    "임·직원의 보수에 관하여는 보수규정",
+    "전문직 및 계약직원에 대하여는 보수규정",
+    "직원은 형의 선고 징계처분 또는 이 규정",
+    "직원의 복무에 관하여는 복무규정"
+  ],
+  "glossary": [
+    {
+      "term": "임용",
+      "definition": "신규채용, 승진임용, 전보, 겸임, 파견, 휴직, 직위해제, 정직, 복직, 면직 및 파면 등 인사관리에 관한 일체의 발령을 말한다."
+    },
+    {
+      "term": "직급",
+      "definition": "직무의 곤란성과 책임도가 상당히 유사한 군을 말한다."
+    },
+    {
+      "term": "직위",
+      "definition": "재직기간에 따라 1인의 직원에게 부여하는 호칭을 말한다."
+    },
+    {
+      "term": "직책",
+      "definition": "직무상의 책임 및 권한이 부여되는 본부장, 센터장, 실장 등을 말한다."
+    },
+    {
+      "term": "보직",
+      "definition": "직원에게 일정한 직무를 지정함을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "보직변경과 부서간의 이동을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "하위직급에서 상위직급으로 임용하는 것을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직 또는 정직중에 있는 직원을 휴직 또는 정직 이전의 직무와 책임에 복직시키는 것을 말한다."
+    },
+    {
+      "term": "파견",
+      "definition": "특정한 업무를 수행하기 위하여 근무처를 옮겨 일정기간 동안 근무하는 것을 말한다."
+    },
+    {
+      "term": "중징계",
+      "definition": "파면 또는 정직을 말한다."
+    },
+    {
+      "term": "경징계",
+      "definition": "감봉 또는 견책을 말한다."
+    },
+    {
+      "term": "직무",
+      "definition": "업무수행에 필요한 능력과 기능이 유사한 단위업무의 집합으로서 책임을 갖고 담당하여 맡은 업무를 말한다."
+    },
+    {
+      "term": "직군",
+      "definition": "직무의 성질이 유사한 군으로 분류한 것을 말한다."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "org": "한국법무보호복지공단",
+  "org_type": "위탁집행형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.09.10",
+  "format": "hwpx",
+  "sha256": "c2a1b3960aa4a1a27681b1bbe8ed6098d7fc47893b55a0c32fd37a356edf5d2c",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=233263",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0152&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=9260&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국법무보호복지공단/인사규정(2026년도 3월 27일 개정).hwpx",
+  "revision_date": "2026-03-27",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [],
+  "effective_dates": [],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 366,
+  "delegated_to": [
+    "다른 규정에 특별히 정한 것을 제외하고는 이 규정",
+    "징계처분 또는 이 규정"
+  ],
+  "glossary": [
+    {
+      "term": "임용",
+      "definition": "신규채용, 승진임용, 보직, 전직, 전보, 겸임, 파견, 강임, 면직, 해임, 파면 등 인사관리에 관한 일체의 발령을 말한다."
+    },
+    {
+      "term": "직급",
+      "definition": "직무의 종류, 곤란성과 책임도가 상당히 유사한 직위의 군을 말한다."
+    },
+    {
+      "term": "직위",
+      "definition": "1인의 직원에게 부여하는 직무와 책임을 말한다."
+    },
+    {
+      "term": "보직",
+      "definition": "채용된 직원을 지정 직무에 종사케 함을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "현 직급보다 상위직급에 임용하는 것을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "동일한 직급 내에서의 보직변경을 말한다."
+    },
+    {
+      "term": "강임",
+      "definition": "현재의 직급보다 하위직급에 임명하는 것을 말한다."
+    },
+    {
+      "term": "퇴직",
+      "definition": "의원면직, 정년퇴임, 해임, 사망, 계약해지 및 계약기간 도래 또는 임기만료 등에 의하여 공단 임ᆞ직원의 신분을 상실하는 것을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직, 직위해제 및 정직 중에 있는 직원을 직위에 복귀 시키는 것을 말한다."
+    },
+    {
+      "term": "전직",
+      "definition": "직급체계가 있는 직렬 내 직종 간에 동일상당 직급으로 직종을 달리하여 임명하는 것을 말한다."
+    },
+    {
+      "term": "일반직",
+      "definition": "법무보호사업, 행정업무, 시설업무, 전산업무 등을 담당하는 직원의 군을 말한다."
+    },
+    {
+      "term": "특수직",
+      "definition": "일반적인 업무에서 벗어난 특수한 업무를 담당하는 직원의 군을 말한다."
+    },
+    {
+      "term": "서무직",
+      "definition": "여러 가지 일반적인 사무를 담당하는 직원의 군을 말한다."
+    },
+    {
+      "term": "별정직",
+      "definition": "공단 취업지원사업(허그일자리) 업무 수행을 위하여 기간의 정함이 없이 채용한 직원의 군을 말한다."
+    },
+    {
+      "term": "공무직",
+      "definition": "특정업무 수행을 위하여 기간의 정함이 없이 채용한 직원 의 군을 말한다."
+    },
+    {
+      "term": "기간직",
+      "definition": "특정업무 수행을 위하여 채용기간을 정하여 고용된 직원의 군을 말한다."
+    },
+    {
+      "term": "중징계",
+      "definition": "파면, 해임, 강등 또는 정직을 말하고 “경징계”란 감봉 또는 견책을 말한다."
+    },
+    {
+      "term": "성희롱",
+      "definition": "「국가인권위원회법」제2조제3호라목에 따른 성희롱을 말한다."
+    }
+  ]
+}

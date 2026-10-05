@@ -1,0 +1,15 @@
+{
+  "org": "신용보증재단중앙회",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.06.30",
+  "format": "hwpx",
+  "sha256": "684baca2a641d0be75cd438bb496a06d5db731a6d531865c685624ea2faf56e9",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=226024",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0112&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=11650&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/신용보증재단중앙회/인사규정(2025년도 12월 15일 개정).hwpx",
+  "revision_date": "2025-12-15",
+  "is_latest": false,
+  "level": "L0"
+}

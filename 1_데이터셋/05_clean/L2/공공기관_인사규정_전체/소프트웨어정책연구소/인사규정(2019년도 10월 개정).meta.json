@@ -1,0 +1,22 @@
+{
+  "org": "소프트웨어정책연구소",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2021.07.20",
+  "format": "hwp",
+  "sha256": "32c813c1b88f5066e747b95f1916e27276f3c913c578443cd338e99b21ce70a3",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=91049",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0906&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=30000&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/소프트웨어정책연구소/인사규정(2019년도 10월 개정).hwp",
+  "revision_date": "2019-10",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [],
+  "effective_dates": [],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 0,
+  "delegated_to": [],
+  "glossary": []
+}

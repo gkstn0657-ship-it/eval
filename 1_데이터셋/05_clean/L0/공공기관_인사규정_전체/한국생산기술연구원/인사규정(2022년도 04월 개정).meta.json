@@ -1,0 +1,15 @@
+{
+  "org": "한국생산기술연구원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2023.02.20",
+  "format": "pdf",
+  "sha256": "1a1ab3fa47f53d1e9742bb31ab17bdc944a2536837036eb8a0b1e36a82834bdc",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=150613",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0213&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=17100&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국생산기술연구원/인사규정(2022년도 04월 개정).pdf",
+  "revision_date": "2022-04",
+  "is_latest": false,
+  "level": "L0"
+}

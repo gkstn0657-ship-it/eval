@@ -1,0 +1,341 @@
+{
+  "org": "한국식품연구원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2024.04.29",
+  "format": "hwp",
+  "sha256": "c0707a58b8a31e346864f0fc0eafd3e7ea5b4ef37b0410253d52f050b8adf7ee",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=187659",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0226&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=8787&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국식품연구원/인사규정 (2023년도 7월 개정).hwp",
+  "revision_date": "2023-07",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": "1988년2월19",
+      "other_rule_amendment": false,
+      "text": "부칙 <1988.2.19.>\n제1조(시행일) 이 규정은 1988년 2 월 19일부터 시행한다. "
+    },
+    {
+      "effective_date": "1990년1월23",
+      "other_rule_amendment": false,
+      "text": "부칙 <1990.1.23.>\n제1조(시행일) 이 규정은 1990년 1 월 23일부터 시행한다. "
+    },
+    {
+      "effective_date": "1991년6월28",
+      "other_rule_amendment": false,
+      "text": "부칙 <1991.6.28.>\n제1조(시행일) 이 규정은 1991년 6월 28일부터 시행한다. "
+    },
+    {
+      "effective_date": "1993년8월30",
+      "other_rule_amendment": false,
+      "text": "부칙 <1993.8.30.>\n제1조(시행일) 이 규정은 1993년 8월 30일부터 시행한다. "
+    },
+    {
+      "effective_date": "1993년9월27",
+      "other_rule_amendment": false,
+      "text": "부칙 <1993.9.27.>\n제1조(시행일) 이 규정은 1993년 9월 27일부터 시행한다. "
+    },
+    {
+      "effective_date": "1995년11월23",
+      "other_rule_amendment": false,
+      "text": "부칙 <1995.11.23.>\n제1조(시행일) 이 규정은 1995년 11월 23일부터 시행한다. "
+    },
+    {
+      "effective_date": "1996년12월26",
+      "other_rule_amendment": false,
+      "text": "부칙 <1996.12.26.>\n제1조(시행일) 이 규정은 1996년 12월 26일부터 시행한다. "
+    },
+    {
+      "effective_date": "1997년12월26",
+      "other_rule_amendment": false,
+      "text": "부칙 <1997.12.26.>\n제1조(시행일) 이 규정은 1997년 12월 26일부터 시행한다. "
+    },
+    {
+      "effective_date": "1999년6월11",
+      "other_rule_amendment": false,
+      "text": "부칙 <1999.6.11.>\n제1조(시행일) 이 규정은 1999년 6 월 11 일부터 시행한다. \n제2조(경과조치) ①이 규정 시행 이전에 승진자격자로 확정되어 종전 \"승진 및 승급요령\"에 의거 승진된 자는 본 규정에 따라 처리된 것으로 본다. \n②이 규정 시행과 동시에 '승진및승급요령', '전형요령', 경력평점요령', 징계요령', '인사위원회운영요령', '별정직임용요령' 및 '객원연구원임용 요령'은 폐지한다. "
+    },
+    {
+      "effective_date": "2002년7월30",
+      "other_rule_amendment": false,
+      "text": "부칙 <2002.7.30.>\n제1조(시행일) 이 규정은 2002년 7월 30일부터 시행한다. "
+    },
+    {
+      "effective_date": "2005년1월21",
+      "other_rule_amendment": false,
+      "text": "부칙 <2005.1.21.>\n제1조(시행일) 이 규정은 2005년 1월 21일부터 시행한다. "
+    },
+    {
+      "effective_date": "2007년5월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2007.5.1.>\n제1조(시행일) 이 규정은 2007년 5월 1일부터 시행한다. \n제2조(경과조치) 다만, 제8조 ③항의 규정은 개정 당시 재임 중인 원장에게는 적용하지 아니한다. "
+    },
+    {
+      "effective_date": "2008년4월22",
+      "other_rule_amendment": false,
+      "text": "부칙 <2008.4.17.>\n제1조(시행일) 이 규정은 2008년 4월 22일부터 시행한다."
+    },
+    {
+      "effective_date": "2009년1월14",
+      "other_rule_amendment": false,
+      "text": "부칙 <2009.1.14.>\n제1조(시행일) 이 규정은 2009년 1월 14일부터 시행한다."
+    },
+    {
+      "effective_date": "2010년8월31",
+      "other_rule_amendment": false,
+      "text": "부칙 <2010.8.31.>\n제1조(시행일) 이 규정은 2010년 8월 31일부터 시행한다."
+    },
+    {
+      "effective_date": "2011년4월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2011.4.1.>\n제1조(시행일) 이 규정은 2011년 4월 1일부터 시행한다."
+    },
+    {
+      "effective_date": "2012년5월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2012.5.1.>\n제1조(시행일) 이 규정은 2012년 5월 1일부터 시행한다."
+    },
+    {
+      "effective_date": "2012년7월3",
+      "other_rule_amendment": false,
+      "text": "부칙 <2012.7.3.>\n제1조(시행일) 이 규정은 2012년 7월 3일부터 시행한다."
+    },
+    {
+      "effective_date": "2012년12월21",
+      "other_rule_amendment": false,
+      "text": "부칙 <2012.12.21.>\n제1조(시행일) 이 규정은 2012년 12월 21일부터 시행한다."
+    },
+    {
+      "effective_date": "2013년6월17",
+      "other_rule_amendment": false,
+      "text": "부칙 <2013.6.17.>\n제1조(시행일) 이 규정은 2013년 6월 17일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년3월27",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.3.27.>\n제1조(시행일) 이 규정은 2014년 3월 27일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년10월8",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.10.8.>\n제1조(시행일) 이 규정은 2014년 10월 8일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년11월11",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.11.11.>\n제1조(시행일) 이 규정은 2014년 11월 11일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년12월31",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.12.31.>\n제1조(시행일) 이 규정은 2014년 12월 31일부터 시행한다."
+    },
+    {
+      "effective_date": "2015년2월28",
+      "other_rule_amendment": false,
+      "text": "부칙 <2015.2.28.>\n제1조(시행일) 이 규정은 2015년 2월 28일부터 시행한다.\n제2조(경과조치) ① 제16조 및 제16조의2는 시행일 이후 최초로 징계처분을 받은 자부터 적용한다. \n② 제35조 제2항 및 제3항은 시행일 이후 최초로 개최되는 인사위원회부터 적용한다."
+    },
+    {
+      "effective_date": "2015년5월11",
+      "other_rule_amendment": false,
+      "text": "부칙 <2015.5.11.>\n제1조(시행일) 이 규정은 2015년 5월 11일부터 시행한다."
+    },
+    {
+      "effective_date": "2015년9월8",
+      "other_rule_amendment": false,
+      "text": "부칙 <2015.9.08.>\n제1조(시행일) 이 규정은 2015년 9월 8일부터 시행한다."
+    },
+    {
+      "effective_date": "2015년12월23",
+      "other_rule_amendment": false,
+      "text": "부칙 <2015.12.23.>\n제1조(시행일) 이 규정은 2015년 12월 23일부터 시행한다."
+    },
+    {
+      "effective_date": "2016년2월29",
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.2.29.>\n제1조(시행일) 이 규정은 2016년 2월 29일부터 시행한다."
+    },
+    {
+      "effective_date": "2016년8월12",
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.8.12.>\n제1조(시행일) 이 규정은 2016년 8월 12일부터 시행한다."
+    },
+    {
+      "effective_date": "2016년11월30",
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.11.30.>\n제1조(시행일) 이 규정은 2016년 11월 30일부터 시행한다."
+    },
+    {
+      "effective_date": "2016년12월27",
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.12.27.>\n제1조(시행일) 이 규정은 2016년 12월 27일부터 시행한다."
+    },
+    {
+      "effective_date": "2017년8월14",
+      "other_rule_amendment": false,
+      "text": "부칙 <2017.8.14.>\n제1조(시행일) 이 규정은 2017년 8월 14일부터 시행한다."
+    },
+    {
+      "effective_date": "2018년5월10",
+      "other_rule_amendment": false,
+      "text": "부칙 <2018.5.10.>\n제1조(시행일) 이 규정은 2018년 5월 10일 부터 시행한다."
+    },
+    {
+      "effective_date": "2019년9월30",
+      "other_rule_amendment": false,
+      "text": "부칙 <2019.9.30.>\n제1조(시행일) 이 규정은 2019년 9월 30일 부터 시행한다."
+    },
+    {
+      "effective_date": "2020년3월6",
+      "other_rule_amendment": false,
+      "text": "부칙 <2020.3.6.>\n제1조(시행일) 이 규정은 2020년 3월 6일 부터 시행한다.\n제2조(경과조치) 동 규정 제8조의3 제1항 1호에 해당하는 정기경력평점 산정 기준은 시행일 이후 입사한 직원부터 적용하며, 시행일 이전 입사자는 개정 전 직원별 정기 경력평점 산정일에 추가 경력평점을 부여한다."
+    },
+    {
+      "effective_date": "2020년3월6",
+      "other_rule_amendment": false,
+      "text": "부칙 <2020.3.6.>\n제1조(시행일) 이 규정은 2020년 3월 6일 부터 시행한다.\n제2조(경과조치) 동 규정 제8조의3 제1항 1호에 해당하는 정기경력평점 산정 기준은 시행일 이후 입사한 직원부터 적용하며, 시행일 이전 입사자는 개정 전 직원별 정기 경력평점 산정일에 추가 경력평점을 부여한다."
+    },
+    {
+      "effective_date": "2020년6월15",
+      "other_rule_amendment": false,
+      "text": "부칙 <2020.6.15.>\n제1조(시행일) 이 규정은 2020년 6월 15일 부터 시행한다."
+    },
+    {
+      "effective_date": "2021년12월30",
+      "other_rule_amendment": false,
+      "text": "부칙 <2021.12.30.>\n제1조(시행일) 이 규정은 2021년 12월 30일 부터 시행한다."
+    },
+    {
+      "effective_date": "2022년7월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2022.7.1.>\n제1조(시행일) 이 규정은 2022년 7월 1일 부터 시행한다."
+    },
+    {
+      "effective_date": "2022년12월16",
+      "other_rule_amendment": false,
+      "text": "부칙 <2022.12.16.>\n제1조(시행일) 이 규정은 2022년 12월 16일 부터 시행한다."
+    },
+    {
+      "effective_date": "2023년7월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2023.7.1.>\n제1조(시행일) 이 규정은 2023년 7월 1일 부터 시행한다.\n[별표 1]<개정 2020.3.6., 2021.12.30.>\n\n직종, 직급 및 직명\n\n[표] 직 급 | 직종 및 직명\n직종 및 직명: 연구직 | 열3: 기술직 | 열4: 행정직 | 열5: 기능직 | 열7: 무기계약직\n열5: 기술 | 열6: 행정 | 열7: 기술 | 열8: 행정 | 열9: 공무\n직 급: 책 임 급 | 직종 및 직명: 책임 연구원 | 열3: 책임 기술원 | 열4: 책임 행정원 | 열5: - | 열6: - | 열7: - | 열8: -\n직 급: 선 임 급 | 직종 및 직명: 선임 연구원 | 열3: 선임 기술원 | 열4: 선임 행정원 | 열5: - | 열6: - | 열7: - | 열8: -\n직 급: 원 급 | 직종 및 직명: 연구원 | 열3: 기술원 | 열4: 행정원 | 열5: - | 열6: - | 열7: - | 열8: -\n직 급: 기 능 급 | 직종 및 직명: - | 열3: - | 열4: - | 열5: 기능원 | 열6: 기능원 | 열7: 전문원 (기술) | 열8: 전문원 (행정) | 열9: 공무직 (경비/미화/ 시설)\n\n[별표 2]<개정 2014. 10. 8>\n\n직원의 채용 자격기준\n\n[표] 구분 | 연 구 직 | 기 술 직 | 행 정 직\n구분: 책 임 급 | 연 구 직: 연구경력평점이 원급 25 점 이상인 자 | 기 술 직: 기술경력평점이 원급 25점 이상인 자 | 행 정 직: 경력평점이 원급 25점 이상인 자\n구분: 선 임 급 | 연 구 직: 연구경력평점이 원급 13 점 이상인자 | 기 술 직: 기술경력평점이원급 13점 이상인자 | 행 정 직: 경력평점이 원급 13점 이상인자\n구분: 원 급 | 연 구 직: 석사학위 이상 소지자 | 기 술 직: 대학을 졸업한 자, 또는 이 와 동등 이상의 자격이 있 다고 인정되는 자 고도의 숙련기능을 가진 자 | 행 정 직: 대학을 졸업한 자, 또는 이와 동등 이상의 자격 이 있다고 인정되는 자\n구분: 기 능 직 | 연 구 직: 고등학교 졸업 또는 이와 동등 이상의 자격이 있다고 인정되는 자 자격증 또는 면허증을 소지하였거나 이와 동등한 자격이 있다고 인정되는 자\n\n[별표 2-1]<개정 2014.10.8.>\n\n직원의 승진자격 기준\n\n[표] 구분 | 연구 · 기술 · 행정직\n구분: 책 임 급 승 진 | 연구 · 기술 · 행정직: 선임 경력평점 12점 이상인 자\n구분: 선 임 급 승 진 | 연구 · 기술 · 행정직: 경력평점 11점 이상인 자\n\n[별표 3~ 별표 3-5] <삭제, 타규정제정 2016.9.30.>\n[별표 4] <개정 2012.5.1., 2014.10.8., 2020.3.6.>\n\n경 력 산 정 표\n\n[표] 구 분 | 내 용\n구 분: 1. 일반 원칙 | 내 용: ① 모든 경력평점은 월수를 합하여 계산하며 6개월 이상은 1년으로, 6개월 미만은 절삭함. 다만, 일자가 확실하지 않은 경력기간의 계산은 15일을 기준으로 함 ② 부여된 모든 경력평점은 수임업무에 대한 기여도를 감안하여 감경할 수 있음 ③ 정부의 공공부문 비정규직 근로자 정규직 전환에 따라 비정규직(기간제)에서 정규직(기술기능원)으로 전환된 자의 경력평점 부여는 전환시점에서 급여가 저하되지 않는 범위내의 기능직 경력평점을 부여 ④ 모든 경력평점 부여는 사실을 증빙할 수 있는 문서 등이 있어야 함 &lt;신설 2020.3.6.&gt; ⑤ 경력평점 상한선(원급이상 25점, 기능급 40점)\n구 분: 2. 신규 임용 자 | 내 용: 개시 | 열3: ① 경력평점은 개시 시점에 1점을 부여하고 1년당 1점을 부여함. - 경력평점 개시 시점 : 학사학위 취득(원급이상) 및 고등학교 졸업(기능급 이하) 시점 &lt;개정 2020.3.6.&gt; ② 원급 이상 직원의 경력평점 : 학사학위를 취득한 시점에서 개시 - 학사학위를 취득하지 못한 자 : 다음 각 호와 같이 감산한 시점에서 경력 등의 평점을 가산함. 다만, 가산할 평점이 없는 경우는 학사학위 취득 으로 의제하여 상기 ‘ 원급 이상 직원의 경력평점 ’ 기준에 따름. &lt;개정 2020.3.6.&gt; 1. 전문대 졸업자 : 2점 2. 고등학교 졸업자 : 4점 3. 대학 또는 전문대 중퇴자 : 4점에서 이수기간을 제외한 기간 ③ 기능급 이하 직원의 경력평점 : 고등학교 졸업시점에서 개시 - 고등학교를 졸업하지 못한 자 : 다음 각 호와 같이 감산한 시점에서 경력 등의 평점을 가산함. 다만, 가산할 평점이 없는 경우는 고등학교 졸업으로 의제하여 상기 ‘ 기능급 이상 직원의 경력평점 ’ 기준에 따름. &lt;개정 2020.3.6.&gt; 1. 중학교 졸업자 : 3점 2. 고등학교 중퇴자 : 3점에서 이수기간을 제외한 기간\n내 용: 학력 | 열3: ① 입사 전 대학졸업(학제 상)이수기간이 4년을 초과한 경우 이수기간에 따라 2년까지 인정함. (5년제 1점 추가 인정) ② 대학원 수학은 일반경력과 중복되지 않는 경우 석사 2점(3년제 전문대 학원인 경우 3점), 박사 3점 범위 내에서 경력으로 인정함.\n구 분: 2. 신규 임 용자 | 내 용: 군 복무 기간 | 열3: ① 군 복무는 100% 인정. 다만, 병역의무에 의한 군 복무기간이 3년을 초과하는 경우에는 군 경력이 수임업무와 동일계열로 인정될 때에 한하여, 전역 당시의 계급이 원급 이상은 중위 이상, 기능급은 장기하사 이상인 경우에만 인정할 수 있음(전문연구요원 및 사회복무요원의 복무기간은 일반 현역병에 준하는 복무기간만 인정함). ② 전문연구요원으로 복무를 하는 자가 동시에 학업 및 연구를 위해 타 기관, 학교에서 근무한 기간이 전문연구요원 복무 기간을 초과할 경우라도 별도 인정을 하지 않음\n내 용: 일반 경력 | 열3: ① 모든 경력은 법인체 이상에서 근무한 기간을 경력으로 인정 함. ② 연구원의 업무와 직접 관련이 있는 경우는 전 기간을 인정하며 직접 관련이 없는 경우는 1/2만 인정 함. 단, 시간제근무경력(시간강사 포함)의 경우 전일근무일대비 실근무일만큼만 반영함. ③ 정규직 외 근무경력은 해당 기간의 50%만 인정하되, 승진자의 새로운 평점 부여 시에는 정규직 외 근무경력 중 동일직종에 대하여 100% 인정하여 다음과 같이 반영한다.&lt; 2014.10.8., 2015.9.8&gt; - 선임급 : 정규직 외 근무경력을 100% 계상하여, 최대 3평점 인정 - 책입금 : 정규직 외 근무경력을 100% 계상하여, 최대 2평점 인정\n내 용: 추가 평점 | 열3: ① 수임업무와 관계되는 다음 각 호의 학위 또는 자격에 대하여는 추가 경력평점을 부여함. 1. 석사학위 : 1점, 2. 박사학위 : 5점, 3. 기술사(이에 준하는 전문자격 포함) : 5점 ② 학위 및 자격에 중복이 있을 경우에는 가장 유리한 평점만 부여함.\n구 분: 3. 정기 경력 평점 산정 | 내 용: 근속 | 열3: ① 연구원 근속기간 1년 당 1평점을 부여하며, 산정기준은 상기 일반원칙, 부여일 등은 동 규정 제8조의3에 따름 &lt;신설 2020.3.6.&gt;\n내 용: 추가 평점 | 열3: ① 수임업무와 관계되는 다음 각 호의 학위 또는 자격에 대하여는 추가 경력평점을 부여함. 단, 해당 자격 취득 후 최초로 추가평점을 부여하는 ‘ 정기 경력평점 산정 ’ 일로부터 전진적으로 적용함. &lt;개정 2020.3.6.&gt; 1. 석사학위 : 1점, 2. 박사학위 : 5점, 3. 기술사(이에 준하는 전문자격 포함) : 5점 * 학위 및 자격에 중복이 있을 경우에는 가장 유리한 평점만 부여 ② 신규임용 시, 증빙미비 등으로 인하여 미 반영된 경력, 학력 등에 대하여 상기 ‘2. 신규임용자 ’ 의 기준에 의하여 산정된 추가평점을 부여할 수 있음 &lt;신설 2020.3.6.&gt; - 단, 해당 경력 등을 반영하여 최초로 추가평점을 부여하는 ‘ 정기 경력평점 산정 ’ 일로부터 전진적으로 적용함. &lt;신설 2020.3.6.&gt;\n구 분: 4. 승진 | 내 용: 재산 정 | 열3: ① 승진자의 새로운 평점 부여 시에는 정규직 외 근무경력 중 동일직종에 대하여 100% 인정하여 다음과 같이 반영한다.&lt; 2014.10.8., 2015.9.8&gt; - 선임급 : 정규직 외 근무경력을 100% 계상하여, 최대 3평점 인정 - 책입금 : 정규직 외 근무경력을 100% 계상하여, 최대 2평점 인정 ② 선임급 승진 시 경력평점 11점은 선임 1점에 상응함. ③ 책임급 승진 시 선임급 경력평점 12점은 책임급 1점에 상응하되, 최고 경력평점은 5점으로 함.\n\n[별표 5] \n 삭제 2010.8.31.\n\n[별표 6] \n 삭제 2010.8.31.\n[별표 7] <개정 2014.3.27.> <개정 2016.8.18.> <개정 2023.7.1.>\n\n[표] 계 약 서 한국식품연구원(이하 “ 갑 ” 이라 함)과(와) (이하 “ 을 ” 이라 함)은 다음과 같이 근로계약을 체결한다. 1. 근로계약기간: 년 월 일부터 년 월 일까지 2. 근무장소: 3. 업무의 내용: 4. 소정근로시간: 09 시 00 분부터 18 시 00 분까지(1일 8시간, 휴게시간: 12시00분 ~ 13 시00분) 5. 근무일/휴일: 매주 5일(또는 매일단위)근무, 주휴일 매주 토, 일요일을 원칙으로 연구 원 복무규정에 의한다. 6. 임 금 ○ 월(일, 시간)급: 원(연봉기준) ○ 기본연봉 : 원, 성과연봉 원, 기타급여(제수당 등) 원 ○ 임금지급일: 매월 21 일(휴일의 경우는 전일 지급) ○ 지급방법: 을의 예금통장에 입금한다. ○ 연봉 외 급여는 연구원 급여규정에 의거하여 지급한다. 7. 연차유급휴가 ○ 연차유급휴가는 연구원 취업규칙에 따라 부여한다. 8. 근로계약서 교부 ○ “ 갑 ” 은 근로계약을 체결함과 동시에 본 계약서를 사본하여 “ 을 ” 의 교부요구와 관계 없이 “ 을 ” 에게 교부한다(근로기준법 제17조 이행). 9. 기 타 ○ 이 계약에 정함이 없는 사항은 근로기준법령 및 연구원 규정에 의한다. ○ 을은 본 고용계약 중 연구원의 승낙 없이 연구원 이외에서 자문행위를 하거나 다 른 직업에 종사하지 아니한다. ○ 을은 연구원의 이익을 위하여 연구원 제 규정을 성실히 준수하고 최선을 다하여 맡은 바 임무를 수행하며 본인의 모든 역량 및 기술을 최대한 발휘한다. ○ 을은 재직기간 또는 퇴직 후에도 연구원에서 취득한 모든 비밀사항은 연구원장의 서면상 승인없이 타에 누설하지 아니한다. ○ 을은 연구원 재직 중의 직무상 발생하는 모든 지적소유권에 대하여 연구원 또는 그 지정인에게 이를 공개하고 양도할 것에 동의하며 또한 그 절차에 협력한다. ○ 연구원은 규정에 의하지 아니하고는 계약기간 내에 을의 의사에 반하여 근로계약을 해지하지 않는다 . ○ 수습직원이 수습해제평가를 통과하지 못할 경우 계약을 해지한다. ○ 근로시간과 휴게시간은 업무상 필요 및 근로제도(유연근무 등)에 의해 변경될 수 있다. 년 월 일 (갑) 사업체명 : 한국식품연구원 주 소 : 전라북도 완주군 이서면 농생명로 245 대 표 자 : (서명) (을) 주 소 : 연 락 처 : 성 명 : (서명)\n\n[별표 7-1] <개정 2014.3.27.> <개정 2016.8.18.> <개정 2023.7.1.>\n\n[표] Employment Agreement This AGREEMENT made and entered into by and between [Korea Food Research Institute] (the \"Research Institute\"), and [name of employee] (the \"Employee\"); WITNESSETH THAT: WHEREAS, the parties hereto desire to enter into this Agreement to define and set forth the terms and conditions of the employment of the Employee by the Research Institute; NOW, THEREFORE, in consideration of the mutual covenants and agreements set forth below, it is hereby covenanted by the Research Institute and the Employee as follows: 1. Employment Period: For the period beginning [start date], Year , and ending [end date], Year . 2. Place of Work: [Actual Place of Work]: 3. Duties &amp; Responsibilities: 4. Required Hours of Work: From 09:00 to 18:00 (8 hours per day, with a rest between 12:00 to 13:00) 5. Work Days &amp; Holidays: Fixed at 5 days per week (or everyday), with rest days of weekends and public holidays pursuant to the Employee Service Regulations of the Research Institute. 6. Compensation ○ ( Monthly, Hourly) Salary: \\__________________ annual salary ○ Standard Annual Compensation : \\________________, incentives and bonuses \\________________, other pays and allowances \\________________. ○ Payment Schedule: Payment Schedule: 21 st day of each month and/or on the day immediately before a weekend or a holiday (if the payment day falls on a weekend or a holiday) ○ Method of Payment: Direct deposit to the designated bank account of the Employee ○ Pay and allowance other than the annual salary will be paid pursuant to the Compensation Regulations of the Research Institute. 7. Annual Paid Leaves ○ Employee shall be entitled to paid leaves pursuant to the Employment Regulations of the Research Institute. 8. Duplicate and Issuance of Employment Agreement ○ The Research Institute shall make a duplicate of this Employ Agreement upon signing of the Agreement and deliver the duplicate to the Employee at or without their request (Article 17, Labor Standards Act). 9. Miscellaneous ○ Any terms not defined herein shall have the meanings ascribed to them in the Labor Standards Act and the Labor Regulations of the Research Institute. ○ During the Employment Period, the Employee undertakes to abstain from any consultancy or advisory activities or any other paid activity other than the duties and responsibilities stated herein without the permission of the Research Institute. ○ The Employee agrees that he or she shall comply faithfully with the Research Institute ’ s Regulations and shall perform his given and assigned duties faithfully to the best of his or her abilities. ○ During and after the Employment Period, the Employee shall not disclose any of the confidential information or knowledge obtained during his or her employment to other parties without written consent of the Research Institute. ○ The Employee agrees to disclose and assign any intellectual rights obtained during his or her employment while pertaining to the business of the Research Institute to the Research Institute and shall be fully cooperative in assigning such intellectual rights. ○ The Research Institute will not terminate the employment of the Employee during the Employment Period against the will of the Employee contrary to the rules and regulations. ○ This employment may be terminated if the Employee fails to pass the probationary exam during his or her probationary period. ○ Business needs and work systems(flexible work hours, etc.) can dictate changes to both working hours and rest hours.\n\n[표] [Month/Date], Year The Research Institute: Korea Food Research Institute Contact: (Phone number) Address: 245, Nongsaengmyeong-ro, Iseo-myeon, Wanju-gun, Jeollabuk-do 55365, Republic of Korea President: (Signature) Employee: Contact: Address: Name: (Signature)\n\n[별표 7-2] <신설 2015.5.11.> <삭제 2016.8.18.>\n[별표 8] <개정 2014.3.27.>\n\n[표] 별정직 임용계약서 (전일제 일반계약직) 성 명 : 생년월일 : 주 소 : 한국식품연구원(이하 “ 연구원 ” 이라 한다)과 피임용자는 다음과 같이 임용계약을 체 결하고, 상호간에 이를 성실히 이행할 것을 약정함. “ 기간제근로자 사용기간 제한 예외 ” 대상여부 (해당자만 표기) □ 해당분야 박사학위자 □ 해당분야 기술사 □ 고령자(만 55세 이상자) □ 정부출연연구기관 연구종사자(기간제법 시행령 제3조제3항제8호나목) 1. 근무장소(소속/부서명) : 2. 해당분야업무 및 전공 : 3. 근무기간 : 20 . . 일부터 20 . . 일까지 4. 근무시간 : 주 40시간, 9 시 부터 18 시 까지 (1일 8시간) 휴게시간 : 12 시 ~ 13 시 (1일 1시간) 5. 휴일 및 휴가 : 연구원 취업규칙에 따른다. 6. 월 급여 총액 : 원 (교통비, 중식비 등 포함) 7. 계약기간 인건비총액 : 원 (보험료 등 포함, 인건비 산정표 별첨) 8. 계정과목 : 9. 계정책임자(소관) : (인) 10. 임금지급일 : 매월 일(휴일의 경우는 전일 지급), 지급방법 : 예금통장에 입금 11. 기타사항 - 이 계약서에서 정하지 아니한 사항은 “ 근로기준법 ” 등 노동관계법령, 연구원의 별 정직규정 등에서 정하는 바에 따른다. - 재계약이 이루어지지 않을 경우 계약 만료일에 자동퇴직되며, 이로 인한 민 . 형사 상 법 적 및 사적 이의를 제기하지 않는다. 12. 피임용자(이하 “ 본인 ” 이라 한다) 준수사항 가. 본인은 연구원이 위탁 또는 위임한 사항을 성실히 수행한다. 나. 본인은 업무수행상 지득한 사항을 누설 또는 공개하지 아니한다. 다. 본인은 업무수행 결과를 연구원 요청에 따라 수시로 보고하며, 발명 및 고안 등 연구 결과의 연구원 귀속을 인정한다. 라. 본인은 연구원이 위탁 또는 위임한 사항을 이행치 못하거나 태만히 한 경우는 연구원의 처분에 따른다. 한국식품연구원 장 (인) 피임용자 : (인) 소관부서장 : (인)\n\n[표] 별정직 임용계약서 (시간제 일반계약직) 성 명 : 생년월일 : 주 소 : 한국식품연구원(이하 “ 연구원 ” 이라 한다)과 피임용자는 다음과 같이 임용계약을 체 결 하고, 상호간에 이를 성실히 이행할 것을 약정함. “ 기간제근로자 사용기간 제한 예외 ” 대상여부 (해당자만 표기) □ 해당분야 박사학위자 □ 해당분야 기술사 □ 고령자(만 55세 이상자) □ 정부출연연구기관 연구종사자(기간제법 시행령 제3조제3항제8호나목) 1. 근무장소(소속/부서명) : 2. 해당분야업무 및 전공 : 3. 근무기간 : 20 . . 일부터 20 . . 일까지 4. 근무시간 : 주 시간, 9시부터 18시까지 (1일 8시간), 휴게시간 : 12시 ~13 (1 일 1시간) 5. 근로일 및 근로일별 근로시간 (1) 근로일 : 주 일 (2) 근로일별 근로시간 구분 | 월 | 화 | 수 | 목 | 금 | 주당근로시 간\n별정직 임용계약서 (시간제 일반계약직) 성 명 : 생년월일 : 주 소 : 한국식품연구원(이하 “ 연구원 ” 이라 한다)과 피임용자는 다음과 같이 임용계약을 체 결 하고, 상호간에 이를 성실히 이행할 것을 약정함. “ 기간제근로자 사용기간 제한 예외 ” 대상여부 (해당자만 표기) □ 해당분야 박사학위자 □ 해당분야 기술사 □ 고령자(만 55세 이상자) □ 정부출연연구기관 연구종사자(기간제법 시행령 제3조제3항제8호나목) 1. 근무장소(소속/부서명) : 2. 해당분야업무 및 전공 : 3. 근무기간 : 20 . . 일부터 20 . . 일까지 4. 근무시간 : 주 시간, 9시부터 18시까지 (1일 8시간), 휴게시간 : 12시 ~13 (1 일 1시간) 5. 근로일 및 근로일별 근로시간 (1) 근로일 : 주 일 (2) 근로일별 근로시간 구분: 출근시간 | 월: : | 화: : | 수: : | 목: : | 금: : | 주당근로시 간: 시간\n별정직 임용계약서 (시간제 일반계약직) 성 명 : 생년월일 : 주 소 : 한국식품연구원(이하 “ 연구원 ” 이라 한다)과 피임용자는 다음과 같이 임용계약을 체 결 하고, 상호간에 이를 성실히 이행할 것을 약정함. “ 기간제근로자 사용기간 제한 예외 ” 대상여부 (해당자만 표기) □ 해당분야 박사학위자 □ 해당분야 기술사 □ 고령자(만 55세 이상자) □ 정부출연연구기관 연구종사자(기간제법 시행령 제3조제3항제8호나목) 1. 근무장소(소속/부서명) : 2. 해당분야업무 및 전공 : 3. 근무기간 : 20 . . 일부터 20 . . 일까지 4. 근무시간 : 주 시간, 9시부터 18시까지 (1일 8시간), 휴게시간 : 12시 ~13 (1 일 1시간) 5. 근로일 및 근로일별 근로시간 (1) 근로일 : 주 일 (2) 근로일별 근로시간 구분: 퇴근시간 | 월: : | 화: : | 수: : | 목: : | 금: :\n별정직 임용계약서 (시간제 일반계약직) 성 명 : 생년월일 : 주 소 : 한국식품연구원(이하 “ 연구원 ” 이라 한다)과 피임용자는 다음과 같이 임용계약을 체 결 하고, 상호간에 이를 성실히 이행할 것을 약정함. “ 기간제근로자 사용기간 제한 예외 ” 대상여부 (해당자만 표기) □ 해당분야 박사학위자 □ 해당분야 기술사 □ 고령자(만 55세 이상자) □ 정부출연연구기관 연구종사자(기간제법 시행령 제3조제3항제8호나목) 1. 근무장소(소속/부서명) : 2. 해당분야업무 및 전공 : 3. 근무기간 : 20 . . 일부터 20 . . 일까지 4. 근무시간 : 주 시간, 9시부터 18시까지 (1일 8시간), 휴게시간 : 12시 ~13 (1 일 1시간) 5. 근로일 및 근로일별 근로시간 (1) 근로일 : 주 일 (2) 근로일별 근로시간 구분: 근로시간 | 월: 시간 | 화: 시간 | 수: 시간 | 목: 시간 | 금: 시간\n\n[별표 8-1] <개정 2014.3.27.>\n\n[표] Employment Agreement for Specified Purpose Positions (Full-time Contract Positions) Name: Date of Birth : Address: Korea Food Research Institute (hereinafter referred to as the \"Institute\") and the Appointee hereby agree to accept and strictly comply with the following terms and conditions of this Employment Agreement. In relation to the \"Exceptions to the Limits on Employment Period as Fixed-term Employees\", please mark the box below that best describes your eligibility status (if applicable). Hold a doctoral degree related to the job Hold a national technical qualification related to the job Are 55 years old or older Engage in research work at a government-funded research institute (referred to in Article 3. (3). 8. (b) of the Enforcement Decree of the Act on the Protection, etc. of Fixed-term and Part-time Employees) Place of employment (Division/Department): Academic major and work experience: Duration of employment: _mm_ _dd_, _yyyy_ to _mm_ _dd_, _yyyy_ Working hours: 40 hours per week, from 9:00 to 18:00 (8 hours per day) Lunch/break time: 1 hour per day, from 12:00 to 13:00 Holidays and leaves All matters concerning holidays and leaves shall be governed by the Rules of Employment of the Institute. Basic monthly salary: ______________ won (including the cost of transportation, meals, etc.) Total labor cost for the period of employment: _____________ won (including insurance, etc. See the attached table \"Labor Cost Calculation\") Title of account: ____________________ Account manager (in charge): ___________________ (Seal) Pay day: _____ th/rd of each month (or the day before if the pay day falls on a weekly or public holiday); Payment made via: wire transfer to the bank account designated by the Appointee Others Matters not provided for in this Agreement shall be governed by the Labor Standards Act, other relevant labor laws, the Institute's regulations on specified purpose positions, etc. In the case in which this Agreement is not renewed, the employment of the Appointee shall be automatically terminated on the expiry date. In relation to this, the Appointee shall not file any complaint, legal or otherwise, in a civil or criminal case. The responsibilities of the Appointee (hereinafter referred to as \"I\") I will perform in good faith all duties assigned by the Institute. I will not disclose or make public any information, material, or item obtained during the performance of my duties. I will from time to time report the results of my work as requested by the Institute, and acknowledge that the outcomes of my research work, including inventions, discoveries, etc. belong to the Institute. I will be obliged to accept the decisions of the Institute in case of my failure to fulfill the assigned duties or my negligence in performing them. Korea Food Research Institute President (Seal) Appointee: (Seal) Division Head: (Seal)\n\n[표] Employment Agreement for Specified Purpose Positions (Part-time Contract Positions) Name: Date of Birth : Address: Korea Food Research Institute (hereinafter referred to as the \"Institute\") and the Appointee hereby agree to accept and strictly comply with the following terms and conditions of this Employment Agreement. In relation to the \"Exceptions to the Limits on Employment Period as Fixed-term Employees\", please mark the box below that best describes your eligibility status (if applicable). Hold a doctoral degree related to the job Hold a national technical qualification related to the job Are 55 years old or older Engage in research work at a government-funded research institute (referred to in Article 3. (3). 8. (b) of the Enforcement Decree of the Act on the Protection, etc. of Fix-term and Part-time Employees) Place of employment (Division/Department): Academic major and work experience: Duration of employment: _mm_, _dd_, _yyyy_ to _mm_ _dd_, _yyyy_ Working hours: 40 hours per week, from 9:00 to 18:00 (8 hours per day); Lunch/break time: 1 hour per day, from 12:00 to 13:00 Work days and hours of work by work day (1) Work days: ____ days a week (2) Hours of work by work day Classification | Monday | Tuesday | Wednesday | Thursday | Friday | Hours of work per week\nEmployment Agreement for Specified Purpose Positions (Part-time Contract Positions) Name: Date of Birth : Address: Korea Food Research Institute (hereinafter referred to as the \"Institute\") and the Appointee hereby agree to accept and strictly comply with the following terms and conditions of this Employment Agreement. In relation to the \"Exceptions to the Limits on Employment Period as Fixed-term Employees\", please mark the box below that best describes your eligibility status (if applicable). Hold a doctoral degree related to the job Hold a national technical qualification related to the job Are 55 years old or older Engage in research work at a government-funded research institute (referred to in Article 3. (3). 8. (b) of the Enforcement Decree of the Act on the Protection, etc. of Fix-term and Part-time Employees) Place of employment (Division/Department): Academic major and work experience: Duration of employment: _mm_, _dd_, _yyyy_ to _mm_ _dd_, _yyyy_ Working hours: 40 hours per week, from 9:00 to 18:00 (8 hours per day); Lunch/break time: 1 hour per day, from 12:00 to 13:00 Work days and hours of work by work day (1) Work days: ____ days a week (2) Hours of work by work day Classification: Clock-in time | Monday: : | Tuesday: : | Wednesday: : | Thursday: : | Friday: : | Hours of work per week: hours\nEmployment Agreement for Specified Purpose Positions (Part-time Contract Positions) Name: Date of Birth : Address: Korea Food Research Institute (hereinafter referred to as the \"Institute\") and the Appointee hereby agree to accept and strictly comply with the following terms and conditions of this Employment Agreement. In relation to the \"Exceptions to the Limits on Employment Period as Fixed-term Employees\", please mark the box below that best describes your eligibility status (if applicable). Hold a doctoral degree related to the job Hold a national technical qualification related to the job Are 55 years old or older Engage in research work at a government-funded research institute (referred to in Article 3. (3). 8. (b) of the Enforcement Decree of the Act on the Protection, etc. of Fix-term and Part-time Employees) Place of employment (Division/Department): Academic major and work experience: Duration of employment: _mm_, _dd_, _yyyy_ to _mm_ _dd_, _yyyy_ Working hours: 40 hours per week, from 9:00 to 18:00 (8 hours per day); Lunch/break time: 1 hour per day, from 12:00 to 13:00 Work days and hours of work by work day (1) Work days: ____ days a week (2) Hours of work by work day Classification: Clock-out time | Monday: : | Tuesday: : | Wednesday: : | Thursday: : | Friday: :\nEmployment Agreement for Specified Purpose Positions (Part-time Contract Positions) Name: Date of Birth : Address: Korea Food Research Institute (hereinafter referred to as the \"Institute\") and the Appointee hereby agree to accept and strictly comply with the following terms and conditions of this Employment Agreement. In relation to the \"Exceptions to the Limits on Employment Period as Fixed-term Employees\", please mark the box below that best describes your eligibility status (if applicable). Hold a doctoral degree related to the job Hold a national technical qualification related to the job Are 55 years old or older Engage in research work at a government-funded research institute (referred to in Article 3. (3). 8. (b) of the Enforcement Decree of the Act on the Protection, etc. of Fix-term and Part-time Employees) Place of employment (Division/Department): Academic major and work experience: Duration of employment: _mm_, _dd_, _yyyy_ to _mm_ _dd_, _yyyy_ Working hours: 40 hours per week, from 9:00 to 18:00 (8 hours per day); Lunch/break time: 1 hour per day, from 12:00 to 13:00 Work days and hours of work by work day (1) Work days: ____ days a week (2) Hours of work by work day Classification: Hours of work | Monday: hours | Tuesday: hours | Wednesday: hours | Thursday: hours | Friday: hours\n\n[별표 9] <신설 2020.3.6.>\n\n[표] 주의 (경고) 서 소 속 : 직 급 : 성 명 : 귀하는 _________________________ 등의 규정을 위반하였기에 주의를 촉구하며, 향후 유사한 사례가 발생하지 않도록 업무에 만전 을 기하시기 바랍니다. 한국식품연구원장 (직인)\n\n[별표 10] <신설 2020.6.15.>\n사 직 원\n\n1. 소 속:\n2. 직 급:\n3. 성 명:\n\n상기 본인은 아래와 같이 본직을 사직코자 합니다.\n\n아 래\n\n가. 사직요청일:\n나. 사직기준일:\n다. 사 유: 이직 시, 해당 기관(업체)명 기재\n\n20 . . .\n\n위 원 인 (서 명)\n\n소속부서장 (서 명)\n\n한국식품연구원 원장 귀하"
+    }
+  ],
+  "effective_dates": [
+    "1988년2월19",
+    "1990년1월23",
+    "1991년6월28",
+    "1993년8월30",
+    "1993년9월27",
+    "1995년11월23",
+    "1996년12월26",
+    "1997년12월26",
+    "1999년6월11",
+    "2002년7월30",
+    "2005년1월21",
+    "2007년5월1",
+    "2008년4월22",
+    "2009년1월14",
+    "2010년8월31",
+    "2011년4월1",
+    "2012년5월1",
+    "2012년7월3",
+    "2012년12월21",
+    "2013년6월17",
+    "2014년3월27",
+    "2014년10월8",
+    "2014년11월11",
+    "2014년12월31",
+    "2015년2월28",
+    "2015년5월11",
+    "2015년9월8",
+    "2015년12월23",
+    "2016년2월29",
+    "2016년8월12",
+    "2016년11월30",
+    "2016년12월27",
+    "2017년8월14",
+    "2018년5월10",
+    "2019년9월30",
+    "2020년3월6",
+    "2020년3월6",
+    "2020년6월15",
+    "2021년12월30",
+    "2022년7월1",
+    "2022년12월16",
+    "2023년7월1"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 242,
+  "delegated_to": [],
+  "glossary": [
+    {
+      "term": "직종",
+      "definition": "직무의 성질에 따라 분류, 구분된 직무의 종류를 말한다."
+    },
+    {
+      "term": "직급",
+      "definition": "직무의 종류, 곤란성과 책임도에 따라 구분된 등급을 말한다."
+    },
+    {
+      "term": "직명",
+      "definition": "직종과 직급에 따른 신분의 명칭을 말한다."
+    },
+    {
+      "term": "직위",
+      "definition": "한사람의 직원에게 부여할 수 있는 직무와 책임을 말한다."
+    },
+    {
+      "term": "채용",
+      "definition": "직제상의 소요인원을 보충하기 위하여 신규로 직원을 임용하는 것을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "부서 간 이동을 말한다."
+    },
+    {
+      "term": "보직",
+      "definition": "소속직원의 자격.경력 등을 고려하여 그에 상응하는 일정한 직위를 부여함을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "하위직급에서 상위직급으로 임명함을 말한다."
+    },
+    {
+      "term": "휴직",
+      "definition": "법률에 규정된 의무의 이행 또는 업무집행 중 발생한 사유, 직원의 본인사정으로 일정기간 직무를 중단함을 말한다."
+    },
+    {
+      "term": "정직",
+      "definition": "일정기간 직위를 해제시키고 직무수행을 정지시킴을 말한다."
+    },
+    {
+      "term": "퇴직",
+      "definition": "정년 또는 본인 자신의 사정에 의하여 그 직을 물러남을 말한다."
+    },
+    {
+      "term": "면직",
+      "definition": "징계처분 등 본인의 의사에 반하여 그 직을 면함을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직 또는 정직 중에 있는 직원에게 다시 직위를 부여함을 말한다."
+    },
+    {
+      "term": "겸직",
+      "definition": "현 보직(부서) 이외의 타 보직(타 부서, 타 기관)을 병행하여 직무를 수행하는 것을 말한다."
+    },
+    {
+      "term": "직무대행",
+      "definition": "직상위자 유고시 바로 직하위자 혹은 다른 직원이 직무를 대리 수행케 함을 말한다."
+    },
+    {
+      "term": "파견",
+      "definition": "소속부서 이외의 타 기관에서 직무를 수행케 함을 말한다."
+    }
+  ]
+}

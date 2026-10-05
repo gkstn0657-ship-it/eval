@@ -1,0 +1,90 @@
+{
+  "org": "한국예탁결제원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2018.05.21",
+  "format": "pdf",
+  "sha256": "e98ce1679bc6db83985a5fa3ed3fa27dccc30ad618776d58e9959b556f33fcba",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=61970",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0131&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=23017&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국예탁결제원/인사규정(개정 180521).pdf",
+  "revision_date": null,
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": "1994년5월9",
+      "other_rule_amendment": false,
+      "text": "부칙 <1994.05.09>\n이 규정은 1994년 5월 9일부터 시행한다."
+    },
+    {
+      "effective_date": "1995년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <1994.12.30>\n이 규정은 1995년 1월 1일부터 시행한다."
+    },
+    {
+      "effective_date": "2005년8월29",
+      "other_rule_amendment": false,
+      "text": "부칙 <2005.08.29>\n이 규정은 2005년 8월 29일부터 시행한다."
+    },
+    {
+      "effective_date": "2008년4월28",
+      "other_rule_amendment": false,
+      "text": "부칙 <2008.01.30>\n이 규정은 2008년 4월 28일부터 시행한다."
+    },
+    {
+      "effective_date": "2010년2월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2009.12.30>\n제1조 (시행일) 이 규정은 2010년 2월 1일부터 시행한다.\n제2조 (별정직원 전환 연령에 관한 특례) 이 규정 시행일부터 2012년 12\n월 31일까지는 제18조의2의 규정에 불구하고 별정직원으로 전환되는 직원의\n연령은 만 54세로 한다.\n제3조 (정년퇴직 연령에 관한 경과조치) 이 규정 시행 당시 다음 각 호의\n어느 하나에 해당하는 직원의 정년퇴직 연령에 대하여는 제16조의 개정규정\n에 불구하고 종전의 규정에 따른다.\n1. 만 57세 이상인 자\n2.「장기근속자 전직연수 시행지침」에 따른 전직연수자 또는 전직연수 신\n청자"
+    },
+    {
+      "effective_date": "2010년10월27",
+      "other_rule_amendment": false,
+      "text": "부칙 <2010.10.27>\n이 규정은 2010년 10월 27일부터 시행한다."
+    },
+    {
+      "effective_date": "2013년1월17",
+      "other_rule_amendment": false,
+      "text": "부칙 <2013.01.17>\n제1조(시행일) 이 규정은 2013년 1월 17일부터 시행한다. 제2조(정년퇴직\n예정자에 대한 경과조치) 이 규정 시행일 현재 만 58세 이상인 직원에 대하\n여는 제16조 단서의 개정규정에 불구하고 종전의 규정에 따른다."
+    },
+    {
+      "effective_date": "2013년8월29",
+      "other_rule_amendment": false,
+      "text": "부칙 <2013.08.28>\n이 규정은 2013년 8월 29일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년8월20",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.08.19>\n이 규정은 2014년 8월 20일부터 시행한다."
+    },
+    {
+      "effective_date": "2016년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2015.11.02>\n이 규정은 2016년 1월 1일부터 시행한다."
+    },
+    {
+      "effective_date": "2018년5월22",
+      "other_rule_amendment": true,
+      "text": "부칙 <2018.05.21>\n제1조 (시행일) 이 규정은 2018년 5월 22일부터 시행한다.\n제2조 (다른 규정의 개정) ① 「인사규정」 일부를 다음과 같이 개정한다.\n제5조제1항제3호 중 \"서무원 및 별정직원\"을 \"서무원, 전임직원 및 별정직원\n\"으로 한다.\n② 「직원보수규정」 일부를 다음과 같이 개정한다. 제2조 중 \"별정직원\"을\n\"전임직원 및 별정직원\"으로 한다."
+    }
+  ],
+  "effective_dates": [
+    "1994년5월9",
+    "1995년1월1",
+    "2005년8월29",
+    "2008년4월28",
+    "2010년2월1",
+    "2010년10월27",
+    "2013년1월17",
+    "2013년8월29",
+    "2014년8월20",
+    "2016년1월1",
+    "2018년5월22"
+  ],
+  "other_rule_amendment_blocks": 1,
+  "revision_marks_total": 22,
+  "delegated_to": [],
+  "glossary": []
+}

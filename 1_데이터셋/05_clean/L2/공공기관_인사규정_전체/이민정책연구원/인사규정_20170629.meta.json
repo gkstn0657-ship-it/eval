@@ -1,0 +1,74 @@
+{
+  "org": "이민정책연구원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2018.04.24",
+  "format": "hwp",
+  "sha256": "38c3a6973c58e9015611c70651e553740c6da8bb03d5424f53997487cad6afd8",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=44090",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0926&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=32521&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/이민정책연구원/인사규정_20170629.hwp",
+  "revision_date": null,
+  "is_latest": true,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙\n\n제1조 (시행일) 이 규정은 이사회 의결이 있는 날로부터 시행한다.\n\n제2조 (규칙제정) 이 규정의 시행을 위하여 필요한 사항은 원장이 규칙으로 정한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙(2017.6.29.)\n\n제1조 (시행일) 이 규정은 이사회 의결이 있는 날로부터 시행한다.\n\n<별지 1> 삭제 <삭제 2011. 1. 21.> \n\n<별지1> <삭제 2011. 01. 21.> \n<별지 2>\n임 용 계 약 서\n\n임 용 자 : IOM 이민정책연구원장\n\n피임용자 : 직급 : \n 성명 : \n\n 위 쌍방은 다음과 같이 임용계약을 체결한다.\n\n1. 임용기간은 년 월 일 부터 년 월 일 까지로 하고, 임용기간이 만료되면 IOM 이민정책연구원(이하 “연구원”이라 한다.) 인사관리규정이 정하는 바에 의하여 재임용 계약을 체결할 수 있다. \n\n2. 피임용자의 보수는 연구원 보수규정에 의한 연봉계약 등에 따라 정한다.\n\n3. 기타 세부사항은 연구원 제규정에 따른다. \n\n 본 계약의 체결을 증명하기 위하여 임용계약서 2통을 작성하여 쌍방 서명날인하고 각 1통씩 소지한다.\n\n 년 월 일\n\n임 용 자\n 주 소 : 경기도 고양시 장항동 일산동구 장항2동 868번지 웨스턴타워 4동 8층 \n 성 명 : IOM 이민정책연구원장 ○ ○ ○ (인)\n\n피임용자\n 주 소 : \n 성 명 : ○ ○ ○ (인)"
+    }
+  ],
+  "effective_dates": [],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 74,
+  "delegated_to": [
+    "규정의 시행을 위하여 필요한 사항은 원장이 규칙",
+    "인사관리규정",
+    "징계처분 또는 이 규정"
+  ],
+  "glossary": [
+    {
+      "term": "임용",
+      "definition": "채용·승진·승급·전보·겸임·파견·휴직·직위해제·정직·복직·면직 등 인사관리에 관한 일체의 발령을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "하위직급에서 상위직급으로 임명되는 것을 말한다."
+    },
+    {
+      "term": "직위",
+      "definition": "직원에게 부여할 수 있는 직무와 책임을 말한다."
+    },
+    {
+      "term": "직종",
+      "definition": "직무의 성질이 유사한 직군을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "동일직렬의 동일직급 내에서의 보직 변경을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직·직위해제 또는 면직 중에 있는 직원을 직위에 복귀시키는 것을 말한다."
+    },
+    {
+      "term": "보직",
+      "definition": "직원을 그 자격 및 적성에 따라 일정한 직위를 부여하는 것을 말한다."
+    },
+    {
+      "term": "전직",
+      "definition": "직종을 달리하는 임용을 말한다."
+    },
+    {
+      "term": "임시직",
+      "definition": "일시적으로 고용 또는 위촉하는 자를 말한다."
+    }
+  ]
+}

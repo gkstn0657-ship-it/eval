@@ -1,0 +1,15 @@
+{
+  "org": "코레일네트웍스(주)",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2023.09.14",
+  "format": "pdf",
+  "sha256": "f627397c0bdf8b570b941c7465c722d54acec9b879b43cc59b69f5b7fe4dac0d",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=169346",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0327&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=25641&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/코레일네트웍스/인사규정(23년 3월 개정).pdf",
+  "revision_date": "2023-03",
+  "is_latest": false,
+  "level": "L0"
+}

@@ -1,0 +1,175 @@
+{
+  "org": "한국석유관리원",
+  "org_type": "위탁집행형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.06.05",
+  "format": "hwp",
+  "sha256": "4984dcebae0a2f3dd480469280fb3b7bb3f3b682d43d12967cf99363c2d83df1",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=209062",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0215&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=12766&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국석유관리원/인사규정(2024년도 12월 개정).hwp",
+  "revision_date": "2024-12",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2009.05.01)\n이 규정은 한국석유관리원이 설립등기를 한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2010.12.22)\n제1조 (시행일) 이 규정은 이사회의 의결일부터 시행한다.\n제2조 (무보직자에 대한 경과조치) 이 규정 개정 전에 보직을 부여받지 못한 자는 이 규정 시행일로부터 제31조 제10호의 규정을 적용한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2011.10.27)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2012.05.17)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2013.07.03)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2014.06.13)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2014.08.27)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2014.12.30)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": "2016년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 (2015.09.24)\n이 규정은 이사회에서 의결한 날부터 시행한다. 다만, 제32조는 2016년 1월 1일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2016.10.26)\n이 규정은 이사회에서 의결한 날부터 시행한다"
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2017.10.26)\n이 규정은 이사회에서 의결한 날부터 시행한다"
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2017.12.28)\n이 규정은 이사회에서 의결한 날부터 시행한다"
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2018.03.21)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2018.06.25)\n제1조 (시행일) 이 규정은 이사회에서 의결한 날부터 시행한다.\n제2조 (채용관련 중징계 이상 처분자에 대한 경과조치) 제1조의 시행일 이전에 발생한 징계처분자에 대해서는 제44조의2제4항의 개정규정에도 불구하고 종전의 규정을 따른다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2019.10.31)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2020.07.29)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2020.12.30) (기록물관리규정)\n제1조 (시행일) 이 규정은 이사장이 결재한 날부터 시행한다.\n제2조 (다른 규정의 개정) ① 사무관리규정 일부를 다음과 같이 개정한다. 제17조제2항 중 “한국석유관리원의 기록물관리규정 제10조의 규정에 의한 생산등록번호 및 접수등록번호로 하며”를 “처리과기관코드와 연도별 일련번호를 기입하되 외관상 처리과를 바로 알 수 있도록 처리과명과 연도별 일련번호가 동시에 연계되도록 하며(예: 운영지원팀-1)”으로 한다. 제31조 중 “별지 제1호서식의”를 “제9조에 따라”로 한다. 제40조제1항 중 “한국석유관리원의 기록물관리규정 제10조의 규정에 의한 기록물배부대장에 기록한 후”를 삭제한다. 제40조제2항, 제42조의 “기록물관리규정 제10조”를 “기록물관리규정 제9조”로 한다. [별지 제2호 서식] 중 처리요령 12의 “기록물관리규정 제19조”를 “기록물관리규정 제13조”로 한다. [별지 제12호 서식] 중 기재요령 4의 “기록물관리규정 제15조”를 “기록물관리규정 제16조”로 한다.\n② 인사규정 일부를 다음과 같이 개정한다. 제45조의2제1항 중 “기록물관리규정 제14조제1항”을 “기록물관리규정 제16조제1항”으로 한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2022.02.23)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2022.11.30)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2023.04.28)\n이 규정은 이사회에서 의결한 날부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2024.12.26)\n이 규정은 이사회에서 의결한 날부터 시행한다.\n(별지 제1호서식)\n\n[표] 서 약 서"
+    }
+  ],
+  "effective_dates": [
+    "2016년1월1"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 252,
+  "delegated_to": [
+    "기타 필요한 사항은 시행세칙",
+    "임금피크제 운영규정",
+    "직제규정"
+  ],
+  "glossary": [
+    {
+      "term": "임용",
+      "definition": "신규채용, 승급, 전보, 겸직, 파견, 휴직, 직위해제, 정직, 복직, 겸임, 면직, 파면 등 인사에 관한 일체의 명령을 말한다."
+    },
+    {
+      "term": "직무",
+      "definition": "업무수행에 필요한 능력과 기능이 유사한 단위업무의 집합으로서 책임을 갖고 담당하여 맡은 업무를 말한다."
+    },
+    {
+      "term": "직위",
+      "definition": "1인의 직원에게 부여하는 직무와 책임을 말한다."
+    },
+    {
+      "term": "직종",
+      "definition": "직무의 성질이 유사한 집합체로 분류한 것을 말한다."
+    },
+    {
+      "term": "직군",
+      "definition": "직무의 종류가 유사하고 그 책임과 곤란성의 정도가 서로 다른 직급의 군을 말한다."
+    },
+    {
+      "term": "직급",
+      "definition": "직무의 종류, 곤란성과 책임도가 상당히 유사한 직무의 등급을 말한다."
+    },
+    {
+      "term": "승급",
+      "definition": "직급이나 숙련등급이 하위단계에서 상위단계로 임명되는 것을 말한다."
+    },
+    {
+      "term": "보직",
+      "definition": "직원의 자격, 능력 및 적성에 따라 일정한 직책·직위를 부여하는 것을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직, 직위해제 중에 있는 직원을 직위에 복귀시키는 것을 말한다."
+    },
+    {
+      "term": "겸임",
+      "definition": "직원이 타 기관의 업무를 수행하거나 타 기관 직원이 관리원의 업무를 수행하는 것을 말한다."
+    }
+  ]
+}
