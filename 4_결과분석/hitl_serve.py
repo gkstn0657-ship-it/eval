@@ -15,6 +15,7 @@ from fastapi import FastAPI, Query, Body  # noqa: E402
 from fastapi.responses import HTMLResponse, JSONResponse  # noqa: E402
 import uvicorn  # noqa: E402
 
+GUARDRAILS = os.environ.get("GUARDRAILS", "on") != "off"  # 공개 데모(Space)는 off. 로컬 HITL·평가는 on
 CORPUS = "L2P_A"; LOG = ROOT / "3_성능테스트" / "hitl_log.jsonl"
 OLLAMA = "http://127.0.0.1:11434"; LLM_MODEL = "qwen2.5:7b-instruct"
 HAIKU = "claude-haiku-4-5"  # 파이프라인 답변 생성 모델. ANTHROPIC_API_KEY 환경변수 또는 ROOT/.anthropic_key 파일(한 줄)에서 키를 읽는다.
@@ -107,7 +108,9 @@ def ask(q: str = Query(..., min_length=1), org: str = Query(""), k: int = Query(
     out = {"q": q, "org": target, "org_note": org_note, "hits": hits, "info": {kk: (round(v, 3) if isinstance(v, float) else v) for kk, v in info.items()}, "sec": round(time.time() - t0, 2), "answer": None, "model": None}
     ment = mentioned_orgs(q, set(c.org_names))
     gd = GR.decide(strip_org_names(q, ment), info.get("top1_ce"), c.org_names)
-    if len(ment) >= 2:  # 기관명을 뗀 질문으로는 비교 질문을 못 잡으므로 여기서 판정
+    if not GUARDRAILS:  # 가드레일 끔: 항상 검색 결과로 답변 생성, 검증 생략
+        gd = {"action": "answer", "input": {"label": "ok", "matched": []}, "gate": None, "message": None}
+    elif len(ment) >= 2:  # 기관명을 뗀 질문으로는 비교 질문을 못 잡으므로 여기서 판정
         gd = {"action": "refuse_multi", "input": {"label": "multi_org", "matched": sorted(ment)}, "gate": None, "message": GR.MSG["multi_org"]}
     out["gate"] = {"action": gd["action"], "gate": gd["gate"], "input": gd["input"]["label"], "message": gd["message"], "disclaimer": GR.MSG["disclaimer"]}
     if gd["action"] in ("refuse_scope", "refuse_multi"): hits = []; out["hits"] = []
@@ -122,7 +125,7 @@ def ask(q: str = Query(..., min_length=1), org: str = Query(""), k: int = Query(
         elif ollama_ok():
             try: out["answer"] = ollama_chat(SYSTEM_PROMPT.format(context=ctx), q); out["model"] = LLM_MODEL
             except Exception as e: out["answer"] = f"(Ollama 호출 실패: {e})"
-        if out["answer"] and out["model"]:
+        if out["answer"] and out["model"] and GUARDRAILS:
             v = GR.verify_answer(out["answer"], [h["text"] for h in hits], [h["article_no"] for h in hits]); out["gate"]["verify"] = v
             if not v["ok"]: out["answer"] = None; out["gate"]["message"] = "생성 답변이 근거 조문과 맞지 않아 원문만 표시합니다. " + str(v)
     with open(ROOT / "3_성능테스트" / "hitl_questions.jsonl", "a", encoding="utf-8") as f:  # 채팅의 Fable 이 읽어갈 질문 기록

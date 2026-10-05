@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parent
 # run_eval.py 가 setdefault 로 로컬 경로(E:\hf_cache)·오프라인을 켜므로 import 전에 Space 환경으로 고정
 os.environ.setdefault("HF_HOME", str(Path.home() / ".cache" / "huggingface"))
 os.environ["HF_HUB_OFFLINE"] = "0"
+os.environ["GUARDRAILS"] = "off"  # 공개 데모는 가드레일 없이 검색 결과로 바로 답변 (2026-10-06 결정)
 # ZeroGPU Space: GPU 는 @spaces.GPU 함수 안에서만 쓸 수 있어, 로컬 검증과 같은 CPU 경로로 고정한다
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 sys.path.insert(0, str(ROOT / "4_결과분석"))
