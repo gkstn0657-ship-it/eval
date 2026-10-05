@@ -22,7 +22,10 @@ textarea{width:100%;min-height:220px;padding:10px;border:1px solid var(--line);b
 #log{grid-column:1/-1}table{width:100%;border-collapse:collapse;font-size:13px}td,th{border-top:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
 .answer{white-space:pre-wrap;background:#f9fafb;border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:8px}
 @media(max-width:900px){main{grid-template-columns:1fr}}
-</style></head><body>
+</style>
+<!-- HF Space 가 고정 높이 iframe 에 넣을 때 내용 높이에 맞춰 늘어나도록 (Gradio 가 쓰는 것과 같은 스크립트) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.min.js" async></script>
+</head><body>
 <header>
   <h1>HITL 비교</h1>
   <select id="org"><option value="">(회사 미지정: 전체 검색)</option></select>
@@ -55,9 +58,9 @@ textarea{width:100%;min-height:220px;padding:10px;border:1px solid var(--line);b
 </main>
 <script>
 const $=s=>document.querySelector(s); let last=null;
-async function loadOrgs(n=0){try{const a=await (await fetch('/orgs')).json();if(!a.length)throw 0;for(const o of a){const op=document.createElement('option');op.value=o;op.textContent=o;$('#org').appendChild(op)}$('#status').textContent=`회사 ${a.length}곳`}catch(e){if(n<20){$('#status').textContent='회사 목록 로딩 중…';setTimeout(()=>loadOrgs(n+1),3000)}}}loadOrgs();
+async function loadOrgs(n=0){try{const a=await (await fetch('orgs')).json();if(!a.length)throw 0;for(const o of a){const op=document.createElement('option');op.value=o;op.textContent=o;$('#org').appendChild(op)}$('#status').textContent=`회사 ${a.length}곳`}catch(e){if(n<20){$('#status').textContent='회사 목록 로딩 중…';setTimeout(()=>loadOrgs(n+1),3000)}}}loadOrgs();
 async function ask(){const q=$('#q').value.trim();if(!q)return;$('#status').textContent='검색 중…';$('#go').disabled=true;
-  const r=await fetch(`/ask?q=${encodeURIComponent(q)}&org=${encodeURIComponent($('#org').value)}`);const d=await r.json();last=d;$('#go').disabled=false;
+  const r=await fetch(`ask?q=${encodeURIComponent(q)}&org=${encodeURIComponent($('#org').value)}`);const d=await r.json();last=d;$('#go').disabled=false;
   $('#status').textContent=`${d.sec}s`;$('#pinfo').textContent=`회사: ${d.org||'(미지정)'} · 상위 ${d.hits.length}개 조문`+(d.model?` · 답변 ${d.model}`:' · 생성 모델 없음(검색 근거만). ANTHROPIC_API_KEY 설정 후 서버 재시작');
   $('#fanswer').innerHTML='';const g=d.gate||{};const gmsg=g.message?`<div class="answer" style="border-color:#b45309;background:#fffbeb"><b>가드레일 ${esc(g.action||'')}</b> · ${esc(g.message)}</div>`:'';$('#panswer').innerHTML=gmsg+(d.answer?`<div class="answer">${esc(d.answer)}<div class="mute" style="margin-top:6px">${esc(g.disclaimer||'')}</div></div>`:'');
   $('#hits').innerHTML=d.hits.map(h=>`<div class="hit"><b>${h.rank}. ${esc(h.org)} ${esc(h.article_no)}${h.title?'('+esc(h.title)+')':''}</b> <span class="mute">개정 ${esc(h.revision_date)}</span><pre>${esc(h.text)}</pre></div>`).join('');}
@@ -65,8 +68,8 @@ function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>
 $('#go').onclick=ask;$('#q').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
 $('#copyq').onclick=()=>{navigator.clipboard.writeText($('#q').value);$('#status').textContent='질문 복사됨'};
 $('#copyctx').onclick=()=>{if(!last){alert('먼저 질문하세요');return}const NL=String.fromCharCode(10);const head=['[질문] '+last.q,'[회사] '+(last.org||'(미지정)'),'아래 조문만 근거로 답하고, 없는 내용은 없다고 답해줘.',''].join(NL);const body=last.hits.map(h=>'['+h.rank+'] '+h.org+' 인사규정 '+h.article_no+(h.title?'('+h.title+')':'')+' (개정 '+h.revision_date+')'+NL+h.text).join(NL+NL);navigator.clipboard.writeText(head+NL+body);$('#status').textContent='근거 조문 복사됨 → 채팅에 붙여넣기'};
-async function loadLog(){const a=await (await fetch('/log')).json();const c={pipeline:0,tie:0,fable:0};a.forEach(x=>c[x.verdict]=(c[x.verdict]||0)+1);
+async function loadLog(){const a=await (await fetch('log')).json();const c={pipeline:0,tie:0,fable:0};a.forEach(x=>c[x.verdict]=(c[x.verdict]||0)+1);
   $('#logsum').textContent=`${a.length}건 · 파이프라인 ${c.pipeline} / 비슷 ${c.tie} / Fable ${c.fable}`;
   $('#logbody').innerHTML=a.slice().reverse().map(x=>`<tr><td>${esc(x.ts)}</td><td>${esc(x.org||'')}</td><td>${esc(x.q)}</td><td>${esc(x.verdict)}</td><td>${esc(x.note||'')}</td></tr>`).join('')}
-async function pollAnswers(){const qq=last?last.q:$('#q').value.trim();if(!qq)return;try{const d=await (await fetch('/answers?q='+encodeURIComponent(qq))).json();if(d.pipeline_answer){$('#panswer').innerHTML='<div class="answer"><b>파이프라인 근거 기반 답변 (Fable 생성)</b><br>'+esc(d.pipeline_answer)+'</div>'}if(d.fable_answer){$('#fanswer').innerHTML='<div class="answer"><b>Fable 자체 검색 답변</b><br>'+esc(d.fable_answer)+'</div>'}}catch(e){}}setInterval(pollAnswers,5000);pollAnswers();loadLog();
+async function pollAnswers(){const qq=last?last.q:$('#q').value.trim();if(!qq)return;try{const d=await (await fetch('answers?q='+encodeURIComponent(qq))).json();if(d.pipeline_answer){$('#panswer').innerHTML='<div class="answer"><b>파이프라인 근거 기반 답변 (Fable 생성)</b><br>'+esc(d.pipeline_answer)+'</div>'}if(d.fable_answer){$('#fanswer').innerHTML='<div class="answer"><b>Fable 자체 검색 답변</b><br>'+esc(d.fable_answer)+'</div>'}}catch(e){}}setInterval(pollAnswers,5000);pollAnswers();loadLog();
 </script></body></html>
