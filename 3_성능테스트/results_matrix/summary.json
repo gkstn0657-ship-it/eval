@@ -1,0 +1,62 @@
+{
+ "n_queries": 111,
+ "n_scored": 111,
+ "conditions": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "recall5": 0.2972972972972973,
+   "recall10": 0.2972972972972973,
+   "mrr": 0.2972972972972973,
+   "ndcg5": 0.2972972972972973
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.990990990990991,
+   "recall10": 0.990990990990991,
+   "mrr": 0.990990990990991,
+   "ndcg5": 0.990990990990991
+  }
+ ],
+ "by_type": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid",
+   "type": "Q3",
+   "n": 111,
+   "recall5": 0.2972972972972973,
+   "mrr": 0.2972972972972973,
+   "ndcg5": 0.2972972972972973
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 111,
+   "recall5": 0.990990990990991,
+   "mrr": 0.990990990990991,
+   "ndcg5": 0.990990990990991
+  }
+ ],
+ "q9": [],
+ "comparisons": [
+  {
+   "label": "v9 prefilter vs hybrid (L2P_A)",
+   "a": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid"
+   ],
+   "delta_ndcg5": 0.6936936936936937,
+   "ci95": [
+    0.6036036036036037,
+    0.7837837837837838
+   ],
+   "significant": true
+  }
+ ]
+}

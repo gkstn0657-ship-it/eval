@@ -1,0 +1,111 @@
+{
+  "org": "(재)한국스마트그리드사업단",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2021.01.06",
+  "format": "hwp",
+  "sha256": "f2ad3d2bec95b7f3e5a3ea404c855c7279a35185d6fb5b8d4bbf48a3b700d8cc",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=110081",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0881&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=34752&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/(재)한국스마트그리드사업단/인사규정 일부개정(2020.08.12).hwp",
+  "revision_date": null,
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙(2017. 08. 09)\n\n제1조(시행일) 이 규정은 이사회의 승인을 받은 날로부터 시행한다."
+    },
+    {
+      "effective_date": "2018년4월2",
+      "other_rule_amendment": false,
+      "text": "부칙(2018. 04. 02)\n\n제1조(시행일) 이 규정은 2018년 4월 2일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙(2020. 08. 12)\n\n제1조(시행일) 이 규정은 이사회의 승인을 받은 날로부터 시행한다."
+    }
+  ],
+  "effective_dates": [
+    "2018년4월2"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 0,
+  "delegated_to": [
+    "른 규정에서 특별히 정한 것을 제외하고는 이 규정",
+    "복무규정",
+    "임금피크제 운영규정",
+    "직제규정",
+    "징계처분 또는 이 규정"
+  ],
+  "glossary": [
+    {
+      "term": "직원",
+      "definition": "사업단장을 제외한 정규직 및 계약직을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "하위직급에서 상위직급으로 임용되는 것을 말한다."
+    },
+    {
+      "term": "전직",
+      "definition": "직원의 직종을 달리하여 임용하는 것을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "동일직급 내에서의 보직 변경 또는 부서간 이동을 말한다."
+    },
+    {
+      "term": "겸직",
+      "definition": "현 보직 이외의 타 보직을 병행하여 수행하는 것을 말한다."
+    },
+    {
+      "term": "직무대리",
+      "definition": "직상위자 유고시 직무상 공백이 발생하지 않도록 직하위자를 지정하여 직무를 대리 수행하게 하는 것을 말한다."
+    },
+    {
+      "term": "파견",
+      "definition": "소속부서 이외의 타부서 또는 타기관에서 직무를 수행하게 하는 것을 말한다."
+    },
+    {
+      "term": "강임",
+      "definition": "직제 또는 정원의 변경 등으로 현재의 직급보다 하위직급에 임용하는 것을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직, 직위해제, 정직 중이거나 강등으로 직무에 종사하지 못한 직원의 직위를 복귀시키는 것을 말한다."
+    },
+    {
+      "term": "직위해제",
+      "definition": "직위를 계속 유지시킬 수 없다고 인정되는 사유가 있는 경우에 직위를 부여하지 않는 것을 말한다."
+    },
+    {
+      "term": "정직",
+      "definition": "일정기간 직무를 부여하지 아니하고 급여의 일부를 감액하여 지급하는 것을 말한다."
+    },
+    {
+      "term": "강등",
+      "definition": "정직기간을 거쳐 한 단계 낮은 직급의 보직을 받게 되는 것을 말한다."
+    },
+    {
+      "term": "대기",
+      "definition": "일정기간 보직을 해제함을 말한다."
+    },
+    {
+      "term": "면직",
+      "definition": "직원의 신분을 해제하는 것을 말한다."
+    },
+    {
+      "term": "해임",
+      "definition": "징계처분에 의하여 직원의 신분을 박탈하는 것을 말한다."
+    },
+    {
+      "term": "별정직",
+      "definition": "사업단의 사무국장직을 말한다."
+    }
+  ]
+}

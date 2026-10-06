@@ -1,0 +1,24 @@
+{
+ "n_queries": 200,
+ "n_scored": 0,
+ "conditions": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": null,
+   "recall10": null,
+   "mrr": null,
+   "ndcg5": null
+  }
+ ],
+ "by_type": [],
+ "q9": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 200,
+   "abstain_rate": 0.745
+  }
+ ],
+ "comparisons": []
+}

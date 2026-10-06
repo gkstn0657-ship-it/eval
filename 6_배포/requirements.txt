@@ -1,0 +1,10 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch~=2.8.0
+sentence-transformers==5.5.1
+transformers==5.9.0
+rank-bm25~=0.2.2
+numpy>=2.0
+anthropic~=1.11
+fastapi~=0.142
+uvicorn~=0.54
+gradio~=5.0

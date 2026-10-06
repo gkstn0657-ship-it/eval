@@ -1,0 +1,89 @@
+{
+  "org": "한국제품안전관리원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.08.19",
+  "format": "hwp",
+  "sha256": "27419a4a0610c02a86dfe52d840d811323b54ed0b897c06d9c1531559f3e9247",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=224596",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C1124&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=47954&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국제품안전관리원/인사규정(25년 11월 개정).hwp",
+  "revision_date": "2025-11",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2018. 9. 21>\n\n제1조(시행일) 이 규정은 한국제품안전관리원이 설립등기를 한 날부터 시행한다."
+    },
+    {
+      "effective_date": "2019년2월26",
+      "other_rule_amendment": false,
+      "text": "부칙 <2019. 2. 26>\n\n(시행일) 이 규정은 2019년 2월 26일부터 시행한다."
+    },
+    {
+      "effective_date": "2020년2월20",
+      "other_rule_amendment": false,
+      "text": "부칙 <2020. 2. 20>\n\n(시행일) 이 규정은 2020년 2월 20일부터 시행한다."
+    },
+    {
+      "effective_date": "2021년11월26",
+      "other_rule_amendment": false,
+      "text": "부칙 <2021. 11. 26>\n\n(시행일) 이 규정은 2021년 11월 26일부터 시행한다."
+    },
+    {
+      "effective_date": "2022년8월29",
+      "other_rule_amendment": false,
+      "text": "부칙 <2022. 8. 29.>\n\n제1조(시행일) 이 규정은 2022년 8월 29일부터 시행한다."
+    },
+    {
+      "effective_date": "2022년11월28",
+      "other_rule_amendment": false,
+      "text": "부칙 <2022. 11. 28.>\n\n제1조(시행일) 이 규정은 2022년 11월 28일부터 시행한다."
+    },
+    {
+      "effective_date": "2023년2월24",
+      "other_rule_amendment": false,
+      "text": "부칙 <2023. 2. 24.>\n\n제1조(시행일) 이 규정은 2023년 2월 24일부터 시행한다."
+    },
+    {
+      "effective_date": "2023년11월27",
+      "other_rule_amendment": false,
+      "text": "부칙 <2023. 11. 27.>\n\n제1조(시행일) 이 규정은 2023년 11월 27일부터 시행한다."
+    },
+    {
+      "effective_date": "2024년2월27",
+      "other_rule_amendment": false,
+      "text": "부칙 <2024. 2. 27.>\n\n제1조(시행일) 이 규정은 2024년 2월 27일부터 시행한다."
+    },
+    {
+      "effective_date": "2026년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2025. 11. 28.>\n\n제1조(시행일) 이 규정은 2026년 1월 1일부터 시행한다.\n\n제2조(호봉승급 시행의 적용례) 2025년 4분기(10월, 11월, 12월) 미승급 직원은 2026년 1월 1일 자로 승급한다.\n[별표 1] 삭제 <2023.2.24.>"
+    }
+  ],
+  "effective_dates": [
+    "2019년2월26",
+    "2020년2월20",
+    "2021년11월26",
+    "2022년8월29",
+    "2022년11월28",
+    "2023년2월24",
+    "2023년11월27",
+    "2024년2월27",
+    "2026년1월1"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 74,
+  "delegated_to": [
+    "른 규정에 특별히 규정한 것을 제외하고는 이 규정",
+    "직원은 형의 선고 또는 징계처분이나 규정",
+    "직원의 급여에 관한 사항은 급여규정",
+    "직원의 복무에 관한 사항은 복무규정",
+    "직원의 직군 및 직급에 관한 사항은 직제규정"
+  ],
+  "glossary": []
+}

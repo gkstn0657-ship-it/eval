@@ -1,0 +1,48 @@
+{
+  "org": "재외동포협력센터",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.08.27",
+  "format": "hwp",
+  "sha256": "5180a11ad2bce2f145b95a18ef1b01f1bad2465146b4981eee9986bb63c9ee49",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=210380",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C1383&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=49697&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/재외동포협력센터/인사규정(2025년 1월 개정).hwp",
+  "revision_date": "2025-01",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <제3호 2023. 6. 5.>\n\n제1조(시행일) 이 규정은 외교부장관의 승인을 받은 날로부터 시행한다.\n\n제2조(인사정보 적용 특례) 종전의 재외동포재단 직원 중 재외동포기본법 부칙 제4조에 따라 센터로 고용 승계된 직원에 한하여 재외동포재단 해산 시 인사정보(근속연수, 평가결과, 교육훈련, 상벌사항)를 센터의 인사정보(근속연수, 평가결과, 교육훈련, 상벌사항)로 승계하여 적용할 수 있다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <제12호 2024. 3. 12.>\n\n제1조(시행일) 이 규정은 재외동포협력센터장의 결재받은 날로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <제24호 2025.1.10.>\n\n제1조(시행일) 이 규정은 재외동포청장의 승인을 받은 날로부터 시행한다."
+    }
+  ],
+  "effective_dates": [],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 4,
+  "delegated_to": [
+    "다른 규정",
+    "다른 특별한 규정에 정한 것을 제외하고는 이 규정",
+    "명예퇴직금의 산출기준 및 지급절차 등은 퇴직금규정",
+    "징계처분 또는 규정"
+  ],
+  "glossary": [
+    {
+      "term": "단시간 근로자",
+      "definition": "1주 동안의 소정 근로시간이 전일제 근로자의 1주 동안의 근로시간에 비하여 짧은 근로자를 말한다."
+    }
+  ]
+}

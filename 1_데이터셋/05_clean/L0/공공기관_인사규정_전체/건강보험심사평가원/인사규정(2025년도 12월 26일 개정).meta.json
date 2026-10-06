@@ -1,0 +1,15 @@
+{
+  "org": "건강보험심사평가원",
+  "org_type": "위탁집행형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.08.06",
+  "format": "pdf",
+  "sha256": "f0e1ffd240520437731553ad4f3c7a56d2aa4b4a5fde77001b1b64f91578d4ff",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=240018",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0006&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=18352&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/건강보험심사평가원/인사규정(2025년도 12월 26일 개정).pdf",
+  "revision_date": "2025-12-26",
+  "is_latest": false,
+  "level": "L0"
+}

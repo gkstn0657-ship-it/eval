@@ -1,0 +1,32 @@
+{
+  "org": "(주)한국건설관리공사",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2020.10.30",
+  "format": "pdf",
+  "sha256": "61c0a77163033e62edd8dc6c1d784b44c9c89af6e60e5327f6f30c4d12970dcb",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=114653",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0153&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=2815&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국건설관리공사/인사규정.pdf",
+  "revision_date": null,
+  "is_latest": true,
+  "level": "L1",
+  "toc": "",
+  "page_breaks": [
+    0,
+    1026,
+    2673,
+    4071,
+    5127,
+    6379,
+    7586,
+    8810,
+    9602,
+    10345,
+    10658,
+    10750,
+    12046
+  ],
+  "image_transcriptions": []
+}

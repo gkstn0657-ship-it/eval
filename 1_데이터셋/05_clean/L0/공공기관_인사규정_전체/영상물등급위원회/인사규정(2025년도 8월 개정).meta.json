@@ -1,0 +1,15 @@
+{
+  "org": "영상물등급위원회",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.11.19",
+  "format": "pdf",
+  "sha256": "50fd2db5f3232800c1fac994f61e4cbf185eb5c5fadeaf98a5eff8822eb188c8",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=220549",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0098&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=30964&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/영상물등급위원회/인사규정(2025년도 8월 개정).pdf",
+  "revision_date": "2025-08",
+  "is_latest": false,
+  "level": "L0"
+}

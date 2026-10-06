@@ -1,0 +1,374 @@
+{
+  "org": "한국벤처투자",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.09.18",
+  "format": "hwp",
+  "sha256": "6e8acc5094014d4699b718bb6a157ea20daba34243a35d8e049ed8de8a85c1a7",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=242068",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0199&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=24024&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국벤처투자/인사규정(2026년도 09월 18일 개정).hwp",
+  "revision_date": "2026-09-18",
+  "is_latest": true,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": "2000년5월25",
+      "other_rule_amendment": false,
+      "text": "부칙 <제 정>\n\n제1조(시행일) 이 규정은 2000년 5월 25일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2001.8.17>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2002. 7.16>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2005. 6.24>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2005. 8. 2>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2005. 12. 27>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2008.12.30>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2009.6.4>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2009.8.27>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2012.02.23>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2012.07.11>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다.\n\n제2조(경과규정) 이 규정 개정에 따라 심사역으로 채용한 직원에 대해 이전 직장의 비정규직 재직 경력에 대하여 재산정한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2013.01.31>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": "2013년6월19",
+      "other_rule_amendment": false,
+      "text": "부칙 <2013.06.19>\n\n제1조(시행일) 이 규정은 2013년 6월19일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2013.07.30>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2013.10.11>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": "2014년01월01",
+      "other_rule_amendment": false,
+      "text": "부칙 <2013.12.26>\n\n제1조(시행일) 이 규정은 2014년 01월 01일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년03월13",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.03.13>\n\n제1조(시행일) 이 규정은 2014년 03월 13일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년05월29",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.05.29>\n\n제1조(시행일) 이 규정은 2014년 05월 29일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년09월01",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.09.01>\n\n제1조(시행일) 이 규정은 2014년 09월 01일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년10월28",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.10.28>\n\n제1조(시행일) 이 규정은 2014년 10월 28일부터 시행한다."
+    },
+    {
+      "effective_date": "2014년12월29",
+      "other_rule_amendment": false,
+      "text": "부칙 <2014.12.29>\n\n제1조(시행일) 이 규정은 2014년 12월 29일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2015.06.25>\n\n제1조(시행일) 이 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": "2016년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 <2015.08.13>\n\n제1조(시행일) 본 규정은 이사회 의결일로부터 시행한다. 다만, 제22조의 개정 규정은 2016년 1월 1일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2015.12.07>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.02.26>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.04.25>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.07.22>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.10.21>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2016.12.28>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2017.08.30>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2017.12.27>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2018.01.26>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2018.03.21.>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2018.05.15.>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2018.06.22.>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2018.07.31.>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2019.02.14.>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2019.06.04.>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2019.09.03.>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2019.11.27.>\n\n제1조(시행일) 본 규정은 이사회 의결일부터 시행한다.\n\n제2조(경과조치) 금번 개정사항 중 제14조(경력환산기준) 제1항, 제5항, 제17조(승진소요년수) 제1항, [별표3] 경력환산기준 에 대한 개정사항은 2020년 1월 1일 이후 입사자부터 적용한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2019.12.26.>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2020.03.26.>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2020.06.19.>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2020.12.11.>\n\n제1조(시행일) 이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2020.12.30.>\n\n제1조(시행일) 이 규정은 2020.12.30.부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2021.03.18.>\n\n이 규정은 2021년 3월 25일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2021.04.29.>\n\n이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2021.07.27.>\n\n제1조(시행일) 이 규정은 이사회 의결일부터 시행한다.\n\n제2조(채용제한사유 적용례) 제11조 제3호, 제6호, 제11호, 제12호, 제13호 및 제14호의 개정규정은 이 규정 시행일 이후 입사한 자에 대하여 적용하며, 제11조 제9호의 개정규정은 이 규정 시행일 당시 재직한 자에 대해서는 시행일 이후 발생한 범죄에 대하여 적용한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2022.07.27.>\n\n제1조(시행일) 이 규정은 이사회 의결일부터 시행한다.\n\n제2조(적용례) 제34조 제1항 제3호 및 제37조 제1항 제6호의 개정 규정은 이 규정 시행일 당시 재직한 자에 대해서는 시행일 이후 발생한 사항에 대하여 적용한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2023.04.25.>\n\n이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2024.06.17.>\n\n이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2025.06.25.>\n\n이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2026.07.31.>\n\n이 규정은 이사회 의결일로부터 시행한다."
+    },
+    {
+      "effective_date": "2026년8월31",
+      "other_rule_amendment": false,
+      "text": "부칙 <2026.08.28.>\n\n이 규정은 2026년 8월 31일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 <2026.09.18.>\n\n이 규정은 이사회 의결일로부터 시행한다. \n\n【별표 1】 직원의 직급 및 직위\n\n[표] 직급 | 직위 | 경력기준\n직급: 책임심사역 | 직위: 이사대우 | 경력기준: 관련분야 8년 이상\n직위: 부장\n직급: 선임심사역 | 직위: 차장 | 경력기준: 관련분야 5년 이상, 8년 미만 단, 변호사,회계사,박사자격 소지자는 자격보유 후 3년 이상\n직위: 과장\n직급: 심 사 역 | 직위: 대리 | 경력기준: 관련분야 5년 미만\n직위: 사원\n\n【별표 2】 직원의 채용 기준 [개정 2016.10.21., 2017.12.27., 2020.12.11.]\n 1. 일반요건\n 가. 당사 인사규정상 결격사유가 없는자\n 나. 관련 모집부문에 해당하는 요건을 갖춘 자\n\n 2. 능력\n\n[표] 구 분 | 능 력 요 건\n구 분: 심 사 역 | 능 력 요 건: 4년제 대학 졸업이상의 학력 또는 동등 능력 소지자 고교졸업 이상의 학력 또는 동등 능력 소지자\n구 분: 공 무 직 | 능 력 요 건: 별도 능력요건 없음\n\n 3. <2017.12.27. 삭제>\n\n【별표 3】 경력환산 기준 [개정 2019.11.27., 2020.03.26.]\n\n[표] 구 분 | 경 력 | 환산율\n구 분: 채용예정 직무와 밀접한 경력 | 경 력: 국가공무원법 및 지방공무원법에 따른 공무원으로 근무한 경력 | 환산율: 100 %\n경 력: 법인, 단체 또는 민간기업 등에서 채 용 예정 직무와 동일한 분야의 업무 에 상근으로 종사한 경력 | 환산율: 100% 이내\n구 분: 채용예정 직무와 비동일 경력 | 경 력: 국가 및 지방자치단체, 법인, 단체 또는 민간기업 등에서 상근으로 종 사한 경력 | 환산율: 80% 이내\n구 분: 기타 | 경 력: 기타 대표이사가 특별히 필요하다고 인정하는 경력 | 환산율: 80% 이내\n\n【별표 4】 삭제 <2026.09.18.>\n【별표 5】 삭제 <2026.09.18.>\n<별지 제1호 서식>\n\n[표] 확 인 서 성 명(한자) : 생 년 월 일 : 상기 본인은 한국벤처투자 직원채용 공모에 지원한 바, 아래 귀사 취업규칙 등 제반규정이 정 한 채용결격사유에 해당되지 않습니다. 향후 해당사항이 발견될 시 채용합격 또는 임용이 취소 되거나 면직 될 수 있으며, 이에 이의가 없음을 확인합니다. &lt; 채용결격사유 &gt; 1. 피성년후견인, 피한정후견인 및 파산자로서 복권되지 아니한 자 2. 금고이상의 형을 받고 그 집행이 종료되거나 또는 집행을 받지 아니하기로 확정된 후 만 3년 을 경과하지 아니한 자 3. 금고 이상의 형의 선고유예를 받은 경우 그 선고 유예기간 중에 있는 자 4. 법원의 판결 또는 법률에 의하여 자격상실 또는 자격 정지된 자 5. 병역을 기피한 자 또는 군복무 이탈자 6. 전직 근무기관에서 징계에 의하여 해임처분을 받은 날로부터 3년 또는 파면처분을 받은 날로 부터 5년이 경과되지 아니한 자 7. 벤처투자 촉진에 관한 법률 제49조 제2항 및 제62조 제3항 따라 면직 또는 해임된 날부터 5 년이 경과되지 아니한 자 8. 「 부패방지 및 국민권익위위원회의 설치와 운영에 관한 법률 」 제82조에 따른 비위면직자등의 취업제한 적용을 받은 자 9. 「 형법 」 제303조 또는 「 성폭력범죄의 처벌 등에 관한 특례법 」 제2조에 규정된 죄를 범한 사람 으로서 100만원 이상의 벌금형을 선고받고 그 형이 확정된 후 2년이 지나지 아니한 자 10. 다른 공공기관에서 부정한 방법으로 채용된 사실이 적발되어 채용이 취소되거나 면직된 자 11. 미성년자에 대한 다음 각 목의 어느 하나에 해당하는 죄를 저질러 파면 · 해임되거나 형 또 는 치료감호를 선고받아 그 형 또는 치료감호가 확정된 사람(집행유예를 선고받은 후 그 집 행유예기간이 경과한 사람을 포함한다) 가. 「 성폭력범죄의 처벌 등에 관한 특례법 」 제2조에 따른 성폭력범죄 나. 「 아동 · 청소년의 성보호에 관한 법률 」 제2조제2호에 따른 아동 · 청소년대상 성범죄 13. 이력이나 경력 등을 허위로 한 자 14. 부정한 방법으로 채용된 자 0000. 00. 00. 확인자 (인)\n\n<별지 제2호 서식>\n\n[표] 공 적 조 서\n공 적 조 서: (1) 성 명 | 열8: (한글) (한문)\n공 적 조 서: (2) 주민등록번호 (생년월일) | 열16: - | 열19: (3) 군번 (군인의 경우)\n공 적 조 서: (4) 본 적 (국적)\n공 적 조 서: (5) 주 소\n공 적 조 서: (6) 직 업 | 열13: (7) 소 속\n공 적 조 서: (8) 직 위 | 열14: (9) 등급 (직급, 계급) | 열29: (10) 공적기간\n공 적 조 서: (11) 공적요지 (50자내외) | 열14: (12) 공적분야코드\n공 적 조 서: (13) 추천훈격 | 열17: (14) 추천순위\n공 적 조 서: 조 사 자\n공 적 조 서: (15) 소 속 | 열17: (16) 직 위\n공 적 조 서: (17) 직 급 | 열17: (18) 성 명 | 열25: (인)\n공 적 조 서: 위의 기록이 틀림없음을 확인함. 20 . . . 추 천 자 : 직 위 성 명 (인)\n\n[표] 주 요 학 력 및 경 력\n주 요 학 력 및 경 력: (19) 년 월 일 | 열2: (20) 이 력 | 열3: (21) 년 월 일 | 열4: (22) 이 력\n주 요 학 력 및 경 력: 과 거 포 상 기 록\n주 요 학 력 및 경 력: (23) 년 월 일 | 열2: (24) 내 용 | 열3: (25) 년 월 일 | 열4: (26) 내 용\n주 요 학 력 및 경 력: (27) 공 적 사 항"
+    }
+  ],
+  "effective_dates": [
+    "2000년5월25",
+    "2013년6월19",
+    "2014년01월01",
+    "2014년03월13",
+    "2014년05월29",
+    "2014년09월01",
+    "2014년10월28",
+    "2014년12월29",
+    "2016년1월1",
+    "2026년8월31"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 32,
+  "delegated_to": [
+    "공무직 관리지침",
+    "근무평정시행지침",
+    "급여규정",
+    "는 별도의 규정이 있는 경우를 제외하고는 이 규정",
+    "임금피크제 운영지침",
+    "임직원교육훈련지침",
+    "회사는 신규 채용된 직원에 대하여 취업규칙"
+  ],
+  "glossary": [
+    {
+      "term": "인사",
+      "definition": "직원의 임용과 관련되는 일체의 사항을 말한다."
+    },
+    {
+      "term": "직책",
+      "definition": "1인의 직원에게 부여할 수 있는 직무와 책임을 말한다."
+    },
+    {
+      "term": "직급",
+      "definition": "직원을 관리하기 위하여 일정한 기준에 따라 분류한 직원의 등급을 말한다."
+    },
+    {
+      "term": "직위",
+      "definition": "직원을 관리하기 위하여 일정한 기준에 따라 “직급”을 세분한 직원의 등급을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "현재의 직위보다 상위의 직위에 임명하는 것을 말한다."
+    },
+    {
+      "term": "강등",
+      "definition": "현재의 직위보다 하위의 직위에 임명하는 것을 말한다."
+    },
+    {
+      "term": "전보",
+      "definition": "동일한 직위에서 직책, 직무 및 보직 등이 변경되는 것을 말한다."
+    },
+    {
+      "term": "파견",
+      "definition": "타 기관 업무 지원 및 국내외 연수를 위하여 이동하는 것을 말한다."
+    },
+    {
+      "term": "겸직",
+      "definition": "다른 직무를 겸하는 것을 말한다."
+    },
+    {
+      "term": "직위해제",
+      "definition": "직위를 부여하지 않는 것을 말한다."
+    },
+    {
+      "term": "복직",
+      "definition": "휴직, 직위해제 중에 있는 직원을 직위에 복귀시키는 것을 말한다."
+    },
+    {
+      "term": "퇴직",
+      "definition": "직원과의 근로계약을 종료하는 것을 말한다."
+    },
+    {
+      "term": "임용",
+      "definition": "신규채용, 승진, 강등, 전보, 파견, 겸직, 직위해제, 휴직, 복직, 퇴직 등 일체의 인사발령을 말한다."
+    },
+    {
+      "term": "부서장",
+      "definition": "「직제규정」 제7조제1항에 따른 부서의 업무를 통할하고 소속직원을 지휘 감독하는 자를 말한다."
+    }
+  ]
+}

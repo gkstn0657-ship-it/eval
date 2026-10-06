@@ -1,0 +1,15 @@
+{
+  "org": "한국방송통신전파진흥원",
+  "org_type": "위탁집행형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.08.07",
+  "format": "hwp",
+  "sha256": "cd4bd50411c32c526d4e78f8805e83c0576fc52eb43cc45d8b7956fb0bdc7654",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=226774",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0187&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=29555&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국방송통신전파진흥원/인사 규정(2025년도 12월 18일 개정).hwp",
+  "revision_date": "2025-12-18",
+  "is_latest": true,
+  "level": "L0"
+}

@@ -1,0 +1,15 @@
+{
+  "org": "한국교통안전공단",
+  "org_type": "위탁집행형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.11.26",
+  "format": "hwp",
+  "sha256": "9e9f4971079c691ae6b06a6a9403499aa2e6d2e1a5838b7da02553185e27db75",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=211107",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0019&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=10773&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국교통안전공단/인사규정(2025년 1월 개정).hwp",
+  "revision_date": "2025-01",
+  "is_latest": false,
+  "level": "L0"
+}

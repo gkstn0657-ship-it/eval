@@ -1,0 +1,15 @@
+{
+  "org": "국민연금공단",
+  "org_type": "기금관리형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.09.03",
+  "format": "hwp",
+  "sha256": "5fae6d0fddc1ba1c6f44a8781c04907739813ffae80b9d1da2d844874750efe8",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=241245",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0028&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=24138&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/국민연금공단/인사규정(2025년도 2월 개정).hwp",
+  "revision_date": "2025-02",
+  "is_latest": false,
+  "level": "L0"
+}

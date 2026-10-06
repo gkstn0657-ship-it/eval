@@ -1,0 +1,15 @@
+{
+  "org": "의료기관평가인증원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.12.03",
+  "format": "hwp",
+  "sha256": "f1c7d34030d477b2c9586be87f22ca5899e427fd0b3094053e2250bbf2888868",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=225340",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C1064&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=34959&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/의료기관평가인증원/인사규정(2025년도 12월 03일 개정).hwp",
+  "revision_date": "2025-12-03",
+  "is_latest": true,
+  "level": "L0"
+}

@@ -1,0 +1,15 @@
+{
+  "org": "한국환경공단",
+  "org_type": "위탁집행형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2025.11.26",
+  "format": "hwp",
+  "sha256": "3b102b018e7919177b6dbb3cfc4998b5d255f43d63ce8dfa8c9642ae63a69a90",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=162361",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0400&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=30400&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국환경공단/인사규정(2022년도 12월 개정).hwp",
+  "revision_date": "2022-12",
+  "is_latest": true,
+  "level": "L0"
+}

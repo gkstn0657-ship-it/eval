@@ -1,0 +1,15 @@
+{
+  "org": "(재)한국우편사업진흥원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.08.27",
+  "format": "pdf",
+  "sha256": "dbdecd3634836128c42f74c5b71bd393282be9d5c44c2019c475fe3c9df8508e",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=240624",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0354&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=33128&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/(재)한국우편사업진흥원/인사규정(2026년도 8월 27일 개정).pdf",
+  "revision_date": "2026-08-27",
+  "is_latest": true,
+  "level": "L0"
+}

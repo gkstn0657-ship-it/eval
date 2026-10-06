@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>인사규정 도우미</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22lg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234f7cff%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232442c7%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%229%22%20fill%3D%22url%28%23lg%29%22/%3E%3Cpath%20d%3D%22M10%207.5h8.5l4%204V22a1.5%201.5%200%200%201-1.5%201.5H10A1.5%201.5%200%200%201%208.5%2022V9A1.5%201.5%200%200%201%2010%207.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.16%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.5%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M18.5%207.5v4h4%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.5%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M11.5%2014h6M11.5%2017.5h4%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2220.5%22%20cy%3D%2220.5%22%20r%3D%223.6%22%20fill%3D%22%232442c7%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.6%22/%3E%3Cpath%20d%3D%22M23.2%2023.2l2.6%202.6%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
+<meta name="description" content="공공기관 292곳 인사규정에서 근거 조문을 찾아 답하는 RAG 데모">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#f7f8fa;--surface:#fff;--surface-2:#f2f4f7;--line:#e4e7ec;--line-strong:#d0d5dd;
+  --ink:#101828;--ink-2:#475467;--ink-3:#98a2b3;
+  --brand:#2f5bea;--brand-ink:#fff;--brand-soft:#eef2ff;
+  --ok:#067647;--ok-soft:#ecfdf3;--warn:#b54708;--warn-soft:#fffaeb;--bad:#b42318;--bad-soft:#fef3f2;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 4px 16px rgba(16,24,40,.04);
+  --r:14px;--r-sm:10px;--focus:0 0 0 3px rgba(47,91,234,.25);
+  --series-1:#2a78d6;--series-2:#eb6834;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c0e12;--surface:#14171d;--surface-2:#1b1f27;--line:#252a33;--line-strong:#333a46;
+  --ink:#f2f4f7;--ink-2:#b0b8c4;--ink-3:#6b7480;
+  --brand:#6d8dff;--brand-ink:#0c0e12;--brand-soft:#1a2240;
+  --ok:#47cd89;--ok-soft:#0f2a1d;--warn:#fdb022;--warn-soft:#2b2110;--bad:#f97066;--bad-soft:#2d1514;
+  --shadow:0 1px 2px rgba(0,0,0,.3);--focus:0 0 0 3px rgba(109,141,255,.35);
+  --series-1:#3987e5;--series-2:#d95926;
+}}
+:root[data-theme="dark"]{
+  --bg:#0c0e12;--surface:#14171d;--surface-2:#1b1f27;--line:#252a33;--line-strong:#333a46;
+  --ink:#f2f4f7;--ink-2:#b0b8c4;--ink-3:#6b7480;
+  --brand:#6d8dff;--brand-ink:#0c0e12;--brand-soft:#1a2240;
+  --ok:#47cd89;--ok-soft:#0f2a1d;--warn:#fdb022;--warn-soft:#2b2110;--bad:#f97066;--bad-soft:#2d1514;
+  --shadow:0 1px 2px rgba(0,0,0,.3);--focus:0 0 0 3px rgba(109,141,255,.35);
+  --series-1:#3987e5;--series-2:#d95926;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 "Pretendard Variable",Pretendard,system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:anywhere}
+button,input{font:inherit;color:inherit;letter-spacing:inherit}
+button{cursor:pointer}
+:focus-visible{outline:none;box-shadow:var(--focus);border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+
+/* 상단 */
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top .wrap{display:flex;align-items:center;gap:10px;height:56px}
+.logo{width:30px;height:30px;flex:none;display:grid;filter:drop-shadow(0 2px 6px rgba(47,91,234,.35))}.logo svg{display:block}
+.brand{font-weight:700;font-size:15px}
+.pill{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);padding:3px 10px;border-radius:999px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ink-3)}
+.pill[data-s="ready"] .dot{background:var(--ok)}
+.pill[data-s="wait"] .dot{background:var(--warn);animation:pulse 1.2s infinite}
+.pill[data-s="down"] .dot{background:var(--bad)}
+@keyframes pulse{50%{opacity:.35}}
+
+/* 히어로 */
+.hero{padding:36px 0 20px}
+.hero h1{font-size:clamp(24px,4.4vw,32px);line-height:1.3;margin:0 0 8px;letter-spacing:-.025em}
+.hero p{margin:0;color:var(--ink-2)}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:13px;color:var(--ink-2)}
+.stats b{color:var(--ink);font-weight:700}
+
+/* 검색 카드 */
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px}
+.field-label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin:0 0 6px}
+.combo{position:relative}
+.combo input{width:100%;height:44px;padding:0 40px 0 12px;border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--surface)}
+.combo input::placeholder,.q input::placeholder{color:var(--ink-3)}
+.combo input:focus,.q input:focus{border-color:var(--brand);box-shadow:var(--focus);outline:none}
+.clear{position:absolute;right:6px;top:6px;width:32px;height:32px;border:0;background:none;border-radius:8px;color:var(--ink-3);font-size:18px;line-height:1}
+.clear:hover{background:var(--surface-2);color:var(--ink)}
+.list{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 4px);max-height:280px;overflow:auto;margin:0;padding:4px;list-style:none;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);box-shadow:0 12px 32px rgba(16,24,40,.12)}
+.list li{padding:8px 10px;border-radius:7px;cursor:pointer;font-size:14px}
+.list li[aria-selected="true"]{background:var(--brand-soft);color:var(--brand)}
+.list li.all{color:var(--ink-2);border-bottom:1px solid var(--line);border-radius:7px 7px 0 0;margin-bottom:2px}
+.list li.none{color:var(--ink-3);cursor:default}
+.list mark{background:none;color:var(--brand);font-weight:700}
+.hint{font-size:12.5px;color:var(--ink-3);margin:6px 0 0}
+.q{display:flex;gap:8px;margin-top:14px}
+.q input{flex:1;min-width:0;height:50px;padding:0 14px;border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--surface);font-size:16px}
+.go{flex:none;height:50px;padding:0 22px;border:0;border-radius:var(--r-sm);background:var(--brand);color:var(--brand-ink);font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.go:hover{filter:brightness(1.06)}
+.go:disabled{opacity:.55;cursor:default;filter:none}
+.ex{margin-top:14px}
+.ex-label{font-size:12.5px;color:var(--ink-3);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{max-width:100%;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--ink-2);text-align:left}
+.chip:hover{border-color:var(--brand);color:var(--brand)}
+.chip small{color:var(--ink-3);margin-right:4px}
+
+/* 결과 */
+#out{margin-top:22px}
+.qline{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-bottom:10px}
+.qline .qt{font-weight:700;font-size:17px}
+.qline .qm{font-size:13px;color:var(--ink-3)}
+.banner{display:flex;gap:10px;align-items:flex-start;border:1px solid;border-radius:var(--r-sm);padding:11px 14px;margin-bottom:12px;font-size:14px}
+.banner .ic{flex:none;font-weight:800;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:#fff;margin-top:1px}
+.banner b{display:block;margin-bottom:1px}
+.b-ok{background:var(--ok-soft);border-color:color-mix(in srgb,var(--ok) 30%,transparent)}.b-ok .ic{background:var(--ok)}
+.b-warn{background:var(--warn-soft);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}.b-warn .ic{background:var(--warn)}
+.b-info{background:var(--brand-soft);border-color:color-mix(in srgb,var(--brand) 30%,transparent)}.b-info .ic{background:var(--brand)}
+.b-bad{background:var(--bad-soft);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}.b-bad .ic{background:var(--bad)}
+.tips{margin:6px 0 0;padding-left:18px;color:var(--ink-2)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}
+.ans-body{font-size:15.5px}
+.ans-body p{margin:0 0 .6em}.ans-body p:last-child{margin:0}
+.ans-body ul{margin:.3em 0 .6em;padding-left:1.2em}
+.cite{display:inline;border:0;background:var(--brand-soft);color:var(--brand);font-weight:600;border-radius:5px;padding:0 5px;font-size:.95em}
+.cite:hover{text-decoration:underline}
+.ans-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);margin-top:14px;padding-top:12px;font-size:12.5px;color:var(--ink-3)}
+.ghost{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:4px 10px;font-size:12.5px;color:var(--ink-2)}
+.ghost:hover{border-color:var(--line-strong);color:var(--ink)}
+.src-h{display:flex;align-items:baseline;justify-content:space-between;margin:22px 0 8px}
+.src-h h2{font-size:15px;margin:0}.src-h span{font-size:12.5px;color:var(--ink-3)}
+.src{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);margin-bottom:8px;transition:border-color .2s,box-shadow .2s}
+.src.flash{border-color:var(--brand);box-shadow:var(--focus)}
+.src summary{list-style:none;display:flex;gap:10px;align-items:flex-start;padding:12px 14px;cursor:pointer}
+.src summary::-webkit-details-marker{display:none}
+.rank{flex:none;width:22px;height:22px;border-radius:6px;background:var(--surface-2);color:var(--ink-2);font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+.src-t{flex:1;min-width:0}
+.src-t b{font-weight:700}
+.src-t div{font-size:12.5px;color:var(--ink-3)}
+.chev{flex:none;color:var(--ink-3);transition:transform .2s;margin-top:4px}
+.src[open] .chev{transform:rotate(180deg)}
+.src-body{padding:0 14px 14px 46px}
+.src-body pre{white-space:pre-wrap;margin:0 0 8px;font:inherit;font-size:14px;line-height:1.7;color:var(--ink-2);background:var(--surface-2);border-radius:8px;padding:12px;max-height:22em;overflow:auto}
+.skel{background:linear-gradient(90deg,var(--surface-2) 25%,var(--line) 50%,var(--surface-2) 75%);background-size:200% 100%;animation:sh 1.3s infinite;border-radius:6px;height:14px;margin:9px 0}
+@keyframes sh{to{background-position:-200% 0}}
+.loading-t{font-size:13px;color:var(--ink-3)}
+.err{color:var(--bad)}
+
+/* 하단 */
+.how{margin:34px 0 0;border-top:1px solid var(--line);padding-top:8px}
+.how summary{cursor:pointer;padding:10px 0;font-weight:600;font-size:14px;color:var(--ink-2)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:4px 0 12px;padding:0;list-style:none;counter-reset:s}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;font-size:13px;color:var(--ink-2);counter-increment:s}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:11.5px;margin-right:6px}
+.steps b{color:var(--ink)}
+.foot{font-size:12.5px;color:var(--ink-3);padding:18px 0 40px;line-height:1.7}
+
+/* 소개 섹션 */
+.sec{margin-top:40px;scroll-margin-top:16px}
+.sec-h{font-size:20px;letter-spacing:-.02em;margin:0 0 4px}
+.sec-sub{color:var(--ink-2);margin:0 0 14px;font-size:14px}
+.sub-h{font-size:15px;margin:22px 0 10px}
+.card-h{font-size:14px;margin:0 0 10px}
+.note{font-size:13.5px;color:var(--ink-2);margin:12px 0 0}
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.gcard{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;box-shadow:var(--shadow);transition:border-color .15s,transform .15s}
+.gcard:hover{border-color:var(--brand);transform:translateY(-1px)}
+.gcard .tag{align-self:flex-start;font-size:11.5px;font-weight:700;color:var(--brand);background:var(--brand-soft);border-radius:6px;padding:2px 8px}
+.gcard .gq{font-weight:700;color:var(--ink);line-height:1.45}
+.gcard .go-org{font-size:12.5px;color:var(--ink-3)}
+.gcard .look{font-size:13px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:8px;margin-top:2px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;box-shadow:var(--shadow)}
+.tile b{display:block;font-size:24px;letter-spacing:-.02em;line-height:1.2}
+.tile span{font-size:12.5px;color:var(--ink-3)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.fig{margin:0}
+.fig figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:12px}
+.fig figcaption b{font-size:14px}.fig figcaption span{font-size:12px;color:var(--ink-3)}
+.hbars .row{display:grid;grid-template-columns:132px 1fr;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.hbars .lab{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{position:relative;height:14px;display:block}
+.bar{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;background:var(--series-1);min-width:2px}
+.val{position:absolute;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink-2);padding-left:6px;white-space:nowrap}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0;font-size:13.5px}
+.facts dt{color:var(--ink-3)}.facts dd{margin:0;color:var(--ink)}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.flow li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;font-size:13px;color:var(--ink-2)}
+.flow li b{display:block;color:var(--ink);font-size:14px;margin-bottom:4px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink-2);margin-bottom:10px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.s1,.b1{background:var(--series-1)}.s2,.b2{background:var(--series-2)}
+.pbars .grp{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.pbars .grp:first-child{border-top:0}
+.pbars .lab{font-size:13px;color:var(--ink)}.pbars .lab small{display:block;color:var(--ink-3);font-size:11.5px}
+.pbars .pair{display:grid;gap:2px}
+.pbars .track{height:13px}
+.tbl{margin-top:10px;font-size:12.5px;color:var(--ink-2)}
+.tbl summary{cursor:pointer;color:var(--ink-3)}
+.tbl table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13px}
+.tbl th,.tbl td{text-align:left;padding:6px 8px;border-top:1px solid var(--line)}
+.limits{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.limits li{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:var(--r-sm);padding:11px 14px;font-size:13.5px;color:var(--ink-2)}
+.limits b{color:var(--ink)}
+@media (max-width:640px){
+  .tiles{grid-template-columns:1fr 1fr}.grid2,.flow{grid-template-columns:1fr}
+  .hbars .row{grid-template-columns:104px 1fr}.pbars .grp{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .hero{padding:24px 0 14px}
+  .q{flex-direction:column}.q input{flex:none;width:100%}.go{justify-content:center}
+  .pill{padding:3px 8px}
+  .src-body{padding-left:14px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<!-- HF Space 의 고정 높이 iframe 안에서 잘리지 않도록 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.min.js" async></script>
+<script>
+  // Space 페이지(iframe)에서: 루트 Gradio 페이지가 꺼둔 iframe 스크롤을 다시 켠다
+  try { window.parent !== window && window.parent.postMessage({type: "SET_SCROLLING", enabled: true}, "*"); } catch (_) {}
+</script>
+</head><body>
+<header class="top"><div class="wrap">
+  <div class="logo"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#2442c7"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path d="M10 7.5h8.5l4 4V22a1.5 1.5 0 0 1-1.5 1.5H10A1.5 1.5 0 0 1 8.5 22V9A1.5 1.5 0 0 1 10 7.5z" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M18.5 7.5v4h4" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M11.5 14h6M11.5 17.5h4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="20.5" cy="20.5" r="3.6" fill="#2442c7" stroke="#fff" stroke-width="1.6"/><path d="M23.2 23.2l2.6 2.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="brand">인사규정 도우미</div>
+  <div class="pill" id="pill" data-s="wait" role="status"><span class="dot"></span><span id="pillT">서버 연결 중</span></div>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>인사규정 질문에<br>근거 조문까지 함께 답합니다</h1>
+    <p>공공기관 인사규정 원문에서 관련 조문을 찾아, 출처를 붙여 답변합니다.</p>
+    <div class="stats"><span><b>292</b>개 기관</span><span><b>19,298</b>개 조문</span><span>답변마다 <b>근거 조문</b> 표시</span></div>
+  </section>
+
+  <form class="ask" id="form" autocomplete="off">
+    <label class="field-label" for="org">기관</label>
+    <div class="combo">
+      <input id="org" role="combobox" aria-expanded="false" aria-controls="orgList" aria-autocomplete="list" placeholder="기관명 검색 · 비우면 전체 기관에서 찾습니다">
+      <button type="button" class="clear" id="orgClear" aria-label="기관 선택 지우기" hidden>×</button>
+      <ul class="list" id="orgList" role="listbox" hidden></ul>
+    </div>
+    <p class="hint">기관을 고르면 그 기관 규정 안에서만 찾아 더 정확합니다.</p>
+
+    <label class="sr" for="q">질문</label>
+    <div class="q">
+      <input id="q" placeholder="직원이 묻듯이 질문하세요 · 예: 정년이 몇 살이야?" enterkeyhint="search">
+      <button class="go" id="go" type="submit">질문하기 <span aria-hidden="true">→</span></button>
+    </div>
+
+    <div class="ex"><div class="ex-label">이렇게 물어보세요</div><div class="chips" id="ex"></div></div>
+  </form>
+
+  <section id="out" aria-live="polite"></section>
+
+  <section class="sec" id="guide">
+    <h2 class="sec-h">시연 가이드</h2>
+    <p class="sec-sub">카드를 누르면 질문이 바로 실행됩니다. 각 카드의 확인 포인트를 보세요.</p>
+    <div class="guide" id="guideList"></div>
+  </section>
+
+  <section class="sec" id="corpus">
+    <h2 class="sec-h">코퍼스</h2>
+    <p class="sec-sub">ALIO 공공기관 경영정보 공개시스템에 공시된 공공기관 인사규정 최신판입니다. 2026년 10월에 수집했습니다.</p>
+    <div class="tiles">
+      <div class="tile"><b>292</b><span>공공기관</span></div>
+      <div class="tile"><b>19,298</b><span>조문</span></div>
+      <div class="tile"><b>22,336</b><span>검색 청크</span></div>
+      <div class="tile"><b>244자</b><span>청크 평균 길이</span></div>
+    </div>
+    <div class="grid2">
+      <figure class="card fig">
+        <figcaption><b>기관 유형</b><span>292곳</span></figcaption>
+        <div class="hbars" id="orgTypes" role="img" aria-label="기관 유형별 기관 수"></div>
+        <details class="tbl"><summary>표로 보기</summary><table id="orgTypesTbl"></table></details>
+      </figure>
+      <div class="card">
+        <h3 class="card-h">원본과 범위</h3>
+        <dl class="facts">
+          <dt>원본 형식</dt><dd>HWP 200 · PDF 74 · HWPX 20건 (최신판 문서 기준)</dd>
+          <dt>개정 시점</dt><dd>2017년 3월 ~ 2026년 10월</dd>
+          <dt>기관당 조문</dt><dd>중앙값 63개 · 최소 3개 · 최대 195개</dd>
+          <dt>포함 범위</dt><dd>인사규정만 포함합니다. 보수·복무·복리후생 규정은 없습니다.</dd>
+        </dl>
+      </div>
+    </div>
+    <h3 class="sub-h">정제 단계</h3>
+    <ol class="flow">
+      <li><b>파싱</b><span>HWP·PDF에서 본문과 표를 텍스트로 추출하고, 실명은 마스킹합니다.</span></li>
+      <li><b>노이즈 제거</b><span>머리글, 쪽번호, 목차를 지우고 번호·문자를 정규화합니다. 이미지 표는 사람이 전사했습니다.</span></li>
+      <li><b>구조 분리</b><span>부칙과 개정 표기를 본문에서 떼어 메타데이터로 옮기고, 조문 단위로 나눕니다.</span></li>
+    </ol>
+    <p class="note">청킹은 조문 1개를 청크 1개로 삼고, 긴 조문 536개만 나눴습니다. 각 청크 앞에 개정 이력을 붙여 "언제 바뀌었나" 질문도 찾을 수 있게 했습니다. 정제 규칙은 R-01부터 R-14까지 14개이며, 규칙마다 "이 규칙이 없으면 실패하는 질문"을 근거로 적었습니다.</p>
+  </section>
+
+  <section class="sec" id="pipeline">
+    <h2 class="sec-h">파이프라인</h2>
+    <ol class="steps">
+      <li><b>기관 필터</b><br>질문이나 선택에서 기관을 인식해 그 기관 조문만 남깁니다. 검색보다 먼저 거릅니다.</li>
+      <li><b>하이브리드 검색</b><br>bge-m3 의미 검색과 BM25 키워드 검색을 RRF로 합칩니다.</li>
+      <li><b>재랭킹</b><br>bge-reranker-v2-m3가 질문과 조문의 관련도를 다시 매깁니다.</li>
+      <li><b>답변 생성</b><br>Qwen2.5-72B가 상위 조문만 근거로 답하고, 근거 조문을 함께 보여줍니다.</li>
+    </ol>
+  </section>
+
+  <section class="sec" id="perf">
+    <h2 class="sec-h">성능</h2>
+    <p class="sec-sub">코퍼스를 22곳에서 292곳으로 14배 늘려 같은 질문으로 다시 쟀습니다. 기존 방식은 검색 뒤에 기관을 거르고, 현재 방식은 검색 전에 거릅니다.</p>
+    <figure class="card fig">
+      <figcaption><b>292개 기관 전체에서의 검색 정확도</b><span>nDCG@5</span></figcaption>
+      <div class="legend"><span><i class="sw s1"></i>현재 방식 (기관 필터 먼저)</span><span><i class="sw s2"></i>기존 방식 (검색 뒤 필터)</span></div>
+      <div class="pbars" id="perfBars" role="img" aria-label="평가 세트별 현재 방식과 기존 방식의 nDCG@5"></div>
+      <details class="tbl"><summary>표로 보기</summary><table id="perfTbl"></table></details>
+    </figure>
+    <div class="card" style="margin-top:12px">
+        <h3 class="card-h">왜 기관 필터를 먼저 하나</h3>
+        <p class="note" style="margin:0">292곳의 규정은 문장이 비슷해서, 전체에서 먼저 찾으면 다른 기관의 비슷한 조문이 상위 후보를 다 차지합니다. 기관을 먼저 거르면 기관 수가 늘어도 정확도가 유지됩니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="limits">
+    <h2 class="sec-h">보완점</h2>
+    <ul class="limits">
+      <li><b>기관 비교 질문에 약합니다.</b> "A와 B 중 어디가 더 길어?" 같은 멀티홉 질의에 약합니다. Recall@5 0.20</li>
+      <li><b>하드웨어 제약으로 Retriever는 성공했으나 Generation 단계에서 답변 생성 품질 문제가 있습니다.</b> (Qwen2.5 7B)</li>
+      <li><b>일상어와 규정어 사이의 간극이 남아 있습니다.</b> "부업"처럼 규정에 없는 말은 "겸직"으로 바꿔 물으면 더 잘 찾습니다. → 사전 확장으로 보완 가능</li>
+    </ul>
+  </section>
+  <p class="foot">답변은 검색된 인사규정 조문을 바탕으로 자동 생성한 참고 정보이며, 틀릴 수 있으니 근거 조문을 함께 확인하세요. 최종 적용 여부는 소속 기관 인사부서에 확인하세요. 답변 생성은 월 사용 한도가 있어, 한도를 넘으면 근거 조문만 표시됩니다.</p>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm = s => String(s || "").replace(/\s+/g, "");
+const EXAMPLES = [
+  ["한국가스공사", "정년이 몇 살이야?"],
+  ["한국광해광업공단", "정직은 최대 몇 개월이야?"],
+  ["한국철도공사", "육아휴직은 몇 년까지 쓸 수 있어?"],
+  ["", "수습기간은 보통 얼마나 돼?"],
+];
+let ORGS = [], ORGSET = new Set(), busy = false;
+
+/* ── 서버 상태 · 기관 목록 ── */
+function pill(s, t) { $("#pill").dataset.s = s; $("#pillT").textContent = t; }
+async function loadOrgs(n = 0) {
+  try {
+    const a = await (await fetch("orgs")).json();
+    if (!Array.isArray(a) || !a.length) throw 0;
+    ORGS = a; ORGSET = new Set(a); pill("ready", "준비됨");
+    applyUrl();
+  } catch (e) {
+    if (n < 40) { pill("wait", "서버 깨우는 중"); setTimeout(() => loadOrgs(n + 1), 3000); }
+    else pill("down", "연결 실패 · 새로고침");
+  }
+}
+
+/* ── 기관 콤보박스 ── */
+const orgIn = $("#org"), list = $("#orgList");
+let opts = [], active = -1;
+function openList() {
+  const q = norm(orgIn.value).toLowerCase();
+  const hits = (q ? ORGS.filter(o => norm(o).toLowerCase().includes(q)) : ORGS).slice(0, 60);
+  opts = [{all: true}, ...hits.map(o => ({o}))];
+  const hl = o => { if (!q) return esc(o); const i = norm(o).toLowerCase().indexOf(q); return i < 0 || o.length !== norm(o).length ? esc(o) : esc(o.slice(0, i)) + "<mark>" + esc(o.slice(i, i + q.length)) + "</mark>" + esc(o.slice(i + q.length)); };
+  list.innerHTML = opts.map((x, i) => x.all ? `<li role="option" id="op${i}" class="all">전체 기관에서 찾기</li>` : `<li role="option" id="op${i}">${hl(x.o)}</li>`).join("")
+    + (hits.length ? "" : `<li class="none" aria-disabled="true">일치하는 기관이 없습니다</li>`);
+  active = -1; list.hidden = false; orgIn.setAttribute("aria-expanded", "true");
+}
+function closeList() { list.hidden = true; orgIn.setAttribute("aria-expanded", "false"); orgIn.removeAttribute("aria-activedescendant"); }
+function setActive(i) {
+  if (!opts.length) return; active = (i + opts.length) % opts.length;
+  list.querySelectorAll("li[role=option]").forEach((li, k) => li.setAttribute("aria-selected", k === active));
+  const el = $("#op" + active); el?.scrollIntoView({block: "nearest"}); orgIn.setAttribute("aria-activedescendant", "op" + active);
+}
+function pick(i) { const x = opts[i]; if (!x) return; orgIn.value = x.all ? "" : x.o; syncClear(); closeList(); $("#q").focus(); }
+function syncClear() { $("#orgClear").hidden = !orgIn.value; }
+orgIn.addEventListener("focus", openList);
+orgIn.addEventListener("input", () => { syncClear(); openList(); });
+orgIn.addEventListener("keydown", e => {
+  if (e.key === "ArrowDown") { e.preventDefault(); list.hidden ? openList() : setActive(active + 1); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
+  else if (e.key === "Enter" && !list.hidden && active >= 0) { e.preventDefault(); pick(active); }
+  else if (e.key === "Escape") closeList();
+});
+list.addEventListener("mousedown", e => { const li = e.target.closest("li[role=option]"); if (li) { e.preventDefault(); pick(+li.id.slice(2)); } });
+orgIn.addEventListener("blur", () => setTimeout(() => {
+  closeList();
+  if (orgIn.value && !ORGSET.has(orgIn.value)) {  // 부분 입력은 유일하게 일치할 때만 확정
+    const m = ORGS.filter(o => norm(o).includes(norm(orgIn.value)));
+    if (m.length === 1) orgIn.value = m[0];
+  }
+  syncClear();
+}, 120));
+$("#orgClear").onclick = () => { orgIn.value = ""; syncClear(); orgIn.focus(); };
+
+/* ── 예시 ── */
+$("#ex").innerHTML = EXAMPLES.map(([o, q], i) => `<button type="button" class="chip" data-i="${i}">${o ? `<small>${esc(o)}</small>` : ""}${esc(q)}</button>`).join("");
+$("#ex").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  const [o, q] = EXAMPLES[b.dataset.i]; orgIn.value = o; syncClear(); $("#q").value = q; ask();
+});
+
+/* ── 질의 ── */
+$("#form").addEventListener("submit", e => { e.preventDefault(); ask(); });
+async function ask() {
+  const q = $("#q").value.trim(), org = orgIn.value.trim();
+  if (!q) { $("#q").focus(); return; }
+  if (busy) return;
+  if (org && !ORGSET.has(org)) { renderError("목록에 있는 기관을 선택하거나 칸을 비워 주세요."); orgIn.focus(); return; }
+  busy = true; $("#go").disabled = true; closeList();
+  history.replaceState(null, "", "?" + new URLSearchParams(org ? {org, q} : {q}));
+  $("#out").innerHTML = `<div class="qline"><span class="qt">${esc(q)}</span><span class="qm">${esc(org || "전체 기관")}</span></div>
+    <div class="card"><div class="loading-t">근거 조문을 찾고 답변을 쓰는 중입니다 · 보통 5초 안팎</div><div class="skel" style="width:92%"></div><div class="skel" style="width:78%"></div><div class="skel" style="width:60%"></div></div>`;
+  try {
+    const r = await fetch(`ask?q=${encodeURIComponent(q)}&org=${encodeURIComponent(org)}`);
+    if (!r.ok) throw new Error(r.status === 503 ? "서버가 준비 중입니다" : `HTTP ${r.status}`);
+    render(await r.json(), org);
+  } catch (e) { renderError(`답변을 가져오지 못했습니다. ${e.message || ""} 잠시 후 다시 시도해 주세요.`); }
+  finally { busy = false; $("#go").disabled = false; }
+}
+function renderError(msg) { $("#out").innerHTML = `<div class="banner b-bad"><span class="ic">!</span><div>${esc(msg)}</div></div>`; }
+
+/* ── 결과 ── */
+function banner(kind, title, body, extra = "") {
+  const ic = {ok: "✓", warn: "!", bad: "×", info: "i"}[kind];
+  return `<div class="banner b-${kind}"><span class="ic" aria-hidden="true">${ic}</span><div><b>${esc(title)}</b>${body ? esc(body) : ""}${extra}</div></div>`;
+}
+function md(text, hits) {  // 최소 마크다운 + 조문 인용 링크
+  const byArt = new Map(hits.map(h => [norm(h.article_no), h.rank]));
+  const link = s => s.replace(/제\s*\d+\s*조(?:\s*의\s*\d+)?/g, m => byArt.has(norm(m)) ? `<button type="button" class="cite" data-rank="${byArt.get(norm(m))}">${m}</button>` : m);
+  const inline = s => link(esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>"));
+  const out = []; let ul = null;
+  for (const raw of text.split(/\n/)) {
+    const line = raw.trim();
+    const li = line.match(/^(?:[-*•]|\d+[.)])\s+(.*)/);
+    if (li) { (ul ??= []).push(`<li>${inline(li[1])}</li>`); continue; }
+    if (ul) { out.push(`<ul>${ul.join("")}</ul>`); ul = null; }
+    if (line) out.push(`<p>${inline(line.replace(/^#+\s*/, ""))}</p>`);
+  }
+  if (ul) out.push(`<ul>${ul.join("")}</ul>`);
+  return out.join("");
+}
+function render(d, chosenOrg) {
+  const g = d.gate || {}, hits = d.hits || [], a = g.action;
+  const orgNote = d.org ? (chosenOrg === d.org ? d.org : `${d.org} · 질문에서 인식`) : "전체 기관";
+  let html = `<div class="qline"><span class="qt">${esc(d.q)}</span><span class="qm">${esc(orgNote)} · ${d.sec}초</span></div>`;
+  const generated = d.answer && d.model;
+  const genFailed = d.answer && !d.model;
+  const verifyFailed = a === "answer" && !d.answer && g.verify && !g.verify.ok;
+
+  if (d.org_note) html += banner("info", "기관을 바꿔서 찾았습니다", d.org_note);
+  if (a === "refuse_scope") html += banner("warn", "인사규정 밖의 질문입니다", g.message);
+  else if (a === "refuse_multi") html += banner("warn", "한 번에 한 기관씩 물어봐 주세요", g.message);
+  else if (a === "refuse") html += banner("bad", "질문에 맞는 조항을 찾지 못했습니다", "",
+    `<ul class="tips"><li>위에서 기관을 지정해 보세요.</li><li>규정에 쓰이는 말로 바꿔 보세요. 예: 부업 → 겸직, 쉬는 날 → 휴가</li></ul>`);
+  else if (a === "raw_only") html += banner("warn", "민감한 주제라 원문으로 안내합니다", "요약 대신 관련 조문 원문을 보여드립니다. 적용 여부는 인사부서에 확인하세요.");
+  else if (verifyFailed) html += banner("warn", "생성 답변이 근거와 맞지 않아 숨겼습니다", "아래 조문 원문을 확인하세요.");
+  else if (genFailed) html += banner("warn", "지금은 답변을 만들 수 없습니다", "근거 조문만 보여드립니다. 답변 생성 한도를 넘었을 수 있습니다.");
+  else if (g.gate === "gray") html += banner("warn", "근거가 약할 수 있습니다", "답변과 함께 아래 조문을 꼭 확인하세요.");
+
+  if (generated) {
+    html += `<article class="card"><div class="ans-body">${md(d.answer, hits)}</div>
+      <div class="ans-foot"><span>${esc(d.model)} · 아래 근거 조문 기반</span><span><button type="button" class="ghost" data-copy="ans">답변 복사</button> <button type="button" class="ghost" data-copy="link">링크 복사</button></span></div></article>`;
+  }
+  if (hits.length) {
+    const title = a === "refuse" ? "비슷한 조항" : "근거 조문";
+    const sub = a === "refuse" ? "질문과 맞지 않을 수 있습니다" : "관련도 순";
+    html += `<div class="src-h"><h2>${title} ${hits.length}</h2><span>${sub}</span></div>`;
+    html += hits.map((h, i) => `<details class="src" id="src${h.rank}"${i === 0 && a !== "refuse" ? " open" : ""}>
+      <summary><span class="rank">${h.rank}</span><span class="src-t"><b>${esc(h.article_no)}${h.title ? " " + esc(h.title) : ""}</b><div>${esc(h.org)}${h.revision_date ? " · " + esc(h.revision_date) + " 개정" : ""}</div></span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+      <div class="src-body"><pre>${esc(h.text)}</pre><button type="button" class="ghost" data-copy="src" data-rank="${h.rank}">원문 복사</button></div></details>`).join("");
+  }
+  $("#out").innerHTML = html;
+  window._last = d;
+  const top = $("#out").getBoundingClientRect().top;  // 결과가 화면 아래쪽에 있을 때만 이동
+  if (top > innerHeight * 0.55) window.scrollBy({top: top - 16, behavior: matchMedia("(prefers-reduced-motion:reduce)").matches ? "auto" : "smooth"});
+}
+
+/* 인용 클릭 → 근거 카드로 이동 · 복사 */
+$("#out").addEventListener("click", async e => {
+  const c = e.target.closest(".cite");
+  if (c) {
+    const s = $("#src" + c.dataset.rank); if (!s) return;
+    s.open = true; s.scrollIntoView({behavior: "smooth", block: "center"});
+    s.classList.add("flash"); setTimeout(() => s.classList.remove("flash"), 1400); return;
+  }
+  const b = e.target.closest("[data-copy]"); if (!b) return;
+  const d = window._last; let t = "";
+  if (b.dataset.copy === "ans") t = d.answer;
+  else if (b.dataset.copy === "link") t = location.href;
+  else { const h = d.hits.find(x => x.rank == b.dataset.rank); t = `${h.org} 인사규정 ${h.article_no}${h.title ? "(" + h.title + ")" : ""}\n${h.text}`; }
+  try { await navigator.clipboard.writeText(t); const o = b.textContent; b.textContent = "복사됨"; setTimeout(() => b.textContent = o, 1200); } catch (_) {}
+});
+
+/* 공유 링크(?org=&q=)로 들어오면 바로 실행 */
+function applyUrl() {
+  const p = new URLSearchParams(location.search), q = p.get("q"), o = p.get("org");
+  if (o && ORGSET.has(o)) { orgIn.value = o; syncClear(); }
+  if (q) { $("#q").value = q; ask(); }
+}
+
+/* ── 소개 섹션: 시연 가이드 · 차트 ── */
+const GUIDE = [
+  {tag: "기관 지정", org: "한국가스공사", q: "정년이 몇 살이야?", look: "답변 속 제31조를 누르면 근거 조문으로 이동합니다."},
+  {tag: "일상어 질문", org: "한국철도공사", q: "아기 낳으면 얼마나 쉴 수 있어?", look: "규정어(육아휴직, 출산휴가)가 없어도 관련 조문을 찾는지 보세요."},
+  {tag: "질문 속 기관 인식", org: "(주)강원랜드", q: "한국철도공사의 징계 종류를 알려줘", look: "선택한 기관과 질문 속 기관이 다르면 질문을 따르고 안내합니다."},
+  {tag: "수치 질문", org: "한국광해광업공단", q: "정직은 최대 몇 개월이야?", look: "답의 숫자가 근거 조문 원문에 그대로 있는지 확인하세요."},
+  {tag: "한계 확인", org: "", q: "오늘 점심 뭐 먹지?", look: "거절 장치가 꺼져 있어 무관한 조문이 나옵니다. 답변이 이를 어떻게 처리하는지 보세요."},
+];
+$("#guideList").innerHTML = GUIDE.map((g, i) => `<button type="button" class="gcard" data-g="${i}"><span class="tag">${esc(g.tag)}</span><span class="gq">${esc(g.q)}</span><span class="go-org">${esc(g.org || "전체 기관")}</span><span class="look">${esc(g.look)}</span></button>`).join("");
+$("#guideList").addEventListener("click", e => {
+  const b = e.target.closest(".gcard"); if (!b) return;
+  const g = GUIDE[b.dataset.g]; orgIn.value = g.org; syncClear(); $("#q").value = g.q;
+  $("#form").scrollIntoView({behavior: "smooth", block: "start"}); ask();
+});
+
+const ORG_TYPES = [["기타공공기관", 223], ["위탁집행형 준정부기관", 39], ["준시장형 공기업", 15], ["기금관리형 준정부기관", 8], ["시장형 공기업", 7]];
+const tmax = Math.max(...ORG_TYPES.map(x => x[1]));
+$("#orgTypes").innerHTML = ORG_TYPES.map(([k, v]) => `<div class="row" title="${esc(k)}: ${v}곳"><span class="lab">${esc(k)}</span><span class="track"><span class="bar" style="width:${v / tmax * 82}%"></span><span class="val" style="left:${v / tmax * 82}%">${v}곳</span></span></div>`).join("");
+$("#orgTypesTbl").innerHTML = "<tr><th>유형</th><th>기관 수</th></tr>" + ORG_TYPES.map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join("");
+
+const PERF = [["사내 직원 질문 40개", "직급별 일상 질문", 0.890, 0.258], ["한전KPS 20개", "외부 기관 추가 검증", 0.945, 0.812], ["국토교통과학기술진흥원", "신규 기관", 1.000, 0.550], ["국립공원공단", "신규 기관", 0.925, 0.100]];
+const pb = (cls, v, who) => `<span class="track" title="${who}: ${v.toFixed(3)}"><span class="bar ${cls}" style="width:${v * 84}%"></span><span class="val" style="left:${v * 84}%">${v.toFixed(3)}</span></span>`;
+$("#perfBars").innerHTML = PERF.map(([k, sub, cur, old]) => `<div class="grp"><span class="lab">${esc(k)}<small>${esc(sub)}</small></span><span class="pair">${pb("b1", cur, "현재 방식")}${pb("b2", old, "기존 방식")}</span></div>`).join("");
+$("#perfTbl").innerHTML = "<tr><th>평가 세트</th><th>현재 방식</th><th>기존 방식</th></tr>" + PERF.map(([k, , c, o]) => `<tr><td>${esc(k)}</td><td>${c.toFixed(3)}</td><td>${o.toFixed(3)}</td></tr>`).join("");
+loadOrgs();
+</script></body></html>

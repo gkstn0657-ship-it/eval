@@ -1,0 +1,18 @@
+{
+  "org": "한전KPS(주)",
+  "org_type": "준시장형 공기업",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.01.22",
+  "format": "hwp",
+  "sha256": "9821a03f94ec8fe804215f89f0140a4777a37f2f41ce845486538ed8ed9beae1",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=229915",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0305&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=28939&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공기업_인사규정_HWP/한전KPS/인사규정(2026년도 1월 22일 개정).hwp",
+  "revision_date": "2026-01-22",
+  "is_latest": true,
+  "level": "L1",
+  "toc": "",
+  "page_breaks": null,
+  "image_transcriptions": []
+}

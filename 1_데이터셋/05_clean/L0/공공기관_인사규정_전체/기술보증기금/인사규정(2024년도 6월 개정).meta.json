@@ -1,0 +1,15 @@
+{
+  "org": "기술보증기금",
+  "org_type": "기금관리형 준정부기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2024.06.25",
+  "format": "hwp",
+  "sha256": "b991a18781efc6757f481411623ef3ae3c9e2f5ad5627c9970e7df973da86877",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=200088",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0038&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=17854&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/기술보증기금/인사규정(2024년도 6월 개정).HWP",
+  "revision_date": "2024-06",
+  "is_latest": true,
+  "level": "L0"
+}

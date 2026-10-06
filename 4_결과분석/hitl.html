@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>HITL 비교: 내 파이프라인 vs Fable 5.1</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--line:#dde1e6;--ink:#1d2129;--mute:#6b7280;--acc:#2563eb;--ok:#15803d;--bad:#b91c1c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 system-ui,"Malgun Gothic",sans-serif}
+header{padding:14px 20px;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+header h1{font-size:16px;margin:0 12px 0 0}
+input,select,textarea,button{font:inherit}
+#q{flex:1;min-width:280px;padding:9px 12px;border:1px solid var(--line);border-radius:8px}
+#org{padding:9px;border:1px solid var(--line);border-radius:8px;max-width:260px}
+button{padding:9px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer}
+button.primary{background:var(--acc);color:#fff;border-color:var(--acc)}
+main{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.card h2{font-size:15px;margin:0 0 8px}.mute{color:var(--mute);font-size:12px}
+.hit{border-top:1px solid var(--line);padding:8px 0}.hit b{color:var(--acc)}
+.hit pre{white-space:pre-wrap;margin:4px 0 0;font:13px/1.5 inherit;color:#333;max-height:9em;overflow:auto}
+textarea{width:100%;min-height:220px;padding:10px;border:1px solid var(--line);border-radius:8px;resize:vertical}
+.judge{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.judge button[data-v="pipeline"]{border-color:var(--ok);color:var(--ok)}.judge button[data-v="fable"]{border-color:var(--bad);color:var(--bad)}
+#note{flex:1;min-width:200px;padding:8px;border:1px solid var(--line);border-radius:8px}
+#log{grid-column:1/-1}table{width:100%;border-collapse:collapse;font-size:13px}td,th{border-top:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.answer{white-space:pre-wrap;background:#f9fafb;border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:8px}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+</style>
+<!-- HF Space 가 고정 높이 iframe 에 넣을 때 내용 높이에 맞춰 늘어나도록 (Gradio 가 쓰는 것과 같은 스크립트) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.min.js" async></script>
+</head><body>
+<header>
+  <h1>HITL 비교</h1>
+  <select id="org"><option value="">(회사 미지정: 전체 검색)</option></select>
+  <input id="q" placeholder="직원이 묻듯이 질문 입력 (회사명 없이)" />
+  <button class="primary" id="go">질문</button>
+  <button id="copyq" title="채팅에 붙여넣을 질문 복사">질문 복사</button>
+  <button id="copyctx" title="검색된 조문 5개를 채팅에 붙여넣기용으로 복사">근거 복사</button>
+  <span class="mute" id="status"></span>
+</header>
+<main>
+  <section class="card">
+    <h2>내 파이프라인 <span class="mute">hybrid_prefilter · 292기관 코퍼스 · 답변은 근거 복사 → 채팅의 Fable 이 생성</span></h2>
+    <div class="mute" id="pinfo">질문을 입력하세요.</div>
+    <div id="panswer"></div>
+    <div id="hits"></div>
+  </section>
+  <section class="card">
+    <h2>Fable 5.1 자체 검색 RAG <span class="mute">Fable 이 코퍼스를 직접 grep·읽고 답변 (파이프라인 미사용)</span></h2>
+    <div id="fanswer"></div>
+    <textarea id="fable" placeholder="채팅에 질문을 보내면 Fable 이 ① 자체 검색 답변 → ② 파이프라인 근거 기반 답변 순으로 돌려줍니다. 두 답을 보고 판정하세요. (여기에 메모용으로 붙여넣기 가능)"></textarea>
+    <div class="judge">
+      <span>판정:</span>
+      <button data-v="pipeline">파이프라인이 낫다</button>
+      <button data-v="tie">비슷하다</button>
+      <button data-v="fable">Fable 이 낫다</button>
+      <input id="note" placeholder="메모 (틀린 점, 근거 유무 등)" />
+    </div>
+  </section>
+  <section class="card" id="log"><h2>판정 기록 <span class="mute" id="logsum"></span></h2><table><thead><tr><th>시각</th><th>회사</th><th>질문</th><th>판정</th><th>메모</th></tr></thead><tbody id="logbody"></tbody></table></section>
+</main>
+<script>
+const $=s=>document.querySelector(s); let last=null;
+async function loadOrgs(n=0){try{const a=await (await fetch('orgs')).json();if(!a.length)throw 0;for(const o of a){const op=document.createElement('option');op.value=o;op.textContent=o;$('#org').appendChild(op)}$('#status').textContent=`회사 ${a.length}곳`}catch(e){if(n<20){$('#status').textContent='회사 목록 로딩 중…';setTimeout(()=>loadOrgs(n+1),3000)}}}loadOrgs();
+async function ask(){const q=$('#q').value.trim();if(!q)return;$('#status').textContent='검색 중…';$('#go').disabled=true;
+  const r=await fetch(`ask?q=${encodeURIComponent(q)}&org=${encodeURIComponent($('#org').value)}`);const d=await r.json();last=d;$('#go').disabled=false;
+  $('#status').textContent=`${d.sec}s`;$('#pinfo').textContent=`회사: ${d.org||'(미지정)'} · 상위 ${d.hits.length}개 조문`+(d.model?` · 답변 ${d.model}`:' · 생성 모델 없음(검색 근거만). ANTHROPIC_API_KEY 설정 후 서버 재시작');
+  $('#fanswer').innerHTML='';const g=d.gate||{};const gmsg=g.message?`<div class="answer" style="border-color:#b45309;background:#fffbeb"><b>가드레일 ${esc(g.action||'')}</b> · ${esc(g.message)}</div>`:'';$('#panswer').innerHTML=gmsg+(d.answer?`<div class="answer">${esc(d.answer)}<div class="mute" style="margin-top:6px">${esc(g.disclaimer||'')}</div></div>`:'');
+  $('#hits').innerHTML=d.hits.map(h=>`<div class="hit"><b>${h.rank}. ${esc(h.org)} ${esc(h.article_no)}${h.title?'('+esc(h.title)+')':''}</b> <span class="mute">개정 ${esc(h.revision_date)}</span><pre>${esc(h.text)}</pre></div>`).join('');}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+$('#go').onclick=ask;$('#q').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+$('#copyq').onclick=()=>{navigator.clipboard.writeText($('#q').value);$('#status').textContent='질문 복사됨'};
+$('#copyctx').onclick=()=>{if(!last){alert('먼저 질문하세요');return}const NL=String.fromCharCode(10);const head=['[질문] '+last.q,'[회사] '+(last.org||'(미지정)'),'아래 조문만 근거로 답하고, 없는 내용은 없다고 답해줘.',''].join(NL);const body=last.hits.map(h=>'['+h.rank+'] '+h.org+' 인사규정 '+h.article_no+(h.title?'('+h.title+')':'')+' (개정 '+h.revision_date+')'+NL+h.text).join(NL+NL);navigator.clipboard.writeText(head+NL+body);$('#status').textContent='근거 조문 복사됨 → 채팅에 붙여넣기'};
+async function loadLog(){const a=await (await fetch('log')).json();const c={pipeline:0,tie:0,fable:0};a.forEach(x=>c[x.verdict]=(c[x.verdict]||0)+1);
+  $('#logsum').textContent=`${a.length}건 · 파이프라인 ${c.pipeline} / 비슷 ${c.tie} / Fable ${c.fable}`;
+  $('#logbody').innerHTML=a.slice().reverse().map(x=>`<tr><td>${esc(x.ts)}</td><td>${esc(x.org||'')}</td><td>${esc(x.q)}</td><td>${esc(x.verdict)}</td><td>${esc(x.note||'')}</td></tr>`).join('')}
+async function pollAnswers(){const qq=last?last.q:$('#q').value.trim();if(!qq)return;try{const d=await (await fetch('answers?q='+encodeURIComponent(qq))).json();if(d.pipeline_answer){$('#panswer').innerHTML='<div class="answer"><b>파이프라인 근거 기반 답변 (Fable 생성)</b><br>'+esc(d.pipeline_answer)+'</div>'}if(d.fable_answer){$('#fanswer').innerHTML='<div class="answer"><b>Fable 자체 검색 답변</b><br>'+esc(d.fable_answer)+'</div>'}}catch(e){}}setInterval(pollAnswers,5000);pollAnswers();loadLog();
+</script></body></html>

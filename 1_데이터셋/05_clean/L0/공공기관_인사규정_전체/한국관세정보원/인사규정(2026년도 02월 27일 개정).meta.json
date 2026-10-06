@@ -1,0 +1,15 @@
+{
+  "org": "한국관세정보원",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.06.19",
+  "format": "hwp",
+  "sha256": "a3a3a738064ccbf777a307b87f5930f5c4fe814881b6bc13204d947217a133ba",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=233384",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C1400&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=54394&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/한국관세정보원/인사규정(2026년도 02월 27일 개정).hwp",
+  "revision_date": "2026-02-27",
+  "is_latest": false,
+  "level": "L0"
+}

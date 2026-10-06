@@ -1,0 +1,222 @@
+{
+  "org": "신용보증재단중앙회",
+  "org_type": "기타공공기관",
+  "rule_title": "인사규정",
+  "rule_latest_date": "2026.06.30",
+  "format": "hwpx",
+  "sha256": "684baca2a641d0be75cd438bb496a06d5db731a6d531865c685624ea2faf56e9",
+  "download_url": "https://www.alio.go.kr/download/rulefiledown.json?fileNo=226024",
+  "source_page": "https://www.alio.go.kr/item/itemBoard21110.do?apbald=C0112&nowcode=21110&reportFormNo=21110&table_name=COMM_RULE&idx_name=RULENO&idx=11650&reportGbn=N&bid_type=K1100",
+  "collected": "2026-10-04",
+  "source_file": "공공기관_인사규정_전체/신용보증재단중앙회/인사규정(2025년도 12월 15일 개정).hwpx",
+  "revision_date": "2025-12-15",
+  "is_latest": false,
+  "level": "L2",
+  "preamble": "",
+  "appendix_blocks": [
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (제정)\n\n제1조(시행일) 이 규정은 이사회의 의결을 얻은 날부터 시행한다.\n제2조(경과규정) 이 규정 시행 이전에 중앙회설립준비단원으로 근무한 직원에 대하여는 중앙회설립준비단 최초 근무일부터 이 규정을 적용한다.<개정 2009.1.30.>"
+    },
+    {
+      "effective_date": "2003년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 (1)\n\n제1조(시행일) 이 규정은 2003년 1월 1일부터 시행한다.\n제2조(경과규정) 이 규정 개정이전에 채용된 계약직원은 2003년 1월 1일부터 서무원으로 채용된 것으로 본다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (2)\n\n제1조(시행일) 이 규정은 개정 정관 시행일(2003.5.27)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (3)\n\n이 규정은 이사회의 의결을 얻은 날(2003.11.26)부터 시행한다."
+    },
+    {
+      "effective_date": "2005년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 (4)\n\n제1조(시행일) 이 규정은 2005년 1월 1일부터 시행한다.\n제2조(경과규정) 이 규정 시행일 이전에 채용된 서무원은 2005년 1월 1일부터 6급 직원으로 채용된 것으로 보며, 종전에 서무원으로 근무한 경력은 6급 경력으로 통산한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (5)\n\n이 규정은 이사회의 의결을 얻은 날(2005.2.23)부터 시행한다."
+    },
+    {
+      "effective_date": "2007년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 (6)\n\n이 규정은 2007년 1월 1일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (7)\n\n이 규정은 이사회의 의결을 얻은 날(2008.2.22)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (8)\n\n이 규정은 지역신용보증재단법 개정 공포일(2009.1.30)로부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (9)\n\n이 규정은 이사회의 의결을 얻은 날(2009.5.26)부터 시행한다."
+    },
+    {
+      "effective_date": "2013년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 (10)\n\n이 규정은 2013년 1월 1일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (11)\n\n이 규정은 이사회의 의결을 얻은 날(2013.7.17)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (12)\n\n이 규정은 이사회의 의결을 얻은 날(2014.11.11)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (13)\n\n이 규정은 이사회의 의결을 얻은 날(2014.11.28)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (14)\n\n이 규정은 이사회의 의결을 얻은 날(2015.3.26)부터 시행한다."
+    },
+    {
+      "effective_date": "2016년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 (15)\n\n이 규정은 2016년 1월 1일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (16)\n\n이 규정은 이사회의 의결을 얻은 날(2015.11.27)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (17)\n\n이 규정은 이사회의 의결을 얻은 날(2017.12.21.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (18)\n\n이 규정은 이사회의 의결을 얻은 날(2018.3.20.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (19)\n\n이 규정은 이사회의 의결을 얻은 날(2018.7.31.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (20)\n\n이 규정은 이사회의 의결을 얻은 날(2018.12.19.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (21)\n\n제1조(시행일) 이 규정은 이사회의 의결을 얻은 날(2019.6.27.)부터 시행한다.\n제2조(승급기간의 특례 적용례) 제32조의2(승급기간의 특례)는 2019.6.1.일부터 적용한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (22)\n\n이 규정은 이사회의 의결을 얻은 날(2019.10.25.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (23)\n\n이 규정은 이사회의 의결을 얻은 날(2019.12.19.)부터 시행한다."
+    },
+    {
+      "effective_date": "2020년4월8",
+      "other_rule_amendment": false,
+      "text": "부칙 (24)\n\n제1조(시행일) 이 규정은 2020년 4월 8일부터 시행한다.\n제2조(다른 규정의 개정) 직제규정 개정에 따라 이 규정의 제8조 중 “직제및정원규정”을 “직제규정”로 한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (25)\n\n이 규정은 이사회의 의결을 얻은 날(2020.6.30.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (26)\n\n이 규정은 이사회의 의결을 얻은 날(2020.12.17.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (27)\n\n이 규정은 이사회의 의결을 얻은 날(2021.12.22.)부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (28)\n\n이 규정은 이사회의 의결을 얻은 날(2022.2.4.)부터 시행한다."
+    },
+    {
+      "effective_date": "2023년1월1",
+      "other_rule_amendment": false,
+      "text": "부칙 (29)\n\n이 규정은 2023년 1월 1일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (30)\n\n이 규정은 이사회의 의결을 얻은 날(2023.12.21.)부터 시행한다. "
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (31)\n\n이 규정은 이사회의 의결을 얻은 날(2024.4.23.)부터 시행한다. "
+    },
+    {
+      "effective_date": "2025년2월23",
+      "other_rule_amendment": false,
+      "text": "부칙 (32)\n\n이 규정은 2025년 2월 23일부터 시행한다."
+    },
+    {
+      "effective_date": null,
+      "other_rule_amendment": false,
+      "text": "부칙 (33)\n\n제1조(시행일) 이 규정은 이사회의 의결을 얻은 날(2025.12.15.)부터 시행한다.\n제2조(휴직기간중의 근속기간 계산 적용례) 제53조의 개정규정은 이 규정 시행 이후 육아휴직을 사용하는 직원(휴직 중인 직원 포함)부터 적용한다.\n(별표) 직원채용 자격 요건 (개정 2002.12.6, 2004.12.16., 2005.2.23., 2015.11.27., 2019.12.19.)\n\n직원채용 자격 요건\n\n[표] 채용구분 | 자 격 요 건 | 기타\n채용구분: 1급 책임자 | 자 격 요 건: ◦◦◦ | 기타: <삭제>\n채용구분: 2급 책임자 | 자 격 요 건: ◦◦국가공무원 5급으로 5년 이상 재직한 자◦ | 기타: <삭제>\n채용구분: 3급 책임자 | 자 격 요 건: ◦◦국가공무원 5급대우 이상으로 재직한 자◦ | 기타: <삭제>\n채용구분: 4급 책임자 | 자 격 요 건: ◦◦◦ | 기타: <삭제>\n채용구분: 5급 직원 | 자 격 요 건: ◦ (삭제 2018.12.19)◦ (삭제 2005.2.23)◦ (삭제 2018.12.19)◦ 실무자로서 중앙회 업무수행에 적합하다고 인정되는 자 | 기타: <삭제>\n채용구분: 6급 직원 | 자 격 요 건: ◦◦◦◦ 고등학교 이상 졸업자 및 졸업예정자 | 기타: <삭제>\n\n주) (삭제 2005.2.23.)"
+    }
+  ],
+  "effective_dates": [
+    "2003년1월1",
+    "2005년1월1",
+    "2007년1월1",
+    "2013년1월1",
+    "2016년1월1",
+    "2020년4월8",
+    "2023년1월1",
+    "2025년2월23"
+  ],
+  "other_rule_amendment_blocks": 0,
+  "revision_marks_total": 190,
+  "delegated_to": [
+    "규정에 해당하는 자로서 임용 후 종합근무평정규정",
+    "따른 징계자에 대한 승급연장 기간은 직원상벌규정",
+    "서 정하지 않은 직원채용에 필요한 사항은 채용세칙",
+    "속기간 산정은 제1항의 규정에 불구하고 퇴직금규정",
+    "직원을 승진임용할 때에는 종합근무평정규정",
+    "직원의 초임호봉은 보수규정",
+    "징계자에 대한 승급은 직원상벌규정",
+    "퇴직금규정",
+    "호에 해당하는 사유가 발생하였을 경우에는 관련규정",
+    "휴직기간중의 보수는 보수규정"
+  ],
+  "glossary": [
+    {
+      "term": "인사",
+      "definition": "직원의 임용과 관련되는 일체의 사항을 말한다."
+    },
+    {
+      "term": "승진",
+      "definition": "상위 직급으로 임명되는 것을 말한다."
+    }
+  ]
+}
