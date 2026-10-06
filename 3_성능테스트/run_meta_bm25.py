@@ -8,11 +8,9 @@
   B0 hybrid_nofilter  : 기존. dense + BM25(본문) → RRF → CE. 필터 없음
   B1 hybrid_prefilter : 기존. 별칭 사전 기관 추출 → 기관 조문으로 먼저 자름 → dense + BM25 → RRF → CE
   M1 meta_concat      : BM25 색인 텍스트 앞에 "[기관] 기관명 + 규칙 변형". dense·CE 는 본문 그대로
-  M2 meta_field       : BM25 = 본문 BM25(최대값 정규화) + w × 기관 필드 BM25(글자 2-gram, 최대값 정규화)
-  M3 meta_field_ce    : M2 + CE 입력 앞에 "[기관] 기관명"
-M1~M3 은 기관 필터와 별칭 사전을 쓰지 않는다.
+M1 은 기관 필터와 별칭 사전을 쓰지 않는다.
 
-사용: python run_meta_bm25.py --set dev|employee [--sub20] [--w 1.0] [--only B0,M3]
+사용: python run_meta_bm25.py --set dev|employee [--sub20]
 """
 import os, sys, json, re, math, time
 from pathlib import Path
@@ -22,8 +20,7 @@ from collections import defaultdict, Counter
 ARGS = sys.argv[1:]
 def _arg(name, default=None):
     return ARGS[ARGS.index(name) + 1] if name in ARGS else default
-SET = _arg("--set", "dev"); SUB20 = "--sub20" in ARGS; W = float(_arg("--w", "1.0"))
-ONLY = _arg("--only"); ONLY = ONLY.split(",") if ONLY else None
+SET = _arg("--set", "dev"); SUB20 = "--sub20" in ARGS
 sys.argv = [sys.argv[0]]
 os.environ.setdefault("HF_HOME", str(Path.home() / ".cache" / "huggingface"))  # run_eval 기본값(E:\hf_cache)이 없는 PC 대응
 
@@ -50,24 +47,10 @@ def variants(org):
     if s.startswith("한국") and len(s) > 4: v.add(s[2:])
     return sorted(x for x in v if x)
 
-def bigrams(text):
-    out = []
-    for w in TOKEN_RE.findall(text.lower()):
-        out += [w] if len(w) == 1 else [w[i:i + 2] for i in range(len(w) - 1)]
-    return out
-
 class MetaIndex:
     def __init__(self, c):
         self.org_list = sorted(set(c.orgs.tolist()))
-        pos = {o: k for k, o in enumerate(self.org_list)}
-        self.org_idx = np.array([pos[o] for o in c.orgs])
-        self.org_bm25 = BM25Okapi([bigrams(" ".join(variants(o))) for o in self.org_list])
         self.concat_bm25 = BM25Okapi([TOKEN_RE.findall(("[기관] " + " ".join(variants(r["org"])) + " " + r["text"]).lower()) for r in c.rows])
-        self.ce_texts = [f"[기관] {r['org']}\n{r['text']}" for r in c.rows]
-
-def _norm(x):
-    m = float(np.max(x)) if len(x) else 0.0
-    return x / m if m > 0 else np.zeros_like(x)
 
 # ---------------------------------------------------------------- 파이프라인
 def _fuse(c, q, b_scores, ce_text):
@@ -85,16 +68,7 @@ def _fuse(c, q, b_scores, ce_text):
     pool.sort(key=lambda i: (-ce_map[i], -rrf[i], i))
     return pool + rest, {"top1_ce": ce_map[pool[0]] if pool else None}
 
-def field_scores(c, mi, q, w):
-    bt = c.bm25.get_scores(TOKEN_RE.findall(q.lower()))
-    bo = mi.org_bm25.get_scores(bigrams(q))
-    return _norm(bt) + w * _norm(bo)[mi.org_idx], mi.org_list[int(np.argmax(bo))] if np.max(bo) > 0 else None
-
-def run_m1(c, mi, q, w): return _fuse(c, q, mi.concat_bm25.get_scores(TOKEN_RE.findall(q.lower())), lambda i: c.texts[i])
-def run_m2(c, mi, q, w):
-    b, top_org = field_scores(c, mi, q, w); idx, info = _fuse(c, q, b, lambda i: c.texts[i]); info["top_org"] = top_org; return idx, info
-def run_m3(c, mi, q, w):
-    b, top_org = field_scores(c, mi, q, w); idx, info = _fuse(c, q, b, lambda i: mi.ce_texts[i]); info["top_org"] = top_org; return idx, info
+def run_m1(c, mi, q): return _fuse(c, q, mi.concat_bm25.get_scores(TOKEN_RE.findall(q.lower())), lambda i: c.texts[i])
 
 # ---------------------------------------------------------------- 실행
 def load_corpus():
@@ -111,11 +85,10 @@ def main():
     t0 = time.time()
     gold = [json.loads(l) for l in GOLD.read_text(encoding="utf-8").splitlines() if l.strip()]
     c = load_corpus(); mi = MetaIndex(c)
-    tag = f"{'org20' if SUB20 else 'org292'}_{SET}" + (f"_w{W:g}" if W != 1.0 else "")
+    tag = f"{'org20' if SUB20 else 'org292'}_{SET}"
     out = HERE / "results_meta_bm25" / tag; out.mkdir(parents=True, exist_ok=True)
     print(f"[{tag}] 청크 {len(c.rows)}, 기관 {len(mi.org_list)}, 문항 {len(gold)}", flush=True)
-    conds = {"B0_hybrid_nofilter": None, "B1_hybrid_prefilter": None, "M1_meta_concat": run_m1, "M2_meta_field": run_m2, "M3_meta_field_ce": run_m3}
-    if ONLY: conds = {k: v for k, v in conds.items() if k.split("_")[0] in ONLY}
+    conds = {"B0_hybrid_nofilter": None, "B1_hybrid_prefilter": None, "M1_meta_concat": run_m1}
     per_query = []
     for name, fn in conds.items():
         for q in gold:
@@ -126,7 +99,7 @@ def main():
             elif name.startswith("B0"):
                 idx, info = R.run_hybrid_nofilter(c, q_text)
             else:
-                idx, info = fn(c, mi, q_text, W)
+                idx, info = fn(c, mi, q_text)
             arts = R.to_articles(idx, c.rows)
             rec = {"cond": name, "qid": q["qid"], "type": q["type"], "gold": q["gold_ids"], "top5": arts[:5],
                    "top_org": info.get("top_org"), "top1_ce": info.get("top1_ce")}
@@ -144,7 +117,7 @@ def main():
         rng = np.random.default_rng(42); a, b = np.array(a), np.array(b)
         diffs = [(a[s] - b[s]).mean() for s in (rng.integers(0, len(a), len(a)) for _ in range(n))]
         return float(np.percentile(diffs, 2.5)), float(np.percentile(diffs, 97.5))
-    summ = {"tag": tag, "chunks": len(c.rows), "orgs": len(mi.org_list), "n_scored": len(rows_of(next(iter(conds)))), "w": W,
+    summ = {"tag": tag, "chunks": len(c.rows), "orgs": len(mi.org_list), "n_scored": len(rows_of(next(iter(conds)))),
             "conditions": [], "by_type": [], "comparisons": []}
     for n in conds:
         rs = rows_of(n)
