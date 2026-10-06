@@ -12,6 +12,8 @@ pinned: false
 
 # 공공기관 인사규정 RAG — hybrid_prefilter 데모
 
+배포링크 : https://runningturtle123-public-agency-ragchat.hf.space/demo/
+
 공공기관 292곳의 인사규정(최신판 조문 22,336청크)에 대해 질문하면,
 `hybrid_prefilter` 파이프라인이 근거 조문을 찾아 답변을 만든다. 공개 데모는 가드레일을 끈 상태다(평가 코드의 가드레일은 `5_가드레일/`에 그대로 있다).
 
