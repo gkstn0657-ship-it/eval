@@ -8,3 +8,6 @@ venv/
 Thumbs.db
 .anthropic_key
 6_배포/space/
+
+# 청킹 비교용 코퍼스는 build_chunk_variants.py 로 다시 만들 수 있어 올리지 않는다(약 66MB)
+3_성능테스트/corpora/CH_*.jsonl

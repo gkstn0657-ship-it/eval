@@ -1,0 +1,479 @@
+{
+ "n_queries": 44,
+ "n_scored": 40,
+ "conditions": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.95,
+   "recall10": 0.95,
+   "mrr": 0.8724999999999999,
+   "ndcg5": 0.8806337667869883
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.475,
+   "recall10": 0.5,
+   "mrr": 0.39940476190476193,
+   "ndcg5": 0.41636621919643224
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.675,
+   "recall10": 0.725,
+   "mrr": 0.5904761904761905,
+   "ndcg5": 0.5967378753007607
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.9,
+   "recall10": 0.925,
+   "mrr": 0.878125,
+   "ndcg5": 0.8815464876785729
+  }
+ ],
+ "by_type": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 0.5,
+   "mrr": 0.1,
+   "ndcg5": 0.08314035269128947
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 0.0,
+   "mrr": 0.03571428571428571,
+   "ndcg5": 0.0
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.625,
+   "ndcg5": 0.6577324383928644
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 0.25,
+   "mrr": 0.25,
+   "ndcg5": 0.25
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.75,
+   "ndcg5": 0.75
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 0.0,
+   "mrr": 0.0,
+   "ndcg5": 0.0
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.75,
+   "ndcg5": 0.75
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 0.5,
+   "mrr": 0.3333333333333333,
+   "ndcg5": 0.375
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 0.0,
+   "mrr": 0.0,
+   "ndcg5": 0.0
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.375,
+   "ndcg5": 0.47319731517859315
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 0.25,
+   "mrr": 0.25,
+   "ndcg5": 0.25
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.625,
+   "ndcg5": 0.6577324383928644
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.8333333333333334,
+   "ndcg5": 0.875
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 0.25,
+   "mrr": 0.1607142857142857,
+   "ndcg5": 0.0615755971851825
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 0.5,
+   "mrr": 0.3482142857142857,
+   "ndcg5": 0.3576691395183483
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 0.25,
+   "mrr": 0.25,
+   "ndcg5": 0.25
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.5625,
+   "ndcg5": 0.6076691395183482
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 0.0,
+   "mrr": 0.03125,
+   "ndcg5": 0.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.75,
+   "ndcg5": 0.8154648767857288
+  }
+ ],
+ "q9": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 4,
+   "abstain_rate": 1.0
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 4,
+   "abstain_rate": 1.0
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 4,
+   "abstain_rate": 0.75
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 4,
+   "abstain_rate": 1.0
+  }
+ ],
+ "comparisons": [
+  {
+   "label": "1006 CH_FIX vs L2P (prefilter)",
+   "a": [
+    "CH_FIX_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "delta_ndcg5": -0.4642675475905561,
+   "ci95": [
+    -0.6110850324920067,
+    -0.3142727035719653
+   ],
+   "significant": true
+  },
+  {
+   "label": "1006 CH_SEM vs L2P (prefilter)",
+   "a": [
+    "CH_SEM_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "delta_ndcg5": -0.2838958914862276,
+   "ci95": [
+    -0.41740496374577496,
+    -0.1517811175753076
+   ],
+   "significant": true
+  },
+  {
+   "label": "1006 CH_PARA vs L2P (prefilter)",
+   "a": [
+    "CH_PARA_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "delta_ndcg5": 0.0009127208915845619,
+   "ci95": [
+    -0.041445569456288064,
+    0.043436012468900456
+   ],
+   "significant": false
+  }
+ ]
+}

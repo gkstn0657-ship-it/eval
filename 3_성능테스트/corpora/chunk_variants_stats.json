@@ -1,0 +1,32 @@
+[
+ {
+  "corpus": "CH_FIX_A",
+  "chunks": 5387,
+  "articles_covered": 4820,
+  "cross_article_chunks": 5267,
+  "mean_len": 1172.3,
+  "max_len": 1200,
+  "orgs": 292,
+  "build_sec": 0.1
+ },
+ {
+  "corpus": "CH_SEM_A",
+  "chunks": 22581,
+  "articles_covered": 11072,
+  "cross_article_chunks": 9033,
+  "mean_len": 244.9,
+  "max_len": 500,
+  "orgs": 292,
+  "build_sec": 193.2
+ },
+ {
+  "corpus": "CH_PARA_A",
+  "chunks": 41543,
+  "articles_covered": 19298,
+  "cross_article_chunks": 0,
+  "mean_len": 145.5,
+  "max_len": 6844,
+  "orgs": 292,
+  "build_sec": 0.7
+ }
+]

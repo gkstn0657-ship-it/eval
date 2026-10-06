@@ -1,0 +1,130 @@
+{
+ "n_queries": 111,
+ "n_scored": 111,
+ "conditions": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.990990990990991,
+   "recall10": 0.990990990990991,
+   "mrr": 0.990990990990991,
+   "ndcg5": 0.990990990990991
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.8738738738738738,
+   "recall10": 0.9009009009009009,
+   "mrr": 0.5104568854568855,
+   "ndcg5": 0.5991695703009157
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.9819819819819819,
+   "recall10": 0.990990990990991,
+   "mrr": 0.551051051051051,
+   "ndcg5": 0.6602269891429776
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.990990990990991,
+   "recall10": 1.0,
+   "mrr": 0.9919919919919921,
+   "ndcg5": 0.990990990990991
+  }
+ ],
+ "by_type": [
+  {
+   "corpus": "L2P_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 111,
+   "recall5": 0.990990990990991,
+   "mrr": 0.990990990990991,
+   "ndcg5": 0.990990990990991
+  },
+  {
+   "corpus": "CH_FIX_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 111,
+   "recall5": 0.8738738738738738,
+   "mrr": 0.5104568854568855,
+   "ndcg5": 0.5991695703009157
+  },
+  {
+   "corpus": "CH_SEM_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 111,
+   "recall5": 0.9819819819819819,
+   "mrr": 0.551051051051051,
+   "ndcg5": 0.6602269891429776
+  },
+  {
+   "corpus": "CH_PARA_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 111,
+   "recall5": 0.990990990990991,
+   "mrr": 0.9919919919919921,
+   "ndcg5": 0.990990990990991
+  }
+ ],
+ "q9": [],
+ "comparisons": [
+  {
+   "label": "1006 CH_FIX vs L2P (prefilter)",
+   "a": [
+    "CH_FIX_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "delta_ndcg5": -0.3918214206900753,
+   "ci95": [
+    -0.45154696062956734,
+    -0.33657928613146776
+   ],
+   "significant": true
+  },
+  {
+   "label": "1006 CH_SEM vs L2P (prefilter)",
+   "a": [
+    "CH_SEM_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "delta_ndcg5": -0.33076400184801336,
+   "ci95": [
+    -0.36509540325307405,
+    -0.29361661705951353
+   ],
+   "significant": true
+  },
+  {
+   "label": "1006 CH_PARA vs L2P (prefilter)",
+   "a": [
+    "CH_PARA_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2P_A",
+    "hybrid_prefilter"
+   ],
+   "delta_ndcg5": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "significant": false
+  }
+ ]
+}
