@@ -10,7 +10,8 @@ per_query = json.load(open(R / "per_query.json", encoding="utf-8"))
 corpora = json.load(open(ROOT / "3_성능테스트" / "corpora" / "corpora_stats.json", encoding="utf-8"))
 narr = json.load(open(HERE / "narrative.json", encoding="utf-8"))
 LOCAL = "--local" in sys.argv
-def section(title, lead, body): return f"<section><h2>{html.escape(title)}</h2><p class='lead'>{html.escape(lead)}</p>{body}</section>"
+def section(title, lead, body, data=""): return f"<section><h2>{html.escape(title)}</h2>" + (f"<p class='data'>{html.escape(data)}</p>" if data else "") + f"<p class='lead'>{html.escape(lead)}</p>{body}</section>"
+D20 = "20개 기관"; DEV = "평가 dev 44문항(채점 40)"
 PIPE_NAME = {"vanilla": "Vanilla RAG", "vanilla_bge": "Vanilla (임베딩 bge-m3)", "hybrid_nobm25": "하이브리드+CE − BM25", "hybrid_nofilter": "하이브리드+CE − 기관 필터", "vanilla_filter": "Vanilla + 기관 필터", "vanilla_bge_filter": "Vanilla (bge-m3) + 기관 필터", "hybrid": "하이브리드 + CE", "baseline_dense": "dense 단독", "baseline_bm25": "BM25 단독", "baseline_random": "random"}
 LEVEL_NAME = {"L0": "L0 파싱만", "L1": "L1 노이즈 제거", "L2": "L2 구조 분리"}
 TYPE_NAME = {"Q1": "조항 조회", "Q2": "요건 판단", "Q3": "수치 확인", "Q4": "절차·기한", "Q5": "용어 정의", "Q6": "기관 비교", "Q7": "개정 이력", "Q8": "별표", "Q10": "삭제 조항", "Q11": "일상어"}
@@ -121,13 +122,20 @@ ABL_HTML = ""
 if ("L2_A", "hybrid_nobm25") in cond:
     ABL = [("hybrid", "하이브리드 + CE", "--s1"), ("hybrid_nobm25", "하이브리드+CE − BM25", "--s4")]
     if ("L2_A", "hybrid_nofilter") in cond: ABL += [("hybrid_nofilter", "하이브리드+CE − 기관 필터", "--s7")]
+    _mf = ROOT / "3_성능테스트" / "results_meta_bm25" / "org20_dev_L2_A" / "summary.json"
+    if _mf.exists():
+        _m = json.load(open(_mf, encoding="utf-8"))
+        cond[("L2_A", "meta_bm25")] = next(x for x in _m["conditions"] if x["cond"] == "M1_meta_concat")
+        for x in _m["by_type"]:
+            if x["cond"] == "M1_meta_concat": bytype[("L2_A", "meta_bm25", x["type"])] = x
+        ABL += [("meta_bm25", "하이브리드+CE − 기관 필터, BM25 에 기관명", "--s8")]
     if ("L2_A", "vanilla_bge_filter") in cond: ABL += [("vanilla_bge_filter", "Vanilla(bge-m3) + 기관 필터", "--s5")]
     ABL += [("vanilla_bge", "Vanilla (bge-m3)", "--s3")]
     if ("L2_A", "vanilla_filter") in cond: ABL += [("vanilla_filter", "Vanilla + 기관 필터", "--s6")]
     ABL += [("vanilla", "Vanilla RAG", "--s2")]
     chart_abl = bar_group_svg([("L2_A", "L2 최신판")], ABL, lambda g, s: cond[(g, s)]["ndcg5"], w=640, h=280)
     abl_rows = "".join(f"<tr><th scope='row'>{t} {TYPE_NAME[t]}</th>" + "".join(f"<td class='num'>{pct(bytype.get(('L2_A',p,t),{}).get('recall5'))}</td>" for p, _, _ in ABL) + "</tr>" for t in types)
-    ABL_HTML = section("구성요소 분해 비교 (nDCG@5, L2 최신판)", narr.get("ablation", ""),
+    ABL_HTML = section("구성요소 분해 비교 (nDCG@5, L2 최신판)", narr.get("ablation", ""), data=f"{D20} · 코퍼스 L2 최신판 1,233청크 · {DEV}", body=
         '<div class="card"><div class="legend">' + "".join(f'<span><i style="background:var({v})"></i>{html.escape(l)}</span>' for _, l, v in ABL) + '</div>' + chart_abl + f'<p class="note">{html.escape(narr.get("ablation_note", ""))}</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>유형 (Recall@5)</th>' + "".join(f"<th>{html.escape(l)}</th>" for _, l, _ in ABL) + '</tr></thead><tbody>' + abl_rows + '</tbody></table></div>')
 
@@ -147,7 +155,7 @@ if (RI / "summary.json").exists():
         rows_g = [("총점 (100점)", "total_mean", "{:.1f}"), ("출처 조문 일치율", "citation_match_rate", None), ("범위 외 질의 거절률 (n=4)", "q9_refusal_rate", None), ("범위 외 질의에 소관 규정 안내 (n=4)", "q9_guides_rule_rate", None), ("범위 외 질의 환각률 (n=4)", "q9_hallucination_rate", None)]
         def fm(v, f): return "–" if v is None else (f.format(v) if f else pct(v) + "%")
         gen_imp = '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>답변 생성 (하이브리드)</th><th class="num">개선 전</th><th class="num">개선 후</th><th>답변 생성 (Vanilla)</th><th class="num">개선 전</th><th class="num">개선 후</th></tr></thead><tbody>' + "".join(f"<tr><td>{lab}</td><td class='num'>{fm(G0['hybrid'].get(k),f)}</td><td class='num'><b>{fm(G1['hybrid'].get(k),f)}</b></td><td>{lab}</td><td class='num'>{fm(G0['vanilla'].get(k),f)}</td><td class='num'><b>{fm(G1['vanilla'].get(k),f)}</b></td></tr>" for lab, k, f in rows_g) + '</tbody></table>' + f'<p class="note">{html.escape(narr.get("improve_gen_note",""))}</p></div>'
-    IMP_HTML = section("개선안 3건 적용 결과 (L2 → L2P, 최신판만)", narr.get("improve", ""),
+    IMP_HTML = section("개선안 3건 적용 결과 (L2 → L2P, 최신판만)", narr.get("improve", ""), data=f"{D20} · 코퍼스 L2 1,233 → L2P 1,416청크 · {DEV}", body=
         '<div class="card tw"><table><thead><tr><th>파이프라인</th><th class="num">개선 전 nDCG@5</th><th class="num">개선 후</th><th class="num">Δ</th></tr></thead><tbody>' + trs + '</tbody></table>'
         + f'<p class="note">{html.escape(narr.get("improve_note",""))}</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>유형 (Recall@5, 전 → 후)</th>' + "".join(f"<th>{l}</th>" for _, l in pr) + '</tr></thead><tbody>' + tt + '</tbody></table></div>' + gen_imp)
@@ -156,7 +164,7 @@ if (RI / "summary.json").exists():
 META_HTML = ""
 RM = ROOT / "3_성능테스트" / "results_meta_bm25"
 META_GROUPS = [("org292_dev", "292기관 · dev"), ("org292_employee", "292기관 · 직원 질문"), ("org20_dev", "20기관 · dev"), ("org20_employee", "20기관 · 직원 질문")]
-META_SERIES = [("B1_hybrid_prefilter", "기관 필터(사전) + 하이브리드+CE", "--s1"), ("M1_meta_concat", "하이브리드+CE, BM25 에 기관명 포함 (필터 없음)", "--s6"), ("B0_hybrid_nofilter", "하이브리드+CE − 기관 필터", "--s7")]
+META_SERIES = [("B1_hybrid_prefilter", "기관 필터(사전) + 하이브리드+CE", "--s1"), ("M1_meta_concat", "하이브리드+CE − 기관 필터, BM25 에 기관명", "--s8"), ("B0_hybrid_nofilter", "하이브리드+CE − 기관 필터", "--s7")]
 msum = {g: json.load(open(RM / g / "summary.json", encoding="utf-8")) for g, _ in META_GROUPS if (RM / g / "summary.json").exists()}
 if msum:
     mc = {(g, x["cond"]): x for g, sm in msum.items() for x in sm["conditions"]}
@@ -171,7 +179,7 @@ if msum:
         for lab_b, bname in (("B0_hybrid_nofilter", "필터 없음 대비"), ("B1_hybrid_prefilter", "기관 필터 대비")):
             cs = {g: next((c for c in msum[g]["comparisons"] if c["label"] == f"{lab_m} vs {lab_b}"), None) for g, _ in groups}
             cmp_rows += f"<tr><td>{html.escape(dict((k, l) for k, l, _ in META_SERIES)[lab_m])} · {bname}</td>" + "".join(f"<td>{mcell(cs[g])}</td>" for g, _ in groups) + "</tr>"
-    META_HTML = section("기관 필터 대체 실험: 메타데이터를 BM25 에 넣으면 (nDCG@5, L2 + 개선안 최신판)", narr.get("meta", ""),
+    META_HTML = section("기관 필터 대체 실험: 메타데이터를 BM25 에 넣으면 (nDCG@5, L2 + 개선안 최신판)", narr.get("meta", ""), data=f"292개 기관 · 코퍼스 L2P 최신판 22,336청크 · {DEV}", body=
         '<div class="card"><div class="legend">' + "".join(f'<span><i style="background:var({v})"></i>{html.escape(l)}</span>' for _, l, v in META_SERIES) + '</div>' + chart_meta + f'<p class="note">{html.escape(narr.get("meta_note", ""))}</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead>' + head + '</thead><tbody>' + body + '</tbody></table><p class="note">기관적중: 상위 5개 중 정답 기관 조문 비율.</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>비교 (Δ nDCG@5, 95% CI)</th>' + "".join(f"<th>{html.escape(l)}</th>" for _, l in groups) + '</tr></thead><tbody>' + cmp_rows + '</tbody></table></div>')
@@ -191,7 +199,7 @@ if (RH / "summary.json").exists():
     keys = ["hybrid vs vanilla (L2_A)", "hybrid vs hybrid_nofilter (L2_A)", "vanilla_bge_filter vs vanilla_bge (L2_A)", "hybrid vs hybrid_nobm25 (L2_A)", "L2 vs L0, hybrid (A)", "B vs A, hybrid (L2)", "vanilla_bge vs vanilla (L2_A)"]
     def cell(c): return "–" if not c else f"{c['delta_ndcg5']:+.3f} [{c['ci95'][0]:+.2f}, {c['ci95'][1]:+.2f}] " + ('<span class="pill ok">유의</span>' if c["significant"] else '<span class="pill">비유의</span>')
     trc = "".join(f"<tr><td>{html.escape(k)}</td><td>{cell(cmpd.get(k))}</td><td>{cell(cmph.get(k))}</td></tr>" for k in keys if k in cmph or k in cmpd)
-    HO_HTML = section("홀드아웃 개봉 (봉인했던 44문항, 1회 측정)", narr.get("holdout", ""),
+    HO_HTML = section("홀드아웃 개봉 (봉인했던 44문항, 1회 측정)", narr.get("holdout", ""), data=f"{D20} · 코퍼스 5종 1,233~2,624청크 · 평가 holdout 44문항(채점 40)", body=
         '<div class="card tw"><table><thead><tr><th>문서</th><th>파이프라인</th><th class="num">dev nDCG@5</th><th class="num">holdout</th><th class="num">Δ</th><th class="num">holdout Recall@5</th></tr></thead><tbody>' + trs + '</tbody></table>' + f'<p class="note">{html.escape(narr.get("holdout_note",""))}</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>비교 (Δ nDCG@5, 95% CI)</th><th>dev</th><th>holdout</th></tr></thead><tbody>' + trc + '</tbody></table></div>')
 
@@ -209,7 +217,7 @@ if gpath.exists():
     bt = {(x["pipeline"], x["type"]): x for x in G["by_type"]}
     tt = "".join(f"<tr><th scope='row'>{t} {TYPE_NAME.get(t, t)}</th>" + "".join(f"<td class='num'>{'–' if bt.get((p,t),{}).get('total_mean') is None else f'{bt[(p,t)][chr(116)+chr(111)+chr(116)+chr(97)+chr(108)+chr(95)+chr(109)+chr(101)+chr(97)+chr(110)]:.0f}'}</td><td class='num'>{pct(bt.get((p,t),{}).get('hallucination_rate'))}%</td>" for p in ("hybrid", "vanilla")) + "</tr>" for t in list(TYPE_NAME) + ["Q9"] if any(k[1] == t for k in bt))
     cmp_ = G["comparison"]
-    GEN_HTML = section("답변 생성 품질 (로컬 qwen2.5:7b-instruct, dev 44문항)", narr.get("gen", ""),
+    GEN_HTML = section("답변 생성 품질 (로컬 qwen2.5:7b-instruct, dev 44문항)", narr.get("gen", ""), data=f"{D20} · 코퍼스 L2 최신판 1,233청크 · 평가 dev 44문항", body=
         '<div class="card tw"><table><thead><tr><th>지표</th><th class="num">하이브리드 + CE</th><th class="num">Vanilla RAG</th></tr></thead><tbody>' + trs + '</tbody></table>'
         + f"<p class='note'>총점 차이 {cmp_['delta']:+.1f}점, 95% CI [{cmp_['ci95'][0]:+.1f}, {cmp_['ci95'][1]:+.1f}] (n={cmp_['n']}). {html.escape(narr.get('gen_note',''))}</p></div>"
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>검색이 정답을 못 찾은 질의에서</th><th class="num">건수</th><th class="num">환각률</th></tr></thead><tbody>' + miss + '</tbody></table></div>'
@@ -221,14 +229,14 @@ page = f"""<title>{html.escape(narr['title'])}</title>
 <style>
 /* 레이아웃: 상단 결론 4타일 → 정제 강도 차트 → 개정판 정책 차트 → 유형별 히트맵 → 조건 전체표 → 통계 비교 → 실패 사례. 단일 컬럼, 최대 960px. */
 :root{{--bg:#f7f7f4;--card:#fcfcfb;--fg:#0b0b0b;--fg2:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--line:rgba(11,11,11,.10);
---s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#4a3aa7;--s5:#e87ba4;--s6:#eda100;--s7:#e34948;--ok:#0ca30c;--fg-on-dark:#fff;
+--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#4a3aa7;--s5:#e87ba4;--s6:#eda100;--s7:#e34948;--s8:#0f9bb3;--ok:#0ca30c;--fg-on-dark:#fff;
 --seq0:#f0efec;--seq1:#cde2fb;--seq2:#9ec5f4;--seq3:#6da7ec;--seq4:#3987e5;--seq5:#256abf;--seq6:#184f95}}
-@media (prefers-color-scheme: dark){{:root:not([data-theme="light"]){{--bg:#0d0d0d;--card:#1a1a19;--fg:#fff;--fg2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--line:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#9085e9;--s5:#d55181;--s6:#c98500;--s7:#e66767;--seq0:#383835;--seq1:#184f95;--seq2:#1c5cab;--seq3:#256abf;--seq4:#2a78d6;--seq5:#3987e5;--seq6:#6da7ec;color-scheme:dark}}}}
-:root[data-theme="dark"]{{--bg:#0d0d0d;--card:#1a1a19;--fg:#fff;--fg2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--line:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#9085e9;--s5:#d55181;--s6:#c98500;--s7:#e66767;--seq0:#383835;--seq1:#184f95;--seq2:#1c5cab;--seq3:#256abf;--seq4:#2a78d6;--seq5:#3987e5;--seq6:#6da7ec;color-scheme:dark}}
+@media (prefers-color-scheme: dark){{:root:not([data-theme="light"]){{--bg:#0d0d0d;--card:#1a1a19;--fg:#fff;--fg2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--line:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#9085e9;--s5:#d55181;--s6:#c98500;--s7:#e66767;--s8:#3bb8cc;--seq0:#383835;--seq1:#184f95;--seq2:#1c5cab;--seq3:#256abf;--seq4:#2a78d6;--seq5:#3987e5;--seq6:#6da7ec;color-scheme:dark}}}}
+:root[data-theme="dark"]{{--bg:#0d0d0d;--card:#1a1a19;--fg:#fff;--fg2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--line:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#9085e9;--s5:#d55181;--s6:#c98500;--s7:#e66767;--s8:#3bb8cc;--seq0:#383835;--seq1:#184f95;--seq2:#1c5cab;--seq3:#256abf;--seq4:#2a78d6;--seq5:#3987e5;--seq6:#6da7ec;color-scheme:dark}}
 body{{background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif;line-height:1.55;padding-block:24px;padding-inline:16px}}
 main{{max-width:960px;margin:0 auto;display:grid;gap:28px}}
 h1{{font-size:1.6rem;margin:0 0 4px;text-wrap:balance}} h2{{font-size:1.15rem;margin:0 0 6px}} .sub{{color:var(--fg2);margin:0}}
-.lead{{margin:0 0 12px;color:var(--fg)}} .note{{color:var(--fg2);font-size:.9rem;margin:8px 0 0}}
+.lead{{margin:0 0 12px;color:var(--fg)}} .data{{margin:0 0 6px;color:var(--muted);font-size:.82rem}} .note{{color:var(--fg2);font-size:.9rem;margin:8px 0 0}}
 .tiles{{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}}
 .tile{{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}} .tile .v{{font-size:1.5rem;font-weight:600;line-height:1.1}} .tile .k{{font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}} .tile .d{{font-size:.9rem;color:var(--fg2);margin-top:4px}}
 .card{{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}}
@@ -244,20 +252,20 @@ footer{{color:var(--muted);font-size:.8rem}}
 <div class="tiles">
 {''.join(f'<div class="tile"><div class="k">{html.escape(k["k"])}</div><div class="v">{html.escape(k["v"])}</div><div class="d">{html.escape(k["d"])}</div></div>' for k in kpi)}
 </div>
-{section("정제 강도별 검색 성능 (최신판만, nDCG@5)", narr["levels"], '<div class="card"><div class="legend"><span><i style="background:var(--s1)"></i>하이브리드 + CE</span><span><i style="background:var(--s2)"></i>Vanilla RAG</span></div>' + chart_levels + f'<p class="note">{html.escape(narr["levels_note"])}</p></div>')}
-{section("개정판 정책 비교 (L2, nDCG@5)", narr["policy"], '<div class="card"><div class="legend"><span><i style="background:var(--s1)"></i>하이브리드 + CE</span><span><i style="background:var(--s2)"></i>Vanilla RAG</span></div>' + chart_policy + f'<p class="note">{html.escape(narr["policy_note"])}</p></div>')}
-{section("질의 유형별 Recall@5 (L2 최신판)", narr["types"], '<div class="card tw"><table><thead><tr><th>유형</th><th>하이브리드 + CE</th><th>Vanilla RAG</th><th>BM25 단독</th></tr></thead><tbody>' + ''.join(rows_type) + '</tbody></table>' + f'<p class="note">{html.escape(narr["types_note"])}</p></div>')}
-{section("통계 비교 (쌍대 부트스트랩 95% CI, nDCG@5)", narr["stats"], '<div class="card tw"><table><thead><tr><th>비교</th><th class="num">Δ</th><th class="num">95% CI</th><th>판정</th></tr></thead><tbody>' + ''.join(rows_cmp) + '</tbody></table></div>')}
+{section("정제 강도별 검색 성능 (최신판만, nDCG@5)", narr["levels"], data=f"{D20} · 코퍼스 L0 1,584 / L1 1,578 / L2 1,233청크 · {DEV}", body= '<div class="card"><div class="legend"><span><i style="background:var(--s1)"></i>하이브리드 + CE</span><span><i style="background:var(--s2)"></i>Vanilla RAG</span></div>' + chart_levels + f'<p class="note">{html.escape(narr["levels_note"])}</p></div>')}
+{section("개정판 정책 비교 (L2, nDCG@5)", narr["policy"], data=f"{D20} · 코퍼스 L2 최신판 1,233 / 전체 개정판 2,624청크 · {DEV}", body= '<div class="card"><div class="legend"><span><i style="background:var(--s1)"></i>하이브리드 + CE</span><span><i style="background:var(--s2)"></i>Vanilla RAG</span></div>' + chart_policy + f'<p class="note">{html.escape(narr["policy_note"])}</p></div>')}
+{section("질의 유형별 Recall@5 (L2 최신판)", narr["types"], data=f"{D20} · 코퍼스 L2 최신판 1,233청크 · {DEV}, 유형당 4문항", body= '<div class="card tw"><table><thead><tr><th>유형</th><th>하이브리드 + CE</th><th>Vanilla RAG</th><th>BM25 단독</th></tr></thead><tbody>' + ''.join(rows_type) + '</tbody></table>' + f'<p class="note">{html.escape(narr["types_note"])}</p></div>')}
+{section("통계 비교 (쌍대 부트스트랩 95% CI, nDCG@5)", narr["stats"], data=f"{D20} · 코퍼스 L0~L2 · {DEV}", body= '<div class="card tw"><table><thead><tr><th>비교</th><th class="num">Δ</th><th class="num">95% CI</th><th>판정</th></tr></thead><tbody>' + ''.join(rows_cmp) + '</tbody></table></div>')}
 {ABL_HTML}
 {META_HTML}
 {IMP_HTML}
 {HO_HTML}
 {GEN_HTML}
-{section("범위 외 질의 거절률 (Q9, n=4)", narr["q9"], '<div class="card tw"><table><thead><tr><th>코퍼스</th><th>파이프라인</th><th class="num">거절률</th></tr></thead><tbody>' + rows_q9 + '</tbody></table></div>')}
-{section("하이브리드 + CE 가 상위 5개 안에 정답을 못 넣은 질의 (L2 최신판)", narr["fails"], '<div class="card tw"><table><thead><tr><th>qid</th><th>질의</th><th>정답</th><th>1위로 찾은 것</th><th>정답 순위</th></tr></thead><tbody>' + (rows_fail or '<tr><td colspan="5">없음</td></tr>') + '</tbody></table></div>')}
-{section("전체 조건 (36개 중 random 제외)", narr["all"], '<div class="card tw"><table><thead><tr><th>정제</th><th>개정판</th><th>파이프라인</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(rows_cond) + '</tbody></table>' + f'<p class="note">random 베이스라인 nDCG@5 최대 {rand_max:.3f}. 측정 질의 {summary["n_scored"]}개(범위 외 4개 제외), dev 세트. holdout 44개 결과는 위 홀드아웃 절.</p></div>')}
-{section("부가: Vanilla 의 임베딩만 하이브리드와 같은 bge-m3 로 바꾸면", narr["embed"], '<div class="card tw"><table><thead><tr><th>Vanilla 임베딩 (L2 최신판)</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(f"<tr><td>{PIPE_NAME[p]}</td><td class='num'>{pct(cond[('L2_A',p)]['recall5'])}%</td><td class='num'>{f3(cond[('L2_A',p)]['mrr'])}</td><td class='num'><b>{f3(cond[('L2_A',p)]['ndcg5'])}</b></td></tr>" for p in ("vanilla","vanilla_bge")) + f"<tr><td>하이브리드 + CE (참고)</td><td class='num'>{pct(cond[('L2_A','hybrid')]['recall5'])}%</td><td class='num'>{f3(cond[('L2_A','hybrid')]['mrr'])}</td><td class='num'><b>{f3(cond[('L2_A','hybrid')]['ndcg5'])}</b></td></tr>" + '</tbody></table>' + f'<p class="note">{html.escape(narr["embed_note"])}</p></div>')}
+{section("범위 외 질의 거절률 (Q9, n=4)", narr["q9"], data=f"{D20} · 평가 dev 범위 외 4문항", body= '<div class="card tw"><table><thead><tr><th>코퍼스</th><th>파이프라인</th><th class="num">거절률</th></tr></thead><tbody>' + rows_q9 + '</tbody></table></div>')}
+{section("하이브리드 + CE 가 상위 5개 안에 정답을 못 넣은 질의 (L2 최신판)", narr["fails"], data=f"{D20} · 코퍼스 L2 최신판 1,233청크 · {DEV}", body= '<div class="card tw"><table><thead><tr><th>qid</th><th>질의</th><th>정답</th><th>1위로 찾은 것</th><th>정답 순위</th></tr></thead><tbody>' + (rows_fail or '<tr><td colspan="5">없음</td></tr>') + '</tbody></table></div>')}
+{section("전체 조건 (36개 중 random 제외)", narr["all"], data=f"{D20} · 코퍼스 6종 1,233~3,228청크 · {DEV}", body= '<div class="card tw"><table><thead><tr><th>정제</th><th>개정판</th><th>파이프라인</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(rows_cond) + '</tbody></table>' + f'<p class="note">random 베이스라인 nDCG@5 최대 {rand_max:.3f}. 측정 질의 {summary["n_scored"]}개(범위 외 4개 제외), dev 세트. holdout 44개 결과는 위 홀드아웃 절.</p></div>')}
+{section("부가: Vanilla 의 임베딩만 하이브리드와 같은 bge-m3 로 바꾸면", narr["embed"], data=f"{D20} · 코퍼스 L2 최신판 1,233청크 · {DEV}", body= '<div class="card tw"><table><thead><tr><th>Vanilla 임베딩 (L2 최신판)</th><th class="num">Recall@5</th><th class="num">MRR</th><th class="num">nDCG@5</th></tr></thead><tbody>' + ''.join(f"<tr><td>{PIPE_NAME[p]}</td><td class='num'>{pct(cond[('L2_A',p)]['recall5'])}%</td><td class='num'>{f3(cond[('L2_A',p)]['mrr'])}</td><td class='num'><b>{f3(cond[('L2_A',p)]['ndcg5'])}</b></td></tr>" for p in ("vanilla","vanilla_bge")) + f"<tr><td>하이브리드 + CE (참고)</td><td class='num'>{pct(cond[('L2_A','hybrid')]['recall5'])}%</td><td class='num'>{f3(cond[('L2_A','hybrid')]['mrr'])}</td><td class='num'><b>{f3(cond[('L2_A','hybrid')]['ndcg5'])}</b></td></tr>" + '</tbody></table>' + f'<p class="note">{html.escape(narr["embed_note"])}</p></div>')}
 <section><h2>한계</h2><ul>{''.join(f'<li>{html.escape(x)}</li>' for x in narr['limits'])}</ul></section>
-<footer>데이터: 공기업 인사규정 41건(ALIO). 코퍼스 {', '.join(c['corpus']+' '+str(c['chunks'])+'청크' for c in corpora)}. 사전등록 2026-10-01.</footer>
+<footer>데이터: 20개 기관 실험은 공기업 인사규정 41건(ALIO), 292개 기관 실험은 공공기관 인사규정 전체 수집본. 사전등록 2026-10-01.</footer>
 </main>"""
 out = HERE / ("dashboard_local.html" if LOCAL else "dashboard.html"); out.write_text(page, encoding="utf-8"); print(out.name, len(page), "chars")

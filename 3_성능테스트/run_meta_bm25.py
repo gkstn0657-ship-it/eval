@@ -10,7 +10,7 @@
   M1 meta_concat      : BM25 색인 텍스트 앞에 "[기관] 기관명 + 규칙 변형". dense·CE 는 본문 그대로
 M1 은 기관 필터와 별칭 사전을 쓰지 않는다.
 
-사용: python run_meta_bm25.py --set dev|employee [--sub20]
+사용: python run_meta_bm25.py --set dev|employee [--sub20] [--corpus L2P_A|L2_A]
 """
 import os, sys, json, re, math, time
 from pathlib import Path
@@ -20,7 +20,7 @@ from collections import defaultdict, Counter
 ARGS = sys.argv[1:]
 def _arg(name, default=None):
     return ARGS[ARGS.index(name) + 1] if name in ARGS else default
-SET = _arg("--set", "dev"); SUB20 = "--sub20" in ARGS
+SET = _arg("--set", "dev"); SUB20 = "--sub20" in ARGS; CORPUS = _arg("--corpus", "L2P_A")
 sys.argv = [sys.argv[0]]
 os.environ.setdefault("HF_HOME", str(Path.home() / ".cache" / "huggingface"))  # run_eval 기본값(E:\hf_cache)이 없는 PC 대응
 
@@ -72,7 +72,7 @@ def run_m1(c, mi, q): return _fuse(c, q, mi.concat_bm25.get_scores(TOKEN_RE.find
 
 # ---------------------------------------------------------------- 실행
 def load_corpus():
-    c = R.Corpus("L2P_A")
+    c = R.Corpus(CORPUS)
     if SUB20:
         keep = [k for k, o in enumerate(c.orgs) if o in ORIG20]
         missing = set(ORIG20) - set(c.orgs.tolist())
@@ -85,7 +85,7 @@ def main():
     t0 = time.time()
     gold = [json.loads(l) for l in GOLD.read_text(encoding="utf-8").splitlines() if l.strip()]
     c = load_corpus(); mi = MetaIndex(c)
-    tag = f"{'org20' if SUB20 else 'org292'}_{SET}"
+    tag = f"{'org20' if SUB20 else 'org292'}_{SET}" + ("" if CORPUS == "L2P_A" else f"_{CORPUS}")
     out = HERE / "results_meta_bm25" / tag; out.mkdir(parents=True, exist_ok=True)
     print(f"[{tag}] 청크 {len(c.rows)}, 기관 {len(mi.org_list)}, 문항 {len(gold)}", flush=True)
     conds = {"B0_hybrid_nofilter": None, "B1_hybrid_prefilter": None, "M1_meta_concat": run_m1}
