@@ -43,14 +43,19 @@ def public_index():
 
 with gr.Blocks() as demo:
     gr.Markdown("# 공공기관 인사규정 RAG (hybrid_prefilter)")
-    gr.HTML('<p style="font-size:1.1em">데모 화면: <a href="demo/" target="_blank" rel="noopener"><b>새 창에서 열기</b></a> &nbsp;·&nbsp; 직접 주소 <code>https://runningturtle123-public-agency-ragchat.hf.space/demo/</code></p>')
+    gr.HTML('<p style="font-size:1.1em">데모 화면: <a href="/" target="_blank" rel="noopener"><b>새 창에서 열기</b></a> &nbsp;·&nbsp; 직접 주소 <code>https://runningturtle123-public-agency-ragchat.hf.space</code></p>')
     # Space 페이지가 여는 루트(/)에서 데모 화면으로 바로 이동
-    demo.load(None, js="() => { window.location.replace('demo/'); }")
 
 # ZeroGPU 검사는 Gradio 의 launch() 를 거쳐야 통과한다 (uvicorn 직접 실행 시 RUNTIME_ERROR).
-# launch() 가 만든 FastAPI 앱에 데모 서버(hitl_serve)를 /demo 로 붙인다.
+# launch() 가 만든 FastAPI 앱에 데모 서버(hitl_serve)의 화면·API 를 기본 주소에 붙인다.
 from starlette.routing import Mount  # noqa: E402
-# ssr_mode=False: Spaces 는 기본으로 Node SSR 서버를 앞에 두는데, 그러면 /demo 요청이 Python 까지 오지 않고 Gradio 페이지로 렌더링된다
+# ssr_mode=False: Spaces 는 기본으로 Node SSR 서버를 앞에 두는데, 그러면 데모 요청이 Python 까지 오지 않고 Gradio 페이지로 렌더링된다
 app, _, _ = demo.launch(server_name="0.0.0.0", server_port=7860, prevent_thread_lock=True, ssr_mode=False)
-app.router.routes.insert(0, Mount("/demo", app=hitl_serve.app))
+# 데모 화면과 API 를 기본 주소(/)에 바로 붙인다. Gradio 의 "/" 화면은 가려지고 나머지 Gradio 경로(/gradio_api 등)는 그대로 둔다.
+from starlette.routing import Route
+from starlette.responses import RedirectResponse
+for r in reversed([r for r in hitl_serve.app.router.routes if getattr(r, "path", None) in ("/", "/orgs", "/ask")]):
+    app.router.routes.insert(0, r)
+# 예전 주소(/demo/...)로 들어오면 새 주소로 보낸다
+app.router.routes.insert(0, Route("/demo{rest:path}", lambda req: RedirectResponse((req.path_params["rest"] or "/") + (("?" + req.url.query) if req.url.query else ""), status_code=301)))
 demo.block_thread()
