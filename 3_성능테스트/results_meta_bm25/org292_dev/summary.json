@@ -1,0 +1,261 @@
+{
+ "tag": "org292_dev",
+ "chunks": 22336,
+ "orgs": 292,
+ "n_scored": 40,
+ "conditions": [
+  {
+   "cond": "B0_hybrid_nofilter",
+   "ndcg5": 0.19140068073882308,
+   "recall5": 0.275,
+   "mrr": 0.18881944444444446,
+   "org_hit5": 0.08
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "ndcg5": 0.8806337667869883,
+   "recall5": 0.95,
+   "mrr": 0.8724999999999999,
+   "org_hit5": 0.9099999999999999
+  },
+  {
+   "cond": "M1_meta_concat",
+   "ndcg5": 0.2543452447589731,
+   "recall5": 0.375,
+   "mrr": 0.24461309523809524,
+   "org_hit5": 0.10500000000000001
+  }
+ ],
+ "by_type": [
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 0.0,
+   "ndcg5": 0.0
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 0.25,
+   "ndcg5": 0.15773243839286438
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 0.5,
+   "ndcg5": 0.3576691395183483
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 0.75,
+   "ndcg5": 0.6577324383928644
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 0.25,
+   "ndcg5": 0.25
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 0.5,
+   "ndcg5": 0.08314035269128947
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 0.0,
+   "ndcg5": 0.0
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 0.25,
+   "ndcg5": 0.15773243839286438
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 0.25,
+   "ndcg5": 0.25
+  },
+  {
+   "cond": "B0_hybrid_nofilter",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 0.0,
+   "ndcg5": 0.0
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 0.5,
+   "ndcg5": 0.08314035269128947
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "cond": "B1_hybrid_prefilter",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 0.25,
+   "ndcg5": 0.09671320180863541
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 0.5,
+   "ndcg5": 0.31546487678572877
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 0.5,
+   "ndcg5": 0.3576691395183483
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 0.75,
+   "ndcg5": 0.6577324383928644
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 0.5,
+   "ndcg5": 0.375
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 0.5,
+   "ndcg5": 0.08314035269128947
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 0.25,
+   "ndcg5": 0.25
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 0.25,
+   "ndcg5": 0.15773243839286438
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 0.25,
+   "ndcg5": 0.25
+  },
+  {
+   "cond": "M1_meta_concat",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 0.0,
+   "ndcg5": 0.0
+  }
+ ],
+ "comparisons": [
+  {
+   "label": "M1_meta_concat vs B0_hybrid_nofilter",
+   "delta": 0.06294456402015,
+   "ci95": [
+    0.00967132018086354,
+    0.13249150833042228
+   ],
+   "significant": true
+  },
+  {
+   "label": "M1_meta_concat vs B1_hybrid_prefilter",
+   "delta": -0.6262885220280152,
+   "ci95": [
+    -0.7484746665928074,
+    -0.493153649354848
+   ],
+   "significant": true
+  }
+ ]
+}

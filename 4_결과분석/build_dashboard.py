@@ -152,6 +152,30 @@ if (RI / "summary.json").exists():
         + f'<p class="note">{html.escape(narr.get("improve_note",""))}</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>유형 (Recall@5, 전 → 후)</th>' + "".join(f"<th>{l}</th>" for _, l in pr) + '</tr></thead><tbody>' + tt + '</tbody></table></div>' + gen_imp)
 
+# ---- 기관 필터 대체 실험: 메타데이터 BM25 (results_meta_bm25 가 있을 때만)
+META_HTML = ""
+RM = ROOT / "3_성능테스트" / "results_meta_bm25"
+META_GROUPS = [("org292_dev", "292기관 · dev"), ("org292_employee", "292기관 · 직원 질문"), ("org20_dev", "20기관 · dev"), ("org20_employee", "20기관 · 직원 질문")]
+META_SERIES = [("B1_hybrid_prefilter", "기관 필터(사전) + 하이브리드+CE", "--s1"), ("M1_meta_concat", "하이브리드+CE, BM25 에 기관명 포함 (필터 없음)", "--s6"), ("B0_hybrid_nofilter", "하이브리드+CE − 기관 필터", "--s7")]
+msum = {g: json.load(open(RM / g / "summary.json", encoding="utf-8")) for g, _ in META_GROUPS if (RM / g / "summary.json").exists()}
+if msum:
+    mc = {(g, x["cond"]): x for g, sm in msum.items() for x in sm["conditions"]}
+    groups = [(g, l) for g, l in META_GROUPS if g in msum]
+    chart_meta = bar_group_svg(groups, META_SERIES, lambda g, s: (mc.get((g, s)) or {}).get("ndcg5"), w=760, h=300)
+    head = "<tr><th>파이프라인</th>" + "".join(f"<th class='num'>{html.escape(l)}<br><span class='n'>nDCG@5 · 기관적중</span></th>" for _, l in groups) + "</tr>"
+    body = "".join("<tr><td>" + html.escape(sl) + "</td>" + "".join(
+        f"<td class='num'><b>{f3((mc.get((g, sk)) or {}).get('ndcg5'))}</b> · {pct((mc.get((g, sk)) or {}).get('org_hit5'))}%</td>" for g, _ in groups) + "</tr>" for sk, sl, _ in META_SERIES)
+    def mcell(c): return "–" if not c else f"{c['delta']:+.3f} [{c['ci95'][0]:+.2f}, {c['ci95'][1]:+.2f}] " + ('<span class="pill ok">유의</span>' if c["significant"] else '<span class="pill">비유의</span>')
+    cmp_rows = ""
+    for lab_m in ("M1_meta_concat",):
+        for lab_b, bname in (("B0_hybrid_nofilter", "필터 없음 대비"), ("B1_hybrid_prefilter", "기관 필터 대비")):
+            cs = {g: next((c for c in msum[g]["comparisons"] if c["label"] == f"{lab_m} vs {lab_b}"), None) for g, _ in groups}
+            cmp_rows += f"<tr><td>{html.escape(dict((k, l) for k, l, _ in META_SERIES)[lab_m])} · {bname}</td>" + "".join(f"<td>{mcell(cs[g])}</td>" for g, _ in groups) + "</tr>"
+    META_HTML = section("기관 필터 대체 실험: 메타데이터를 BM25 에 넣으면 (nDCG@5, L2 + 개선안 최신판)", narr.get("meta", ""),
+        '<div class="card"><div class="legend">' + "".join(f'<span><i style="background:var({v})"></i>{html.escape(l)}</span>' for _, l, v in META_SERIES) + '</div>' + chart_meta + f'<p class="note">{html.escape(narr.get("meta_note", ""))}</p></div>'
+        + '<div class="card tw" style="margin-top:12px"><table><thead>' + head + '</thead><tbody>' + body + '</tbody></table><p class="note">기관적중: 상위 5개 중 정답 기관 조문 비율.</p></div>'
+        + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>비교 (Δ nDCG@5, 95% CI)</th>' + "".join(f"<th>{html.escape(l)}</th>" for _, l in groups) + '</tr></thead><tbody>' + cmp_rows + '</tbody></table></div>')
+
 # ---- holdout 개봉 결과 (results_holdout 가 있을 때만)
 HO_HTML = ""
 RH = ROOT / "3_성능테스트" / "results_holdout"
@@ -225,6 +249,7 @@ footer{{color:var(--muted);font-size:.8rem}}
 {section("질의 유형별 Recall@5 (L2 최신판)", narr["types"], '<div class="card tw"><table><thead><tr><th>유형</th><th>하이브리드 + CE</th><th>Vanilla RAG</th><th>BM25 단독</th></tr></thead><tbody>' + ''.join(rows_type) + '</tbody></table>' + f'<p class="note">{html.escape(narr["types_note"])}</p></div>')}
 {section("통계 비교 (쌍대 부트스트랩 95% CI, nDCG@5)", narr["stats"], '<div class="card tw"><table><thead><tr><th>비교</th><th class="num">Δ</th><th class="num">95% CI</th><th>판정</th></tr></thead><tbody>' + ''.join(rows_cmp) + '</tbody></table></div>')}
 {ABL_HTML}
+{META_HTML}
 {IMP_HTML}
 {HO_HTML}
 {GEN_HTML}
