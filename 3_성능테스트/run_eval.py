@@ -22,6 +22,7 @@ OUT = HERE / (("results_holdout" if "--holdout" in sys.argv else "results") + OU
 CACHE = HERE / "cache"; CACHE.mkdir(exist_ok=True)
 CORPORA = ["L0_A", "L0_B", "L1_A", "L1_B", "L2_A", "L2_B"]
 if "--corpora" in sys.argv: CORPORA = sys.argv[sys.argv.index("--corpora") + 1].split(",")
+ONLY_PIPES = sys.argv[sys.argv.index("--pipelines") + 1].split(",") if "--pipelines" in sys.argv else None
 TOP_K, RRF_K, CANDIDATE_K, RERANK_TOP_N, MIN_RESULTS, SIM_THRESHOLD, CE_MAX_LEN = 10, 60, 30, 30, 5, 0.5, 384
 TOKEN_RE = re.compile(r"[0-9A-Za-z가-힣]+")
 random.seed(42); np.random.seed(42)
@@ -197,10 +198,37 @@ def run_hybrid_nofilter(c: Corpus, q):
 def run_random(c: Corpus, q):
     idx = list(np.random.permutation(len(c.rows))[:TOP_K * 3]); return idx, {}
 
-PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "vanilla_filter": run_vanilla_filter, "vanilla_bge_filter": run_vanilla_bge_filter, "hybrid": run_hybrid, "hybrid_nobm25": run_hybrid_nobm25, "hybrid_nofilter": run_hybrid_nofilter, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
+def run_hybrid_prefilter(c: Corpus, q):
+    """사전 필터 구조 (v8). 기관을 먼저 뽑아 코퍼스를 그 기관 조문으로 자른 뒤 dense+BM25→RRF→CE.
+    기관이 없거나 해당 기관 조문이 MIN_RESULTS 미만이면 전체 코퍼스로 돌아간다. 상수는 run_hybrid 와 동일."""
+    org = detect_org(q)
+    mask = np.ones(len(c.texts), dtype=bool)
+    if org is not None:
+        m = c.orgs == org
+        if m.sum() >= MIN_RESULTS: mask = m
+    qv = st_model("BAAI/bge-m3").encode([q], normalize_embeddings=True, convert_to_numpy=True)[0]
+    d = c.bge @ qv; b = c.bm25.get_scores(TOKEN_RE.findall(q.lower()))
+    d = np.where(mask, d, -np.inf); b = np.where(mask, b, -np.inf)
+    d_rank = {int(i): r for r, i in enumerate(np.argsort(-d)[:CANDIDATE_K]) if mask[i]}
+    b_rank = {int(i): r for r, i in enumerate(np.argsort(-b)[:CANDIDATE_K]) if mask[i]}
+    rrf = defaultdict(float)
+    for i, r in d_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    for i, r in b_rank.items(): rrf[i] += 1 / (RRF_K + r)
+    cand = sorted(rrf, key=lambda i: (-rrf[i], i))
+    pool, rest = cand[:RERANK_TOP_N], cand[RERANK_TOP_N:]
+    ce = ce_model().predict([(q, c.texts[i]) for i in pool], batch_size=16, show_progress_bar=False) if pool else []
+    ce_map = {i: float(s) for i, s in zip(pool, ce)}
+    pool.sort(key=lambda i: (-ce_map[i], -rrf[i], i))
+    top = pool + rest
+    return top, {"org_filter": org, "prefilter_n": int(mask.sum()), "top1_ce": ce_map[top[0]] if top else None,
+                 "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
+
+PIPELINES = {"vanilla": run_vanilla, "vanilla_bge": run_vanilla_bge, "vanilla_filter": run_vanilla_filter, "vanilla_bge_filter": run_vanilla_bge_filter, "hybrid": run_hybrid, "hybrid_nobm25": run_hybrid_nobm25, "hybrid_nofilter": run_hybrid_nofilter, "hybrid_prefilter": run_hybrid_prefilter, "baseline_dense": run_dense, "baseline_bm25": run_bm25, "baseline_random": run_random}
 
 # ---------------------------------------------------------------- 실행
 def main():
+    global PIPELINES
+    if ONLY_PIPES: PIPELINES = {k: v for k, v in PIPELINES.items() if k in ONLY_PIPES}
     gold = [json.loads(l) for l in GOLD.read_text(encoding="utf-8").splitlines() if l.strip()]
     per_query, t0 = [], time.time()
     for cname in CORPORA:
@@ -237,6 +265,8 @@ def main():
     def series(cname, pname, key="ndcg5"):
         return [r[key] for r in sorted(per_query, key=lambda r: r["qid"]) if r["corpus"] == cname and r["pipeline"] == pname and r["type"] != "Q9"]
     pairs = [("hybrid vs vanilla (L2_A)", ("L2_A", "hybrid"), ("L2_A", "vanilla")),
+         ("hybrid_prefilter vs hybrid (L2_A)", ("L2_A", "hybrid_prefilter"), ("L2_A", "hybrid")),
+         ("hybrid_prefilter vs hybrid (L0_A)", ("L0_A", "hybrid_prefilter"), ("L0_A", "hybrid")),
          ("L2P vs L2, hybrid (A)", ("L2P_A", "hybrid"), ("L2_A", "hybrid")),
          ("L2P vs L2, vanilla (A)", ("L2P_A", "vanilla"), ("L2_A", "vanilla")),
          ("L2P vs L2, vanilla_bge_filter (A)", ("L2P_A", "vanilla_bge_filter"), ("L2_A", "vanilla_bge_filter")),
@@ -263,7 +293,7 @@ def main():
              ("hybrid vs dense-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_dense")),
              ("hybrid vs bm25-only (L2_A)", ("L2_A", "hybrid"), ("L2_A", "baseline_bm25"))]
     for label, a, b in pairs:
-        if a[0] not in CORPORA or b[0] not in CORPORA: continue
+        if a[0] not in CORPORA or b[0] not in CORPORA or a[1] not in PIPELINES or b[1] not in PIPELINES: continue
         sa, sb = series(*a), series(*b)
         lo, hi = boot_ci(sa, sb)
         summary["comparisons"].append({"label": label, "a": a, "b": b, "delta_ndcg5": sum(sa) / len(sa) - sum(sb) / len(sb), "ci95": [lo, hi], "significant": lo > 0 or hi < 0})

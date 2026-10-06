@@ -1,0 +1,479 @@
+{
+ "n_queries": 44,
+ "n_scored": 40,
+ "conditions": [
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "recall5": 0.9,
+   "recall10": 0.9,
+   "mrr": 0.7495833333333334,
+   "ndcg5": 0.7657871145405616
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.95,
+   "recall10": 1.0,
+   "mrr": 0.7841666666666667,
+   "ndcg5": 0.7984291959901058
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "recall5": 0.925,
+   "recall10": 0.925,
+   "mrr": 0.69625,
+   "ndcg5": 0.7311554271442622
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "recall5": 0.925,
+   "recall10": 1.0,
+   "mrr": 0.7127380952380953,
+   "ndcg5": 0.7356726760915157
+  }
+ ],
+ "by_type": [
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.675,
+   "ndcg5": 0.7544456402014998
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 0.5,
+   "mrr": 0.25,
+   "ndcg5": 0.31546487678572877
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.6125,
+   "ndcg5": 0.48976331323979355
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 0.5,
+   "mrr": 0.5,
+   "ndcg5": 0.5
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.5833333333333334,
+   "ndcg5": 0.6904648767857288
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.6666666666666666,
+   "ndcg5": 0.6577324383928644
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.5,
+   "ndcg5": 0.6309297535714575
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.6125,
+   "ndcg5": 0.48976331323979355
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.3125,
+   "ndcg5": 0.39040157791121266
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.675,
+   "ndcg5": 0.7544456402014998
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 1.0,
+   "ndcg5": 1.0
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 0.5,
+   "mrr": 0.25,
+   "ndcg5": 0.31546487678572877
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.6125,
+   "ndcg5": 0.481268360682436
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.8333333333333334,
+   "ndcg5": 0.875
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.625,
+   "ndcg5": 0.6577324383928644
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.75,
+   "ndcg5": 0.8154648767857288
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.4666666666666667,
+   "ndcg5": 0.5967132018086354
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q1",
+   "n": 4,
+   "recall5": 0.75,
+   "mrr": 0.6666666666666666,
+   "ndcg5": 0.6577324383928644
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q2",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q3",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q4",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.875,
+   "ndcg5": 0.9077324383928644
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q5",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.625,
+   "ndcg5": 0.7231973151785931
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q6",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.6125,
+   "ndcg5": 0.481268360682436
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q7",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.8333333333333334,
+   "ndcg5": 0.875
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q8",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.75,
+   "ndcg5": 0.8154648767857288
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q10",
+   "n": 4,
+   "recall5": 1.0,
+   "mrr": 0.75,
+   "ndcg5": 0.8154648767857288
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "type": "Q11",
+   "n": 4,
+   "recall5": 0.5,
+   "mrr": 0.2648809523809524,
+   "ndcg5": 0.26540157791121266
+  }
+ ],
+ "q9": [
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid",
+   "n": 4,
+   "abstain_rate": 0.0
+  },
+  {
+   "corpus": "L2_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 4,
+   "abstain_rate": 0.0
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid",
+   "n": 4,
+   "abstain_rate": 0.0
+  },
+  {
+   "corpus": "L0_A",
+   "pipeline": "hybrid_prefilter",
+   "n": 4,
+   "abstain_rate": 0.0
+  }
+ ],
+ "comparisons": [
+  {
+   "label": "hybrid_prefilter vs hybrid (L2_A)",
+   "a": [
+    "L2_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L2_A",
+    "hybrid"
+   ],
+   "delta_ndcg5": 0.03264208144954417,
+   "ci95": [
+    -0.0498838017137046,
+    0.1282298398422395
+   ],
+   "significant": false
+  },
+  {
+   "label": "hybrid_prefilter vs hybrid (L0_A)",
+   "a": [
+    "L0_A",
+    "hybrid_prefilter"
+   ],
+   "b": [
+    "L0_A",
+    "hybrid"
+   ],
+   "delta_ndcg5": 0.004517248947253472,
+   "ci95": [
+    -0.06920534312523506,
+    0.08890353054546654
+   ],
+   "significant": false
+  },
+  {
+   "label": "L2 vs L0, hybrid (A)",
+   "a": [
+    "L2_A",
+    "hybrid"
+   ],
+   "b": [
+    "L0_A",
+    "hybrid"
+   ],
+   "delta_ndcg5": 0.034631687396299404,
+   "ci95": [
+    -0.06520262735634502,
+    0.12495877634824253
+   ],
+   "significant": false
+  }
+ ]
+}
