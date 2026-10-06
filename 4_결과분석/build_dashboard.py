@@ -184,6 +184,17 @@ if msum:
         + '<div class="card tw" style="margin-top:12px"><table><thead>' + head + '</thead><tbody>' + body + '</tbody></table><p class="note">기관적중: 상위 5개 중 정답 기관 조문 비율.</p></div>'
         + '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>비교 (Δ nDCG@5, 95% CI)</th>' + "".join(f"<th>{html.escape(l)}</th>" for _, l in groups) + '</tr></thead><tbody>' + cmp_rows + '</tbody></table></div>')
 
+    # 원인 분석 (results_meta_bm25_diag)
+    RD = ROOT / "3_성능테스트" / "results_meta_bm25_diag"
+    DG = [("org20_dev_L2_A", "20기관 · dev"), ("org292_dev_L2P_A", "292기관 · dev"), ("org292_employee_L2P_A", "292기관 · 직원 질문")]
+    dsum = {g: {x["cond"]: x for x in json.load(open(RD / g / "summary.json", encoding="utf-8"))["conditions"]} for g, _ in DG if (RD / g / "summary.json").exists()}
+    if dsum:
+        DROWS = [("E1_bm25_org", "BM25 에 기관명 (요청 구성)"), ("E4_ce_org", "+ 재랭커에도 기관명"), ("E5_all", "+ 모든 보정 (가중치 10배, dense 제외)"), ("B1_prefilter", "기관 필터(사전)")]
+        dg = [(g, l) for g, l in DG if g in dsum]
+        trd = "".join(f"<tr><td>{html.escape(l)}</td>" + "".join(f"<td class='num'><b>{f3(dsum[g][k]['ndcg5'])}</b> · {pct(dsum[g][k]['org_hit5'])}%</td>" for g, _ in dg) + "</tr>" for k, l in DROWS)
+        META_HTML = META_HTML.replace("</section>", '<div class="card tw" style="margin-top:12px"><table><thead><tr><th>원인 분석 (nDCG@5 · 기관적중)</th>' + "".join(f"<th class='num'>{html.escape(l)}</th>" for _, l in dg) + '</tr></thead><tbody>' + trd + '</tbody></table>'
+            + '<ul>' + "".join(f"<li>{html.escape(x)}</li>" for x in narr.get("meta_causes", [])) + '</ul><p class="note">상세: 4_결과분석/기관명BM25_원인분석.md</p></div></section>')
+
 # ---- holdout 개봉 결과 (results_holdout 가 있을 때만)
 HO_HTML = ""
 RH = ROOT / "3_성능테스트" / "results_holdout"
