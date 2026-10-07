@@ -2,4 +2,4 @@
 <br>
 <br>
 <br>
-현 프로젝트 배포 링크: https://runningturtle123-public-agency-ragchat.hf.space/demo/
+배포 링크: https://runningturtle123-public-agency-ragchat.hf.space/demo/
