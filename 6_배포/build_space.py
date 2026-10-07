@@ -9,8 +9,8 @@ FILES = [
     "3_성능테스트/run_eval.py", "3_성능테스트/corpora/L2P_A.jsonl", "3_성능테스트/cache/bge-m3.npz",
     "5_가드레일/guardrails.py", "4_결과분석/hitl_serve.py", "4_결과분석/hitl.html",
 ]
-for name in ("app.py", "demo.html", "requirements.txt", "README.md", ".gitattributes"):
-    (OUT).mkdir(exist_ok=True); shutil.copy2(HERE / name, OUT / name)
+for name in ("app.py", "demo.html", "requirements.txt", "SPACE_README.md", ".gitattributes"):
+    (OUT).mkdir(exist_ok=True); shutil.copy2(HERE / name, OUT / ("README.md" if name == "SPACE_README.md" else name))  # Space 카드는 README.md 로 올라가야 한다
 for rel in FILES:
     dst = OUT / rel; dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(ROOT / rel, dst)
 (OUT / ".gitignore").write_text("__pycache__/\n*.log\n3_성능테스트/results*/\n3_성능테스트/hitl_*.jsonl\n", encoding="utf-8")
