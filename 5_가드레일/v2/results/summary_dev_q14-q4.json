@@ -1,0 +1,158 @@
+{
+ "split": "dev",
+ "model": "q14-q4",
+ "n": 104,
+ "refusal_recall": 0.7021,
+ "false_refusal": 0.1667,
+ "ungrounded_answers": 0,
+ "n_answers": 55,
+ "n_must_refuse": 47,
+ "n_must_answer": 42,
+ "W": {
+  "n": 15,
+  "refused": 9,
+  "candidate_hit_when_refused": 1
+ },
+ "by_label": {
+  "R": {
+   "ANSWER": 35,
+   "REFUSE_NO_EVIDENCE": 7
+  },
+  "W": {
+   "REFUSE_NO_EVIDENCE": 7,
+   "REFUSE_SCOPE": 2,
+   "ANSWER": 6
+  },
+  "NA": {
+   "REFUSE_NO_EVIDENCE": 16,
+   "REFUSE_SCOPE": 3,
+   "ANSWER": 8
+  },
+  "OUT": {
+   "REFUSE_SCOPE": 11,
+   "ANSWER": 6,
+   "REFUSE_NO_EVIDENCE": 3
+  }
+ },
+ "by_style_false_refusal": {
+  "상황설명": 0.3333,
+  "오타": 0.2,
+  "일상어": 0.1176,
+  "전문용어": 0.1111
+ },
+ "leaked": [
+  {
+   "qid": "X090",
+   "label": "NA",
+   "query": "임원도 건강땜에 휴직되나요?"
+  },
+  {
+   "qid": "X042",
+   "label": "NA",
+   "query": "예전에 받은 징계 기록은 언제 지워져요?"
+  },
+  {
+   "qid": "X026",
+   "label": "NA",
+   "query": "개명했는데 인사팀에 뭘 내야 해요?"
+  },
+  {
+   "qid": "X087",
+   "label": "NA",
+   "query": "임원도 처음 오면 수습기간이 있나요?"
+  },
+  {
+   "qid": "X125",
+   "label": "NA",
+   "query": "부업 허락받은 직원 목록을 따로 관리하나요?"
+  },
+  {
+   "qid": "X153",
+   "label": "NA",
+   "query": "전 직장 징계처분이 현 직장 승진을 제한하나요?"
+  },
+  {
+   "qid": "X114",
+   "label": "NA",
+   "query": "상근임원의 영리업무 제한 범위는?"
+  },
+  {
+   "qid": "X093",
+   "label": "NA",
+   "query": "임원 징계에도 직원 징계시효가 적용되나요?"
+  },
+  {
+   "qid": "X159",
+   "label": "OUT",
+   "query": "학교 경력을 인정받으면 시작 월급도 올라요?"
+  },
+  {
+   "qid": "X078",
+   "label": "OUT",
+   "query": "정년 앞둔 팀원은 임금이 언제부터 줄어요?"
+  },
+  {
+   "qid": "X198",
+   "label": "OUT",
+   "query": "가족 간병으로 쉬는 동안 복지포인트 나와요?"
+  },
+  {
+   "qid": "X177",
+   "label": "OUT",
+   "query": "육아휴직 동안 월급은 얼마나 나와요?"
+  },
+  {
+   "qid": "X199",
+   "label": "OUT",
+   "query": "배우자 출산휴가 때도 월급은 그대로죠?"
+  },
+  {
+   "qid": "X178",
+   "label": "OUT",
+   "query": "아이 입학식에 쓸 수 있는 휴가가 있나요?"
+  }
+ ],
+ "false_refused": [
+  {
+   "qid": "X195",
+   "query": "복직하기로 한 부서가 조직 개편으로 없어졌어요. 아이 등원 때문에 먼 곳은 어려운데 배치를 협의할 수 있나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X056",
+   "query": "다음 직장 출근일이 잡혔어요. 후임이 올 때까지 퇴사를 못 하게 할 수도 있나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X049",
+   "query": "휴직한거 땜에 승진 밀릴수도잇나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X089",
+   "query": "비상근 자리 하나 더 맡아도됨?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X025",
+   "query": "돈 안 받는 외부 활동도 허락받아요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X167",
+   "query": "교감 경력이 있어도 직급은 처음부터 시작해요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X173",
+   "query": "가족돌봄휴직 기간은 승진소요연수에서 제외되나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  }
+ ],
+ "sec_mean": 0.0,
+ "targets": {
+  "refusal_recall": ">=0.95",
+  "false_refusal": "0",
+  "ungrounded_answers": "0"
+ }
+}

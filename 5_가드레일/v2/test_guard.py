@@ -54,12 +54,27 @@ class TestGuard(unittest.TestCase):
         r, _ = self.run_guard(ev([(1, "② 육아휴직의 기간은 자녀 1명에 대하여 5년 이내로 한다.")]))
         self.assertEqual(r.decision, REFUSE_NO_EVIDENCE)
 
-    def test_quote_from_wrong_source_is_rejected(self):
+    def test_quote_with_wrong_source_is_relinked_to_the_article_that_contains_it(self):
+        # 출처 번호가 틀려도 문장이 전달한 조문 중 하나에 그대로 있으면 그 조문으로 바로잡아 답한다 (2026-10-07 정책 변경)
         r, _ = self.run_guard(ev([(2, "② 육아휴직의 기간은 자녀 1명에 대하여 3년 이내로 한다.")]))
+        self.assertEqual(r.decision, ANSWER); self.assertEqual(r.quotes[0]["source"], 1)
+
+    def test_out_of_range_source_is_relinked_or_rejected(self):
+        r, _ = self.run_guard(ev([(9, "② 육아휴직의 기간은 자녀 1명에 대하여 3년 이내로 한다.")]))
+        self.assertEqual(r.decision, ANSWER); self.assertEqual(r.quotes[0]["source"], 1)
+        r, _ = self.run_guard(ev([(9, "육아휴직은 자녀 한 명당 최대 3년까지 가능합니다.")]))
         self.assertEqual(r.decision, REFUSE_NO_EVIDENCE)
 
-    def test_out_of_range_source_is_rejected(self):
-        r, _ = self.run_guard(ev([(9, "② 육아휴직의 기간은 자녀 1명에 대하여 3년 이내로 한다.")]))
+    def test_wrong_source_index_is_relinked_when_quote_is_verbatim_elsewhere(self):
+        # LLM 이 source 를 조번호(44)로 적어도, 문장이 전달한 조문 중 하나에 그대로 있으면 그 조문으로 연결된다
+        r, _ = self.run_guard(ev([(44, "② 육아휴직의 기간은 자녀 1명에 대하여 3년 이내로 한다.")]))
+        self.assertEqual(r.decision, ANSWER)
+        self.assertEqual(r.quotes[0]["source"], 1)
+        self.assertEqual(r.trace["relinked"], 1)
+
+    def test_relink_requires_unique_match(self):
+        arts = ARTS + [dict(ARTS[0], label="제99조(중복)")]
+        r, _ = self.run_guard(ev([(44, "② 육아휴직의 기간은 자녀 1명에 대하여 3년 이내로 한다.")]), arts=arts)
         self.assertEqual(r.decision, REFUSE_NO_EVIDENCE)
 
     def test_too_short_quote_is_rejected(self):

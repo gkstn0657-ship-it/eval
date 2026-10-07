@@ -175,13 +175,23 @@ class Guard:
             trace["llm_parse_error"] = raw[:200]
         trace["llm"] = ev
         # 3단계: 근거 검증
-        verified, rejected, seen = [], [], set()
+        verified, rejected, seen, relinked = [], [], set(), 0
+        normed = [norm(a["text"]) for a in articles]
         for q in ev.get("quotes") or []:
             src, txt = q.get("source"), norm(q.get("text", ""))
-            ok = isinstance(src, int) and 1 <= src <= len(articles) and len(txt) >= self.MIN_QUOTE and txt in norm(articles[src - 1]["text"])
-            if ok and txt not in seen:
-                seen.add(txt); verified.append({"source": src, "article": articles[src - 1]["label"], "text": txt})
-            elif not ok: rejected.append(q)
+            if len(txt) < self.MIN_QUOTE: rejected.append(q); continue
+            if isinstance(src, int) and 1 <= src <= len(articles) and txt in normed[src - 1]:
+                ok_src = src
+            else:
+                # LLM 이 source 를 목록 번호 대신 조번호로 적는 경우가 있다. 문장이 전달한 조문 중 하나에 글자 그대로 있으면 그 조문으로 연결한다.
+                # 검증 기준(전달한 조문 원문에 문자 그대로 존재)은 그대로다.
+                hits = [i + 1 for i, a in enumerate(normed) if txt in a]
+                ok_src = hits[0] if len(hits) == 1 else None
+                if ok_src: relinked += 1
+            if ok_src and txt not in seen:
+                seen.add(txt); verified.append({"source": ok_src, "article": articles[ok_src - 1]["label"], "text": txt})
+            elif not ok_src: rejected.append(q)
+        trace["relinked"] = relinked
         verified = verified[: self.MAX_QUOTES]
         trace["verified"], trace["rejected"] = len(verified), len(rejected)
         flags.update({"personal_judgment": bool(ev.get("personal_judgment")), "fully_answered": bool(ev.get("fully_answered")) if verified else False})
