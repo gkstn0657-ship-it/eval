@@ -431,10 +431,16 @@ function render(d, chosenOrg) {
   const verifyFailed = a === "answer" && !d.answer && g.verify && !g.verify.ok;
 
   if (d.org_note) html += banner("info", "기관을 바꿔서 찾았습니다", d.org_note);
+  if (g.note) html += banner("warn", "지금은 답변을 만들 수 없습니다", g.note + " 아래 근거 조문 원문을 확인하세요.");
   if (a === "refuse_scope") html += banner("warn", "인사규정 밖의 질문입니다", g.message);
   else if (a === "refuse_multi") html += banner("warn", "한 번에 한 기관씩 물어봐 주세요", g.message);
-  else if (a === "refuse") html += banner("bad", "질문에 맞는 조항을 찾지 못했습니다", "",
-    `<ul class="tips"><li>위에서 기관을 지정해 보세요.</li><li>규정에 쓰이는 말로 바꿔 보세요. 예: 부업 → 겸직, 쉬는 날 → 휴가</li></ul>`);
+  else if (a === "refuse") html += banner("bad", "질문에 맞는 조항을 찾지 못했습니다", g.message ? g.message.split("
+")[0] : "",
+    `<ul class="tips"><li>아래 "비슷한 조항" 원문을 펼쳐 확인해 보세요.</li><li>위에서 기관을 지정해 보세요.</li><li>규정에 쓰이는 말로 바꿔 보세요. 예: 부업 → 겸직, 쉬는 날 → 휴가</li></ul>`);
+  else if (a === "refuse_subject") html += banner("warn", "직원에게 적용되는 규정입니다", g.message ? g.message.split("
+")[0] : "");
+  else if (a === "refuse_abuse") html += banner("warn", "처리할 수 없는 요청입니다", g.message || "");
+  else if (a === "ask_org") html += banner("info", "어느 기관의 규정을 찾을까요?", "위에서 기관을 선택하거나 질문에 기관명을 넣어 주세요.");
   else if (a === "raw_only") html += banner("warn", "민감한 주제라 원문으로 안내합니다", "요약 대신 관련 조문 원문을 보여드립니다. 적용 여부는 인사부서에 확인하세요.");
   else if (verifyFailed) html += banner("warn", "생성 답변이 근거와 맞지 않아 숨겼습니다", "아래 조문 원문을 확인하세요.");
   else if (genFailed) html += banner("warn", "지금은 답변을 만들 수 없습니다", "근거 조문만 보여드립니다. 답변 생성 한도를 넘었을 수 있습니다.");
@@ -445,8 +451,9 @@ function render(d, chosenOrg) {
       <div class="ans-foot"><span>${esc(d.model)} · 아래 근거 조문 기반</span><span><button type="button" class="ghost" data-copy="ans">답변 복사</button> <button type="button" class="ghost" data-copy="link">링크 복사</button></span></div></article>`;
   }
   if (hits.length) {
-    const title = a === "refuse" ? "비슷한 조항" : "근거 조문";
-    const sub = a === "refuse" ? "질문과 맞지 않을 수 있습니다" : "관련도 순";
+    const refused = a !== "answer";
+    const title = refused ? "비슷한 조항" : "근거 조문";
+    const sub = refused ? "질문과 맞지 않을 수 있습니다 · 원문을 그대로 보여 드립니다" : "관련도 순";
     html += `<div class="src-h"><h2>${title} ${hits.length}</h2><span>${sub}</span></div>`;
     html += hits.map((h, i) => `<details class="src" id="src${h.rank}"${i === 0 && a !== "refuse" ? " open" : ""}>
       <summary><span class="rank">${h.rank}</span><span class="src-t"><b>${esc(h.article_no)}${h.title ? " " + esc(h.title) : ""}</b><div>${esc(h.org)}${h.revision_date ? " · " + esc(h.revision_date) + " 개정" : ""}</div></span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>

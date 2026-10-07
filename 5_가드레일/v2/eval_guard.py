@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""가드레일 v2/v3 평가 실행기. 외부 질문 200건(사람 라벨)으로 정책 지표를 잰다.
+"""가드레일 v2/v3 평가 실행기. --backend hf 면 HF 라우터(배포 구성, 기본 Qwen2.5-72B)로 근거를 추출한다. 외부 질문 200건(사람 라벨)으로 정책 지표를 잰다.
 
 라벨: R 답해야 함, W 답이 있는데 검색 실패, NA 규정에 답 없음, OUT 범위 밖
 지표 (정책 5절)
@@ -23,7 +23,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent.parent
 A = sys.argv[1:]
 def arg(n, d=None): return A[A.index(n) + 1] if n in A else d
-MODEL = arg("--model", "qwen2.5:7b-instruct"); LIMIT = int(arg("--limit", "0")); SEALED = "--sealed" in A
+BACKEND = arg("--backend", "ollama"); MODEL = arg("--model", "qwen2.5:7b-instruct" if BACKEND == "ollama" else "Qwen/Qwen2.5-72B-Instruct"); LIMIT = int(arg("--limit", "0")); SEALED = "--sealed" in A
 HALF = arg("--half", "all"); G1 = arg("--g1", "none"); G2 = "--g2" in A; RELAX = "--relax" in A; TAG = arg("--tag", "")
 OUT = HERE / "results"; OUT.mkdir(exist_ok=True)
 
@@ -73,7 +73,14 @@ qids = qids[: LIMIT or None]
 mkey = MODEL.replace(":", "_").replace("/", "_")
 cache_f = OUT / f"llm_cache_{mkey}.json"; cache = json.load(open(cache_f, encoding="utf-8")) if cache_f.exists() else {}
 scope_f = OUT / f"scope_cache_{mkey}.json"; scope_cache = json.load(open(scope_f, encoding="utf-8")) if scope_f.exists() else {}
-base = OllamaLLM(MODEL)
+if BACKEND == "hf":  # 배포 구성과 같은 HF 라우터 모델로 측정
+    import os; from huggingface_hub import get_token
+    os.environ.setdefault("HF_TOKEN", get_token() or "")
+    sys.path.insert(0, str(ROOT / "6_배포")); sys.path.insert(0, str(ROOT / "4_결과분석")); sys.path.insert(0, str(ROOT / "3_성능테스트"))
+    os.environ.setdefault("HF_HOME", str(Path.home() / ".cache" / "huggingface")); os.environ.setdefault("HF_HUB_OFFLINE", "1")
+    import guard_route; base = guard_route.HFLLM(MODEL)
+else:
+    base = OllamaLLM(MODEL)
 class Cached:
     qid = None
     def __call__(self, s, u, schema=None):

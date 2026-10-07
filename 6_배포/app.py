@@ -36,7 +36,11 @@ print("모델·코퍼스 준비 완료", flush=True)
 
 # 공개용 화면(demo.html)으로 교체. 로컬 HITL 비교 화면(hitl.html)의 "/" 라우트를 뺀다.
 from fastapi.responses import HTMLResponse  # noqa: E402
-hitl_serve.app.router.routes = [r for r in hitl_serve.app.router.routes if getattr(r, "path", None) != "/"]
+hitl_serve.app.router.routes = [r for r in hitl_serve.app.router.routes if getattr(r, "path", None) not in ("/", "/ask")]
+# /ask 를 가드레일 v3 경로로 교체 (근거 원문만으로 답변, 적용 대상 규칙. 5_가드레일/가드레일_v3_결과.md)
+sys.path.insert(0, str(ROOT / "5_가드레일" / "v2")); sys.path.insert(0, str(ROOT))
+import guard_route  # noqa: E402
+hitl_serve.app.get("/ask")(guard_route.ask_v3)
 @hitl_serve.app.get("/", response_class=HTMLResponse)
 def public_index():
     return HTMLResponse((ROOT / "demo.html").read_text(encoding="utf-8"), headers={"Cache-Control": "no-store"})
