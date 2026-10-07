@@ -1,0 +1,3384 @@
+[
+ {
+  "qid": "X116",
+  "label": "NA",
+  "style": "상황설명",
+  "query": "최종 합격자가 출근 전날 입사를 포기했어요. 다음 순위 지원자를 바로 뽑아도 되나요?",
+  "decision": "REFUSE_SUBJECT",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제35조(승진소요 최저년수)",
+   "제33조(승진방법)",
+   "제19조(구비서류)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": "지원자",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정은 직원에게 적용됩니다. 질문하신 대상(지원자)은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요.\n참고로 관련 조항은 다음과 같습니다.\n- 제35조(승진소요 최저년수)\n- 제33조(승진방법)\n- 제19조(구비서류)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X095",
+  "label": "NA",
+  "style": "상황설명",
+  "query": "임기 시작 전에 정해진 목표가 현실과 맞지 않아요. 중간에 평가 목표를 조정할 수 있나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X076",
+  "label": "NA",
+  "style": "상황설명",
+  "query": "핵심 업무 담당자 둘이 동시에 발령 났어요. 인수인계 때문에 한 명의 이동을 늦출 수 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 3,
+      "text": "직원의 보직은 「직제관리요령」에서 정한 정원범위 내에서 보직하여야 한다. 다만, 인사운영상 특히 필요한 경우에는 사장이 잠정적으로 정원을 초과하여 보직할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제24조(보직과 정원) · 2025-12-22 개정\n“직원의 보직은 「직제관리요령」에서 정한 정원범위 내에서 보직하여야 한다. 다만, 인사운영상 특히 필요한 경우에는 사장이 잠정적으로 정원을 초과하여 보직할 수 있다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X051",
+  "label": "NA",
+  "style": "오타",
+  "query": "사내공모 지원하면 팀장한테 알림감?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제24조의3(직위에 대한 공모)",
+   "제71조(위임규정)",
+   "제6조(인사위원회 종류 및 구성)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제24조의3(직위에 대한 공모)\n- 제71조(위임규정)\n- 제6조(인사위원회 종류 및 구성)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X028",
+  "label": "NA",
+  "style": "오타",
+  "query": "평가면담때 뭐 준비해가요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X090",
+  "label": "NA",
+  "style": "오타",
+  "query": "임원도 건강땜에 휴직되나요?",
+  "decision": "REFUSE_SUBJECT",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제44조(휴직)",
+   "제50조(직권면직)",
+   "제47조(휴직의 효력)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": "임원",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정은 직원에게 적용됩니다. 질문하신 대상(임원)은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요.\n참고로 관련 조항은 다음과 같습니다.\n- 제44조(휴직)\n- 제50조(직권면직)\n- 제47조(휴직의 효력)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X008",
+  "label": "NA",
+  "style": "오타",
+  "query": "수습끝나면 따로 연락오나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제21조(수습)",
+   "제47조(휴직의 효력)",
+   "제17조(초임호봉)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제21조(수습)\n- 제47조(휴직의 효력)\n- 제17조(초임호봉)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X189",
+  "label": "NA",
+  "style": "오타",
+  "query": "육휴중 평가없으면 최하점 받는건가요ㅠ",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X129",
+  "label": "NA",
+  "style": "오타",
+  "query": "평가표 제출안한 부서는 어케처리해요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X191",
+  "label": "NA",
+  "style": "오타",
+  "query": "임신알림은 팀장한테만 하면끝?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X042",
+  "label": "NA",
+  "style": "일상어",
+  "query": "예전에 받은 징계 기록은 언제 지워져요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "징계의결의 요구는 징계사유가 발생한 날로부터 3년(금품 및 향응수수(授受), 공금의 횡령.유용, 채용‧승진 등 인사비리, 성희롱‧성범죄의 경우에는 5년)을 경과한 때에는 이를 행하지 못한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제65조(징계사유의 시효) · 2025-12-22 개정\n“징계의결의 요구는 징계사유가 발생한 날로부터 3년(금품 및 향응수수(授受), 공금의 횡령.유용, 채용‧승진 등 인사비리, 성희롱‧성범죄의 경우에는 5년)을 경과한 때에는 이를 행하지 못한다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X085",
+  "label": "NA",
+  "style": "일상어",
+  "query": "팀원에게 업무 경고를 문자로 해도 되나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제63조(징계행위 보고)",
+   "제61조(징계사유)",
+   "제56조(직무상의 의무)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제63조(징계행위 보고)\n- 제61조(징계사유)\n- 제56조(직무상의 의무)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X026",
+  "label": "NA",
+  "style": "일상어",
+  "query": "개명했는데 인사팀에 뭘 내야 해요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제57조(인사기록)",
+   "제26조(전직)",
+   "제24조의5(보직의 제한)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제57조(인사기록)\n- 제26조(전직)\n- 제24조의5(보직의 제한)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X184",
+  "label": "NA",
+  "style": "일상어",
+  "query": "복직할 때 야근 적은 부서로 신청하고 싶어요",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제48조(복직)",
+   "제51조(의원면직)",
+   "제44조(휴직)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제48조(복직)\n- 제51조(의원면직)\n- 제44조(휴직)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X164",
+  "label": "NA",
+  "style": "일상어",
+  "query": "교육 업무를 맡으면 수업 경력도 평가에 넣나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "교육훈련규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "교육훈련규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 교육훈련규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X087",
+  "label": "NA",
+  "style": "일상어",
+  "query": "임원도 처음 오면 수습기간이 있나요?",
+  "decision": "REFUSE_SUBJECT",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제21조(수습)",
+   "제17조(초임호봉)",
+   "제24조의6(보직총량제)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": "임원",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정은 직원에게 적용됩니다. 질문하신 대상(임원)은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요.\n참고로 관련 조항은 다음과 같습니다.\n- 제21조(수습)\n- 제17조(초임호봉)\n- 제24조의6(보직총량제)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X123",
+  "label": "NA",
+  "style": "일상어",
+  "query": "발령일을 지난 날짜로 잡아도 되나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제42조(호봉의 정정)",
+   "제65조(징계사유의 시효)",
+   "제25조(전보)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제42조(호봉의 정정)\n- 제65조(징계사유의 시효)\n- 제25조(전보)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X062",
+  "label": "NA",
+  "style": "일상어",
+  "query": "팀원 평가 점수를 본인에게 설명해야 하나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X082",
+  "label": "NA",
+  "style": "일상어",
+  "query": "승진 추천을 본인이 거절할 수도 있나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제36조(승진 및 승격의 제한)",
+   "제33조(승진방법)",
+   "제32조(승진원칙)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제36조(승진 및 승격의 제한)\n- 제33조(승진방법)\n- 제32조(승진원칙)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X127",
+  "label": "NA",
+  "style": "일상어",
+  "query": "인사기록은 퇴직 후 몇 년 보관해요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X125",
+  "label": "NA",
+  "style": "일상어",
+  "query": "부업 허락받은 직원 목록을 따로 관리하나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "인사기록",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "인사기록",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 인사기록 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X153",
+  "label": "NA",
+  "style": "전문용어",
+  "query": "전 직장 징계처분이 현 직장 승진을 제한하나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 4,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.02,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "② 다음 각 호의 1에 해당하는 자는 승진 또는 승격할 수 없다."
+     },
+     {
+      "source": 1,
+      "text": "1. 징계처분 중에 있는 자"
+     },
+     {
+      "source": 1,
+      "text": "2. 무보직 또는 휴직 중에 있는 자"
+     },
+     {
+      "source": 1,
+      "text": "3. 징계집행이 종료된 날로부터 다음의 기간이 경과하지 아니한 자"
+     },
+     {
+      "source": 1,
+      "text": "가. 강 등 : 18개월"
+     },
+     {
+      "source": 1,
+      "text": "나. 정 직 : 18개월"
+     },
+     {
+      "source": 1,
+      "text": "다. 감 봉 : 12개월"
+     },
+     {
+      "source": 1,
+      "text": "라. 견 책 : 6개월"
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 4,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.02
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“② 다음 각 호의 1에 해당하는 자는 승진 또는 승격할 수 없다.”\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“1. 징계처분 중에 있는 자”\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“2. 무보직 또는 휴직 중에 있는 자”\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“3. 징계집행이 종료된 날로부터 다음의 기간이 경과하지 아니한 자”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X053",
+  "label": "NA",
+  "style": "전문용어",
+  "query": "근무성적평정 이의신청 기한은 언제까지인가요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "상벌규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "상벌규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 상벌규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X054",
+  "label": "NA",
+  "style": "전문용어",
+  "query": "겸직허가 갱신 시 재심사가 필요한가요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제27조(겸직)",
+   "제12조(재심의)",
+   "제50조(직권면직)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제27조(겸직)\n- 제12조(재심의)\n- 제50조(직권면직)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X114",
+  "label": "NA",
+  "style": "전문용어",
+  "query": "상근임원의 영리업무 제한 범위는?",
+  "decision": "REFUSE_SUBJECT",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제56조(직무상의 의무)",
+   "제24조의5(보직의 제한)",
+   "제24조(보직과 정원)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": "상근임원",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정은 직원에게 적용됩니다. 질문하신 대상(상근임원)은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요.\n참고로 관련 조항은 다음과 같습니다.\n- 제56조(직무상의 의무)\n- 제24조의5(보직의 제한)\n- 제24조(보직과 정원)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X093",
+  "label": "NA",
+  "style": "전문용어",
+  "query": "임원 징계에도 직원 징계시효가 적용되나요?",
+  "decision": "REFUSE_SUBJECT",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제65조(징계사유의 시효)",
+   "제62조(징계의 종류)",
+   "제61조(징계사유)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": "임원",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정은 직원에게 적용됩니다. 질문하신 대상(임원)은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요.\n참고로 관련 조항은 다음과 같습니다.\n- 제65조(징계사유의 시효)\n- 제62조(징계의 종류)\n- 제61조(징계사유)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X194",
+  "label": "NA",
+  "style": "전문용어",
+  "query": "육아기 단축근무자의 평정 기준은 별도로 있나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "휴직규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "휴직규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 휴직규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X120",
+  "label": "OUT",
+  "style": "무관",
+  "query": "엑셀 저장 안 하고 닫았는데 복구돼요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X200",
+  "label": "OUT",
+  "style": "무관",
+  "query": "유모차 접는 순서 좀 알려줘요",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X080",
+  "label": "OUT",
+  "style": "무관",
+  "query": "팀 단체사진에서 눈 감은 사람 고쳐줘요",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X180",
+  "label": "OUT",
+  "style": "무관",
+  "query": "아기 이름 후보 세 개만 골라줘요",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X140",
+  "label": "OUT",
+  "style": "무관",
+  "query": "프린터 종이 걸렸는데 어디부터 열어요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X159",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "학교 경력을 인정받으면 시작 월급도 올라요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X079",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "팀 회식비는 인원당 얼마까지 쓸 수 있어요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X099",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "임원 건강검진은 가족도 지원되나요?",
+  "decision": "REFUSE_SUBJECT",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제44조(휴직)",
+   "제72조(유연근무제)",
+   "제47조(휴직의 효력)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": "임원",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정은 직원에게 적용됩니다. 질문하신 대상(임원)은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요.\n참고로 관련 조항은 다음과 같습니다.\n- 제44조(휴직)\n- 제72조(유연근무제)\n- 제47조(휴직의 효력)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X059",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "팀원 경조사 지원은 누가 신청하나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "복무규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "복무규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 복무규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X077",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "휴직 대체 업무 맡은 팀원에게 수당 나오나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X078",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "정년 앞둔 팀원은 임금이 언제부터 줄어요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 2,
+      "text": "사장은 정년 퇴직일 전 일정연령을 기준으로 임금피크제를 도입.운영할 수 있으며, 임금피크제 운영에 관한 사항은 별도 지침에 따른다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제24조의2(임금피크제 운영) · 2025-12-22 개정\n“사장은 정년 퇴직일 전 일정연령을 기준으로 임금피크제를 도입.운영할 수 있으며, 임금피크제 운영에 관한 사항은 별도 지침에 따른다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X119",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "퇴직자 미사용 연차는 모두 돈으로 정산하나요?",
+  "decision": "REFUSE_SUBJECT",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제52조(정년)",
+   "제45조(휴직기간중 보수)",
+   "제62조(징계의 종류)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": "퇴직자",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정은 직원에게 적용됩니다. 질문하신 대상(퇴직자)은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요.\n참고로 관련 조항은 다음과 같습니다.\n- 제52조(정년)\n- 제45조(휴직기간중 보수)\n- 제62조(징계의 종류)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X019",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "다른 지역으로 발령 나면 이사비 줘요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "이사규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "이사규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 이사규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X198",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "가족 간병으로 쉬는 동안 복지포인트 나와요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X177",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "육아휴직 동안 월급은 얼마나 나와요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X038",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "휴직하면 남은 연차는 없어져요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X199",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "배우자 출산휴가 때도 월급은 그대로죠?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X178",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "아이 입학식에 쓸 수 있는 휴가가 있나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X117",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "월 중간 복직자 월급은 어떻게 계산하나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X098",
+  "label": "OUT",
+  "style": "보수복지",
+  "query": "임원 성과급은 퇴임 후에도 지급되나요?",
+  "decision": "REFUSE_SUBJECT",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제38조(명예승진)",
+   "제62조(징계의 종류)",
+   "제45조(휴직기간중 보수)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": "임원",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정은 직원에게 적용됩니다. 질문하신 대상(임원)은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요.\n참고로 관련 조항은 다음과 같습니다.\n- 제38조(명예승진)\n- 제62조(징계의 종류)\n- 제45조(휴직기간중 보수)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X156",
+  "label": "R",
+  "style": "상황설명",
+  "query": "학교를 나올 때는 연수 때문에 쉬는 제도가 있었어요. 여기서도 해외 연수를 위해 휴직할 수 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "4. 업무와 관련이 있는 석사.박사 학위 취득 또는 해외유학 등을 위하여 휴직을 청원할 때"
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제44조(휴직) · 2025-12-22 개정\n“4. 업무와 관련이 있는 석사.박사 학위 취득 또는 해외유학 등을 위하여 휴직을 청원할 때”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X036",
+  "label": "R",
+  "style": "상황설명",
+  "query": "대학원에 붙었는데 수업이 평일이에요. 학업 때문에 일 년 쉬는 것도 가능한가요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X176",
+  "label": "R",
+  "style": "상황설명",
+  "query": "수습 중인데 임신한 걸 알았어요. 출산 때문에 자리를 비우면 수습 종료가 늦어지나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 2,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 2,
+      "text": "4. 업무와 관련이 있는 석사.박사 학위 취득 또는 해외유학 등을 위하여 휴직을 청원할 때"
+     },
+     {
+      "source": 2,
+      "text": "5. 만 8세 이하 또는 초등학교 2학년 이하 자녀(입양자녀 포함)를 양육하기 위하여 필요하거나 여성 직원이 임신 또는 출산하게 되어 휴직을 청원할 때"
+     },
+     {
+      "source": 41,
+      "text": "1. 휴직기간"
+     }
+    ]
+   },
+   "relinked": 2,
+   "verified": 2,
+   "rejected": 1,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제44조(휴직) · 2025-12-22 개정\n“4. 업무와 관련이 있는 석사.박사 학위 취득 또는 해외유학 등을 위하여 휴직을 청원할 때”\n\n■ 제44조(휴직) · 2025-12-22 개정\n“5. 만 8세 이하 또는 초등학교 2학년 이하 자녀(입양자녀 포함)를 양육하기 위하여 필요하거나 여성 직원이 임신 또는 출산하게 되어 휴직을 청원할 때”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X175",
+  "label": "R",
+  "style": "상황설명",
+  "query": "아버지 수술 날짜가 갑자기 잡혔어요. 이번 주부터 간병하려면 휴직을 바로 시작할 수 있나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X195",
+  "label": "R",
+  "style": "상황설명",
+  "query": "복직하기로 한 부서가 조직 개편으로 없어졌어요. 아이 등원 때문에 먼 곳은 어려운데 배치를 협의할 수 있나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제48조(복직)",
+   "제6조(인사위원회 종류 및 구성)",
+   "제28조(파견)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제48조(복직)\n- 제6조(인사위원회 종류 및 구성)\n- 제28조(파견)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X056",
+  "label": "R",
+  "style": "상황설명",
+  "query": "다음 직장 출근일이 잡혔어요. 후임이 올 때까지 퇴사를 못 하게 할 수도 있나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "휴직",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "휴직",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 휴직 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X111",
+  "label": "R",
+  "style": "오타",
+  "query": "직무대행 순서 어디서봄?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "차하위 직급자가 그 직무를 대행하고, 차하위 직급자가 2인 이상인 경우에는 직제규정에서 정하는 순위에 따라 그 직무를 대행한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제29조(직무대리) · 2025-12-22 개정\n“차하위 직급자가 그 직무를 대행하고, 차하위 직급자가 2인 이상인 경우에는 직제규정에서 정하는 순위에 따라 그 직무를 대행한다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X029",
+  "label": "R",
+  "style": "오타",
+  "query": "이번에도 승진누락인데 이유 알수있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 4,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "징계처분 중에 있는 자"
+     },
+     {
+      "source": 1,
+      "text": "무보직 또는 휴직 중에 있는 자"
+     },
+     {
+      "source": 1,
+      "text": "징계집행이 종료된 날로부터 다음의 기간이 경과하지 아니한 자"
+     },
+     {
+      "source": 1,
+      "text": "징계 또는 무보직 처분을 사유로 승격을 하지 못한 자가 법원의 판결이나 노동위원회의 결정으로 징계 또는 무보직 처분이 무효 또는 취소된 경우에는 이를 소급하여 승격시켜야 한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 4,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“징계처분 중에 있는 자”\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“무보직 또는 휴직 중에 있는 자”\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“징계집행이 종료된 날로부터 다음의 기간이 경과하지 아니한 자”\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“징계 또는 무보직 처분을 사유로 승격을 하지 못한 자가 법원의 판결이나 노동위원회의 결정으로 징계 또는 무보직 처분이 무효 또는 취소된 경우에는 이를 소급하여 승격시켜야 한다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X190",
+  "label": "R",
+  "style": "오타",
+  "query": "간병휴직중 명퇴신청 가능해여?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "휴직",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "휴직",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 휴직 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X049",
+  "label": "R",
+  "style": "오타",
+  "query": "휴직한거 땜에 승진 밀릴수도잇나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "2. 무보직 또는 휴직 중에 있는 자"
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제36조(승진 및 승격의 제한) · 2025-12-22 개정\n“2. 무보직 또는 휴직 중에 있는 자”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X050",
+  "label": "R",
+  "style": "오타",
+  "query": "전보희망 안냈는데 발령날수있음?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제25조(전보)",
+   "제36조(승진 및 승격의 제한)",
+   "제38조(명예승진)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제25조(전보)\n- 제36조(승진 및 승격의 제한)\n- 제38조(명예승진)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X169",
+  "label": "R",
+  "style": "오타",
+  "query": "학교서 명퇴햇어도 여기 명퇴 또되나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제53조(명예퇴직 등)",
+   "제61조의2(재징계 의결 등의 요구)",
+   "제44조(휴직)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제53조(명예퇴직 등)\n- 제61조의2(재징계 의결 등의 요구)\n- 제44조(휴직)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X091",
+  "label": "R",
+  "style": "오타",
+  "query": "보직 바뀌면 임기도 리셋되나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제24조의6(보직총량제)",
+   "제25조(전보)",
+   "제31조(무보직)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제24조의6(보직총량제)\n- 제25조(전보)\n- 제31조(무보직)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X170",
+  "label": "R",
+  "style": "오타",
+  "query": "교사자격증 인사기록에 올려야됨?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제57조(인사기록)",
+   "제19조(구비서류)",
+   "제34조(승진후보자 명부작성)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제57조(인사기록)\n- 제19조(구비서류)\n- 제34조(승진후보자 명부작성)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X168",
+  "label": "R",
+  "style": "오타",
+  "query": "인사위에 노조사람도 들어가나여?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제6조(인사위원회 종류 및 구성)",
+   "제24조의6(보직총량제)",
+   "제24조의5(보직의 제한)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "제7항 노조원이 포함된 인사위원회의 경우에는 노조대표 1명을 위원으로 참여시킨다. 단, 3급 이상 간부와 관련된 사안에 대해서는 의결권을 행사하지 아니한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 1,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제6조(인사위원회 종류 및 구성)\n- 제24조의6(보직총량제)\n- 제24조의5(보직의 제한)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X089",
+  "label": "R",
+  "style": "오타",
+  "query": "비상근 자리 하나 더 맡아도됨?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 2,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "업무수행상 필요할 때에는 직원에게 겸직을 명할 수 있다."
+     },
+     {
+      "source": 2,
+      "text": "승진임용을 함에 앞서 직무대리를 명할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 2,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제27조(겸직) · 2025-12-22 개정\n“업무수행상 필요할 때에는 직원에게 겸직을 명할 수 있다.”\n\n■ 제29조(직무대리) · 2025-12-22 개정\n“승진임용을 함에 앞서 직무대리를 명할 수 있다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X041",
+  "label": "R",
+  "style": "일상어",
+  "query": "자격증 따면 승진할 때 유리해요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제34조(승진후보자 명부작성)",
+   "제32조(승진원칙)",
+   "제36조(승진 및 승격의 제한)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제34조(승진후보자 명부작성)\n- 제32조(승진원칙)\n- 제36조(승진 및 승격의 제한)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X166",
+  "label": "R",
+  "style": "일상어",
+  "query": "교육 담당으로 왔는데 다른 일을 맡길 수 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "업무수행상 필요할 때에는 직원에게 겸직을 명할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제27조(겸직) · 2025-12-22 개정\n“업무수행상 필요할 때에는 직원에게 겸직을 명할 수 있다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X187",
+  "label": "R",
+  "style": "일상어",
+  "query": "출산 직후라 위원회 출석이 힘든데 어떡하죠?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X025",
+  "label": "R",
+  "style": "일상어",
+  "query": "돈 안 받는 외부 활동도 허락받아요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제56조(직무상의 의무)",
+   "제36조(승진 및 승격의 제한)",
+   "제47조(휴직의 효력)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제56조(직무상의 의무)\n- 제36조(승진 및 승격의 제한)\n- 제47조(휴직의 효력)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X083",
+  "label": "R",
+  "style": "일상어",
+  "query": "팀원 대신 위원회에 가서 설명해도 되나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "④ 위원장은 필요한 경우에 관계직원을 위원회에 출석시켜 의안에 관한 설명이나 의견을 진술하게 할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제10조(의사 및 의결) · 2025-12-22 개정\n“④ 위원장은 필요한 경우에 관계직원을 위원회에 출석시켜 의안에 관한 설명이나 의견을 진술하게 할 수 있다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X003",
+  "label": "R",
+  "style": "일상어",
+  "query": "첫 승진까지 몇 년 있어야 해요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 2,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "1. 1, 2급 및 5, 6급 직원으로의 승진은 바로 하위직급에서 실근무기간이 3년 이상"
+     },
+     {
+      "source": 1,
+      "text": "2. 3, 4급 직원으로의 승진은 바로 하위직급에서 실근무기간이 4년 이상"
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 2,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제35조(승진소요 최저년수) · 2025-12-22 개정\n“1. 1, 2급 및 5, 6급 직원으로의 승진은 바로 하위직급에서 실근무기간이 3년 이상”\n\n■ 제35조(승진소요 최저년수) · 2025-12-22 개정\n“2. 3, 4급 직원으로의 승진은 바로 하위직급에서 실근무기간이 4년 이상”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X124",
+  "label": "R",
+  "style": "일상어",
+  "query": "생일이 지나면 바로 정년퇴직 처리하나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 2,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "제52조(정년) ① 직원의 정년은 60세로 한다."
+     },
+     {
+      "source": 1,
+      "text": "② 제1항의 규정에 의한 퇴직일은 퇴직자의 정년에 달한 날이 1월에서 6월 사이에 있는 경우에는 6월 30일로, 7월에서 12월 사이에 있는 경우에는 12월 31일로 한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 2,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제52조(정년) · 2025-12-22 개정\n“제52조(정년) ① 직원의 정년은 60세로 한다.”\n\n■ 제52조(정년) · 2025-12-22 개정\n“② 제1항의 규정에 의한 퇴직일은 퇴직자의 정년에 달한 날이 1월에서 6월 사이에 있는 경우에는 6월 30일로, 7월에서 12월 사이에 있는 경우에는 12월 31일로 한다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X046",
+  "label": "R",
+  "style": "일상어",
+  "query": "오래 다니면 명예퇴직 신청할 수 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "직원으로서 20년 이상 근속한 자가 정년 1년 이전에 자진하여 퇴직하는 경우 명예퇴직을 할 수 있으며, 신청은 별지 제7호 및 제8호 서식에 의한다. 이 경우 예산의 범위 내에서 명예퇴직 수당을 지급할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제53조(명예퇴직 등) · 2025-12-22 개정\n“직원으로서 20년 이상 근속한 자가 정년 1년 이전에 자진하여 퇴직하는 경우 명예퇴직을 할 수 있으며, 신청은 별지 제7호 및 제8호 서식에 의한다. 이 경우 예산의 범위 내에서 명예퇴직 수당을 지급할 수 있다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X183",
+  "label": "R",
+  "style": "일상어",
+  "query": "아이 응급실 가느라 연락 못 했는데 징계받아요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제62조(징계의 종류)",
+   "제61조(징계사유)",
+   "제41조(승호제외기간)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제62조(징계의 종류)\n- 제61조(징계사유)\n- 제41조(승호제외기간)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X021",
+  "label": "R",
+  "style": "일상어",
+  "query": "정년은 입사 나이랑 상관없이 같아요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "직원의 정년은 60세로 한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제52조(정년) · 2025-12-22 개정\n“직원의 정년은 60세로 한다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X065",
+  "label": "R",
+  "style": "일상어",
+  "query": "승진 추천 인원은 팀마다 정해져 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.01,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "승진인원은 결원 및 예상결원과 증원인원을 고려하여 인사위원회의 심의를 거친 후 사장이 결정한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.01
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제33조(승진방법) · 2025-12-22 개정\n“승진인원은 결원 및 예상결원과 증원인원을 고려하여 인사위원회의 심의를 거친 후 사장이 결정한다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X064",
+  "label": "R",
+  "style": "일상어",
+  "query": "다른 팀으로 보낼 직원을 제가 정해도 되나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제28조(파견)",
+   "제27조(겸직)",
+   "제25조(전보)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제28조(파견)\n- 제27조(겸직)\n- 제25조(전보)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X027",
+  "label": "R",
+  "style": "일상어",
+  "query": "수습 끝나는 날짜가 미뤄질 수도 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "① 신규 채용된 직원에 대하여는 3개월 이내의 수습기간을 둔다. 다만 사장이 필요하다고 인정될 때에는 수습기간을 단축하거나 면제할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제21조(수습) · 2025-12-22 개정\n“① 신규 채용된 직원에 대하여는 3개월 이내의 수습기간을 둔다. 다만 사장이 필요하다고 인정될 때에는 수습기간을 단축하거나 면제할 수 있다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X061",
+  "label": "R",
+  "style": "일상어",
+  "query": "팀원이 갑자기 쉬겠다는데 제가 막을 수 있나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제47조(휴직의 효력)",
+   "제48조의2(휴직자의 복무관리)",
+   "제44조(휴직)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제47조(휴직의 효력)\n- 제48조의2(휴직자의 복무관리)\n- 제44조(휴직)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X161",
+  "label": "R",
+  "style": "일상어",
+  "query": "교사 때랑 정년 나이가 다른가요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "직원의 정년은 60세로 한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제52조(정년) · 2025-12-22 개정\n“직원의 정년은 60세로 한다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X101",
+  "label": "R",
+  "style": "일상어",
+  "query": "특별히 잘한 직원을 빨리 승진시킬 수 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "사장은 근무성적이 우수하고 공사에 현저한 공로가 있다고 인정되는 자 중 특히 필요한 경우에는 제33조의 규정에도 불구하고 인사위원회의 심의를 거쳐 특별승진 시킬 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제37조(특별승진) · 2025-12-22 개정\n“사장은 근무성적이 우수하고 공사에 현저한 공로가 있다고 인정되는 자 중 특히 필요한 경우에는 제33조의 규정에도 불구하고 인사위원회의 심의를 거쳐 특별승진 시킬 수 있다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X167",
+  "label": "R",
+  "style": "일상어",
+  "query": "교감 경력이 있어도 직급은 처음부터 시작해요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제39조의2(직원의 승격)",
+   "제35조(승진소요 최저년수)",
+   "제62조(징계의 종류)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제39조의2(직원의 승격)\n- 제35조(승진소요 최저년수)\n- 제62조(징계의 종류)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X073",
+  "label": "R",
+  "style": "전문용어",
+  "query": "직속 부하 심의 시 위원 제척 대상인가요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제10조(의사 및 의결)",
+   "제6조(인사위원회 종류 및 구성)",
+   "제60조(포상자의 결정)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "5. 위원장이 유고시 갑급 인사위원회는 「직제규정」이 정하는 순서에 따라, 을급 인사위원회는 인사담당부서장이 위원장의 직무를 수행한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 1,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제10조(의사 및 의결)\n- 제6조(인사위원회 종류 및 구성)\n- 제60조(포상자의 결정)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X133",
+  "label": "R",
+  "style": "전문용어",
+  "query": "의사정족수와 의결정족수 산정 기준은?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제10조(의사 및 의결)",
+   "제14조(시행)",
+   "제34조(승진후보자 명부작성)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제10조(의사 및 의결)\n- 제14조(시행)\n- 제34조(승진후보자 명부작성)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X013",
+  "label": "R",
+  "style": "전문용어",
+  "query": "수습기간도 승진소요최저연수에 산입되나요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제35조(승진소요 최저년수)",
+   "제37조의2(근속승진)",
+   "제21조(수습)"
+  ],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제35조(승진소요 최저년수)\n- 제37조의2(근속승진)\n- 제21조(수습)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X012",
+  "label": "R",
+  "style": "전문용어",
+  "query": "임용 결격사유는 어느 시점을 기준으로 판단하나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "① 다음 각 호의 1에 해당하는 자는 직원에 임용될 수 없다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제20조(결격사유) · 2025-12-22 개정\n“① 다음 각 호의 1에 해당하는 자는 직원에 임용될 수 없다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X172",
+  "label": "R",
+  "style": "전문용어",
+  "query": "육아휴직 분할 사용의 허용 횟수는?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "제44조제5호의 경우에는 3년 이내의 기간으로 하되, 3회에 한하여 분할 사용할 수 있다. 이 경우 임신 중인 여성 근로자가 모성보호를 위하여 육아휴직을 사용한 횟수는 육아휴직을 나누어 사용한 횟수에 포함하지 아니한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제46조(휴직기간) · 2025-12-22 개정\n“제44조제5호의 경우에는 3년 이내의 기간으로 하되, 3회에 한하여 분할 사용할 수 있다. 이 경우 임신 중인 여성 근로자가 모성보호를 위하여 육아휴직을 사용한 횟수는 육아휴직을 나누어 사용한 횟수에 포함하지 아니한다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X014",
+  "label": "R",
+  "style": "전문용어",
+  "query": "경고와 견책은 인사기록상 어떻게 구분되나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "6. 견책 : 전과에 대하여 훈계하고 회개하게 한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제62조(징계의 종류) · 2025-12-22 개정\n“6. 견책 : 전과에 대하여 훈계하고 회개하게 한다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X074",
+  "label": "R",
+  "style": "전문용어",
+  "query": "수습평가 부적격 판정에 필요한 절차는?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "② 신규 채용자로서 수습기간 중에 있는 자는 그 기간 중 근무성적(연수 또는 실습성적 포함)이 불량하거나 직원으로서 자질이 부적합하다고 인정될 때에는 임용권자는 그 임용을 취소할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제21조(수습) · 2025-12-22 개정\n“② 신규 채용자로서 수습기간 중에 있는 자는 그 기간 중 근무성적(연수 또는 실습성적 포함)이 불량하거나 직원으로서 자질이 부적합하다고 인정될 때에는 임용권자는 그 임용을 취소할 수 있다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X112",
+  "label": "R",
+  "style": "전문용어",
+  "query": "서면의결이 허용되는 심의 안건의 범위는?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": true,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "제11조(서면결의) 위원장은 위원회 심의사항중 경미한 사항이나 긴급한 집행사항에 관하여는 사장의 승인을 받아 서면결의를 할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제11조(서면결의) · 2025-12-22 개정\n“제11조(서면결의) 위원장은 위원회 심의사항중 경미한 사항이나 긴급한 집행사항에 관하여는 사장의 승인을 받아 서면결의를 할 수 있다.”\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X173",
+  "label": "R",
+  "style": "전문용어",
+  "query": "가족돌봄휴직 기간은 승진소요연수에서 제외되나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 2,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "휴직기간은 근무년수에 산입하지 아니한다. 다만, 다음 각 호의 경우에는 휴직기간을 근무년수에 산입한다."
+     },
+     {
+      "source": 3,
+      "text": "승호기간에는 다음 각 호 1의 기간은 포함되지 아니한다. 1. 휴직기간"
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 2,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제47조(휴직의 효력) · 2025-12-22 개정\n“휴직기간은 근무년수에 산입하지 아니한다. 다만, 다음 각 호의 경우에는 휴직기간을 근무년수에 산입한다.”\n\n■ 제41조(승호제외기간) · 2025-12-22 개정\n“승호기간에는 다음 각 호 1의 기간은 포함되지 아니한다. 1. 휴직기간”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X055",
+  "label": "W",
+  "style": "상황설명",
+  "query": "배우자가 다른 지역에서 일하게 됐어요. 같이 살 수 있게 근무지 변경을 요청하고 싶어요.",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X155",
+  "label": "W",
+  "style": "상황설명",
+  "query": "전에 맡던 학생 동아리에서 계속 지도해 달래요. 퇴근 후 무료로 돕는 것도 신고해야 하나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "직무상의 의무",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "직무상의 의무",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 직무상의 의무 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X031",
+  "label": "W",
+  "style": "오타",
+  "query": "블로그 광고수익도 신고해야됨?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "상벌규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "상벌규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 상벌규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X171",
+  "label": "W",
+  "style": "오타",
+  "query": "교재 감수료 받앗는데 사후신고 되나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X068",
+  "label": "W",
+  "style": "오타",
+  "query": "팀원이 연락두절인데 퇴사처리 되나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X048",
+  "label": "W",
+  "style": "오타",
+  "query": "쉬다오면 원래자리로 복귀되는거죠?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X144",
+  "label": "W",
+  "style": "일상어",
+  "query": "학교에서 일한 경력도 여기서 인정돼요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X181",
+  "label": "W",
+  "style": "일상어",
+  "query": "육아휴직 끝나기 전에 먼저 돌아가도 돼요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제46조(휴직기간)",
+   "제47조의2(휴직자 등의 현원 관리 원칙)",
+   "제47조(휴직의 효력)"
+  ],
+  "w_candidate_hit": false,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제46조(휴직기간)\n- 제47조의2(휴직자 등의 현원 관리 원칙)\n- 제47조(휴직의 효력)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X005",
+  "label": "W",
+  "style": "일상어",
+  "query": "집에서 너무 먼데 근무지 바꿀 수 있나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X044",
+  "label": "W",
+  "style": "일상어",
+  "query": "퇴사 날짜는 제가 정할 수 있어요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "무관",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요."
+ },
+ {
+  "qid": "X163",
+  "label": "W",
+  "style": "일상어",
+  "query": "교직으로 돌아가려고 그만두면 따로 낼 게 있나요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X045",
+  "label": "W",
+  "style": "일상어",
+  "query": "제 승진 심사에 누가 들어가는지 알 수 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 2,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "승진인원은 결원 및 예상결원과 증원인원을 고려하여 인사위원회의 심의를 거친 후 사장이 결정한다."
+     },
+     {
+      "source": 1,
+      "text": "직원 승진은 바로 하위직급 직원의 승진후보자 명부 중 인사위원회 심의를 거쳐 확정된 2배수 범위 내에서 사장이 임용한다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 2,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제33조(승진방법) · 2025-12-22 개정\n“승진인원은 결원 및 예상결원과 증원인원을 고려하여 인사위원회의 심의를 거친 후 사장이 결정한다.”\n\n■ 제33조(승진방법) · 2025-12-22 개정\n“직원 승진은 바로 하위직급 직원의 승진후보자 명부 중 인사위원회 심의를 거쳐 확정된 2배수 범위 내에서 사장이 임용한다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X186",
+  "label": "W",
+  "style": "일상어",
+  "query": "간병 때문에 휴직 중인데 그대로 퇴사해도 돼요?",
+  "decision": "REFUSE_SCOPE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "보수규정",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "다른규정",
+    "other_rule": "보수규정",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "이 내용은 한국가스안전공사 인사규정이 아니라 보수규정 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
+ },
+ {
+  "qid": "X004",
+  "label": "W",
+  "style": "일상어",
+  "query": "지각 한 번으로 징계받기도 해요?",
+  "decision": "REFUSE_NO_EVIDENCE",
+  "grounded": true,
+  "n_quotes": 0,
+  "other_rule": "",
+  "candidates": [
+   "제62조(징계의 종류)",
+   "제63조(징계행위 보고)",
+   "제61조의2(재징계 의결 등의 요구)"
+  ],
+  "w_candidate_hit": true,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": []
+   },
+   "relinked": 0,
+   "verified": 0,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 질문에 대한 답을 찾지 못했습니다.\n혹시 다음 조항을 찾으시나요?\n- 제62조(징계의 종류)\n- 제63조(징계행위 보고)\n- 제61조의2(재징계 의결 등의 요구)\n필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
+ },
+ {
+  "qid": "X113",
+  "label": "W",
+  "style": "전문용어",
+  "query": "승진임용 권한을 위임할 수 있나요?",
+  "decision": "ANSWER",
+  "grounded": true,
+  "n_quotes": 1,
+  "other_rule": "",
+  "candidates": [],
+  "w_candidate_hit": null,
+  "sec": 0.0,
+  "trace": {
+   "input": "ok",
+   "subject": null,
+   "llm": {
+    "scope": "인사규정",
+    "other_rule": "",
+    "personal_judgment": false,
+    "fully_answered": false,
+    "quotes": [
+     {
+      "source": 1,
+      "text": "③ 승진임용을 함에 앞서 직무대리를 명할 수 있다."
+     }
+    ]
+   },
+   "relinked": 0,
+   "verified": 1,
+   "rejected": 0,
+   "final_check": "pass",
+   "sec": 0.0
+  },
+  "text": "한국가스안전공사 인사규정에서 찾은 관련 조문입니다.\n\n■ 제29조(직무대리) · 2025-12-22 개정\n“③ 승진임용을 함에 앞서 직무대리를 명할 수 있다.”\n\n※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다.\n\n※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
+ }
+]

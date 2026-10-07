@@ -1,0 +1,180 @@
+{
+ "split": "all",
+ "model": "qwen2.5:7b-instruct",
+ "g1": "none",
+ "g2": true,
+ "relax": false,
+ "n": 104,
+ "refusal_recall": 0.9149,
+ "refusal_recall_OUT": 0.95,
+ "refusal_recall_NA": 0.8889,
+ "false_refusal": 0.4762,
+ "ungrounded_answers": 0,
+ "n_answers": 28,
+ "n_must_refuse": 47,
+ "n_must_answer": 42,
+ "W": {
+  "n": 15,
+  "refused": 13,
+  "candidate_hit_when_refused": 1
+ },
+ "by_label": {
+  "R": {
+   "ANSWER": 22,
+   "REFUSE_SCOPE": 5,
+   "REFUSE_NO_EVIDENCE": 15
+  },
+  "W": {
+   "REFUSE_SCOPE": 11,
+   "REFUSE_NO_EVIDENCE": 2,
+   "ANSWER": 2
+  },
+  "NA": {
+   "REFUSE_SUBJECT": 5,
+   "REFUSE_SCOPE": 11,
+   "ANSWER": 3,
+   "REFUSE_NO_EVIDENCE": 8
+  },
+  "OUT": {
+   "REFUSE_SCOPE": 16,
+   "REFUSE_SUBJECT": 3,
+   "ANSWER": 1
+  }
+ },
+ "by_style_false_refusal": {
+  "상황설명": 0.6667,
+  "오타": 0.6,
+  "일상어": 0.4118,
+  "전문용어": 0.3333
+ },
+ "leaked": [
+  {
+   "qid": "X076",
+   "label": "NA",
+   "query": "핵심 업무 담당자 둘이 동시에 발령 났어요. 인수인계 때문에 한 명의 이동을 늦출 수 있나요?"
+  },
+  {
+   "qid": "X042",
+   "label": "NA",
+   "query": "예전에 받은 징계 기록은 언제 지워져요?"
+  },
+  {
+   "qid": "X153",
+   "label": "NA",
+   "query": "전 직장 징계처분이 현 직장 승진을 제한하나요?"
+  },
+  {
+   "qid": "X078",
+   "label": "OUT",
+   "query": "정년 앞둔 팀원은 임금이 언제부터 줄어요?"
+  }
+ ],
+ "false_refused": [
+  {
+   "qid": "X036",
+   "query": "대학원에 붙었는데 수업이 평일이에요. 학업 때문에 일 년 쉬는 것도 가능한가요?",
+   "decision": "REFUSE_SCOPE"
+  },
+  {
+   "qid": "X175",
+   "query": "아버지 수술 날짜가 갑자기 잡혔어요. 이번 주부터 간병하려면 휴직을 바로 시작할 수 있나요?",
+   "decision": "REFUSE_SCOPE"
+  },
+  {
+   "qid": "X195",
+   "query": "복직하기로 한 부서가 조직 개편으로 없어졌어요. 아이 등원 때문에 먼 곳은 어려운데 배치를 협의할 수 있나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X056",
+   "query": "다음 직장 출근일이 잡혔어요. 후임이 올 때까지 퇴사를 못 하게 할 수도 있나요?",
+   "decision": "REFUSE_SCOPE"
+  },
+  {
+   "qid": "X190",
+   "query": "간병휴직중 명퇴신청 가능해여?",
+   "decision": "REFUSE_SCOPE"
+  },
+  {
+   "qid": "X050",
+   "query": "전보희망 안냈는데 발령날수있음?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X169",
+   "query": "학교서 명퇴햇어도 여기 명퇴 또되나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X091",
+   "query": "보직 바뀌면 임기도 리셋되나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X170",
+   "query": "교사자격증 인사기록에 올려야됨?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X168",
+   "query": "인사위에 노조사람도 들어가나여?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X041",
+   "query": "자격증 따면 승진할 때 유리해요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X187",
+   "query": "출산 직후라 위원회 출석이 힘든데 어떡하죠?",
+   "decision": "REFUSE_SCOPE"
+  },
+  {
+   "qid": "X025",
+   "query": "돈 안 받는 외부 활동도 허락받아요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X183",
+   "query": "아이 응급실 가느라 연락 못 했는데 징계받아요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X064",
+   "query": "다른 팀으로 보낼 직원을 제가 정해도 되나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X061",
+   "query": "팀원이 갑자기 쉬겠다는데 제가 막을 수 있나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X167",
+   "query": "교감 경력이 있어도 직급은 처음부터 시작해요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X073",
+   "query": "직속 부하 심의 시 위원 제척 대상인가요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X133",
+   "query": "의사정족수와 의결정족수 산정 기준은?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X013",
+   "query": "수습기간도 승진소요최저연수에 산입되나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  }
+ ],
+ "sec_mean": 0.0,
+ "targets": {
+  "refusal_recall": ">=0.95",
+  "false_refusal": "0",
+  "ungrounded_answers": "0"
+ }
+}

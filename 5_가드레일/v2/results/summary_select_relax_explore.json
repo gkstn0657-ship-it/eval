@@ -1,0 +1,137 @@
+{
+ "split": "select",
+ "model": "qwen2.5:7b-instruct",
+ "g1": "none",
+ "g2": false,
+ "relax": true,
+ "n": 56,
+ "refusal_recall": 0.9231,
+ "refusal_recall_OUT": 1.0,
+ "refusal_recall_NA": 0.8667,
+ "false_refusal": 0.6364,
+ "ungrounded_answers": 0,
+ "n_answers": 11,
+ "n_must_refuse": 26,
+ "n_must_answer": 22,
+ "W": {
+  "n": 8,
+  "refused": 7,
+  "candidate_hit_when_refused": 1
+ },
+ "by_label": {
+  "R": {
+   "REFUSE_NO_EVIDENCE": 14,
+   "ANSWER": 8
+  },
+  "W": {
+   "REFUSE_NO_EVIDENCE": 4,
+   "REFUSE_SCOPE": 3,
+   "ANSWER": 1
+  },
+  "NA": {
+   "REFUSE_NO_EVIDENCE": 7,
+   "REFUSE_SCOPE": 6,
+   "ANSWER": 2
+  },
+  "OUT": {
+   "REFUSE_SCOPE": 10,
+   "REFUSE_NO_EVIDENCE": 1
+  }
+ },
+ "by_style_false_refusal": {
+  "상황설명": 1.0,
+  "오타": 0.8,
+  "일상어": 0.5556,
+  "전문용어": 0.4
+ },
+ "leaked": [
+  {
+   "qid": "X153",
+   "label": "NA",
+   "query": "전 직장 징계처분이 현 직장 승진을 제한하나요?"
+  },
+  {
+   "qid": "X114",
+   "label": "NA",
+   "query": "상근임원의 영리업무 제한 범위는?"
+  }
+ ],
+ "false_refused": [
+  {
+   "qid": "X056",
+   "query": "다음 직장 출근일이 잡혔어요. 후임이 올 때까지 퇴사를 못 하게 할 수도 있나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X176",
+   "query": "수습 중인데 임신한 걸 알았어요. 출산 때문에 자리를 비우면 수습 종료가 늦어지나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X175",
+   "query": "아버지 수술 날짜가 갑자기 잡혔어요. 이번 주부터 간병하려면 휴직을 바로 시작할 수 있나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X169",
+   "query": "학교서 명퇴햇어도 여기 명퇴 또되나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X089",
+   "query": "비상근 자리 하나 더 맡아도됨?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X190",
+   "query": "간병휴직중 명퇴신청 가능해여?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X168",
+   "query": "인사위에 노조사람도 들어가나여?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X183",
+   "query": "아이 응급실 가느라 연락 못 했는데 징계받아요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X187",
+   "query": "출산 직후라 위원회 출석이 힘든데 어떡하죠?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X061",
+   "query": "팀원이 갑자기 쉬겠다는데 제가 막을 수 있나요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X041",
+   "query": "자격증 따면 승진할 때 유리해요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X025",
+   "query": "돈 안 받는 외부 활동도 허락받아요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X073",
+   "query": "직속 부하 심의 시 위원 제척 대상인가요?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  },
+  {
+   "qid": "X133",
+   "query": "의사정족수와 의결정족수 산정 기준은?",
+   "decision": "REFUSE_NO_EVIDENCE"
+  }
+ ],
+ "sec_mean": 5.89,
+ "targets": {
+  "refusal_recall": ">=0.95",
+  "false_refusal": "0",
+  "ungrounded_answers": "0"
+ }
+}
