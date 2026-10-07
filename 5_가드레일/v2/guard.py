@@ -79,8 +79,10 @@ class OllamaLLM:
     def __init__(self, model, host="http://127.0.0.1:11434", num_ctx=8192):
         self.model, self.host, self.num_ctx = model, host, num_ctx
     def __call__(self, system, user):
-        body = {"model": self.model, "stream": False, "format": EVIDENCE_SCHEMA, "keep_alive": "30m",
-                "options": {"temperature": 0, "num_ctx": self.num_ctx, "num_predict": 1200},
+        import os
+        opts = {"temperature": 0, "num_ctx": self.num_ctx, "num_predict": 1200}
+        if os.environ.get("GEN_NUM_GPU"): opts["num_gpu"] = int(os.environ["GEN_NUM_GPU"])  # GPU 층 수 강제(속도만 영향)
+        body = {"model": self.model, "stream": False, "format": EVIDENCE_SCHEMA, "keep_alive": "30m", "options": opts,
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
         req = urllib.request.Request(self.host + "/api/chat", data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=1800) as r:

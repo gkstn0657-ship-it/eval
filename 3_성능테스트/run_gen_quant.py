@@ -26,7 +26,9 @@ OLLAMA = "http://127.0.0.1:11434"
 SETS = [("dev", ROOT / "1_데이터셋/06_eval/goldenset_dev.jsonl"), ("employee", ROOT / "1_데이터셋/06_eval/goldenset_employee.jsonl")]
 
 def chat(model, system, user, num_predict=600, fmt=None):
-    body = {"model": model, "stream": False, "keep_alive": "30m", "options": {"temperature": 0, "num_ctx": 4096, "num_predict": num_predict},
+    opts = {"temperature": 0, "num_ctx": 4096, "num_predict": num_predict}
+    if os.environ.get("GEN_NUM_GPU"): opts["num_gpu"] = int(os.environ["GEN_NUM_GPU"])  # GPU 에 올릴 층 수 강제 (Ollama 기본 추정이 보수적일 때). 계산 결과는 같고 속도만 바뀐다
+    body = {"model": model, "stream": False, "keep_alive": "30m", "options": opts,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
     if fmt: body["format"] = fmt
     req = urllib.request.Request(OLLAMA + "/api/chat", data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
