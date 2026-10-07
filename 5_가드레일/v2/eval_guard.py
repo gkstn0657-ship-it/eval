@@ -1,25 +1,30 @@
 # -*- coding: utf-8 -*-
-"""가드레일 v2 평가 실행기. 외부 질문 200건(사람 라벨)을 설계용(dev)·봉인용(sealed)으로 나눠 정책 지표를 잰다.
+"""가드레일 v2/v3 평가 실행기. 외부 질문 200건(사람 라벨)으로 정책 지표를 잰다.
 
 라벨: R 답해야 함, W 답이 있는데 검색 실패, NA 규정에 답 없음, OUT 범위 밖
 지표 (정책 5절)
-  거절 재현율 = (NA+OUT 중 거절) / (NA+OUT)          목표 95% 이상
-  오거절률    = (R 중 거절·되묻기) / R                  목표 0%
-  근거 없는 답변 = ANSWER 중 최종 검사 실패 건수         목표 0건 (구조적으로 0 이어야 함)
-  W: 오거절로 세지 않고, 거절 시 후보 3개에 정답 조항이 있었는지 따로 잰다
+  거부율(거절 재현율) = (NA+OUT 중 거부) / (NA+OUT)      목표 95% 이상
+  오거부율            = (R 중 거부·되묻기) / R             목표 0%
+  근거 없는 답변      = ANSWER 중 최종 검사 실패 건수       목표 0건
+  W: 오거부로 세지 않고, 거부 시 후보 3개에 정답 조항이 있었는지 따로 잰다
 검색은 다시 돌리지 않는다. 기존 측정(results_astra, hybrid_prefilter)의 상위 5개 조문을 그대로 쓴다.
 
-사용: python eval_guard.py [--model qwen2.5:7b-instruct] [--limit N]
-      python eval_guard.py --sealed --confirm-open   (봉인셋 1회 개봉. 개봉 기록이 남는다)
+사용: python eval_guard.py [--model qwen2.5:7b-instruct] [--half select|check|all] [--g1 s1|s1p|none] [--g2] [--relax] [--tag 이름] [--limit N]
+      python eval_guard.py --sealed --confirm-open ...   (봉인셋 1회 개봉. 개봉 기록이 남는다)
+  --half   : split2.json 의 선택용(select)/점검용(check). 기본 all(설계용 104)
+  --g1     : 범위 판정. s1 = 7B + 장 제목·위임 규정 목록, s1p = 7B 질문만, none = 끔(v2 와 동일)
+  --g2     : 적용 대상 규칙 켬
+  --relax  : 추출 프롬프트 완화 (G1 또는 G2 와 함께만 쓸 것)
 """
 import json, sys, time, glob, random, collections, re
 from pathlib import Path
-from guard import Guard, OllamaLLM, verify_grounded, ANSWER, REFUSALS, ASK_ORG, NO_COMPARE
+from guard import Guard, OllamaLLM, ScopeClassifier, verify_grounded, ANSWER, REFUSALS, ASK_ORG, NO_COMPARE
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent.parent
 A = sys.argv[1:]
 def arg(n, d=None): return A[A.index(n) + 1] if n in A else d
 MODEL = arg("--model", "qwen2.5:7b-instruct"); LIMIT = int(arg("--limit", "0")); SEALED = "--sealed" in A
+HALF = arg("--half", "all"); G1 = arg("--g1", "none"); G2 = "--g2" in A; RELAX = "--relax" in A; TAG = arg("--tag", "")
 OUT = HERE / "results"; OUT.mkdir(exist_ok=True)
 
 # ---------------------------------------------------------------- 데이터
@@ -33,10 +38,14 @@ def article(aid):
     rs = chunks[aid]; r0 = rs[0]
     return {"org": r0["org"], "label": f"{r0['article_no']}({r0.get('article_title') or ''})", "revision_date": r0["revision_date"] or "",
             "text": " ".join(x["text"] for x in rs), "id": aid}
-DELEG = {}
+DELEG, SECTIONS, SCOPE_ART = {}, collections.defaultdict(list), {}
 for f in glob.glob(str(ROOT / "1_데이터셋/05_clean/L2/*/*/*.meta.json")):
     m = json.load(open(f, encoding="utf-8"))
-    if m.get("is_latest"): DELEG[m["org"]] = sorted({d.strip() for d in m.get("delegated_to", []) if "이 규정" not in d and re.fullmatch(r"[가-힣A-Za-z·\s]{2,14}(규정|규칙|지침|요령|세칙)", d.strip())})  # 규정 이름만
+    if m.get("is_latest"): DELEG[m["org"]] = sorted({d.strip() for d in m.get("delegated_to", []) if "이 규정" not in d and re.fullmatch(r"[가-힣A-Za-z·\s]{2,14}(규정|규칙|지침|요령|세칙)", d.strip())})
+for l in open(ROOT / "1_데이터셋/05_clean/L2/index_A_latest_only.jsonl", encoding="utf-8"):
+    r = json.loads(l); sp = (r.get("section_path") or "").strip()
+    if sp and sp not in SECTIONS[r["org"]]: SECTIONS[r["org"]].append(sp)
+    if re.search(r"적용\s*범위|적용\s*대상", r.get("article_title") or "") and r["org"] not in SCOPE_ART: SCOPE_ART[r["org"]] = r["text"]
 
 # ---------------------------------------------------------------- 분할 (한 번 만들면 고정)
 SPLIT = HERE / "split.json"
@@ -52,32 +61,48 @@ if not SPLIT.exists():
 split = json.load(open(SPLIT, encoding="utf-8"))
 if SEALED:
     if "--confirm-open" not in A: sys.exit("봉인셋은 --confirm-open 을 함께 줘야 연다.")
-    log = HERE / "sealed_open.log"
-    with open(log, "a", encoding="utf-8") as f: f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} 개봉 model={MODEL}\n")
-qids = split["sealed" if SEALED else "dev"][: LIMIT or None]
+    with open(HERE / "sealed_open.log", "a", encoding="utf-8") as f: f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} 개봉 model={MODEL} g1={G1} g2={G2} relax={RELAX}\n")
+    qids = split["sealed"]
+elif HALF in ("select", "check"):
+    qids = json.load(open(HERE / "split2.json", encoding="utf-8"))[HALF]
+else:
+    qids = split["dev"]
+qids = qids[: LIMIT or None]
 
-# ---------------------------------------------------------------- 실행 (LLM 출력은 캐시)
-cache_f = OUT / f"llm_cache_{MODEL.replace(':', '_')}.json"
-cache = json.load(open(cache_f, encoding="utf-8")) if cache_f.exists() else {}
+# ---------------------------------------------------------------- LLM (출력 캐시: 추출은 qid+프롬프트 종류, 범위 판정은 qid+신호 종류)
+mkey = MODEL.replace(":", "_").replace("/", "_")
+cache_f = OUT / f"llm_cache_{mkey}.json"; cache = json.load(open(cache_f, encoding="utf-8")) if cache_f.exists() else {}
+scope_f = OUT / f"scope_cache_{mkey}.json"; scope_cache = json.load(open(scope_f, encoding="utf-8")) if scope_f.exists() else {}
 base = OllamaLLM(MODEL)
 class Cached:
     qid = None
-    def __call__(self, s, u):
-        if self.qid not in cache:
-            cache[self.qid] = base(s, u); json.dump(cache, open(cache_f, "w", encoding="utf-8"), ensure_ascii=False)
-        return cache[self.qid]
-llm = Cached(); g = Guard(llm); rows = []; t0 = time.time()
+    def __call__(self, s, u, schema=None):
+        key = self.qid + ("|relax" if RELAX else "")
+        if key not in cache:
+            cache[key] = base(s, u, schema); json.dump(cache, open(cache_f, "w", encoding="utf-8"), ensure_ascii=False)
+        return cache[key]
+class ScopeLLM:
+    qid = None
+    def __call__(self, s, u, schema=None):
+        key = f"{self.qid}|{G1}"
+        if key not in scope_cache:
+            scope_cache[key] = base(s, u, schema); json.dump(scope_cache, open(scope_f, "w", encoding="utf-8"), ensure_ascii=False)
+        return scope_cache[key]
+llm = Cached(); sllm = ScopeLLM()
+scope_clf = ScopeClassifier(sllm, with_lists=(G1 == "s1")) if G1 in ("s1", "s1p") else None
+g = Guard(llm, scope_classifier=scope_clf, subject_check=G2, relaxed=RELAX)
+
+rows = []; t0 = time.time()
 for i, qid in enumerate(qids, 1):
     q = gold[qid]; org = q["context_org"]; arts = [article(a) for a in pq[qid]["top5"]]
-    llm.qid = qid
-    r = g.respond(q["query"], org, arts, DELEG.get(org, []))
+    llm.qid = sllm.qid = qid
+    r = g.respond(q["query"], org, arts, DELEG.get(org, []), sections=SECTIONS.get(org, []), scope_article_text=SCOPE_ART.get(org, ""))
     grounded = verify_grounded(r, org, arts)
     lab = labels[qid]["label"]; note = labels[qid].get("note", "")
     m = re.search(r"제\s*\d+\s*조(?:의\s*\d+)?", note or ""); want = m.group(0).replace(" ", "") if m else None
     rows.append({"qid": qid, "label": lab, "style": q["style"], "query": q["query"], "decision": r.decision, "grounded": grounded,
                  "n_quotes": len(r.quotes), "other_rule": r.other_rule, "candidates": r.candidates,
                  "w_candidate_hit": (any(c.startswith(want) for c in r.candidates) if (lab == "W" and want and r.candidates) else None),
-                 "retrieved_hit": (any(a["label"].startswith(want) for a in arts) if (lab == "W" and want) else None),
                  "sec": r.trace.get("sec"), "trace": r.trace, "text": r.text})
     print(f"[{i}/{len(qids)}] {qid} {lab:3} → {r.decision:18} quotes={len(r.quotes)} ({time.time()-t0:.0f}s) | {q['query'][:30]}", flush=True)
 
@@ -85,8 +110,10 @@ for i, qid in enumerate(qids, 1):
 def rate(n, d): return None if d == 0 else round(n / d, 4)
 must_refuse = [x for x in rows if x["label"] in ("NA", "OUT")]; must_answer = [x for x in rows if x["label"] == "R"]; w = [x for x in rows if x["label"] == "W"]
 answers = [x for x in rows if x["decision"] == ANSWER]
-S = {"split": "sealed" if SEALED else "dev", "model": MODEL, "n": len(rows),
+S = {"split": "sealed" if SEALED else HALF, "model": MODEL, "g1": G1, "g2": G2, "relax": RELAX, "n": len(rows),
      "refusal_recall": rate(sum(x["decision"] in REFUSALS for x in must_refuse), len(must_refuse)),
+     "refusal_recall_OUT": rate(sum(x["decision"] in REFUSALS for x in must_refuse if x["label"] == "OUT"), sum(x["label"] == "OUT" for x in must_refuse)),
+     "refusal_recall_NA": rate(sum(x["decision"] in REFUSALS for x in must_refuse if x["label"] == "NA"), sum(x["label"] == "NA" for x in must_refuse)),
      "false_refusal": rate(sum(x["decision"] in REFUSALS | {ASK_ORG, NO_COMPARE} for x in must_answer), len(must_answer)),
      "ungrounded_answers": sum(not x["grounded"] for x in answers),
      "n_answers": len(answers), "n_must_refuse": len(must_refuse), "n_must_answer": len(must_answer),
@@ -97,7 +124,7 @@ S = {"split": "sealed" if SEALED else "dev", "model": MODEL, "n": len(rows),
      "false_refused": [{"qid": x["qid"], "query": x["query"], "decision": x["decision"]} for x in must_answer if x["decision"] != ANSWER],
      "sec_mean": round(sum(x["sec"] or 0 for x in rows) / max(1, len(rows)), 2),
      "targets": {"refusal_recall": ">=0.95", "false_refusal": "0", "ungrounded_answers": "0"}}
-tag = f"{S['split']}_{MODEL.replace(':', '_')}" + (f"_n{LIMIT}" if LIMIT else "")
+tag = TAG or f"{S['split']}_{mkey}_g1-{G1}{'_g2' if G2 else ''}{'_relax' if RELAX else ''}" + (f"_n{LIMIT}" if LIMIT else "")
 json.dump(rows, open(OUT / f"rows_{tag}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 json.dump(S, open(OUT / f"summary_{tag}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print(json.dumps({k: v for k, v in S.items() if k not in ("leaked", "false_refused")}, ensure_ascii=False, indent=1))
+print(json.dumps({k: v for k, v in S.items() if k not in ("leaked", "false_refused", "by_style_false_refusal")}, ensure_ascii=False, indent=1))

@@ -20,14 +20,16 @@ ANSWER = "ANSWER"                    # 검증된 근거로 답변
 REFUSE_SCOPE = "REFUSE_SCOPE"        # R1 범위 밖 (다른 규정 소관·무관)
 REFUSE_NO_EVIDENCE = "REFUSE_NO_EVIDENCE"  # R2 조문에서 답을 찾지 못함
 REFUSE_ABUSE = "REFUSE_ABUSE"        # R6 지시 무력화 시도
+REFUSE_SUBJECT = "REFUSE_SUBJECT"    # 질문 대상(임원 등)이 규정 적용 대상이 아님 (G2)
 ASK_ORG = "ASK_ORG"                  # R4 기관 불명 → 되묻기
 NO_COMPARE = "NO_COMPARE"            # R4 기관 비교 질문 → 미지원 안내
-REFUSALS = {REFUSE_SCOPE, REFUSE_NO_EVIDENCE, REFUSE_ABUSE}
+REFUSALS = {REFUSE_SCOPE, REFUSE_NO_EVIDENCE, REFUSE_ABUSE, REFUSE_SUBJECT}
 
 DISCLAIMER = "※ 인사규정 원문을 그대로 보여드린 참고 정보입니다. 실제 적용 여부는 인사부서에 확인해 주세요."
 PII_WARNING = "※ 질문에 개인정보(주민등록번호·전화번호)가 포함되어 있습니다. 개인정보는 입력하지 마세요."
 PERSONAL_NOTE = "※ 특정인의 결과(징계 수위, 면직 여부 등)는 규정만으로 단정할 수 없습니다. 아래 조문을 참고하고 인사부서에 확인해 주세요."
 PARTIAL_NOTE = "※ 질문 중 아래 조문에 없는 부분은 이 인사규정에 명시되어 있지 않습니다."
+SEE_RAW_NOTE = "필요하면 위 후보 조항의 원문을 그대로 확인할 수 있습니다. (원문 보기)"
 
 # ---------------------------------------------------------------- 1단계 규칙
 INJECTION = [r"(이전|앞의|위의|기존|모든)\s*(지시|명령|규칙|프롬프트|설정)\S*\s*.{0,6}(무시|잊|따르지)",
@@ -70,6 +72,53 @@ EVIDENCE_SYSTEM = """너는 공공기관 인사규정의 근거 추출기다. �
 7. personal_judgment: 특정인의 결과(징계 수위, 해고·면직 여부, 승진 여부 등)를 단정해 달라는 질문이면 true.
 8. fully_answered: 복사한 문장들로 질문에 빠짐없이 답이 되면 true, 일부만 답이 되면 false. quotes 가 비면 false."""
 
+# ---------------------------------------------------------------- G1 범위 판정 (조문을 보지 않고 질문만)
+SCOPE_SCHEMA = {"type": "object", "properties": {"scope": {"type": "string", "enum": ["인사규정", "다른규정", "무관"]}, "other_rule": {"type": "string"},
+                "confidence": {"type": "number"}}, "required": ["scope", "other_rule", "confidence"]}
+SCOPE_SYSTEM = """너는 공공기관 직원 질문을 분류한다. JSON 만 출력한다. 조문은 보지 않고 질문만 보고 판단한다.
+
+scope:
+- "인사규정": 채용·수습, 임용·발령·보직, 승진·승격, 전보·전직, 휴직·복직, 직위해제, 징계의 절차와 종류, 퇴직·정년·면직, 인사위원회, 겸직·영리업무, 인사기록 등 인사규정 본문이 정하는 사항.
+- "다른규정": 보수·급여·수당·성과급, 연차·휴가·근무시간·출퇴근 등 복무, 여비·출장비, 복리후생·복지포인트, 교육훈련 세부, 퇴직금·연금 등 다른 규정이 정하는 사항. [위임 규정 목록]에 있는 주제.
+- "무관": 규정과 관계없는 질문(시설, IT, 잡담, 법률 자문 요청 등).
+other_rule: scope 가 "다른규정"이면 [위임 규정 목록]에서 가장 맞는 규정 이름을 그대로. 목록에 없으면 짐작되는 규정 이름. 그 외 "".
+confidence: 0~1. 판단이 확실할수록 1."""
+def build_scope_prompt(query, org, sections=(), delegated=(), with_lists=True):
+    body = f"[질문]\n{query}\n\n[질문자 소속 기관]\n{org}"
+    if with_lists:
+        body += "\n\n[이 기관 인사규정의 장 제목]\n" + ("\n".join(f"- {x}" for x in sections) or "- (없음)")
+        body += "\n\n[위임 규정 목록]\n" + ("\n".join(f"- {x}" for x in delegated) or "- (없음)")
+    return body
+
+class ScopeClassifier:
+    """G1. llm 은 (system, user, schema) 를 받아 JSON 문자열을 돌려주는 호출 가능 객체."""
+    def __init__(self, llm, with_lists=True): self.llm, self.with_lists = llm, with_lists
+    def __call__(self, query, org, sections=(), delegated=()):
+        raw = self.llm(SCOPE_SYSTEM, build_scope_prompt(query, org, sections, delegated, self.with_lists), SCOPE_SCHEMA)
+        try:
+            d = json.loads(raw); assert d.get("scope") in ("인사규정", "다른규정", "무관")
+            d["confidence"] = float(d.get("confidence") or 0.0); d["other_rule"] = str(d.get("other_rule") or "").strip(); return d
+        except Exception:
+            return {"scope": "인사규정", "other_rule": "", "confidence": 0.0, "parse_error": raw[:120]}  # 실패 시 통과(거부하지 않음). 기록만
+
+# ---------------------------------------------------------------- G2 적용 대상 판정 (규칙)
+SUBJECT_RE = re.compile(r"(상근\s*)?임원|비정규직|계약직|파견(직|근로자)?|퇴직자|퇴직한\s*(사람|직원)|지원자|응시자|외부\s*(인|강사|위원)|협력(사|업체)\s*(직원)?|인턴|아르바이트|알바생")
+def subject_out_of_scope(query, scope_article_text=""):
+    """질문에 적용 대상 밖 주체가 있고, 기관의 적용 범위 조항이 그 주체를 포함한다고 적지 않았으면 그 주체를 돌려준다."""
+    m = SUBJECT_RE.search(query)
+    if not m: return None
+    subj = re.sub(r"\s", "", m.group(0))
+    key = "임원" if "임원" in subj else subj[:2]
+    if scope_article_text and re.search(key + r".{0,12}(포함|적용|준용)", scope_article_text): return None
+    return subj
+
+# ---------------------------------------------------------------- 완화 추출 프롬프트 (G3 완화, G1·G2 채택 시에만)
+EVIDENCE_SYSTEM_RELAXED = EVIDENCE_SYSTEM.replace(
+    "3. 질문에 직접 답이 되는 문장만 넣는다. 주제가 비슷할 뿐 답이 아니면 넣지 않는다.",
+    "3. 질문의 전부 또는 일부에 답이 되는 문장을 넣는다. 질문이 묻는 사항(기간·요건·절차·대상·효과)을 정하는 문장이면 넣는다. 질문과 주제만 같고 묻는 사항을 정하지 않는 문장은 넣지 않는다.\n"
+    "   예) 질문 \"육아휴직 얼마나 쓸 수 있어요?\" → 휴직 기간을 정한 항을 복사. 질문 \"징계 받으면 승진 못 해요?\" → 승진 제한 사유 중 징계 관련 호를 복사.")
+assert EVIDENCE_SYSTEM_RELAXED != EVIDENCE_SYSTEM
+
 def build_user_prompt(query, org, delegated, articles):
     deleg = "\n".join(f"- {d}" for d in delegated) or "- (없음)"
     arts = "\n\n".join(f"[{i}] {a['org']} 인사규정 {a['label']}\n{a['text']}" for i, a in enumerate(articles, 1))
@@ -78,11 +127,11 @@ def build_user_prompt(query, org, delegated, articles):
 class OllamaLLM:
     def __init__(self, model, host="http://127.0.0.1:11434", num_ctx=8192):
         self.model, self.host, self.num_ctx = model, host, num_ctx
-    def __call__(self, system, user):
+    def __call__(self, system, user, schema=None):
         import os
         opts = {"temperature": 0, "num_ctx": self.num_ctx, "num_predict": 1200}
         if os.environ.get("GEN_NUM_GPU"): opts["num_gpu"] = int(os.environ["GEN_NUM_GPU"])  # GPU 층 수 강제(속도만 영향)
-        body = {"model": self.model, "stream": False, "format": EVIDENCE_SCHEMA, "keep_alive": "30m", "options": opts,
+        body = {"model": self.model, "stream": False, "format": schema or EVIDENCE_SCHEMA, "keep_alive": "30m", "options": opts,
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
         req = urllib.request.Request(self.host + "/api/chat", data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=1800) as r:
@@ -119,9 +168,13 @@ def render_refusal(decision, org="", other_rule="", candidates=(), flags=None):
     if decision == REFUSE_SCOPE:
         body = (f"이 내용은 {org} 인사규정이 아니라 {other_rule} 소관입니다. 해당 규정이나 인사부서에 확인해 주세요."
                 if other_rule else f"이 내용은 {org} 인사규정에서 다루지 않는 사항입니다. 관련 규정이나 담당 부서에 확인해 주세요.")
+        if candidates: body += "\n가장 가까운 인사규정 조항은 다음과 같습니다.\n" + "\n".join(f"- {c}" for c in candidates) + "\n" + SEE_RAW_NOTE
     elif decision == REFUSE_NO_EVIDENCE:
         body = f"{org} 인사규정에서 질문에 대한 답을 찾지 못했습니다."
-        if candidates: body += "\n혹시 다음 조항을 찾으시나요?\n" + "\n".join(f"- {c}" for c in candidates)
+        if candidates: body += "\n혹시 다음 조항을 찾으시나요?\n" + "\n".join(f"- {c}" for c in candidates) + "\n" + SEE_RAW_NOTE
+    elif decision == REFUSE_SUBJECT:
+        body = f"{org} 인사규정은 직원에게 적용됩니다. 질문하신 대상({flags.get('subject', '')})은 별도 규정이나 계약에 따르므로 인사부서에 확인해 주세요."
+        if candidates: body += "\n참고로 관련 조항은 다음과 같습니다.\n" + "\n".join(f"- {c}" for c in candidates) + "\n" + SEE_RAW_NOTE
     elif decision == REFUSE_ABUSE:
         body = "이 요청은 처리할 수 없습니다. 인사규정에 대해 질문해 주세요."
     elif decision == ASK_ORG:
@@ -148,11 +201,13 @@ class Guard:
     MAX_QUOTES = 4
     N_CANDIDATES = 3
 
-    def __init__(self, llm):
-        self.llm = llm
+    def __init__(self, llm, scope_classifier=None, subject_check=False, relaxed=False):
+        """scope_classifier: G1 (None 이면 끔). subject_check: G2 규칙 사용. relaxed: G3 완화 프롬프트."""
+        self.llm, self.scope, self.subject_check, self.relaxed = llm, scope_classifier, subject_check, relaxed
 
-    def respond(self, query, org, articles, delegated=(), compare_ok=False):
-        """query: 질문, org: 확정된 기관(없으면 None), articles: 검색된 조문 [{org,label,revision_date,text}], delegated: 위임 규정 목록."""
+    def respond(self, query, org, articles, delegated=(), compare_ok=False, sections=(), scope_article_text="", scope_result=None):
+        """query: 질문, org: 확정된 기관(없으면 None), articles: 검색된 조문 [{org,label,revision_date,text}], delegated: 위임 규정 목록.
+        sections: 기관 인사규정 장 제목(G1 용), scope_article_text: 적용 범위 조항 본문(G2 용), scope_result: 미리 계산한 G1 결과(있으면 재호출 안 함)."""
         t0 = time.time(); trace = {}
         flags = {"pii": _any(PII, query)}
         # 1단계: 입력 규칙
@@ -163,11 +218,25 @@ class Guard:
             trace["input"] = "R4"; return self._done(Response(d, render_refusal(d, flags=flags), flags=flags, trace=trace), t0)
         trace["input"] = "ok"
         candidates = [f"{a['label']}" for a in articles[: self.N_CANDIDATES]]
+        # G1: 범위 판정 (조문을 보지 않는다). 인사규정이 아니면 안내 거부 + 후보 조항. 애매해도 통과시키지 않는다
+        if self.scope is not None or scope_result is not None:
+            sr = scope_result if scope_result is not None else self.scope(query, org, sections, list(delegated))
+            trace["scope"] = sr
+            if sr.get("scope") in ("다른규정", "무관"):
+                rule = sr.get("other_rule", "") if sr.get("scope") == "다른규정" else ""
+                return self._done(Response(REFUSE_SCOPE, render_refusal(REFUSE_SCOPE, org, rule, candidates=candidates, flags=flags), other_rule=rule, candidates=candidates, flags=flags, trace=trace), t0)
+        # G2: 적용 대상 판정 (규칙)
+        if self.subject_check:
+            subj = subject_out_of_scope(query, scope_article_text)
+            trace["subject"] = subj
+            if subj:
+                flags["subject"] = subj
+                return self._done(Response(REFUSE_SUBJECT, render_refusal(REFUSE_SUBJECT, org, candidates=candidates, flags=flags), candidates=candidates, flags=flags, trace=trace), t0)
         if not articles:
             trace["evidence"] = "no_articles"
             return self._done(Response(REFUSE_NO_EVIDENCE, render_refusal(REFUSE_NO_EVIDENCE, org, flags=flags), flags=flags, trace=trace), t0)
         # 2단계: LLM 근거 추출
-        raw = self.llm(EVIDENCE_SYSTEM, build_user_prompt(query, org, list(delegated), articles))
+        raw = self.llm(EVIDENCE_SYSTEM_RELAXED if self.relaxed else EVIDENCE_SYSTEM, build_user_prompt(query, org, list(delegated), articles))
         try:
             ev = json.loads(raw); assert isinstance(ev, dict)
         except Exception:
