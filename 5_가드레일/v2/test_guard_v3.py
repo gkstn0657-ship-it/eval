@@ -68,6 +68,14 @@ class TestG2Subject(unittest.TestCase):
         r = Guard(llm, subject_check=True).respond("임원도 휴직되나요?", ORG, ARTS, DELEG, scope_article_text="제2조(적용범위) 이 규정은 임원을 포함한 전 직원에게 적용한다.")
         self.assertEqual(r.decision, ANSWER)
 
+    def test_negated_scope_article_still_refuses(self):
+        """'적용하지 않는다'·'포함하지 아니한다'·'제외한다'는 포함이 아니다 (2026-10-12 검토에서 발견)."""
+        for art in ("제2조(적용범위) 이 규정은 임원에게는 적용하지 않는다.",
+                    "제2조(적용범위) 직원이란 정규직을 말하며 계약직은 포함하지 아니한다.",
+                    "제2조(적용범위) 임원은 이 규정의 적용 대상에서 제외한다."):
+            q = "임원도 휴직되나요?" if "임원" in art else "계약직도 승진 돼요?"
+            self.assertIsNotNone(subject_out_of_scope(q, art), art)
+
     def test_plain_employee_question_unaffected(self):
         self.assertIsNone(subject_out_of_scope("직원 육아휴직 기간은?", ""))
         self.assertEqual(subject_out_of_scope("계약직도 승진 돼요?", ""), "계약직")

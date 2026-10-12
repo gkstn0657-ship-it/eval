@@ -109,7 +109,10 @@ def subject_out_of_scope(query, scope_article_text=""):
     if not m: return None
     subj = re.sub(r"\s", "", m.group(0))
     key = "임원" if "임원" in subj else subj[:2]
-    if scope_article_text and re.search(key + r".{0,12}(포함|적용|준용)", scope_article_text): return None
+    if scope_article_text:
+        # 부정("적용하지 않는다", "포함하지 아니한다", "제외한다")이 먼저다. 긍정 표현만으로 포함으로 읽지 않는다 (2026-10-12 외부 검토로 발견한 결함).
+        if re.search(key + r".{0,20}(적용|포함|준용)(하지|되지)\s*(않|아니)|" + key + r".{0,20}(제외|적용\s*대상이\s*아니)", scope_article_text): return subj
+        if re.search(key + r".{0,12}(포함|적용|준용)", scope_article_text): return None
     return subj
 
 # ---------------------------------------------------------------- 완화 추출 프롬프트 (G3 완화, G1·G2 채택 시에만)
