@@ -1,0 +1,23 @@
+{
+ "7B+rule(v3)": {
+  "refusal_rate": 0.9148936170212766,
+  "n_neg": 47,
+  "false_refusal_rate": 0.47619047619047616,
+  "n_pos": 42
+ },
+ "14B+rule": {
+  "refusal_rate": 0.7872340425531915,
+  "n_neg": 47,
+  "false_refusal_rate": 0.16666666666666666,
+  "n_pos": 42
+ },
+ "cascade_7B_to_14B+rule": {
+  "refusal_rate": 0.7659574468085106,
+  "n_neg": 47,
+  "false_refusal_rate": 0.09523809523809523,
+  "n_pos": 42
+ },
+ "n_14B_calls": 68,
+ "n_total": 104,
+ "note": "14B 호출 조건 = 7B 가 ANSWER 도 REFUSE_SUBJECT 도 아닐 때. 캐시 재계산이라 지연은 없음."
+}
