@@ -1,0 +1,114 @@
+{
+ "config": "D_cache",
+ "split": "dev104 (개발 자료: 선택용 56 + 점검용 48)",
+ "code_rev": "7bb584f",
+ "llm_cache_misses": {
+  "7B": 0,
+  "14B": 0
+ },
+ "refusal_recall": {
+  "n": 28,
+  "d": 47,
+  "rate": 0.5957
+ },
+ "not_answered_recall(refuse+hold)": {
+  "n": 36,
+  "d": 47,
+  "rate": 0.766
+ },
+ "false_refusal(R→refuse)": {
+  "n": 4,
+  "d": 42,
+  "rate": 0.0952
+ },
+ "R_not_fully_answered(R→refuse/hold/partial)": {
+  "n": 26,
+  "d": 42,
+  "rate": 0.619
+ },
+ "R_partial": {
+  "n": 22,
+  "d": 42,
+  "rate": 0.5238
+ },
+ "ungrounded_answers(final_check failed)": 0,
+ "fail_safe": 0,
+ "hold_subject": 8,
+ "n_answers": 55,
+ "n_14B_calls": 68,
+ "code_check_drops": {},
+ "by_label": {
+  "R": {
+   "PARTIAL": 22,
+   "ANSWER": 16,
+   "REFUSE_NO_EVIDENCE": 4
+  },
+  "W": {
+   "REFUSE_NO_EVIDENCE": 9,
+   "PARTIAL": 5,
+   "ANSWER": 1
+  },
+  "NA": {
+   "HOLD_SUBJECT": 5,
+   "REFUSE_NO_EVIDENCE": 17,
+   "PARTIAL": 3,
+   "ANSWER": 2
+  },
+  "OUT": {
+   "REFUSE_NO_EVIDENCE": 11,
+   "PARTIAL": 4,
+   "HOLD_SUBJECT": 3,
+   "ANSWER": 2
+  }
+ },
+ "by_half": {
+  "select": {
+   "refusal_recall": {
+    "n": 16,
+    "d": 26,
+    "rate": 0.6154
+   },
+   "false_refusal": {
+    "n": 2,
+    "d": 22,
+    "rate": 0.0909
+   }
+  },
+  "check": {
+   "refusal_recall": {
+    "n": 12,
+    "d": 21,
+    "rate": 0.5714
+   },
+   "false_refusal": {
+    "n": 2,
+    "d": 20,
+    "rate": 0.1
+   }
+  }
+ },
+ "by_style_false_refusal": {
+  "상황설명": {
+   "n": 2,
+   "d": 6,
+   "rate": 0.3333
+  },
+  "오타": {
+   "n": 0,
+   "d": 10,
+   "rate": 0.0
+  },
+  "일상어": {
+   "n": 2,
+   "d": 17,
+   "rate": 0.1176
+  },
+  "전문용어": {
+   "n": 0,
+   "d": 9,
+   "rate": 0.0
+  }
+ },
+ "latency": "미실측 (캐시 재계산)",
+ "human_review": "미완료 (의미상 오답·정상 답변 손실은 사람 검수 후 계산)"
+}

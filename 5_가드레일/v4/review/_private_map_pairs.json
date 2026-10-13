@@ -1,0 +1,1802 @@
+{
+ "PV9PH7J": {
+  "qid": "B19",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제57조",
+  "group": "국립공원공단|2023-03|제57조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P5SZA8L": {
+  "qid": "B19",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제48조",
+  "group": "국립공원공단|2023-03|제57조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PH8RP57": {
+  "qid": "S07",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "한국수자원공사|2026-08-27|제10조",
+  "group": "한국수자원공사|2026-08-27|제10조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P25ZEHG": {
+  "qid": "S07",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "한국수자원공사|2026-08-27|제39조",
+  "group": "한국수자원공사|2026-08-27|제10조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PZ97SMY": {
+  "qid": "P07",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제54조",
+  "group": "한전KPS(주)|2026-01-22|제54조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PNPYJQM": {
+  "qid": "P07",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제61조의2",
+  "group": "한전KPS(주)|2026-01-22|제54조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PZC62X3": {
+  "qid": "M0033",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국보건복지인재원|2026-03-03|제52조",
+  "group": "한국보건복지인재원|2026-03-03|제52조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PHE4XDM": {
+  "qid": "M0033",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국보건복지인재원|2026-03-03|제57조",
+  "group": "한국보건복지인재원|2026-03-03|제52조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PKF6M8T": {
+  "qid": "M0015",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "88관광개발(주)|2024-12-27|제23조",
+  "group": "88관광개발(주)|2024-12-27|제23조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P3Q9YBA": {
+  "qid": "M0015",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "88관광개발(주)|2024-12-27|제23조의1",
+  "group": "88관광개발(주)|2024-12-27|제23조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P65AWAN": {
+  "qid": "P13",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제44조의2",
+  "group": "한전KPS(주)|2026-01-22|제44조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P8R7ED3": {
+  "qid": "P13",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제47조의2",
+  "group": "한전KPS(주)|2026-01-22|제44조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P9XXGCK": {
+  "qid": "M0023",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국항로표지기술원|2025-12-17|제45조",
+  "group": "한국항로표지기술원|2025-12-17|제45조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PZ3B2SY": {
+  "qid": "M0023",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국항로표지기술원|2025-12-17|제46조",
+  "group": "한국항로표지기술원|2025-12-17|제45조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PZZZWC3": {
+  "qid": "M0095",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "코레일네트웍스(주)|2023-09|제16조",
+  "group": "코레일네트웍스(주)|2023-09|제16조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PK68BEU": {
+  "qid": "M0095",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "코레일네트웍스(주)|2023-09|제41조",
+  "group": "코레일네트웍스(주)|2023-09|제16조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P723K4S": {
+  "qid": "M0079",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국지식재산연구원|None|제25조",
+  "group": "한국지식재산연구원|None|제25조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PHLA8XE": {
+  "qid": "M0079",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국지식재산연구원|None|제24조",
+  "group": "한국지식재산연구원|None|제25조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PHY5J8K": {
+  "qid": "M0057",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "가축위생방역지원본부|2026-10-02|제56조",
+  "group": "가축위생방역지원본부|2026-10-02|제56조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PPZWSY9": {
+  "qid": "M0057",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "가축위생방역지원본부|2026-10-02|제57조",
+  "group": "가축위생방역지원본부|2026-10-02|제56조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PSX6JA7": {
+  "qid": "T02",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "한국철도공사|2025-07-31|제46조",
+  "group": "한국철도공사|2025-07-31|제46조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P82Q9KB": {
+  "qid": "T02",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "한국철도공사|2025-07-31|제13조",
+  "group": "한국철도공사|2025-07-31|제46조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PL364VQ": {
+  "qid": "K12",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제36조",
+  "group": "한국지역난방공사|2025-01|제36조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PN5PKKL": {
+  "qid": "K12",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "인천국제공항공사|2025-06|제59조",
+  "group": "한국지역난방공사|2025-01|제36조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PVY4RLQ": {
+  "qid": "M0001",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "재단법인 한국에너지재단|2025-12-18|제43조",
+  "group": "재단법인 한국에너지재단|2025-12-18|제43조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PLU5QDW": {
+  "qid": "M0001",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "재단법인 한국에너지재단|2025-12-18|제45조",
+  "group": "재단법인 한국에너지재단|2025-12-18|제43조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PS6KBL8": {
+  "qid": "Q7-02",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "인천국제공항공사|2025-06|제26조",
+  "group": "인천국제공항공사|2025-06|제26조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PEUWXTC": {
+  "qid": "Q7-02",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "인천국제공항공사|2025-06|제27조",
+  "group": "인천국제공항공사|2025-06|제26조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PGR9B42": {
+  "qid": "M0068",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "농업정책보험금융원|2026-08-31|제51조의2",
+  "group": "농업정책보험금융원|2026-08-31|제51조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PKJ8GLZ": {
+  "qid": "M0068",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "농업정책보험금융원|2026-08-31|제58조",
+  "group": "농업정책보험금융원|2026-08-31|제51조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PDGPFLD": {
+  "qid": "K21",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제37조",
+  "group": "한국지역난방공사|2025-01|제37조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P35JHXX": {
+  "qid": "K21",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "한국지역난방공사|2025-01|제19조",
+  "group": "한국지역난방공사|2025-01|제37조",
+  "neg_dup_count": 2,
+  "in_astra_top5": false
+ },
+ "P6FN6JC": {
+  "qid": "M0016",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "국가생명윤리정책원|2026-07-02|제41조",
+  "group": "국가생명윤리정책원|2026-07-02|제41조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P9EKAG3": {
+  "qid": "M0016",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "국가생명윤리정책원|2026-07-02|제2조",
+  "group": "국가생명윤리정책원|2026-07-02|제41조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P665XCG": {
+  "qid": "M0025",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국농수산식품유통공사|2026-08-11|제32조",
+  "group": "한국농수산식품유통공사|2026-08-11|제32조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PVDU7VU": {
+  "qid": "M0025",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국농수산식품유통공사|2026-08-11|제33조",
+  "group": "한국농수산식품유통공사|2026-08-11|제32조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PYJ9HTG": {
+  "qid": "M0014",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국청소년정책연구원|None|제44조",
+  "group": "한국청소년정책연구원|None|제44조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P4LVSA4": {
+  "qid": "M0014",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국청소년정책연구원|None|제44조의1",
+  "group": "한국청소년정책연구원|None|제44조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PU44XEV": {
+  "qid": "M0089",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "영상물등급위원회|2025-11-19|제41조",
+  "group": "영상물등급위원회|2025-11-19|제41조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P2F47KU": {
+  "qid": "M0089",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "영상물등급위원회|2025-11-19|제30조",
+  "group": "영상물등급위원회|2025-11-19|제41조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PJYP3NC": {
+  "qid": "M0069",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국교통안전공단|2025-11-26|제69조",
+  "group": "한국교통안전공단|2025-11-26|제69조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PNFUU84": {
+  "qid": "M0069",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국교통안전공단|2025-11-26|제75조",
+  "group": "한국교통안전공단|2025-11-26|제69조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PDZ83ED": {
+  "qid": "M0040",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "인천항만공사|2026-02-24|제51조",
+  "group": "인천항만공사|2026-02-24|제51조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PHGTCCD": {
+  "qid": "M0040",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "인천항만공사|2026-02-24|제16조의2",
+  "group": "인천항만공사|2026-02-24|제51조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PL8LU9Y": {
+  "qid": "M0073",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국보건산업진흥원|2026-01-06|제38조",
+  "group": "한국보건산업진흥원|2026-01-06|제38조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PAKSXGW": {
+  "qid": "M0073",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국보건산업진흥원|2026-01-06|제33조",
+  "group": "한국보건산업진흥원|2026-01-06|제38조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PVCLVTJ": {
+  "qid": "B01",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제19조",
+  "group": "국립공원공단|2023-03|제19조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PHGPS63": {
+  "qid": "B01",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제29조",
+  "group": "국립공원공단|2023-03|제19조",
+  "neg_dup_count": 2,
+  "in_astra_top5": false
+ },
+ "PBYU49K": {
+  "qid": "M0061",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "서울대학교치과병원|2026-01-02|제64조",
+  "group": "서울대학교치과병원|2026-01-02|제64조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PTH6NT6": {
+  "qid": "M0061",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "서울대학교치과병원|2026-01-02|제59조",
+  "group": "서울대학교치과병원|2026-01-02|제64조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PYSE7JY": {
+  "qid": "K22",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제38조의2",
+  "group": "한국지역난방공사|2025-01|제38조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P4XNNXS": {
+  "qid": "K22",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "한국지역난방공사|2025-01|제28조",
+  "group": "한국지역난방공사|2025-01|제38조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PKK2226": {
+  "qid": "P19",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제38조",
+  "group": "한전KPS(주)|2026-01-22|제38조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PJ3L9DH": {
+  "qid": "P19",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제44조의2",
+  "group": "한전KPS(주)|2026-01-22|제38조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P5WEVHR": {
+  "qid": "P03",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제9조의3",
+  "group": "한전KPS(주)|2026-01-22|제9조의3",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PUKEBX7": {
+  "qid": "P03",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제9조의2",
+  "group": "한전KPS(주)|2026-01-22|제9조의3",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PJZUETA": {
+  "qid": "M0087",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "전북대학교병원|2026-09-23|제78조",
+  "group": "전북대학교병원|2026-09-23|제78조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PXJBUZP": {
+  "qid": "M0087",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "전북대학교병원|2026-09-23|제71조",
+  "group": "전북대학교병원|2026-09-23|제78조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P9EZ3NN": {
+  "qid": "M0005",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국승강기안전공단|2025-11-03|제36조",
+  "group": "한국승강기안전공단|2025-11-03|제36조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PKAS8H2": {
+  "qid": "M0005",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국승강기안전공단|2025-11-03|제37조",
+  "group": "한국승강기안전공단|2025-11-03|제36조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PVW7E8D": {
+  "qid": "K20",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제20조의7",
+  "group": "한국지역난방공사|2025-01|제20조의7",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PS9JGEZ": {
+  "qid": "K20",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "한국지역난방공사|2025-01|제20조",
+  "group": "한국지역난방공사|2025-01|제20조의7",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PFV3CXK": {
+  "qid": "A22",
+  "set": "kaia",
+  "role": "gold",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제39조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제39조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PFGSR7M": {
+  "qid": "A22",
+  "set": "kaia",
+  "role": "neg",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제40조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제39조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P6TYB4F": {
+  "qid": "B13",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제63조",
+  "group": "국립공원공단|2023-03|제63조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PLEA45D": {
+  "qid": "B13",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제61조",
+  "group": "국립공원공단|2023-03|제63조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PNPTKNW": {
+  "qid": "M0046",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국교육과정평가원|2026-09-16|제48조",
+  "group": "한국교육과정평가원|2026-09-16|제48조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PX2DM4H": {
+  "qid": "M0046",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국교육과정평가원|2026-09-16|제25조",
+  "group": "한국교육과정평가원|2026-09-16|제48조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PMTQWC6": {
+  "qid": "P17",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제7조의2",
+  "group": "한전KPS(주)|2026-01-22|제7조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PST9GGE": {
+  "qid": "P17",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제38조의2",
+  "group": "한전KPS(주)|2026-01-22|제7조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PRXRHQM": {
+  "qid": "M0063",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국사회적기업진흥원|2025-09|제50조",
+  "group": "한국사회적기업진흥원|2025-09|제50조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PDZ6DPA": {
+  "qid": "M0063",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국사회적기업진흥원|2025-09|제49조",
+  "group": "한국사회적기업진흥원|2025-09|제50조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P3NHL7X": {
+  "qid": "P09",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제52조",
+  "group": "한전KPS(주)|2026-01-22|제52조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PXB54BZ": {
+  "qid": "P09",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제54조의2",
+  "group": "한전KPS(주)|2026-01-22|제52조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P9WBACR": {
+  "qid": "N19",
+  "set": "new22",
+  "role": "gold",
+  "article_id": "인천국제공항공사|2025-06|제34조",
+  "group": "인천국제공항공사|2025-06|제34조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PAXYHNJ": {
+  "qid": "N19",
+  "set": "new22",
+  "role": "neg",
+  "article_id": "인천국제공항공사|2025-06|제16조",
+  "group": "인천국제공항공사|2025-06|제34조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P6UP232": {
+  "qid": "M0108",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "한국산업기술진흥원|2026-08-27|제9조",
+  "group": "한국산업기술진흥원|2026-08-27|제9조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PNZ837T": {
+  "qid": "M0108",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "한국산업기술진흥원|2026-08-27|제14조",
+  "group": "한국산업기술진흥원|2026-08-27|제9조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P65ULWV": {
+  "qid": "M0019",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "(재)예술경영지원센터|2026-03-31|제62조",
+  "group": "(재)예술경영지원센터|2026-03-31|제62조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PZVWL5B": {
+  "qid": "M0019",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "(재)예술경영지원센터|2026-03-31|제58조",
+  "group": "(재)예술경영지원센터|2026-03-31|제62조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PF2SLWQ": {
+  "qid": "D06",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "한국철도공사|2025-07-31|제20조",
+  "group": "한국철도공사|2025-07-31|제20조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PT3QZM5": {
+  "qid": "D06",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "한국철도공사|2025-07-31|제4조",
+  "group": "한국철도공사|2025-07-31|제20조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PZ2JF3A": {
+  "qid": "T04",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "인천국제공항공사|2025-06|제31조",
+  "group": "인천국제공항공사|2025-06|제31조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PC2XV5A": {
+  "qid": "T04",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "인천국제공항공사|2025-06|제61조",
+  "group": "인천국제공항공사|2025-06|제31조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PXQMMQL": {
+  "qid": "E03",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "인천국제공항공사|2025-06|제65조",
+  "group": "인천국제공항공사|2025-06|제65조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PWAWJLJ": {
+  "qid": "E03",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "한국전기연구원|None|제10조",
+  "group": "인천국제공항공사|2025-06|제65조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PPGRHBC": {
+  "qid": "B02",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제52조",
+  "group": "국립공원공단|2023-03|제52조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PGPM89T": {
+  "qid": "B02",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제23조",
+  "group": "국립공원공단|2023-03|제52조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PZG5Q45": {
+  "qid": "P06",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제47조의2",
+  "group": "한전KPS(주)|2026-01-22|제47조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P3ZKYV5": {
+  "qid": "P06",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제52조",
+  "group": "한전KPS(주)|2026-01-22|제47조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PL793BQ": {
+  "qid": "N14",
+  "set": "new22",
+  "role": "gold",
+  "article_id": "한국토지주택공사|2026-07-24|제16조",
+  "group": "한국토지주택공사|2026-07-24|제16조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PWL4TST": {
+  "qid": "N14",
+  "set": "new22",
+  "role": "neg",
+  "article_id": "한국토지주택공사|2026-07-24|제34조",
+  "group": "한국토지주택공사|2026-07-24|제16조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PCZ2HGF": {
+  "qid": "Q2-03",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "한국철도공사|2025-07-31|제29조",
+  "group": "한국철도공사|2025-07-31|제29조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PAEQMZS": {
+  "qid": "Q2-03",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "한국철도공사|2025-07-31|제27조",
+  "group": "한국철도공사|2025-07-31|제29조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PJCBZ8W": {
+  "qid": "A18",
+  "set": "kaia",
+  "role": "gold",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제30조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제30조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PRLAKGZ": {
+  "qid": "A18",
+  "set": "kaia",
+  "role": "neg",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제31조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제30조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P8Z5V72": {
+  "qid": "M0009",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "국립아시아문화전당재단|2026-03-05|제49조",
+  "group": "국립아시아문화전당재단|2026-03-05|제49조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PCH8N3A": {
+  "qid": "M0009",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "국립아시아문화전당재단|2026-03-05|제53조",
+  "group": "국립아시아문화전당재단|2026-03-05|제49조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PGTQEE7": {
+  "qid": "Q3-06",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "한국광해광업공단|2026-08-27|제36조",
+  "group": "한국광해광업공단|2026-08-27|제36조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PH7HFFA": {
+  "qid": "Q3-06",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "한국광해광업공단|2026-08-27|제41조",
+  "group": "한국광해광업공단|2026-08-27|제36조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PUG6PSC": {
+  "qid": "E05",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "인천국제공항공사|2025-06|제24조",
+  "group": "인천국제공항공사|2025-06|제24조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PPRAXTW": {
+  "qid": "E05",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "인천국제공항공사|2025-06|제4조",
+  "group": "인천국제공항공사|2025-06|제24조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PWC2RAF": {
+  "qid": "P12",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제35조의2",
+  "group": "한전KPS(주)|2026-01-22|제35조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PCWVVCX": {
+  "qid": "P12",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제35조",
+  "group": "한전KPS(주)|2026-01-22|제35조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PHTTL73": {
+  "qid": "Q4-05",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "주택도시보증공사|2025-11-21|제47조의2",
+  "group": "주택도시보증공사|2025-11-21|제47조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PN5SBAE": {
+  "qid": "Q4-05",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "주택도시보증공사|2025-11-21|제47조의3",
+  "group": "주택도시보증공사|2025-11-21|제47조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PNYGRMS": {
+  "qid": "M0096",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "수자원환경산업진흥(주)|2017-03|제14조",
+  "group": "수자원환경산업진흥(주)|2017-03|제14조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PQ9P664": {
+  "qid": "M0096",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "수자원환경산업진흥(주)|2017-03|제43조",
+  "group": "수자원환경산업진흥(주)|2017-03|제14조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PW5EKLT": {
+  "qid": "M0082",
+  "set": "matrix",
+  "role": "gold",
+  "article_id": "영화진흥위원회|2026-06-26|제48조",
+  "group": "영화진흥위원회|2026-06-26|제48조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PTR58CN": {
+  "qid": "M0082",
+  "set": "matrix",
+  "role": "neg",
+  "article_id": "영화진흥위원회|2026-06-26|제58조",
+  "group": "영화진흥위원회|2026-06-26|제48조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PGZ2A3A": {
+  "qid": "S05",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "한국공항공사|2026-06-29|제23조",
+  "group": "한국공항공사|2026-06-29|제23조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PQ72WZE": {
+  "qid": "S05",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "한국공항공사|2026-06-29|제64조",
+  "group": "한국공항공사|2026-06-29|제23조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P33WCJ5": {
+  "qid": "B22",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제49조",
+  "group": "국립공원공단|2023-03|제49조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PME9EDF": {
+  "qid": "B22",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제50조",
+  "group": "국립공원공단|2023-03|제49조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PFSGNMT": {
+  "qid": "A11",
+  "set": "kaia",
+  "role": "gold",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제35조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제35조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PM7M5NT": {
+  "qid": "A11",
+  "set": "kaia",
+  "role": "neg",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제34조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제35조",
+  "neg_dup_count": 2,
+  "in_astra_top5": false
+ },
+ "PWXB8W2": {
+  "qid": "A08",
+  "set": "kaia",
+  "role": "gold",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제16조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제16조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P2W77CG": {
+  "qid": "A08",
+  "set": "kaia",
+  "role": "neg",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제15조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제16조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PMKTBCB": {
+  "qid": "B09",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제24조",
+  "group": "국립공원공단|2023-03|제24조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PX2K52A": {
+  "qid": "B09",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제20조",
+  "group": "국립공원공단|2023-03|제24조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PXV7LXN": {
+  "qid": "B04",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제45조",
+  "group": "국립공원공단|2023-03|제45조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PMLYM9L": {
+  "qid": "B04",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제51조",
+  "group": "국립공원공단|2023-03|제45조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P6XE3AT": {
+  "qid": "K04",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제36조의2",
+  "group": "한국지역난방공사|2025-01|제36조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PADBL2A": {
+  "qid": "K04",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "한국지역난방공사|2025-01|제22조의2",
+  "group": "한국지역난방공사|2025-01|제36조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PV837CT": {
+  "qid": "A03",
+  "set": "kaia",
+  "role": "gold",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제26조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제26조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PF7SQX7": {
+  "qid": "A03",
+  "set": "kaia",
+  "role": "neg",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제28조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제26조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PAURTPE": {
+  "qid": "Q7-05",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "주택도시보증공사|2025-11-21|제17조",
+  "group": "주택도시보증공사|2025-11-21|제17조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PY2JXPT": {
+  "qid": "Q7-05",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "주택도시보증공사|2025-11-21|제45조",
+  "group": "주택도시보증공사|2025-11-21|제17조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PC2EKGL": {
+  "qid": "D09",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "한국광해광업공단|2026-08-27|제15조",
+  "group": "한국광해광업공단|2026-08-27|제15조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P7UF6EL": {
+  "qid": "D09",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "한국광해광업공단|2026-08-27|제3조",
+  "group": "한국광해광업공단|2026-08-27|제15조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PR45YPF": {
+  "qid": "E09",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "(주)강원랜드|2023-12|제56조",
+  "group": "(주)강원랜드|2023-12|제56조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P4CCCMU": {
+  "qid": "E09",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "(주)강원랜드|2023-12|제11조",
+  "group": "(주)강원랜드|2023-12|제56조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P4GJZCT": {
+  "qid": "D03",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "(주)강원랜드|2023-12|제34조",
+  "group": "(주)강원랜드|2023-12|제34조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PZTJCYY": {
+  "qid": "D03",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "(주)강원랜드|2023-12|제33조",
+  "group": "(주)강원랜드|2023-12|제34조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PA8KE75": {
+  "qid": "Q1-01",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "제주국제자유도시개발센터|2026-04-23|제59조",
+  "group": "제주국제자유도시개발센터|2026-04-23|제59조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P25N6GA": {
+  "qid": "Q1-01",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "제주국제자유도시개발센터|2026-04-23|제60조",
+  "group": "제주국제자유도시개발센터|2026-04-23|제59조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P8FMBQ8": {
+  "qid": "Q7-07",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "한국공항공사|2026-06-29|제3조",
+  "group": "한국공항공사|2026-06-29|제3조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PXC2FXD": {
+  "qid": "Q7-07",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "한국공항공사|2026-06-29|제4조",
+  "group": "한국공항공사|2026-06-29|제3조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P88HB7Q": {
+  "qid": "N07",
+  "set": "new22",
+  "role": "gold",
+  "article_id": "주택도시보증공사|2025-11-21|제44조의2",
+  "group": "주택도시보증공사|2025-11-21|제44조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P77CZJZ": {
+  "qid": "N07",
+  "set": "new22",
+  "role": "neg",
+  "article_id": "주택도시보증공사|2025-11-21|제49조",
+  "group": "주택도시보증공사|2025-11-21|제44조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PVLSE9X": {
+  "qid": "Q11-03",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "한국공항공사|2026-06-29|제63조",
+  "group": "한국공항공사|2026-06-29|제63조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PL7DKLZ": {
+  "qid": "Q11-03",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "한국공항공사|2026-06-29|제35조",
+  "group": "한국공항공사|2026-06-29|제63조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PTHWVRU": {
+  "qid": "T10",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "한국공항공사|2026-06-29|제56조",
+  "group": "한국공항공사|2026-06-29|제56조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PUNEPFZ": {
+  "qid": "T10",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "한국공항공사|2026-06-29|제52조",
+  "group": "한국공항공사|2026-06-29|제56조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PQ5GBF6": {
+  "qid": "Q4-04",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "(주)강원랜드|2023-12|제9조",
+  "group": "(주)강원랜드|2023-12|제9조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PDSJ2MC": {
+  "qid": "Q4-04",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "(주)강원랜드|2023-12|제8조",
+  "group": "(주)강원랜드|2023-12|제9조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PB2DL5N": {
+  "qid": "A07",
+  "set": "kaia",
+  "role": "gold",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제15조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제15조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PVC9KJ9": {
+  "qid": "A07",
+  "set": "kaia",
+  "role": "neg",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제14조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제15조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P3S58MD": {
+  "qid": "Q6-05",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "한국수자원공사|2026-08-27|제34조",
+  "group": "한국수자원공사|2026-08-27|제34조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PXX4QEC": {
+  "qid": "Q6-05",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "한국벤처투자|2026-09-18|제33조",
+  "group": "한국수자원공사|2026-08-27|제34조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PAJT8CZ": {
+  "qid": "K09",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제5조",
+  "group": "한국지역난방공사|2025-01|제5조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PUQD8PS": {
+  "qid": "K09",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "한국지역난방공사|2025-01|제19조",
+  "group": "한국지역난방공사|2025-01|제5조",
+  "neg_dup_count": 2,
+  "in_astra_top5": false
+ },
+ "PE73QPT": {
+  "qid": "A01",
+  "set": "kaia",
+  "role": "gold",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제8조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제8조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PG3FSXA": {
+  "qid": "A01",
+  "set": "kaia",
+  "role": "neg",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제34조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제8조",
+  "neg_dup_count": 2,
+  "in_astra_top5": false
+ },
+ "PYEDUCN": {
+  "qid": "P01",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제20조",
+  "group": "한전KPS(주)|2026-01-22|제20조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PBWHTYL": {
+  "qid": "P01",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제21조",
+  "group": "한전KPS(주)|2026-01-22|제20조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P7PUW9H": {
+  "qid": "D02",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "해양환경공단|2026-06-25|제39조",
+  "group": "해양환경공단|2026-06-25|제39조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PD85DEW": {
+  "qid": "D02",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "해양환경공단|2026-06-25|제43조",
+  "group": "해양환경공단|2026-06-25|제39조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PL7FPVA": {
+  "qid": "K01",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제15조",
+  "group": "한국지역난방공사|2025-01|제15조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PBKVEZW": {
+  "qid": "K01",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "한국지역난방공사|2025-01|제5조",
+  "group": "한국지역난방공사|2025-01|제15조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PJG963U": {
+  "qid": "B20",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제69조",
+  "group": "국립공원공단|2023-03|제69조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P63W4T9": {
+  "qid": "B20",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제63조",
+  "group": "국립공원공단|2023-03|제69조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PCHHDSQ": {
+  "qid": "K19",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제20조",
+  "group": "한국지역난방공사|2025-01|제20조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P9ZXBJY": {
+  "qid": "K19",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "한국지역난방공사|2025-01|제20조의3",
+  "group": "한국지역난방공사|2025-01|제20조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PT9DYVD": {
+  "qid": "Q5-01",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "해양환경공단|2026-06-25|제2조",
+  "group": "해양환경공단|2026-06-25|제2조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PE8V3ZF": {
+  "qid": "Q5-01",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "해양환경공단|2026-06-25|제51조",
+  "group": "해양환경공단|2026-06-25|제2조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PQM7H5F": {
+  "qid": "Q1-03",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "한국토지주택공사|2026-07-24|제37조",
+  "group": "한국토지주택공사|2026-07-24|제37조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P9277QX": {
+  "qid": "Q1-03",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "한국토지주택공사|2026-07-24|제17조",
+  "group": "한국토지주택공사|2026-07-24|제37조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PSZ4N9Z": {
+  "qid": "N03",
+  "set": "new22",
+  "role": "gold",
+  "article_id": "한국도로공사|2025-01|제8조",
+  "group": "한국도로공사|2025-01|제8조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PDK5LYM": {
+  "qid": "N03",
+  "set": "new22",
+  "role": "neg",
+  "article_id": "한국도로공사|2025-01|제11조",
+  "group": "한국도로공사|2025-01|제8조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PV6YWA3": {
+  "qid": "Q5-04",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "그랜드코리아레저(주)|2026-06-22|제2조",
+  "group": "그랜드코리아레저(주)|2026-06-22|제2조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PK3AY54": {
+  "qid": "Q5-04",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "그랜드코리아레저(주)|2026-06-22|제28조",
+  "group": "그랜드코리아레저(주)|2026-06-22|제2조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PTHB6N6": {
+  "qid": "T05",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "해양환경공단|2026-06-25|제71조",
+  "group": "해양환경공단|2026-06-25|제71조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P67SUQM": {
+  "qid": "T05",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "해양환경공단|2026-06-25|제41조",
+  "group": "해양환경공단|2026-06-25|제71조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PYZ3G52": {
+  "qid": "B12",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제65조",
+  "group": "국립공원공단|2023-03|제65조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PFH3SZH": {
+  "qid": "B12",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제68조",
+  "group": "국립공원공단|2023-03|제65조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PZMR9SU": {
+  "qid": "S09",
+  "set": "employee",
+  "role": "gold",
+  "article_id": "한국토지주택공사|2026-07-24|제24조",
+  "group": "한국토지주택공사|2026-07-24|제24조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P2LPR4D": {
+  "qid": "S09",
+  "set": "employee",
+  "role": "neg",
+  "article_id": "한국토지주택공사|2026-07-24|제25조",
+  "group": "한국토지주택공사|2026-07-24|제24조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PWN8WPU": {
+  "qid": "B11",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제26조",
+  "group": "국립공원공단|2023-03|제26조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P79CREY": {
+  "qid": "B11",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제29조",
+  "group": "국립공원공단|2023-03|제26조",
+  "neg_dup_count": 2,
+  "in_astra_top5": false
+ },
+ "PHDGPZK": {
+  "qid": "K11",
+  "set": "kdhc",
+  "role": "gold",
+  "article_id": "한국지역난방공사|2025-01|제20조의3",
+  "group": "한국지역난방공사|2025-01|제20조의3",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PQX2L7T": {
+  "qid": "K11",
+  "set": "kdhc",
+  "role": "neg",
+  "article_id": "(주)한국가스기술공사|2025-04|제22조",
+  "group": "한국지역난방공사|2025-01|제20조의3",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PSM8PBR": {
+  "qid": "B10",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제21조",
+  "group": "국립공원공단|2023-03|제21조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PQYMFXP": {
+  "qid": "B10",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제57조",
+  "group": "국립공원공단|2023-03|제21조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PCW72KC": {
+  "qid": "N21",
+  "set": "new22",
+  "role": "gold",
+  "article_id": "한국철도공사|2025-07-31|제16조",
+  "group": "한국철도공사|2025-07-31|제16조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PFX2VRA": {
+  "qid": "N21",
+  "set": "new22",
+  "role": "neg",
+  "article_id": "한국철도공사|2025-07-31|제41조",
+  "group": "한국철도공사|2025-07-31|제16조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PXZ4MT8": {
+  "qid": "Q2-06",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "한국수자원공사|2026-08-27|제37조",
+  "group": "한국수자원공사|2026-08-27|제37조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PZ7QXJY": {
+  "qid": "Q2-06",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "한국수자원공사|2026-08-27|제36조",
+  "group": "한국수자원공사|2026-08-27|제37조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P5RGB68": {
+  "qid": "Q11-06",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "한국수자원공사|2026-08-27|제44조",
+  "group": "한국수자원공사|2026-08-27|제44조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P7ER2WM": {
+  "qid": "Q11-06",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "한국수자원공사|2026-08-27|제10조",
+  "group": "한국수자원공사|2026-08-27|제44조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PJDHCUM": {
+  "qid": "Q2-04",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "그랜드코리아레저(주)|2026-06-22|제18조",
+  "group": "그랜드코리아레저(주)|2026-06-22|제18조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PXZYRSY": {
+  "qid": "Q2-04",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "그랜드코리아레저(주)|2026-06-22|제15조",
+  "group": "그랜드코리아레저(주)|2026-06-22|제18조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PAPGX3W": {
+  "qid": "B16",
+  "set": "knps",
+  "role": "gold",
+  "article_id": "국립공원공단|2023-03|제9조",
+  "group": "국립공원공단|2023-03|제9조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PVVD3PT": {
+  "qid": "B16",
+  "set": "knps",
+  "role": "neg",
+  "article_id": "국립공원공단|2023-03|제65조",
+  "group": "국립공원공단|2023-03|제9조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "P47BQZA": {
+  "qid": "A21",
+  "set": "kaia",
+  "role": "gold",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제40조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제40조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "P7EHPLA": {
+  "qid": "A21",
+  "set": "kaia",
+  "role": "neg",
+  "article_id": "국토교통과학기술진흥원|2025-12-23|제42조",
+  "group": "국토교통과학기술진흥원|2025-12-23|제40조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PJAYMYQ": {
+  "qid": "Q3-07",
+  "set": "dev",
+  "role": "gold",
+  "article_id": "그랜드코리아레저(주)|2026-06-22|제31조",
+  "group": "그랜드코리아레저(주)|2026-06-22|제31조",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PUR7WWY": {
+  "qid": "Q3-07",
+  "set": "dev",
+  "role": "neg",
+  "article_id": "그랜드코리아레저(주)|2026-06-22|제30조",
+  "group": "그랜드코리아레저(주)|2026-06-22|제31조",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ },
+ "PXUTF9C": {
+  "qid": "P16",
+  "set": "kps",
+  "role": "gold",
+  "article_id": "한전KPS(주)|2026-01-22|제75조의2",
+  "group": "한전KPS(주)|2026-01-22|제75조의2",
+  "neg_dup_count": null,
+  "in_astra_top5": false
+ },
+ "PL3JRQY": {
+  "qid": "P16",
+  "set": "kps",
+  "role": "neg",
+  "article_id": "한전KPS(주)|2026-01-22|제75조",
+  "group": "한전KPS(주)|2026-01-22|제75조의2",
+  "neg_dup_count": 1,
+  "in_astra_top5": false
+ }
+}

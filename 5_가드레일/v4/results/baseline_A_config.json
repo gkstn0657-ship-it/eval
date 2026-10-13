@@ -1,0 +1,14 @@
+{
+ "model": "qwen2.5:7b-instruct",
+ "options": {
+  "temperature": 0,
+  "num_ctx": 4096,
+  "num_predict": 600
+ },
+ "prompt_sha": "4d843510c9b4",
+ "retrieval": "results_astra hybrid_prefilter top5 (L2P_A)",
+ "corpus": "3_성능테스트/corpora/L2P_A.jsonl",
+ "code_rev": "7bb584f",
+ "n": 104,
+ "started": "2026-10-13 15:00:37"
+}
