@@ -60,9 +60,10 @@ print(f"준비 완료: 데모 {len(c1.rows)}청크 / 교원 {len(c2.rows)}청크
 api = FastAPI()
 # ----- 공기업 데모 (/demo) -----
 @api.get("/demo/", response_class=HTMLResponse)
-@api.get("/demo", response_class=HTMLResponse)
 def demo_index():
     return HTMLResponse((ROOT / "demo.html").read_text(encoding="utf-8"), headers={"Cache-Control": "no-store"})
+@api.get("/demo")  # 슬래시 없이 열면 상대 경로 orgs/ask 가 /orgs 로 풀려 404 → 항상 /demo/ 로 보낸다
+def demo_slash(): return RedirectResponse("/demo/", status_code=301)
 api.get("/demo/orgs")(hitl_serve.orgs)
 api.get("/demo/ask")(guard_route.ask_v3)
 @api.get("/")
