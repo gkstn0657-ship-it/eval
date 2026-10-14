@@ -112,6 +112,23 @@ def search_masked(c, q, mask):
     pool.sort(key=lambda i: (-ce_map[i], -rrf[i], i)); top = pool + rest
     return top, {"pool": len(pool), "top1_ce": ce_map[top[0]] if top else None, "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
 
+ANSWER_SYSTEM = """너는 고등학교 교원과 행정직원의 규정 질문을 돕는 안내 도우미야. 아래 [참고 조문]만 근거로 2~4문장으로 쉽게 답해.
+규칙: 조문에 없는 내용은 쓰지 말고, 없으면 "조문에서 확인되지 않습니다"라고 말해. 숫자·기간·나이는 조문에 있는 그대로 써.
+답 끝에 근거를 "(근거: 법령명 제N조)" 형식으로 적어. 존댓말로 쓴다.
+[참고 조문]
+{context}"""
+
+def gen_answer(q, hits):
+    """기존 데모 방식: LLM 이 조문을 근거로 자연어 답을 쓰고, 숫자·조문번호가 근거에 있는지 검증한다(G3). 실패하면 None."""
+    import guardrails as GR
+    ctx = "\n\n".join(f"[{h['org']} {h['article_no']}({h['title']}) | 시행 {h['revision_date']}]\n{h['text'][:1500]}" for h in hits)
+    system = ANSWER_SYSTEM.format(context=ctx)
+    if os.environ.get("ANTHROPIC_API_KEY"): text = H.haiku_chat(system, q)
+    elif os.environ.get("HF_TOKEN"): text = H.hf_chat(system, q)
+    else: return None, None
+    v = GR.verify_answer(text, [h["text"] for h in hits], [h["article_no"] for h in hits])
+    return (text.strip() if v["ok"] else None), v
+
 def polish(text):
     """guard.py 의 고정 문구는 공공기관 인사규정 기준이라(수정하지 않는다) 교원 규정 표현으로 바꾸고, 면책 문구는 gate.disclaimer 로만 보낸다."""
     text = re.sub(r"^.*인사규정에서 찾은 관련 조문입니다\.?\s*\n+", "", text)
@@ -174,10 +191,20 @@ def ask(request: Request, q: str = Query(..., min_length=1, max_length=300), doc
         out["gate"] = {"action": "answer", "message": None, "disclaimer": DISCLAIMER, "note": f"답변 생성 모델을 쓸 수 없어 검색 근거만 표시합니다 ({type(e).__name__})"}
         out["sec"] = round(time.time() - t0, 2); return JSONResponse(out)
     act = ACTION[resp.decision]
-    out["answer"] = polish(resp.text) if act == "answer" else None; out["model"] = f"guard-v3 / {model}"
+    out["model"] = f"guard-v3 / {model}"
     out["gate"] = {"action": act, "message": None if act == "answer" else resp.text, "disclaimer": DISCLAIMER,
                    "quotes": [{"article": x["article"], "text": x["text"]} for x in resp.quotes], "candidates": resp.candidates,
                    "trace": {kk: v for kk, v in resp.trace.items() if kk in ("input", "verified", "rejected", "relinked", "final_check", "llm_parse_error")}}
+    if act == "answer":
+        # 자연어 답(검증 통과 시) 을 본문으로, 가드레일이 검증한 원문 인용은 gate.quotes 로 함께 보낸다. 검증 실패면 원문 인용만.
+        natural, verify = None, None
+        try: natural, verify = gen_answer(q, hits)
+        except Exception as e: out["gate"]["gen_error"] = type(e).__name__
+        out["gate"]["verify"] = verify
+        out["answer"] = natural or polish(resp.text)
+        out["gate"]["answer_mode"] = "generated" if natural else "quotes"
+    else:
+        out["answer"] = None
     out["sec"] = round(time.time() - t0, 2)
     try:
         with open(ROOT / "guard_log.jsonl", "a", encoding="utf-8") as f:
