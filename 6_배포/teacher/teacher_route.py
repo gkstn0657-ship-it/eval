@@ -161,7 +161,8 @@ def ask(request: Request, q: str = Query(..., min_length=1, max_length=300), doc
     doc = doc or org  # 티타임 구버전 호환: org 파라미터도 받는다
     target, doc_note = H.resolve_org(q, doc, c.org_names)   # 질문에 문서명이 있으면 그쪽을 따른다
     mask = build_mask(c, target, audience, applies_to)
-    idx, info = search_masked(c, q, mask)
+    timing = {}
+    idx, info = search_masked(c, q, mask); timing["search"] = round(time.time() - t0, 2)
     arts, hits = [], []
     for i in idx:
         r = c.rows[i]
@@ -184,12 +185,14 @@ def ask(request: Request, q: str = Query(..., min_length=1, max_length=300), doc
     # 라벨에 법령명을 넣어 답변의 "■ 제44조(휴직)" 줄이 어느 법인지 보이게 한다
     articles = [{"org": h["org"], "label": f"{h['org']} {h['article_no']}({h['title']})", "revision_date": h["revision_date"] or "", "text": h["text"]} for h in hits]
     g = Guard(llm, scope_classifier=None, subject_check=False, relaxed=False)
+    t1 = time.time()
     try:
         # 가드레일은 기관이 비면 되묻는다(R4). 문서를 지정하지 않은 질문은 코퍼스 전체를 '교원·교직원 규정' 한 묶음으로 본다.
         resp = g.respond(q, (target or "교원·교직원 규정") if len(ment) < 2 else None, articles, (), compare_ok=False, scope_article_text="")
     except Exception as e:  # 모델 호출 실패(한도 등): 추측 답변 대신 근거만
         out["gate"] = {"action": "answer", "message": None, "disclaimer": DISCLAIMER, "note": f"답변 생성 모델을 쓸 수 없어 검색 근거만 표시합니다 ({type(e).__name__})"}
         out["sec"] = round(time.time() - t0, 2); return JSONResponse(out)
+    timing["guard_llm"] = round(time.time() - t1, 2)
     act = ACTION[resp.decision]
     out["model"] = f"guard-v3 / {model}"
     out["gate"] = {"action": act, "message": None if act == "answer" else resp.text, "disclaimer": DISCLAIMER,
@@ -198,14 +201,16 @@ def ask(request: Request, q: str = Query(..., min_length=1, max_length=300), doc
     if act == "answer":
         # 자연어 답(검증 통과 시) 을 본문으로, 가드레일이 검증한 원문 인용은 gate.quotes 로 함께 보낸다. 검증 실패면 원문 인용만.
         natural, verify = None, None
+        t2 = time.time()
         try: natural, verify = gen_answer(q, hits)
         except Exception as e: out["gate"]["gen_error"] = type(e).__name__
+        timing["gen_llm"] = round(time.time() - t2, 2)
         out["gate"]["verify"] = verify
         out["answer"] = natural or polish(resp.text)
         out["gate"]["answer_mode"] = "generated" if natural else "quotes"
     else:
         out["answer"] = None
-    out["sec"] = round(time.time() - t0, 2)
+    out["sec"] = round(time.time() - t0, 2); out["timing"] = timing
     try:
         with open(ROOT / "guard_log.jsonl", "a", encoding="utf-8") as f:
             f.write(json.dumps({"ts": time.strftime("%Y-%m-%d %H:%M:%S"), "q": q, "doc": target, "audience": audience, "action": act,
