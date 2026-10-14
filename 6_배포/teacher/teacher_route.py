@@ -112,6 +112,12 @@ def search_masked(c, q, mask):
     pool.sort(key=lambda i: (-ce_map[i], -rrf[i], i)); top = pool + rest
     return top, {"pool": len(pool), "top1_ce": ce_map[top[0]] if top else None, "abstain": bool(top and ce_map.get(top[0], 0) < 0)}
 
+def polish(text):
+    """guard.py 의 고정 문구는 공공기관 인사규정 기준이라(수정하지 않는다) 교원 규정 표현으로 바꾸고, 면책 문구는 gate.disclaimer 로만 보낸다."""
+    text = re.sub(r"^.*인사규정에서 찾은 관련 조문입니다\.?\s*\n+", "", text)
+    text = re.sub(r"\n*※[^\n]*$", "", text.rstrip())
+    return text.replace(" 인사규정 ", " ").strip()
+
 # ---------------------------------------------------------------- 라우트
 def _auth(request: Request):
     return not RAG_KEY or request.headers.get("x-rag-key", "") == RAG_KEY
@@ -158,7 +164,8 @@ def ask(request: Request, q: str = Query(..., min_length=1, max_length=300), doc
         if hits and llm is None: out["gate"]["note"] = "답변 생성 모델이 없어 검색 근거만 표시"
         out["sec"] = round(time.time() - t0, 2); return JSONResponse(out)
     ment = H.mentioned_orgs(q, set(c.org_names))
-    articles = [{"org": h["org"], "label": f"{h['article_no']}({h['title']})", "revision_date": h["revision_date"] or "", "text": h["text"]} for h in hits]
+    # 라벨에 법령명을 넣어 답변의 "■ 제44조(휴직)" 줄이 어느 법인지 보이게 한다
+    articles = [{"org": h["org"], "label": f"{h['org']} {h['article_no']}({h['title']})", "revision_date": h["revision_date"] or "", "text": h["text"]} for h in hits]
     g = Guard(llm, scope_classifier=None, subject_check=False, relaxed=False)
     try:
         # 가드레일은 기관이 비면 되묻는다(R4). 문서를 지정하지 않은 질문은 코퍼스 전체를 '교원·교직원 규정' 한 묶음으로 본다.
@@ -167,7 +174,7 @@ def ask(request: Request, q: str = Query(..., min_length=1, max_length=300), doc
         out["gate"] = {"action": "answer", "message": None, "disclaimer": DISCLAIMER, "note": f"답변 생성 모델을 쓸 수 없어 검색 근거만 표시합니다 ({type(e).__name__})"}
         out["sec"] = round(time.time() - t0, 2); return JSONResponse(out)
     act = ACTION[resp.decision]
-    out["answer"] = resp.text if act == "answer" else None; out["model"] = f"guard-v3 / {model}"
+    out["answer"] = polish(resp.text) if act == "answer" else None; out["model"] = f"guard-v3 / {model}"
     out["gate"] = {"action": act, "message": None if act == "answer" else resp.text, "disclaimer": DISCLAIMER,
                    "quotes": [{"article": x["article"], "text": x["text"]} for x in resp.quotes], "candidates": resp.candidates,
                    "trace": {kk: v for kk, v in resp.trace.items() if kk in ("input", "verified", "rejected", "relinked", "final_check", "llm_parse_error")}}
