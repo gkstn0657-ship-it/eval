@@ -33,6 +33,26 @@ E = hitl_serve.E; E._device = lambda: "cpu"
 c1 = hitl_serve.corpus(); c1.bge; c1.bm25
 c2 = teacher_route.corpus(); c2.bge; c2.bm25
 E.st_model("BAAI/bge-m3"); E.ce_model()
+
+# D: 재랭킹만 ZeroGPU 로. 실패(할당량·콜드스타트 오류)하면 그 호출은 CPU 로 하고 다음 호출에 다시 GPU 를 시도한다. 결과는 같은 모델이라 동일.
+try:
+    import spaces, torch
+    _ce_gpu = {}
+    @spaces.GPU(duration=20)
+    def _ce_predict_gpu(pairs):
+        if "m" not in _ce_gpu:
+            from sentence_transformers import CrossEncoder
+            _ce_gpu["m"] = CrossEncoder("BAAI/bge-reranker-v2-m3", device="cuda", max_length=E.CE_MAX_LEN)
+        return _ce_gpu["m"].predict(pairs, batch_size=32, show_progress_bar=False)
+    def ce_predict_auto(pairs):
+        try: return _ce_predict_gpu(pairs)
+        except Exception as e:
+            print(f"ZeroGPU 재랭킹 실패, CPU 로: {type(e).__name__}: {str(e)[:120]}", flush=True)
+            return teacher_route._ce_cpu(pairs)
+    teacher_route.CE_PREDICT = ce_predict_auto
+    print("재랭커: ZeroGPU 우선, CPU 대체", flush=True)
+except ImportError:
+    print("재랭커: CPU", flush=True)
 print(f"준비 완료: 데모 {len(c1.rows)}청크 / 교원 {len(c2.rows)}청크 / LLM {teacher_route.pick_llm()[1]}", flush=True)
 
 api = FastAPI()
