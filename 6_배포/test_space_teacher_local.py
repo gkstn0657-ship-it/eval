@@ -4,7 +4,7 @@
 """
 import os, sys, json
 from pathlib import Path
-ROOT = Path(__file__).resolve().parent / "space_teacher"
+ROOT = Path(__file__).resolve().parent / ("space_merged" if "--merged" in sys.argv else "space_teacher")
 os.environ.setdefault("HF_HOME", str(Path.home() / ".cache" / "huggingface")); os.environ["HF_HUB_OFFLINE"] = "1"
 os.environ["RAG_KEY"] = "test-key"
 for p in ("3_성능테스트", "4_결과분석", "5_가드레일/v2", "."): sys.path.insert(0, str(ROOT / p))

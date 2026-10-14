@@ -13,3 +13,4 @@ Thumbs.db
 3_성능테스트/corpora/CH_*.jsonl
 6_배포/.rag_key
 6_배포/space_teacher/
+6_배포/space_merged/

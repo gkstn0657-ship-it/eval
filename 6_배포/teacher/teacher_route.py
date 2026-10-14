@@ -29,8 +29,15 @@ DISCLAIMER = "※ 법령·규정 원문을 그대로 보여드린 참고 정보�
 ACTION = {ANSWER: "answer", REFUSE_SCOPE: "refuse_scope", REFUSE_NO_EVIDENCE: "refuse", REFUSE_SUBJECT: "refuse_subject",
           REFUSE_ABUSE: "refuse_abuse", ASK_ORG: "ask_org", NO_COMPARE: "refuse_multi"}
 TOKEN_RE = E.TOKEN_RE
+CORPUS_NAME = "TEACH_A"
 
 api = FastAPI(title="교원 규정 RAG")
+
+_corpus = {}
+def corpus():
+    """교원 코퍼스. 공기업 데모(hitl_serve.corpus, L2P_A)와 한 Space 에 같이 올라가므로 따로 든다."""
+    if "c" not in _corpus: _corpus["c"] = E.Corpus(CORPUS_NAME)
+    return _corpus["c"]
 
 # ---------------------------------------------------------------- 근거 추출 LLM (JSON 문자열 반환)
 def _json_block(s):
@@ -111,12 +118,12 @@ def _auth(request: Request):
 
 @api.get("/health")
 def health():
-    return {"ok": True, "corpus": "TEACH_A", "chunks": len(H.corpus().rows), "llm": pick_llm()[1]}
+    return {"ok": True, "corpus": "TEACH_A", "chunks": len(corpus().rows), "llm": pick_llm()[1]}
 
 @api.get("/orgs")
 def orgs(request: Request):
     if not _auth(request): return JSONResponse({"error": "unauthorized"}, status_code=401)
-    c = H.corpus()
+    c = corpus()
     seen, out = set(), []
     for r in c.rows:
         if r["org"] in seen: continue
@@ -127,7 +134,7 @@ def orgs(request: Request):
 def ask(request: Request, q: str = Query(..., min_length=1, max_length=300), doc: str = Query(""), org: str = Query(""),
         audience: str = Query(""), applies_to: str = Query(""), k: int = Query(5, ge=1, le=10)):
     if not _auth(request): return JSONResponse({"error": "unauthorized"}, status_code=401)
-    c = H.corpus(); t0 = time.time()
+    c = corpus(); t0 = time.time()
     doc = doc or org  # 티타임 구버전 호환: org 파라미터도 받는다
     target, doc_note = H.resolve_org(q, doc, c.org_names)   # 질문에 문서명이 있으면 그쪽을 따른다
     mask = build_mask(c, target, audience, applies_to)
