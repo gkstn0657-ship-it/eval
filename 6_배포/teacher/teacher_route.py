@@ -150,6 +150,12 @@ def polish(text):
     text = re.sub(r"\n*※[^\n]*$", "", text.rstrip())
     return text.replace(" 인사규정 ", " ").strip()
 
+def polish_refusal(text):
+    """거절 문안의 '<라벨> 인사규정' 표현을 교원 규정 말로. (guard.py 는 수정하지 않는다)"""
+    text = re.sub(r"\n*※[^\n]*$", "", (text or "").rstrip())
+    return (text.replace("교원·교직원 규정 인사규정", "교원·교직원 규정").replace(" 인사규정에서", " 규정에서")
+                .replace("인사부서", "학교 행정실 또는 교육청 담당 부서").strip())
+
 def _hit(r, rank):
     return {"rank": rank, "article_id": r["article_id"], "org": r["org"], "article_no": r["article_no"], "title": r.get("article_title", ""),
             "revision_date": r["revision_date"], "text": r["text"], "layer": r.get("layer"), "audience": r.get("audience"),
@@ -204,7 +210,7 @@ def do_answer(q, target, hits):
         natural, verify = f_gen.result()
 
     act = ACTION[resp.decision]
-    gate = {"action": act, "message": None if act == "answer" else resp.text, "disclaimer": DISCLAIMER,
+    gate = {"action": act, "message": None if act == "answer" else polish_refusal(resp.text), "disclaimer": DISCLAIMER,
             "quotes": [{"article": x["article"], "text": x["text"]} for x in resp.quotes], "candidates": resp.candidates,
             "trace": {kk: v for kk, v in resp.trace.items() if kk in ("input", "verified", "rejected", "relinked", "final_check", "llm_parse_error")},
             "verify": verify}
