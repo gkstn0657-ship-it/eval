@@ -34,8 +34,10 @@ c1 = hitl_serve.corpus(); c1.bge; c1.bm25
 c2 = teacher_route.corpus(); c2.bge; c2.bm25
 E.st_model("BAAI/bge-m3"); E.ce_model()
 
-# D: 재랭킹만 ZeroGPU 로. 실패(할당량·콜드스타트 오류)하면 그 호출은 CPU 로 하고 다음 호출에 다시 GPU 를 시도한다. 결과는 같은 모델이라 동일.
+# D: 재랭킹만 ZeroGPU 로 (실측 2026-10-14: 이 Space 는 requirements 의 torch 가 CPU 빌드이고 CUDA_VISIBLE_DEVICES="" 라
+# "No CUDA GPUs are available" 로 매번 실패해 CPU 로 떨어졌다. 시도 자체가 0.5초를 먹으므로 USE_ZEROGPU=1 일 때만 켠다.)
 try:
+    if os.environ.get("USE_ZEROGPU") != "1": raise ImportError("ZeroGPU 재랭킹 비활성")
     import spaces, torch
     _ce_gpu = {}
     @spaces.GPU(duration=20)
