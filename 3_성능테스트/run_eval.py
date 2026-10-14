@@ -44,6 +44,8 @@ ORG_ALIAS = {  # 질의 속 기관 표현 → 코퍼스 org. 긴 표현부터 �
     "에스알": "주식회사 에스알", "SR": "주식회사 에스알",
     "한국지역난방공사": "한국지역난방공사", "지역난방공사": "한국지역난방공사", "지역난방": "한국지역난방공사", "난방공사": "한국지역난방공사",  # 외부 검증 기관(2026-10-04)
 }
+_ALIAS_FILE = ROOT / "1_데이터셋" / "05_clean" / "L2" / "org_alias.json"  # 292곳 자동 생성 별칭 (scripts/build_org_alias.py, 2026-10-14). 손으로 쓴 항목이 우선
+if _ALIAS_FILE.exists(): ORG_ALIAS = {**json.loads(_ALIAS_FILE.read_text(encoding="utf-8")), **ORG_ALIAS}
 def strip_org(q):
     """질의에서 기관 표현을 제거(v8). 기관은 필터가 맡으므로 점수 계산에는 넣지 않는다."""
     for k in sorted(ORG_ALIAS, key=len, reverse=True):

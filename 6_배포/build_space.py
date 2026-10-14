@@ -7,6 +7,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parent; OUT = HERE / "space"
 FILES = [
     "3_성능테스트/run_eval.py", "3_성능테스트/corpora/L2P_A.jsonl", "3_성능테스트/cache/bge-m3.npz",
+    "1_데이터셋/05_clean/L2/org_alias.json",  # 292곳 기관 별칭 (run_eval.py 가 ROOT 기준 경로로 읽음)
     "5_가드레일/guardrails.py", "5_가드레일/v2/guard.py", "4_결과분석/hitl_serve.py", "4_결과분석/hitl.html",
 ]
 for name in ("app.py", "demo.html", "requirements.txt", "SPACE_README.md", ".gitattributes", "guard_route.py", "guard_data.json"):
